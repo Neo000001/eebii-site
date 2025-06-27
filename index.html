@@ -2,194 +2,220 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>eebii – Explore Beyond Limits</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eebii - IT Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #0f111a;
-      color: #f5f5f5;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
-
+    body {
+      background: linear-gradient(to right, #f0f4f8, #e2e8f0);
+      color: #333;
+      line-height: 1.6;
+    }
     header {
-      padding: 20px 60px;
-      background: rgba(0, 0, 0, 0.8);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 10;
+      background: #0e101c;
+      padding: 20px 40px;
+      color: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
-
-    header h1 {
-      font-size: 24px;
-      color: #ffdd57;
-      margin: 0;
-    }
-
-    nav a {
-      color: #f5f5f5;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 300;
-    }
-
-    .hero {
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0') center/cover no-repeat;
+    header .logo {
       display: flex;
-      justify-content: center;
       align-items: center;
-      text-align: center;
-      flex-direction: column;
-      padding: 0 20px;
-      position: relative;
     }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+    header .logo img {
+      height: 40px;
+      margin-right: 10px;
     }
-
-    .hero h2 {
-      font-size: 48px;
+    header nav a {
       color: #fff;
-      z-index: 1;
-      margin: 0;
-      animation: fadeInUp 1s ease-out;
-    }
-
-    .hero p {
-      font-size: 18px;
-      z-index: 1;
-      max-width: 600px;
-      margin-top: 20px;
-      animation: fadeInUp 1.5s ease-out;
-    }
-
-    .hero a {
-      margin-top: 30px;
-      display: inline-block;
-      background: #ffdd57;
-      color: #000;
-      padding: 12px 24px;
-      border-radius: 8px;
       text-decoration: none;
-      font-weight: bold;
-      z-index: 1;
-      animation: fadeInUp 2s ease-out;
+      margin: 0 15px;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
-
-    section {
-      padding: 80px 40px;
+    header nav a:hover {
+      color: #66ccff;
+    }
+    .hero {
+      background: radial-gradient(circle at center, #1e293b, #0f172a);
+      color: #fff;
       text-align: center;
+      padding: 120px 20px 100px;
+      background-size: cover;
+      animation: bgPulse 10s infinite alternate;
     }
-
-    .section-dark {
-      background: #181b2c;
-    }
-
-    h3 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .service-card {
-      background: #22263d;
-      padding: 30px;
-      border-radius: 12px;
-      width: 280px;
-      transition: transform 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      background: #2e3455;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #0f111a;
-      color: #aaa;
-    }
-
-    @keyframes fadeInUp {
+    @keyframes bgPulse {
       from {
-        opacity: 0;
-        transform: translateY(30px);
+        background-position: 0% 50%;
       }
       to {
-        opacity: 1;
-        transform: translateY(0);
+        background-position: 100% 50%;
       }
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease forwards;
+    }
+    .hero p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+      opacity: 0.8;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .services {
+      padding: 80px 40px;
+      background: #fff;
+      text-align: center;
+    }
+    .services h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card i {
+      font-size: 2em;
+      color: #0ea5e9;
+      margin-bottom: 15px;
+    }
+    .contact {
+      padding: 80px 40px;
+      background: #f0f4f8;
+    }
+    .contact h2 {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .form-wrapper {
+      max-width: 600px;
+      margin: auto;
+    }
+    .form-wrapper input,
+    .form-wrapper textarea {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .form-wrapper button {
+      background: #0ea5e9;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1em;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .form-wrapper button:hover {
+      background: #0284c7;
+    }
+    footer {
+      background: #0e101c;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>eebii</h1>
+    <div class="logo">
+      <img src="logo.png" alt="Eebii Logo">
+      <strong>Eebii</strong>
+    </div>
     <nav>
-      <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact">Get in Touch</a>
     </nav>
   </header>
 
-  <section class="hero" id="home">
-    <h2>Explore Experiences Beyond Your Limits</h2>
-    <p>Powering businesses with smart IT, secure infrastructure, and consulting you can count on.</p>
-    <a href="#contact">Contact Us</a>
+  <section class="hero">
+    <h1>Explore Experiences Beyond Your Limits</h1>
+    <p>From IT support to cybersecurity to cloud servers, Eebii delivers it all with precision and power.</p>
   </section>
 
-  <section id="about" class="section-dark">
-    <h3>About Us</h3>
-    <p>At eebii, we build IT ecosystems that are scalable, secure, and designed for impact. We help companies solve real problems with smart infrastructure and hands-on consulting.</p>
-  </section>
-
-  <section id="services">
-    <h3>What We Do</h3>
-    <div class="services">
-      <div class="service-card">⚙️ IT Support & Maintenance</div>
-      <div class="service-card">🌐 Network Setup & Cybersecurity</div>
-      <div class="service-card">☁️ Cloud & File Server Solutions</div>
-      <div class="service-card">💼 Business IT Consulting</div>
-      <div class="service-card">🛡️ Firewall & VPN Configuration</div>
-      <div class="service-card">🎓 Staff IT Training</div>
+  <section id="services" class="services">
+    <h2>What We Do</h2>
+    <div class="cards">
+      <div class="card"><i class="fas fa-tools"></i><h3>IT Support & Maintenance</h3></div>
+      <div class="card"><i class="fas fa-network-wired"></i><h3>Network Setup & Cybersecurity</h3></div>
+      <div class="card"><i class="fas fa-cloud"></i><h3>Cloud & File Server Solutions</h3></div>
+      <div class="card"><i class="fas fa-briefcase"></i><h3>Business IT Consulting</h3></div>
+      <div class="card"><i class="fas fa-shield-alt"></i><h3>Firewall & VPN Configuration</h3></div>
+      <div class="card"><i class="fas fa-chalkboard-teacher"></i><h3>Staff IT Training</h3></div>
+      <div class="card"><i class="fas fa-globe"></i><h3>Website Hosting & Support</h3></div>
+      <div class="card"><i class="fas fa-cogs"></i><h3>Complete IT Software Solutions</h3></div>
     </div>
   </section>
 
-  <section id="contact">
-  <h2>Get in Touch</h2>
-  <p>We’d love to hear from you — please fill out the form below.</p>
-  
-  <iframe
-    aria-label="Contact Us"
-    frameborder="0"
-    style="height:500px;width:99%;border:none;"
-    src="https://forms.zohopublic.in/eebii1/form/ContactUs/formperma/51SB9U8wSPrGasbBRDiXFr68D8axvkYUF-0uU907lKc">
-  </iframe>
-</section>
-
+  <section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+    <div class="form-wrapper">
+      <form id="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 eebii.com | Designed with 💡 and vision
+    &copy; 2025 Eebii. All rights reserved.
   </footer>
 
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      if (!name || !email || !message) {
+        alert("Please fill out all fields before submitting.");
+        return;
+      }
+      window.location.href = `mailto:contact@eebii.com?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0AFrom: ${encodeURIComponent(email)}`;
+    });
+  </script>
 </body>
 </html>
