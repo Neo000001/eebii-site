@@ -44,51 +44,50 @@
         <p>At Eebii, we deliver reliable IT solutions tailored to businesses of all sizes. From cybersecurity to cloud infrastructure and professional web design, we support you every step of the way.</p>
     </section>
 
-  <section id="contact" class="contact">
+ <section id="contact" class="contact">
   <h2 class="section-title">Contact Us</h2>
   <form id="contact-form">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <textarea name="message" placeholder="Your Message" required></textarea>
     <button type="submit">Send Message</button>
-    <div id="form-status"></div>
+    <div id="form-status" style="margin-top:10px;"></div>
   </form>
 </section>
 
 <script>
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-  const form = e.target;
-  const formData = {
-    name: form.name.value.trim(),
-    email: form.email.value.trim(),
-    message: form.message.trim()
-  };
+    const form = e.target;
+    const formData = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      message: form.message.value.trim()
+    };
 
-  fetch("https://script.google.com/macros/s/AKfycbw07SzQF_NPdULF-AV1r6hV700fq3EQnNHP1cWIJjPYPwa9HahcbvquehF4IdlhSoweWw/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(formData)
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "success") {
-      document.getElementById("form-status").innerText = "✅ Message sent!";
-      form.reset();
-    } else {
-      document.getElementById("form-status").innerText = "❌ Error: " + data.message;
-    }
-  })
-  .catch(err => {
-    document.getElementById("form-status").innerText = "❌ Submission failed.";
-    console.error(err);
+    fetch("https://script.google.com/macros/s/AKfycbw07SzQF_NPdULF-AV1r6hV700fq3EQnNHP1cWIJjPYPwa9HahcbvquehF4IdlhSoweWw/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === "success") {
+        document.getElementById("form-status").innerText = "✅ Message sent!";
+        form.reset();
+      } else {
+        document.getElementById("form-status").innerText = "❌ " + data.message;
+      }
+    })
+    .catch(error => {
+      document.getElementById("form-status").innerText = "❌ Could not send message.";
+      console.error("Error:", error);
+    });
   });
-});
 </script>
-
 
     <footer>
         <p>&copy; 2025 Eebii. All rights reserved.</p>
