@@ -44,7 +44,7 @@
         <p>At Eebii, we deliver reliable IT solutions tailored to businesses of all sizes. From cybersecurity to cloud infrastructure and professional web design, we support you every step of the way.</p>
     </section>
 
-    <section id="contact" class="contact">
+  <section id="contact" class="contact">
   <h2 class="section-title">Contact Us</h2>
   <form id="contact-form">
     <input type="text" name="name" placeholder="Your Name" required>
@@ -56,14 +56,14 @@
 </section>
 
 <script>
-document.getElementById("contact-form").addEventListener("submit", function(e) {
+document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const form = e.target;
-  const data = {
-    name: form.name.value,
-    email: form.email.value,
-    message: form.message.value
+  const formData = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    message: form.message.trim()
   };
 
   fetch("https://script.google.com/macros/s/AKfycbw07SzQF_NPdULF-AV1r6hV700fq3EQnNHP1cWIJjPYPwa9HahcbvquehF4IdlhSoweWw/exec", {
@@ -71,16 +71,20 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(formData)
   })
   .then(res => res.json())
-  .then(response => {
-    document.getElementById("form-status").innerText = "✅ Message sent successfully!";
-    form.reset();
+  .then(data => {
+    if (data.status === "success") {
+      document.getElementById("form-status").innerText = "✅ Message sent!";
+      form.reset();
+    } else {
+      document.getElementById("form-status").innerText = "❌ Error: " + data.message;
+    }
   })
-  .catch(error => {
-    document.getElementById("form-status").innerText = "❌ Failed to send. Please try again.";
-    console.error("Error:", error);
+  .catch(err => {
+    document.getElementById("form-status").innerText = "❌ Submission failed.";
+    console.error(err);
   });
 });
 </script>
