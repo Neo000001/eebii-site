@@ -53,7 +53,38 @@
     <button type="submit">Send Message</button>
     <div id="form-status" style="margin-top: 10px; font-weight: bold;"></div>
   </form>
-</sec
+</section>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const action = "https://formspree.io/f/xldnazvb";
+
+    try {
+      const response = await fetch(action, {
+        method: "POST",
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.innerHTML = "✅ Your message was sent successfully!";
+        form.reset();
+      } else {
+        const result = await response.json();
+        status.innerHTML = "❌ " + (result.error || "There was a problem.");
+      }
+    } catch (error) {
+      status.innerHTML = "❌ Network error. Please try again.";
+    }
+  });
+</script>
+
 
 
     <footer>
