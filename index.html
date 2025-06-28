@@ -45,15 +45,46 @@
     </section>
 
     <section id="contact" class="contact">
-        <h2 class="section-title">Contact Us</h2>
-        <form id="contact-form" method="POST" action="https://script.google.com/macros/s/AKfycbw07SzQF_NPdULF-AV1r6hV700fq3EQnNHP1cWIJjPYPwa9HahcbvquehF4IdlhSoweWw/exec">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-            <div id="form-status"></div>
-        </form>
-    </section>
+  <h2 class="section-title">Contact Us</h2>
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+    <div id="form-status"></div>
+  </form>
+</section>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbw07SzQF_NPdULF-AV1r6hV700fq3EQnNHP1cWIJjPYPwa9HahcbvquehF4IdlhSoweWw/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(response => {
+    document.getElementById("form-status").innerText = "✅ Message sent successfully!";
+    form.reset();
+  })
+  .catch(error => {
+    document.getElementById("form-status").innerText = "❌ Failed to send. Please try again.";
+    console.error("Error:", error);
+  });
+});
+</script>
+
 
     <footer>
         <p>&copy; 2025 Eebii. All rights reserved.</p>
