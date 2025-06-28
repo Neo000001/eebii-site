@@ -46,17 +46,15 @@
 
  <section id="contact" class="contact">
   <h2 class="section-title">Contact Us</h2>
-  <form action="https://formspree.io/f/xldnazvb" method="POST">
+  <form id="contact-form">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <textarea name="message" placeholder="Your Message" required></textarea>
-
-    <!-- ✅ This line enables redirect after submit -->
-    <input type="hidden" name="_redirect" value="https://eebii.com/thanks.html">
-
     <button type="submit">Send Message</button>
+    <div id="form-status" style="margin-top: 10px; font-weight: bold;"></div>
   </form>
-</section>
+</sec
+
 
     <footer>
         <p>&copy; 2025 Eebii. All rights reserved.</p>
