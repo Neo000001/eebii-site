@@ -1,94 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name=device-width, initial-scale=1.0">
-    <title>Eebii – IT Solutions</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eebii - IT & Network Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background: #f4f7fa; color: #333; line-height: 1.6; }
+    header { background: #1f2937; color: #fff; padding: 2rem 1rem; text-align: center; }
+    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    header p { font-size: 1rem; }
+    nav { background: #111827; padding: 1rem; text-align: center; }
+    nav a { color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 600; }
+    .section { padding: 3rem 1rem; max-width: 1000px; margin: auto; }
+    .section h2 { font-size: 1.8rem; color: #111827; margin-bottom: 1rem; }
+    .card { background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+    .cta-button { display: inline-block; background: #2563eb; color: #fff; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    footer { background: #1f2937; color: #fff; text-align: center; padding: 2rem 1rem; }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Eebii</div>
-        <nav>
-            <ul>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Explore Experiences Beyond Your Limits</h1>
-        <p>Your trusted partner in IT support, networking, and digital transformation.</p>
-        <a href="#contact" class="cta-button">Get in Touch</a>
-    </section>
-
-    <section id="services" class="services">
-        <h2 class="section-title">Our Services</h2>
-        <div class="service-grid">
-            <div class="service-card">🛠️ IT Support & Maintenance</div>
-            <div class="service-card">🔐 Network Setup & Cybersecurity</div>
-            <div class="service-card">☁️ Cloud & File Server Solutions</div>
-            <div class="service-card">💼 Business IT Consulting</div>
-            <div class="service-card">🛡️ Firewall & VPN Configuration</div>
-            <div class="service-card">🎓 Staff IT Training</div>
-            <div class="service-card">🌐 Website Hosting & Support</div>
-            <div class="service-card">🎨 Website Design</div>
-            <div class="service-card">💽 Software Deployment & Full IT Solutions</div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <h2 class="section-title">About Us</h2>
-        <p>At Eebii, we deliver reliable IT solutions tailored to businesses of all sizes. From cybersecurity to cloud infrastructure and professional web design, we support you every step of the way.</p>
-    </section>
-
- <section id="contact" class="contact">
-  <h2 class="section-title">Contact Us</h2>
-  <form id="contact-form">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-    <div id="form-status" style="margin-top: 10px; font-weight: bold;"></div>
-  </form>
-</section>
-
-<script>
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("form-status");
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const data = new FormData(form);
-    const action = "https://formspree.io/f/xldnazvb";
-
-    try {
-      const response = await fetch(action, {
-        method: "POST",
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        status.innerHTML = "✅ Your message was sent successfully!";
-        form.reset();
-      } else {
-        const result = await response.json();
-        status.innerHTML = "❌ " + (result.error || "There was a problem.");
-      }
-    } catch (error) {
-      status.innerHTML = "❌ Network error. Please try again.";
-    }
-  });
-</script>
-
-
-
-    <footer>
-        <p>&copy; 2025 Eebii. All rights reserved.</p>
-    </footer>
+  <header>
+    <h1>Your Business. Secured. Supported. Simplified.</h1>
+    <p>Professional IT & Network Solutions for Homes, Startups & Businesses</p>
+  </header>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#blog">Blog</a>
+  </nav>
+  <section class="section" id="services">
+    <h2>Our Services</h2>
+    <!-- Service cards here (already added) -->
+    <a class="cta-button" href="#contact">Get a Free Consultation</a>
+  </section>  <section class="section" id="blog">
+    <h2>Latest Blog Posts</h2>
+    <div class="card">
+      <h3>Top 5 Reasons Your Internet is Slow (And How to Fix It)</h3>
+      <p>Learn the common culprits of slow internet performance and practical ways to improve your home or office Wi-Fi network.</p>
+      <a class="cta-button" href="#">Read More</a>
+    </div>
+    <div class="card">
+      <h3>VPNs for Small Businesses: Why They Matter</h3>
+      <p>Find out why VPNs aren't just for remote work. See how they secure your data and make branch connectivity safer.</p>
+      <a class="cta-button" href="#">Read More</a>
+    </div>
+    <div class="card">
+      <h3>Essential IT Checklist for New Offices in 2025</h3>
+      <p>Setting up a new business space? Use this IT checklist to ensure your operations run smoothly from day one.</p>
+      <a class="cta-button" href="#">Read More</a>
+    </div>
+  </section>  <footer>
+    <p>Contact: support@eebii.com | +91 XXXXX XXXXX</p>
+    <p>&copy; 2025 Eebii. All rights reserved.</p>
+  </footer>
 </body>
 </html>
