@@ -1,108 +1,62 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { MoveRight } from "lucide-react";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=device-width, initial-scale=1.0">
+    <title>Eebii – IT Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eebii</div>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-export default function HomePage() {
-  const services = [
-    {
-      title: "IT Support & Maintenance",
-      description:
-        "Remote and on-site support for businesses and home users. Includes troubleshooting, system checks, and regular maintenance packages.",
-    },
-    {
-      title: "Network Setup & Cybersecurity",
-      description:
-        "End-to-end LAN/Wi-Fi setup, firewall configuration, and threat prevention for homes and offices.",
-    },
-    {
-      title: "Cloud & File Server Solutions",
-      description:
-        "Secure and scalable file storage solutions including remote access, backups, and permission-based controls.",
-    },
-    {
-      title: "Business IT Consulting",
-      description:
-        "IT planning and infrastructure consultation for startups, expansions, and office setups.",
-    },
-    {
-      title: "Firewall & VPN Configuration",
-      description:
-        "Expert setup of FortiGate, SonicWall, and more with SD-WAN, VPNs, and multi-ISP redundancy.",
-    },
-    {
-      title: "Staff IT Training",
-      description:
-        "Customized training sessions covering IT hygiene, remote tools, and cloud platform usage.",
-    },
-    {
-      title: "Website Hosting & Design",
-      description:
-        "Professional web design, hosting, and maintenance using modern tech stacks and SEO practices.",
-    },
-  ];
+    <section class="hero">
+        <h1>Explore Experiences Beyond Your Limits</h1>
+        <p>Your trusted partner in IT support, networking, and digital transformation.</p>
+        <a href="#contact" class="cta-button">Get in Touch</a>
+    </section>
 
-  return (
-    <div className="px-6 py-10 md:px-20">
-      {/* Hero Section */}
-      <section className="text-center mb-16">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-4"
-        >
-          Your Business. Secured. Supported. Simplified.
-        </motion.h1>
-        <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-          Professional IT & Network Solutions for Homes, Startups & Businesses
-        </p>
-        <div className="mt-6 flex justify-center gap-4">
-          <Button size="lg">Get a Free Quote</Button>
-          <Button size="lg" variant="outline">
-            Explore Services
-          </Button>
+    <section id="services" class="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">🛠️ IT Support & Maintenance</div>
+            <div class="service-card">🔐 Network Setup & Cybersecurity</div>
+            <div class="service-card">☁️ Cloud & File Server Solutions</div>
+            <div class="service-card">💼 Business IT Consulting</div>
+            <div class="service-card">🛡️ Firewall & VPN Configuration</div>
+            <div class="service-card">🎓 Staff IT Training</div>
+            <div class="service-card">🌐 Website Hosting & Support</div>
+            <div class="service-card">🎨 Website Design</div>
+            <div class="service-card">💽 Software Deployment & Full IT Solutions</div>
         </div>
-      </section>
+    </section>
 
-      {/* Services Section */}
-      <section>
-        <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
-          Our Services
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="rounded-2xl shadow-sm hover:shadow-md transition-shadow h-full">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    <section id="about" class="about">
+        <h2 class="section-title">About Us</h2>
+        <p>At Eebii, we deliver reliable IT solutions tailored to businesses of all sizes. From cybersecurity to cloud infrastructure and professional web design, we support you every step of the way.</p>
+    </section>
 
-      {/* CTA Section */}
-      <section className="mt-20 text-center">
-        <h3 className="text-2xl font-semibold mb-4">
-          Ready to simplify your IT?
-        </h3>
-        <Button size="lg" className="px-6">
-          Contact Us <MoveRight className="ml-2 h-4 w-4" />
-        </Button>
-      </section>
-    </div>
-  );
-}
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+            <div id="form-status"></div>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Eebii. All rights reserved.</p>
+    </footer>
+</body>
+</html>
