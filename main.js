@@ -1,0 +1,1 @@
+document.getElementById('root').innerHTML = '<h1>Welcome to eebii.com</h1><p>Your IT support site is ready!</p>';
