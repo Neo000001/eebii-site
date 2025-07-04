@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Navigation -->
   <nav class="topnav">
     <div class="nav-brand">Eebii</div>
     <div class="nav-links" id="nav-links">
@@ -17,25 +19,44 @@
     </div>
   </nav>
 
+  <!-- Blog Header -->
   <main class="blog" style="padding: 4rem 2rem;">
     <h1 style="text-align: center; margin-bottom: 2rem;">📚 Our Blog</h1>
+
+    <!-- Search + Filter -->
+    <div class="blog-filters" style="text-align: center; margin-bottom: 2rem;">
+      <input type="text" id="blogSearch" placeholder="🔍 Search blog..." style="padding: 0.5rem; width: 250px; border-radius: 6px;" />
+      <select id="blogCategory" style="padding: 0.5rem; margin-left: 1rem; border-radius: 6px;">
+        <option value="all">All Categories</option>
+        <option value="support">Remote Support</option>
+        <option value="cloud">Cloud</option>
+        <option value="security">Security</option>
+      </select>
+    </div>
+
+    <!-- Blog Posts -->
     <div class="blog-grid">
+
       <!-- Blog Post 1 -->
-      <div class="post">
+      <div class="post" data-category="support">
         <h3>💻 Why Every Small Business Needs Remote IT Support</h3>
+        <p class="meta">By Eebii • July 2025 • Category: Remote Support</p>
         <p>Tech problems waste time. Learn how remote support keeps your business running.</p>
         <a href="blog-remote-it-support.html">Read More</a>
       </div>
 
-      <!-- Placeholder Blog Post 2 -->
-      <div class="post">
+      <!-- Blog Post 2 (Coming Soon) -->
+      <div class="post" data-category="cloud">
         <h3>☁️ Choosing Between Cloud & Local File Servers</h3>
+        <p class="meta">By Eebii • Coming Soon • Category: Cloud</p>
         <p>We compare cloud vs on-site file servers to help you decide what’s best.</p>
         <a href="#">Coming Soon</a>
       </div>
+
     </div>
   </main>
 
+  <!-- Footer -->
   <footer style="text-align: center; padding: 2rem 1rem; background: #20232a; color: #ccc;">
     <div class="sitemap">
       <a href="index.html">Home</a> |
@@ -46,5 +67,27 @@
     <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
     <p>&copy; 2025 Eebii. All rights reserved.</p>
   </footer>
+
+  <!-- Search + Filter Script -->
+  <script>
+    const searchInput = document.getElementById('blogSearch');
+    const categorySelect = document.getElementById('blogCategory');
+    const posts = document.querySelectorAll('.post');
+
+    function filterBlogs() {
+      const search = searchInput.value.toLowerCase();
+      const category = categorySelect.value;
+      posts.forEach(post => {
+        const text = post.innerText.toLowerCase();
+        const cat = post.getAttribute('data-category');
+        const matches = text.includes(search) && (category === "all" || cat === category);
+        post.style.display = matches ? "block" : "none";
+      });
+    }
+
+    searchInput.addEventListener('input', filterBlogs);
+    categorySelect.addEventListener('change', filterBlogs);
+  </script>
+
 </body>
 </html>
