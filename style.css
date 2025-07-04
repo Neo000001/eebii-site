@@ -1,4 +1,4 @@
-/* Reset & Base */
+/* Base Style */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -65,7 +65,7 @@ a {
 
 /* Hero Section */
 .hero {
-  background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png'), 
+  background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png'),
               linear-gradient(to right, #0f2027, #203a43, #2c5364);
   background-size: cover;
   color: white;
@@ -107,6 +107,43 @@ a {
   font-weight: bold;
 }
 
+/* Services Section */
+.services {
+  background: #121212;
+  padding: 4rem 2rem;
+}
+.services h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.card {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  background: #2c2c2c;
+  transform: translateY(-5px);
+}
+.card i {
+  font-size: 2rem;
+  color: #00d4ff;
+}
+.card .info {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
 /* Contact Section */
 .contact {
   background: #111;
@@ -141,8 +178,12 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+#form-status {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
 
-/* Footer with Sitemap */
+/* Footer + Sitemap */
 footer {
   background: #20232a;
   color: #ccc;
