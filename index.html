@@ -37,14 +37,65 @@
     <div class="container">
       <h2>Our Services</h2>
       <div class="grid">
-        <div class="card"><i class="fas fa-tools"></i><h3>IT Support & Maintenance</h3><p class="info">Remote/on-site support to fix system, printer, and network issues fast.</p></div>
-        <div class="card"><i class="fas fa-network-wired"></i><h3>Network & Cybersecurity</h3><p class="info">Secure LAN/Wi-Fi setup, firewall rules, and VPN for safe access.</p></div>
-        <div class="card"><i class="fas fa-cloud"></i><h3>Cloud & File Servers</h3><p class="info">Reliable central file storage and cloud sync with permissions.</p></div>
-        <div class="card"><i class="fas fa-lightbulb"></i><h3>IT Consulting</h3><p class="info">Planning hardware/software needs for startups and upgrades.</p></div>
-        <div class="card"><i class="fas fa-shield-alt"></i><h3>Firewall & VPN</h3><p class="info">FortiGate, SonicWall setup, site-to-site VPNs, SD-WAN and rules.</p></div>
-        <div class="card"><i class="fas fa-chalkboard-teacher"></i><h3>IT Training</h3><p class="info">Train staff in cybersecurity, remote tools, or cloud systems.</p></div>
-        <div class="card"><i class="fas fa-laptop-code"></i><h3>Website Hosting</h3><p class="info">Host your site on GitHub, Zoho, or secure cloud platforms.</p></div>
-        <div class="card"><i class="fas fa-code"></i><h3>Software Development</h3><p class="info">Build small business apps, CRMs, tools or automation systems.</p></div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-tools"></i>
+          <h3>IT Support & Maintenance</h3>
+          <p class="info">Remote/on-site support to fix system, printer, and network issues fast.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-network-wired"></i>
+          <h3>Network & Cybersecurity</h3>
+          <p class="info">Secure LAN/Wi-Fi setup, firewall rules, and VPN for safe access.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-cloud"></i>
+          <h3>Cloud & File Servers</h3>
+          <p class="info">Reliable central file storage and cloud sync with permissions.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-lightbulb"></i>
+          <h3>IT Consulting</h3>
+          <p class="info">Planning hardware/software needs for startups and upgrades.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Firewall & VPN</h3>
+          <p class="info">FortiGate, SonicWall setup, site-to-site VPNs, SD-WAN and rules.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h3>IT Training</h3>
+          <p class="info">Train staff in cybersecurity, remote tools, or cloud systems.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Website Hosting</h3>
+          <p class="info">Host your site on GitHub, Zoho, or secure cloud platforms.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-code"></i>
+          <h3>Software Development</h3>
+          <p class="info">Build small business apps, CRMs, tools or automation systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="blog" id="blog">
+    <div class="container">
+      <h2>Latest Blog</h2>
+      <div class="blog-grid">
+        <div class="post">
+          <h3>🔐 Why Every Business Needs a Firewall</h3>
+          <p>Understanding how a firewall protects your data and business infrastructure.</p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="post">
+          <h3>☁️ Choosing Between Cloud & Local File Servers</h3>
+          <p>We compare cloud vs on-site file servers to help you decide what’s best.</p>
+          <a href="#">Read More</a>
+        </div>
       </div>
     </div>
   </section>
@@ -71,7 +122,7 @@
       <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
     </div>
-    <p>📧 contact@eebii.com</p>
+    <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
     <p>&copy; 2025 Eebii. All rights reserved.</p>
   </footer>
 
@@ -99,6 +150,12 @@
       }
     }
     document.addEventListener("DOMContentLoaded", type);
+
+    // Toggle service info
+    function toggleInfo(card) {
+      const info = card.querySelector(".info");
+      info.classList.toggle("show");
+    }
 
     // Contact form
     document.getElementById("contact-form").addEventListener("submit", async function(e) {
