@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Navigation -->
   <nav class="topnav">
     <div class="nav-brand">Eebii</div>
     <div class="nav-toggle" onclick="toggleMenu()">☰</div>
@@ -21,7 +21,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
@@ -32,20 +32,38 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="grid">
+        <div class="card"><i class="fas fa-tools"></i><h3>IT Support & Maintenance</h3><p class="info">Remote/on-site support to fix system, printer, and network issues fast.</p></div>
+        <div class="card"><i class="fas fa-network-wired"></i><h3>Network & Cybersecurity</h3><p class="info">Secure LAN/Wi-Fi setup, firewall rules, and VPN for safe access.</p></div>
+        <div class="card"><i class="fas fa-cloud"></i><h3>Cloud & File Servers</h3><p class="info">Reliable central file storage and cloud sync with permissions.</p></div>
+        <div class="card"><i class="fas fa-lightbulb"></i><h3>IT Consulting</h3><p class="info">Planning hardware/software needs for startups and upgrades.</p></div>
+        <div class="card"><i class="fas fa-shield-alt"></i><h3>Firewall & VPN</h3><p class="info">FortiGate, SonicWall setup, site-to-site VPNs, SD-WAN and rules.</p></div>
+        <div class="card"><i class="fas fa-chalkboard-teacher"></i><h3>IT Training</h3><p class="info">Train staff in cybersecurity, remote tools, or cloud systems.</p></div>
+        <div class="card"><i class="fas fa-laptop-code"></i><h3>Website Hosting</h3><p class="info">Host your site on GitHub, Zoho, or secure cloud platforms.</p></div>
+        <div class="card"><i class="fas fa-code"></i><h3>Software Development</h3><p class="info">Build small business apps, CRMs, tools or automation systems.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
   <section class="contact" id="contact">
     <div class="container">
       <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/xldnazvb" method="POST">
+      <form id="contact-form">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
+        <p id="form-status"></p>
       </form>
     </div>
   </section>
 
-  <!-- Footer with Sitemap -->
+  <!-- Footer -->
   <footer>
     <div class="sitemap">
       <a href="#">Home</a>
@@ -81,6 +99,30 @@
       }
     }
     document.addEventListener("DOMContentLoaded", type);
+
+    // Contact form
+    document.getElementById("contact-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const status = document.getElementById("form-status");
+
+      try {
+        const res = await fetch("https://formspree.io/f/xldnazvb", {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" }
+        });
+        if (res.ok) {
+          status.textContent = "✅ Message sent successfully!";
+          form.reset();
+        } else {
+          status.textContent = "❌ There was a problem submitting your form.";
+        }
+      } catch (err) {
+        status.textContent = "❌ Error sending form. Please try again later.";
+      }
+    });
   </script>
 
 </body>
