@@ -6,10 +6,10 @@
   <title>Eebii | Complete IT Support</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
 
+  <!-- Top Navigation -->
   <nav class="topnav">
     <div class="nav-brand">Eebii</div>
     <div class="nav-toggle" onclick="toggleMenu()">☰</div>
@@ -21,6 +21,7 @@
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
@@ -31,34 +32,9 @@
     </div>
   </section>
 
-  <section class="services" id="services">
-    <div class="container" data-aos="fade-up">
-      <h2>Our Services</h2>
-      <div class="grid">
-        <div class="card"><i class="fas fa-tools"></i><h3>IT Support & Maintenance</h3><p class="info">We provide remote and on-site IT support to small businesses, home users, and startups.</p></div>
-        <div class="card"><i class="fas fa-network-wired"></i><h3>Network & Cybersecurity</h3><p class="info">LAN/Wi-Fi setup, firewall config, antivirus, and VPN solutions.</p></div>
-        <div class="card"><i class="fas fa-cloud"></i><h3>Cloud & File Servers</h3><p class="info">Central file access, backups, role-based permissions, and cloud solutions.</p></div>
-        <div class="card"><i class="fas fa-lightbulb"></i><h3>IT Consulting</h3><p class="info">Smart planning, tool advice, deployment and vendor coordination.</p></div>
-        <div class="card"><i class="fas fa-shield-alt"></i><h3>Firewall & VPN</h3><p class="info">FortiGate/SonicWall setups, VPN tunnels, and remote access.</p></div>
-        <div class="card"><i class="fas fa-chalkboard-teacher"></i><h3>IT Training</h3><p class="info">Educating staff in IT hygiene, remote tools, and cloud workflows.</p></div>
-        <div class="card"><i class="fas fa-laptop-code"></i><h3>Website Hosting</h3><p class="info">We build and manage sites hosted on GitHub, Zoho, or cloud platforms.</p></div>
-        <div class="card"><i class="fas fa-code"></i><h3>Software Development</h3><p class="info">Custom CRMs, automations, and portals for business needs.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="blog" id="blog">
-    <div class="container" data-aos="fade-up">
-      <h2>From Our Blog</h2>
-      <div class="grid">
-        <div class="card"><h3>Top 5 IT Mistakes Small Businesses Make</h3><p>Learn the biggest IT errors and how to avoid them.</p></div>
-        <div class="card"><h3>When to Upgrade Your Firewall</h3><p>Outdated protection? Know the signs before it's too late.</p></div>
-      </div>
-    </div>
-  </section>
-
+  <!-- Contact Section -->
   <section class="contact" id="contact">
-    <div class="container" data-aos="fade-up">
+    <div class="container">
       <h2>Contact Us</h2>
       <form action="https://formspree.io/f/xldnazvb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
@@ -69,6 +45,7 @@
     </div>
   </section>
 
+  <!-- Footer with Sitemap -->
   <footer>
     <div class="sitemap">
       <a href="#">Home</a>
@@ -80,12 +57,10 @@
     <p>&copy; 2025 Eebii. All rights reserved.</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <!-- Scripts -->
   <script>
     function toggleMenu() {
-      var nav = document.getElementById("nav-links");
-      nav.classList.toggle("active");
+      document.getElementById("nav-links").classList.toggle("active");
     }
 
     const textArray = ["Support.", "Setup.", "Security.", "All in one."];
@@ -94,8 +69,7 @@
 
     function type() {
       if (char < textArray[index].length) {
-        typedText.textContent += textArray[index].charAt(char);
-        char++;
+        typedText.textContent += textArray[index].charAt(char++);
         setTimeout(type, 100);
       } else {
         setTimeout(() => {
@@ -108,5 +82,6 @@
     }
     document.addEventListener("DOMContentLoaded", type);
   </script>
+
 </body>
 </html>
