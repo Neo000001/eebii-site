@@ -29,30 +29,15 @@
       <select id="blogCategory" style="padding: 0.5rem; margin-left: 1rem; border-radius: 6px;">
         <option value="all">All Categories</option>
         <option value="support">Remote Support</option>
+        <option value="network">Network</option>
         <option value="cloud">Cloud</option>
         <option value="security">Security</option>
       </select>
     </div>
 
     <!-- Blog Posts -->
-    <div class="blog-grid">
-
-      <!-- Blog Post 1 -->
-      <div class="post" data-category="support">
-        <h3>💻 Why Every Small Business Needs Remote IT Support</h3>
-        <p class="meta">By Eebii • July 2025 • Category: Remote Support</p>
-        <p>Tech problems waste time. Learn how remote support keeps your business running.</p>
-        <a href="blog-remote-it-support.html">Read More</a>
-      </div>
-
-      <!-- Blog Post 2 (Coming Soon) -->
-      <div class="post" data-category="cloud">
-        <h3>☁️ Choosing Between Cloud & Local File Servers</h3>
-        <p class="meta">By Eebii • Coming Soon • Category: Cloud</p>
-        <p>We compare cloud vs on-site file servers to help you decide what’s best.</p>
-        <a href="#">Coming Soon</a>
-      </div>
-
+    <div class="blog-grid" id="blog-grid">
+      <!-- Blog cards will be injected here dynamically -->
     </div>
   </main>
 
@@ -68,25 +53,51 @@
     <p>&copy; 2025 Eebii. All rights reserved.</p>
   </footer>
 
-  <!-- Search + Filter Script -->
+  <!-- Blog Loader Script -->
   <script>
-    const searchInput = document.getElementById('blogSearch');
-    const categorySelect = document.getElementById('blogCategory');
-    const posts = document.querySelectorAll('.post');
+    const blogGrid = document.getElementById("blog-grid");
+    const searchInput = document.getElementById("blogSearch");
+    const categorySelect = document.getElementById("blogCategory");
+
+    let posts = [];
+
+    fetch("blog-data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        posts = data;
+        renderPosts(posts);
+      });
+
+    function renderPosts(postList) {
+      blogGrid.innerHTML = "";
+      postList.forEach((post) => {
+        const div = document.createElement("div");
+        div.className = "post";
+        div.setAttribute("data-category", post.category);
+        div.innerHTML = `
+          <h3>${post.title}</h3>
+          <p class="meta">By ${post.author} • ${post.date} • Category: ${post.category}</p>
+          <p>${post.summary}</p>
+          <a href="${post.slug}">Read More</a>
+        `;
+        blogGrid.appendChild(div);
+      });
+    }
 
     function filterBlogs() {
       const search = searchInput.value.toLowerCase();
       const category = categorySelect.value;
-      posts.forEach(post => {
-        const text = post.innerText.toLowerCase();
-        const cat = post.getAttribute('data-category');
-        const matches = text.includes(search) && (category === "all" || cat === category);
-        post.style.display = matches ? "block" : "none";
+      const filtered = posts.filter((post) => {
+        const text = `${post.title} ${post.summary} ${post.category}`.toLowerCase();
+        const matchesSearch = text.includes(search);
+        const matchesCategory = category === "all" || post.category === category;
+        return matchesSearch && matchesCategory;
       });
+      renderPosts(filtered);
     }
 
-    searchInput.addEventListener('input', filterBlogs);
-    categorySelect.addEventListener('change', filterBlogs);
+    searchInput.addEventListener("input", filterBlogs);
+    categorySelect.addEventListener("change", filterBlogs);
   </script>
 
 </body>
