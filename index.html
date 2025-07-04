@@ -3,63 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eebii | IT Services & Solutions</title>
+  <title>Eebii | Complete IT Support</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Eebii</h1>
-      <p>Your Business. Secured. Supported. Simplified.</p>
+
+  <nav class="topnav">
+    <div class="nav-brand">Eebii</div>
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#">Home</a>
+      <a href="#services">Services</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
+  </nav>
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Eebii</h1>
+      <p class="tagline">Your Business. Secured. Supported. Simplified.</p>
+      <p class="typed-text"></p>
+      <a href="#contact" class="hero-btn">Get a Free Consultation</a>
+    </div>
+  </section>
 
   <section class="services" id="services">
     <div class="container" data-aos="fade-up">
       <h2>Our Services</h2>
       <div class="grid">
-        <div class="card"> 
-          <i class="fas fa-tools"></i>
-          <h3>IT Support & Maintenance</h3>
-          <p class="info">We provide remote and on-site IT support to small businesses, home users, and startups. Whether it’s a system crash, network issue, or software update, we ensure minimal downtime and quick recovery.</p>
-        </div>
-        <div class="card"> 
-          <i class="fas fa-network-wired"></i>
-          <h3>Network & Cybersecurity</h3>
-          <p class="info">Complete LAN/Wi-Fi setup, router & firewall configuration, antivirus, threat detection, and VPN setup for secure access.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-cloud"></i>
-          <h3>Cloud & File Server Solutions</h3>
-          <p class="info">File server setup for remote and office teams, secure role-based access, automated backups, and Zoho/Drive alternatives.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-lightbulb"></i>
-          <h3>Business IT Consulting</h3>
-          <p class="info">Structured network/hardware planning, tool recommendations, and vendor coordination for smooth business growth.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Firewall & VPN Configuration</h3>
-          <p class="info">Setup firewalls like FortiGate, SonicWall; configure VPN, SD-WAN, and secure branch or remote access connections.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-chalkboard-teacher"></i>
-          <h3>IT Training</h3>
-          <p class="info">Train your staff in basic IT hygiene, cloud tools (Zoho/Google), remote work, and cybersecurity best practices.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-laptop-code"></i>
-          <h3>Website Design & Hosting</h3>
-          <p class="info">Modern SEO-friendly websites with domain & email setup, hosting on GitHub/Zoho/Cloud, and ongoing support.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-code"></i>
-          <h3>Software Development</h3>
-          <p class="info">We develop custom software solutions tailored for businesses — CRM tools, automation, web portals, and more.</p>
-        </div>
+        <div class="card"><i class="fas fa-tools"></i><h3>IT Support & Maintenance</h3><p class="info">We provide remote and on-site IT support to small businesses, home users, and startups.</p></div>
+        <div class="card"><i class="fas fa-network-wired"></i><h3>Network & Cybersecurity</h3><p class="info">LAN/Wi-Fi setup, firewall config, antivirus, and VPN solutions.</p></div>
+        <div class="card"><i class="fas fa-cloud"></i><h3>Cloud & File Servers</h3><p class="info">Central file access, backups, role-based permissions, and cloud solutions.</p></div>
+        <div class="card"><i class="fas fa-lightbulb"></i><h3>IT Consulting</h3><p class="info">Smart planning, tool advice, deployment and vendor coordination.</p></div>
+        <div class="card"><i class="fas fa-shield-alt"></i><h3>Firewall & VPN</h3><p class="info">FortiGate/SonicWall setups, VPN tunnels, and remote access.</p></div>
+        <div class="card"><i class="fas fa-chalkboard-teacher"></i><h3>IT Training</h3><p class="info">Educating staff in IT hygiene, remote tools, and cloud workflows.</p></div>
+        <div class="card"><i class="fas fa-laptop-code"></i><h3>Website Hosting</h3><p class="info">We build and manage sites hosted on GitHub, Zoho, or cloud platforms.</p></div>
+        <div class="card"><i class="fas fa-code"></i><h3>Software Development</h3><p class="info">Custom CRMs, automations, and portals for business needs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog" id="blog">
+    <div class="container" data-aos="fade-up">
+      <h2>From Our Blog</h2>
+      <div class="grid">
+        <div class="card"><h3>Top 5 IT Mistakes Small Businesses Make</h3><p>Learn the biggest IT errors and how to avoid them.</p></div>
+        <div class="card"><h3>When to Upgrade Your Firewall</h3><p>Outdated protection? Know the signs before it's too late.</p></div>
       </div>
     </div>
   </section>
@@ -67,53 +60,53 @@
   <section class="contact" id="contact">
     <div class="container" data-aos="fade-up">
       <h2>Contact Us</h2>
-      <form id="contact-form" action="https://formspree.io/f/xldnazvb" method="POST" onsubmit="return handleFormSubmit(event)">
+      <form action="https://formspree.io/f/xldnazvb" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
-        <div id="form-status" class="form-status"></div>
       </form>
-      <p>Email: <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
     </div>
   </section>
 
   <footer>
+    <div class="sitemap">
+      <a href="#">Home</a>
+      <a href="#services">Services</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>📧 contact@eebii.com</p>
     <p>&copy; 2025 Eebii. All rights reserved.</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
   <script>
-    function toggleInfo(card) {
-      card.classList.toggle('active');
+    function toggleMenu() {
+      var nav = document.getElementById("nav-links");
+      nav.classList.toggle("active");
     }
 
-    async function handleFormSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      const data = new FormData(form);
-      const status = document.getElementById("form-status");
+    const textArray = ["Support.", "Setup.", "Security.", "All in one."];
+    let index = 0, char = 0;
+    const typedText = document.querySelector(".typed-text");
 
-      try {
-        const res = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          status.innerHTML = "✅ Thank you! Your message has been sent.";
-          form.reset();
-        } else {
-          status.innerHTML = "❌ Oops! Something went wrong.";
-        }
-      } catch (err) {
-        status.innerHTML = "⚠️ Network error. Please try again later.";
+    function type() {
+      if (char < textArray[index].length) {
+        typedText.textContent += textArray[index].charAt(char);
+        char++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(() => {
+          typedText.textContent = "";
+          char = 0;
+          index = (index + 1) % textArray.length;
+          type();
+        }, 2000);
       }
-
-      return false;
     }
+    document.addEventListener("DOMContentLoaded", type);
   </script>
 </body>
 </html>
