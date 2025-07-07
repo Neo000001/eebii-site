@@ -3,6 +3,12 @@ fetch('blog-data.json')
   .then(posts => {
     const blogGrid = document.getElementById('blog-grid');
 
+    // Hide the static card if dynamic posts exist
+    if (posts.length > 0) {
+      const staticCard = document.querySelector('.post');
+      if (staticCard) staticCard.style.display = 'none';
+    }
+
     posts.slice(0, 3).forEach(post => {
       const card = document.createElement('div');
       card.className = 'post';
@@ -16,4 +22,5 @@ fetch('blog-data.json')
       `;
       blogGrid.appendChild(card);
     });
-  });
+  })
+  .catch(err => console.error("Blog loader failed:", err));
