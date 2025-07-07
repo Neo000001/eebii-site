@@ -15,4 +15,11 @@
     "category": "network",
     "summary": "Avoid slow networks and security issues — these 5 mistakes could be hurting your business."
   }
+  {
+  "title": "🔐 Firewall vs Antivirus: What’s the Difference?",
+  "summary": "Understand how firewalls and antivirus differ, and why both are essential for protecting your devices and network.",
+  "link": "blog-firewall-vs-antivirus.html",
+  "icon": "🛡️"
+}
+
 ]
