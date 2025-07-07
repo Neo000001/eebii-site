@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
+  <script defer src="blog-loader.js"></script>
 <body>
 
   <!-- Navigation -->
@@ -87,7 +88,10 @@
   <div class="container">
     <h2 style="text-align: center; color: #fff; font-size: 2rem; margin-bottom: 2rem;">📚 From Our Blog</h2>
 
-    <div class="blog-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem; justify-items: center;">
+    <div class="blog-grid" id="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+ <!-- Blog cards will be dynamically inserted here -->
+</div>
+
 
      <!-- Blog Preview Card -->
 <div class="post" style="
