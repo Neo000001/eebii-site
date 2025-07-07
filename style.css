@@ -257,3 +257,24 @@ footer {
   box-shadow: 0 10px 25px rgba(0, 212, 255, 0.15); /* Adds soft blue glow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.post {
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid #2d2d2d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.post:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 212, 255, 0.2);
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
