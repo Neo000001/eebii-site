@@ -1,310 +1,259 @@
-/* ========== Base Styles ========== */
+/* Base Style */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f2027;
+  background: #0f1115;
   color: #ddd;
-  scroll-behavior: smooth;
 }
-
 a {
   color: #00d4ff;
   text-decoration: none;
 }
 
-h1, h2, h3 {
-  color: #00d4ff;
-}
-
-/* ========== Navigation ========== */
+/* Top Navigation */
 .topnav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #20232a;
   padding: 1rem 2rem;
-  background-color: #121212;
-  color: #fff;
+  color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
-
 .nav-brand {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
-
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
 .nav-links a {
-  margin-left: 1rem;
-  color: #ccc;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
   color: #00d4ff;
+  font-weight: 500;
 }
-
+.nav-links a:hover {
+  text-decoration: underline;
+}
 .nav-toggle {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
 }
-
-/* ========== Hero Section ========== */
-.hero {
-  position: relative;
-  background: url('your-background.jpg') center/cover no-repeat;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  color: #fff;
-}
-
-.hero .tagline {
-  color: #ccc;
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
-
-.hero-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.7rem 1.5rem;
-  background: #00d4ff;
-  color: #0f2027;
-  font-weight: bold;
-  border-radius: 6px;
-}
-
-/* ========== About Section ========== */
-.about {
-  padding: 4rem 2rem;
-  background: #151515;
-  text-align: center;
-}
-
-.about p {
-  max-width: 800px;
-  margin: 0.8rem auto;
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-
-.centered-btn {
-  margin-top: 1.5rem;
-}
-
-/* ========== Services Section ========== */
-.services {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.services .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background: #1f1f1f;
-  padding: 2rem;
-  border-radius: 10px;
-  border: 1px solid #2d2d2d;
-  transition: 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.08);
-}
-
-.card i {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #00d4ff;
-}
-
-.card h3 {
-  margin-bottom: 0.5rem;
-}
-
-.card .info {
-  color: #aaa;
-  font-size: 0.95rem;
-}
-
-/* ========== Blog Section ========== */
-.blog {
-  background: #121212;
-}
-
-.blog .post {
-  background: #1f1f1f;
-  padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid #2d2d2d;
-  text-align: center;
-  max-width: 600px;
-  margin: auto;
-}
-
-.blog .post:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.08);
-}
-
-.cta-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background: #00d4ff;
-  color: #0f2027;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-/* ========== Contact Form ========== */
-.contact {
-  padding: 4rem 2rem;
-  background: #151515;
-  text-align: center;
-}
-
-.contact form {
-  max-width: 600px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact input,
-.contact textarea {
-  padding: 0.9rem;
-  border: none;
-  border-radius: 6px;
-  background: #222;
-  color: #fff;
-  font-size: 1rem;
-}
-
-.contact textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.contact button {
-  background: #00d4ff;
-  color: #0f2027;
-  border: none;
-  padding: 0.8rem;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-#form-status {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
-/* ========== Footer ========== */
-footer {
-  background: #111;
-  padding: 2rem 1rem;
-  color: #aaa;
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-footer .sitemap a {
-  margin: 0 0.6rem;
-  color: #00d4ff;
-}
-
-/* ========== Scroll to Top Button ========== */
-#scrollTopBtn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #00d4ff;
-  color: #0f2027;
-  border: none;
-  border-radius: 50%;
-  padding: 0.8rem 1rem;
-  font-size: 20px;
-  cursor: pointer;
-  display: none;
-  z-index: 1000;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-#scrollTopBtn:hover {
-  background-color: #00b4cc;
-}
-
-/* ========== Fade In Animation ========== */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in-section.visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* ========== Responsive ========== */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
   }
-
   .nav-links {
     display: none;
     flex-direction: column;
-    background-color: #121212;
+    background-color: #20232a;
     position: absolute;
     top: 60px;
-    left: 0;
     right: 0;
-    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
   }
-
   .nav-links.active {
     display: flex;
   }
+}
 
+/* Hero Section */
+.hero {
+  background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png'),
+              linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  background-size: cover;
+  color: white;
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+}
+.hero .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.tagline {
+  font-size: 1.1rem;
+  color: #eee;
+  margin-bottom: 1rem;
+}
+.typed-text {
+  font-size: 1.2rem;
+  color: #00d4ff;
+  font-weight: bold;
+  height: 1.5rem;
+  margin-bottom: 2rem;
+}
+.hero-btn {
+  background: #00d4ff;
+  color: #0f2027;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Services Section */
+.services {
+  background: #121212;
+  padding: 4rem 2rem;
+}
+.services h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Force 4 columns */
+  gap: 2rem;
+}
+@media (max-width: 1024px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
   }
+}
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+}
+.card {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.card:hover {
+  background: #2c2c2c;
+  transform: translateY(-5px);
+}
+.card i {
+  font-size: 2rem;
+  color: #00d4ff;
+}
+.card h3 {
+  margin: 1rem 0 0.5rem;
+}
+.card .info {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 1rem;
+  display: none;
+}
+.card .info.show {
+  display: block;
+}
 
-  .hero h1 {
-    font-size: 2.2rem;
-  }
+/* Blog Section */
+.blog {
+  background: #101215;
+  padding: 4rem 2rem;
+  color: #eee;
+}
+.blog h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.post {
+  background: #1d1f23;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+.post h3 {
+  color: #00d4ff;
+}
+.post p {
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1rem;
+}
+.post a {
+  color: #00d4ff;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
 
-  .hero .tagline {
-    font-size: 1rem;
-  }
+/* Contact Section */
+.contact {
+  background: #111;
+  color: #eee;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.contact h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+input, textarea {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+}
+button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: #00d4ff;
+  color: #0f2027;
+  font-weight: bold;
+  cursor: pointer;
+}
+#form-status {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Footer + Sitemap */
+footer {
+  background: #20232a;
+  color: #ccc;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.sitemap {
+  margin-bottom: 1rem;
+}
+.sitemap a {
+  margin: 0 0.5rem;
+  color: #00d4ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+/* Hover effect for blog preview cards */
+.post:hover {
+  transform: translateY(-6px); /* Moves card up slightly */
+  box-shadow: 0 10px 25px rgba(0, 212, 255, 0.15); /* Adds soft blue glow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
