@@ -1,14 +1,10 @@
-/* Base Styles */
+/* ========== Base Styles ========== */
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: #0f2027;
   color: #ddd;
   scroll-behavior: smooth;
-}
-
-h1, h2, h3 {
-  color: #00d4ff;
 }
 
 a {
@@ -16,34 +12,32 @@ a {
   text-decoration: none;
 }
 
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 2rem;
+h1, h2, h3 {
+  color: #00d4ff;
 }
 
-/* Navigation */
+/* ========== Navigation ========== */
 .topnav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #111;
+  background-color: #121212;
   color: #fff;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .nav-brand {
+  font-size: 1.6rem;
   font-weight: bold;
-  font-size: 1.5rem;
 }
 
 .nav-links a {
   margin-left: 1rem;
-  color: #ddd;
-  transition: color 0.3s;
+  color: #ccc;
+  transition: 0.3s;
 }
 
 .nav-links a:hover {
@@ -56,16 +50,15 @@ a {
   cursor: pointer;
 }
 
-/* Hero Section */
+/* ========== Hero Section ========== */
 .hero {
   position: relative;
   background: url('your-background.jpg') center/cover no-repeat;
   height: 80vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  color: #fff;
 }
 
 .overlay {
@@ -82,71 +75,62 @@ a {
 
 .hero h1 {
   font-size: 3rem;
-  margin: 0;
+  color: #fff;
 }
 
 .hero .tagline {
-  font-size: 1.2rem;
-  margin: 1rem 0;
   color: #ccc;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
 }
 
 .hero-btn {
-  background-color: #00d4ff;
-  color: #0f2027;
+  display: inline-block;
+  margin-top: 1.5rem;
   padding: 0.7rem 1.5rem;
-  border-radius: 6px;
+  background: #00d4ff;
+  color: #0f2027;
   font-weight: bold;
-  text-decoration: none;
+  border-radius: 6px;
 }
 
-/* About Section */
+/* ========== About Section ========== */
 .about {
   padding: 4rem 2rem;
-  background: #121212;
+  background: #151515;
   text-align: center;
 }
 
 .about p {
-  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0.8rem auto;
+  font-size: 1.05rem;
   line-height: 1.6;
-  max-width: 700px;
-  margin: auto;
 }
 
 .centered-btn {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
-/* Services */
+/* ========== Services Section ========== */
+.services {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
 .services .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .card {
   background: #1f1f1f;
   padding: 2rem;
-  border-radius: 12px;
-  text-align: center;
+  border-radius: 10px;
   border: 1px solid #2d2d2d;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card i {
-  font-size: 2rem;
-  color: #00d4ff;
-  margin-bottom: 1rem;
-}
-
-.card h3 {
-  margin-bottom: 0.5rem;
-}
-
-.card .info {
-  color: #ccc;
-  font-size: 0.95rem;
+  transition: 0.3s ease;
 }
 
 .card:hover {
@@ -154,36 +138,74 @@ a {
   box-shadow: 0 6px 20px rgba(0, 212, 255, 0.08);
 }
 
-/* Blog */
-.blog-grid .post {
-  background-color: #1f1f1f;
-  border-radius: 12px;
+.card i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00d4ff;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card .info {
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+/* ========== Blog Section ========== */
+.blog {
+  background: #121212;
+}
+
+.blog .post {
+  background: #1f1f1f;
   padding: 2rem;
+  border-radius: 12px;
   border: 1px solid #2d2d2d;
   text-align: center;
-}
-
-.blog-grid .post:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.08);
-}
-
-/* Contact */
-.contact form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
   max-width: 600px;
   margin: auto;
 }
 
+.blog .post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.08);
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: #00d4ff;
+  color: #0f2027;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* ========== Contact Form ========== */
+.contact {
+  padding: 4rem 2rem;
+  background: #151515;
+  text-align: center;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .contact input,
 .contact textarea {
-  padding: 0.8rem;
+  padding: 0.9rem;
   border: none;
   border-radius: 6px;
   background: #222;
   color: #fff;
+  font-size: 1rem;
 }
 
 .contact textarea {
@@ -193,10 +215,10 @@ a {
 
 .contact button {
   background: #00d4ff;
-  border: none;
   color: #0f2027;
-  font-weight: bold;
+  border: none;
   padding: 0.8rem;
+  font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -206,28 +228,54 @@ a {
   font-size: 0.95rem;
 }
 
-/* Footer */
+/* ========== Footer ========== */
 footer {
-  background-color: #111;
-  color: #888;
+  background: #111;
   padding: 2rem 1rem;
+  color: #aaa;
+  text-align: center;
   font-size: 0.9rem;
 }
 
-footer .sitemap {
-  margin-bottom: 0.5rem;
-}
-
 footer .sitemap a {
-  margin: 0 0.5rem;
+  margin: 0 0.6rem;
   color: #00d4ff;
 }
 
-footer p {
-  margin: 0.5rem 0;
+/* ========== Scroll to Top Button ========== */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #00d4ff;
+  color: #0f2027;
+  border: none;
+  border-radius: 50%;
+  padding: 0.8rem 1rem;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-/* Mobile Nav Toggle (optional responsive) */
+#scrollTopBtn:hover {
+  background-color: #00b4cc;
+}
+
+/* ========== Fade In Animation ========== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ========== Responsive ========== */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
@@ -236,7 +284,7 @@ footer p {
   .nav-links {
     display: none;
     flex-direction: column;
-    background-color: #111;
+    background-color: #121212;
     position: absolute;
     top: 60px;
     left: 0;
@@ -250,5 +298,13 @@ footer p {
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero .tagline {
+    font-size: 1rem;
   }
 }
