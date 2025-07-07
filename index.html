@@ -6,55 +6,23 @@
   <title>Eebii | Complete IT Support</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    .fade-in-section {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in-section.visible {
-      opacity: 1;
-      transform: none;
-    }
-    #scrollTopBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: #00d4ff;
-      color: #0f2027;
-      border: none;
-      border-radius: 50%;
-      padding: 0.8rem 1rem;
-      font-size: 20px;
-      cursor: pointer;
-      display: none;
-      z-index: 1000;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    #scrollTopBtn:hover {
-      background-color: #00b4cc;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Scroll-to-top Button -->
-  <button id="scrollTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
   <!-- Navigation -->
-  <nav class="topnav">
-    <div class="nav-brand">Eebii</div>
-    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
-    </div>
-  </nav>
-
+<nav class="topnav">
+  <div class="nav-brand">Eebii</div>
+  <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="blog.html">Blog</a> <!-- ✅ updated -->
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+  
   <!-- Hero -->
-  <section class="hero fade-in-section">
+  <section class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
       <h1>Eebii</h1>
@@ -64,56 +32,110 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about fade-in-section" id="about">
-    <div class="container">
-      <h2>👋 About Eebii</h2>
-      <p><strong>Eebii IT Solutions</strong> is a flexible IT consulting and remote support provider based in India. We specialize in IT support, cybersecurity, cloud setup, and website management.</p>
-      <p>Whether you're a small business or startup, we bring practical IT solutions that keep your operations secure and running smoothly — with transparency and trust.</p>
-      <div class="centered-btn">
-        <a href="#contact" class="cta-btn">Contact Us →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="services fade-in-section" id="services">
+  <!-- Services -->
+  <section class="services" id="services">
     <div class="container">
       <h2>Our Services</h2>
       <div class="grid">
-        <!-- All service cards (same as before) -->
-        <!-- Example -->
         <div class="card" onclick="toggleInfo(this)">
           <i class="fas fa-tools"></i>
           <h3>IT Support & Maintenance</h3>
           <p class="info">Remote/on-site support to fix system, printer, and network issues fast.</p>
         </div>
-        <!-- Continue with the remaining cards... -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog Preview Section -->
-  <section class="blog fade-in-section" id="blog" style="padding: 4rem 2rem;">
-    <div class="container">
-      <h2 style="text-align: center; color: #fff; font-size: 2rem; margin-bottom: 2rem;">📚 From Our Blog</h2>
-      <div class="blog-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem; justify-items: center;">
-        <div class="post fade-in-section" style="background-color: #1f1f1f; border-radius: 12px; padding: 2rem; width: 100%; max-width: 600px; text-align: center; border: 1px solid #2d2d2d; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <img src="https://img.icons8.com/fluency/48/blog.png" alt="Blog icon" style="width: 64px; margin-bottom: 1rem;" />
-          <h3 style="color: #00d4ff; font-size: 1.5rem; margin-bottom: 0.5rem;">📰 Visit Our Blog</h3>
-          <p style="color: #aaa; font-size: 1rem; line-height: 1.6;">
-            <span style="display: inline-block; background: #00d4ff33; padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 0.8rem; font-weight: bold; color: #00d4ff;">Latest Post</span>
-            <br />
-            Explore tutorials, tips, and updates from the Eebii team covering IT support, cybersecurity, cloud solutions, and more.
-          </p>
-          <a href="blog.html" class="cta-btn">View All Posts →</a>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-network-wired"></i>
+          <h3>Network & Cybersecurity</h3>
+          <p class="info">Secure LAN/Wi-Fi setup, firewall rules, and VPN for safe access.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-cloud"></i>
+          <h3>Cloud & File Servers</h3>
+          <p class="info">Reliable central file storage and cloud sync with permissions.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-lightbulb"></i>
+          <h3>IT Consulting</h3>
+          <p class="info">Planning hardware/software needs for startups and upgrades.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Firewall & VPN</h3>
+          <p class="info">FortiGate, SonicWall setup, site-to-site VPNs, SD-WAN and rules.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h3>IT Training</h3>
+          <p class="info">Train staff in cybersecurity, remote tools, or cloud systems.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Website Hosting</h3>
+          <p class="info">Host your site on GitHub, Zoho, or secure cloud platforms.</p>
+        </div>
+        <div class="card" onclick="toggleInfo(this)">
+          <i class="fas fa-code"></i>
+          <h3>Software Development</h3>
+          <p class="info">Build small business apps, CRMs, tools or automation systems.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="contact fade-in-section" id="contact">
+  <!-- Blog -->
+  <!-- Blog Section -->
+<section class="blog" id="blog" style="padding: 4rem 2rem;">
+  <div class="container">
+    <h2 style="text-align: center; color: #fff; font-size: 2rem; margin-bottom: 2rem;">📚 From Our Blog</h2>
+
+    <div class="blog-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem; justify-items: center;">
+
+     <!-- Blog Preview Card -->
+<div class="post" style="
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  border: 1px solid #2d2d2d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+">
+  <img src="https://img.icons8.com/fluency/48/blog.png"
+       alt="Blog icon"
+       style="width: 64px; margin-bottom: 1rem;" />
+
+  <h3 style="color: #00d4ff; font-size: 1.5rem; margin-bottom: 0.5rem;">
+    📰 Visit Our Blog
+  </h3>
+
+  <p style="color: #aaa; font-size: 1rem; line-height: 1.6;">
+    <span style="display: inline-block; background: #00d4ff33; padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 0.8rem; font-weight: bold; color: #00d4ff;">
+      Latest Post
+    </span>
+    <br />
+    Explore tutorials, tips, and updates from the Eebii team covering IT support, cybersecurity, cloud solutions, and more.
+  </p>
+
+  <a href="blog.html" style="
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.4rem;
+    background-color: #00d4ff;
+    color: #0f2027;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+  ">
+    View All Posts →
+  </a>
+</div>
+      
+    </div>
+  </div>
+</section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
     <div class="container">
       <h2>Contact Us</h2>
       <form id="contact-form">
@@ -127,16 +149,16 @@
   </section>
 
   <!-- Footer -->
-  <footer style="text-align: center; padding: 2rem 1rem; background: #20232a; color: #ccc;">
-    <div class="sitemap">
-      <a href="index.html">Home</a> |
-      <a href="index.html#services">Services</a> |
-      <a href="blog.html">Blog</a> |
-      <a href="index.html#contact">Contact</a>
-    </div>
-    <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
-    <p>&copy; 2025 Eebii. All rights reserved.</p>
-  </footer>
+<footer style="text-align: center; padding: 2rem 1rem; background: #20232a; color: #ccc;">
+  <div class="sitemap">
+    <a href="index.html">Home</a> |
+    <a href="index.html#services">Services</a> |
+    <a href="blog.html">Blog</a> |
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
+  <p>&copy; 2025 Eebii. All rights reserved.</p>
+</footer>
 
   <!-- Scripts -->
   <script>
@@ -161,14 +183,15 @@
         }, 2000);
       }
     }
-
     document.addEventListener("DOMContentLoaded", type);
 
+    // Toggle service info
     function toggleInfo(card) {
       const info = card.querySelector(".info");
       info.classList.toggle("show");
     }
 
+    // Contact form
     document.getElementById("contact-form").addEventListener("submit", async function(e) {
       e.preventDefault();
       const form = e.target;
@@ -182,7 +205,7 @@
           headers: { Accept: "application/json" }
         });
         if (res.ok) {
-          status.textContent = "🎉 Thank you! Your message has been received. We'll get back to you shortly.";
+          status.textContent = "✅ Message sent successfully!";
           form.reset();
         } else {
           status.textContent = "❌ There was a problem submitting your form.";
@@ -191,25 +214,8 @@
         status.textContent = "❌ Error sending form. Please try again later.";
       }
     });
-
-    const scrollBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = () => {
-      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
-    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const sections = document.querySelectorAll(".fade-in-section");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.2 });
-      sections.forEach(section => observer.observe(section));
-    });
   </script>
 
 </body>
 </html>
+
