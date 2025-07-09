@@ -77,5 +77,30 @@
     <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
     <p>&copy; 2025 Eebii. All rights reserved.</p>
   </footer>
+  <script>
+  // Contact form
+  document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const status = document.getElementById("form-status");
+
+    try {
+      const res = await fetch("https://formspree.io/f/xldnazvb", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" }
+      });
+      if (res.ok) {
+        status.textContent = "🎉 Thank you! Your message has been received. We'll get back to you shortly";
+        form.reset();
+      } else {
+        status.textContent = "❌ There was a problem submitting your form.";
+      }
+    } catch (err) {
+      status.textContent = "❌ Error sending form. Please try again later.";
+    }
+  });
+</script>
 </body>
 </html>
