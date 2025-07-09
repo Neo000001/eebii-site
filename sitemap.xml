@@ -25,5 +25,11 @@ encoding="UTF-8"?>
   <url>
     <loc>https://eebii.com/blog-smallbiz-network-security.html</loc>
   </url>
+  <url>
 
+ <loc>https://eebii.com/about.html</loc>
+  <lastmod>2025-07-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
 </urlset>
