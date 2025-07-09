@@ -278,3 +278,26 @@ footer {
   transform: scale(1.05);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
+.about-section {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  line-height: 1.8;
+  color: #fff;
+}
+
+.about-section h1, .about-section h2 {
+  color: #00d4ff;
+  margin-top: 2rem;
+}
+
+.about-section ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+}
+
+.about-section a {
+  color: #00d4ff;
+  text-decoration: underline;
+}
+
