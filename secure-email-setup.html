@@ -1,222 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Secure Email Setup | Eebii</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
       margin: 0;
       padding: 0;
-      background-color: #f4f7fa;
+      background: #f9f9f9;
       color: #333;
     }
 
-    header, footer {
-      background-color: #0a3d62;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    nav a {
-      margin: 0 15px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    h1, h2, h3 {
-      color: #0a3d62;
-    }
-
-    section {
-      margin-bottom: 50px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      background-color: #fff;
-    }
-
-    table, th, td {
-      border: 1px solid #ddd;
-    }
-
-    th, td {
-      padding: 12px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f0f8ff;
-    }
-
-    #faq {
-      padding: 40px 20px;
-    }
-
-    .faq-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .faq-item {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      background-color: #fff;
-    }
-
-    .faq-question {
-      width: 100%;
-      background-color: #f9f9f9;
-      color: #333;
-      padding: 15px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
+    .topnav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: background 0.3s;
+      background: #0b1c3a;
+      padding: 1rem 2rem;
+      color: white;
     }
 
-    .faq-question:hover {
-      background-color: #eef6ff;
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      color: white;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      background: #edf2f7;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #0b1c3a;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #444;
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .content img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .faq {
+      margin: 3rem 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #ccc;
+      padding: 1rem 0;
+    }
+
+    .faq-question {
+      cursor: pointer;
+      font-weight: bold;
+      position: relative;
+      padding-right: 20px;
+    }
+
+    .faq-question::after {
+      content: "▼";
+      position: absolute;
+      right: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active::after {
+      transform: rotate(-180deg);
     }
 
     .faq-answer {
       display: none;
-      padding: 15px 20px;
-      background-color: #fff;
-      border-top: 1px solid #ddd;
-      animation: fadeIn 0.3s ease-in-out;
+      margin-top: 0.5rem;
+      padding-left: 1rem;
     }
 
-    .faq-question .arrow {
-      transition: transform 0.3s ease;
-    }
-
-    .faq-item.open .faq-answer {
+    .faq-answer.show {
       display: block;
     }
 
-    .faq-item.open .faq-question .arrow {
-      transform: rotate(180deg);
+    .pricing {
+      background: #f1f1f1;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 3rem;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
+    .pricing h2 {
+      text-align: center;
+    }
+
+    .pricing ul {
+      list-style: none;
+      padding: 0;
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+
+    .pricing li {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-section {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 3rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #0b1c3a;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0b1c3a;
+      color: white;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .topnav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        margin-top: 1rem;
+      }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Secure Email Setup</h1>
-    <nav>
+
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="nav-brand">Eebii</div>
+    <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
-      <a href="#setup">Setup Steps</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-  </header>
+      <a href="about.html">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
 
-  <main>
-    <section id="setup">
-      <h2>Professional Email Setup with Your Domain</h2>
-      <p>We help you set up a secure and reliable email system using your own domain (e.g., info@yourcompany.com). The following table outlines the steps involved:</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Step</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Purchase or use existing domain from providers like Namecheap, GoDaddy, etc.</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Choose an email provider (Zoho Mail, Google Workspace, etc.)</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Verify domain ownership by adding DNS records</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Set up MX, SPF, DKIM, and DMARC records to improve security and delivery</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Create users and mailboxes for your organization</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Test email sending, receiving, and security validation</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Secure Email Setup</h1>
+    <p>Your professional email, secured and simplified by Eebii.</p>
+  </section>
 
-    <section id="faq">
+  <!-- Main Content -->
+  <section class="content">
+    <p>At Eebii, we provide a seamless and secure business email setup using Zoho Mail. Whether you're an entrepreneur, startup, or growing company, we handle the entire setup process — ensuring deliverability, security, and a professional presence across your communication.</p>
+
+    <img src="images/secure-email-chart.png" alt="Email Setup Overview" />
+
+    <h2>Our Process</h2>
+    <ul>
+      <li>Email account provisioning with your business name</li>
+      <li>DNS, SPF, DKIM, and DMARC configuration</li>
+      <li>Webmail and mobile access setup</li>
+      <li>Guided onboarding and client-side support</li>
+    </ul>
+
+    <!-- FAQ Section -->
+    <div class="faq">
       <h2>Frequently Asked Questions</h2>
-      <div class="faq-container">
-        <div class="faq-item">
-          <button class="faq-question">Is my email secure with Eebii?<span class="arrow">&#9662;</span></button>
-          <div class="faq-answer">
-            <p>Yes. All our email services are encrypted with TLS and managed with strict security protocols, ensuring full privacy and compliance.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">Can I use my own domain email?<span class="arrow">&#9662;</span></button>
-          <div class="faq-answer">
-            <p>Absolutely. We help you set up your professional email using your domain name (e.g., info@yourcompany.com).</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">Do you offer support?<span class="arrow">&#9662;</span></button>
-          <div class="faq-answer">
-            <p>Yes. Our IT team is available for support and troubleshooting whenever needed — even post setup.</p>
-          </div>
-        </div>
+      <div class="faq-item">
+        <div class="faq-question">Is this service fully managed?</div>
+        <div class="faq-answer">Yes, we handle the complete setup from DNS to mailbox delivery and security configuration.</div>
       </div>
-    </section>
-  </main>
+      <div class="faq-item">
+        <div class="faq-question">Do I need to share domain credentials?</div>
+        <div class="faq-answer">No. We will guide you step by step or handle it via your registrar access if allowed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I migrate from Gmail or Outlook?</div>
+        <div class="faq-answer">Yes. We support migration and offer complete help for switching platforms securely.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do you offer ongoing support?</div>
+        <div class="faq-answer">We offer optional support plans for updates, adding users, and troubleshooting.</div>
+      </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="pricing">
+      <h2>Pricing Plan</h2>
+      <ul>
+        <li><strong>₹999 One-Time Setup</strong> – Complete mailbox + DNS + testing</li>
+        <li><strong>₹199/month (optional)</strong> – Ongoing support, add/remove users, priority response</li>
+      </ul>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="form-section">
+      <h2>Request Setup</h2>
+      <form action="https://formspree.io/f/xyzpkgrj" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Tell us what you need..." rows="5" required></textarea>
+        <button type="submit">Send Request</button>
+      </form>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 Eebii. All rights reserved.</p>
+    &copy; 2025 Eebii — Your Business. Secured. Supported. Simplified.
   </footer>
 
   <script>
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
+    document.querySelectorAll('.faq-question').forEach(question => {
       question.addEventListener('click', () => {
-        item.classList.toggle('open');
+        question.classList.toggle('active');
+        const answer = question.nextElementSibling;
+        answer.classList.toggle('show');
       });
     });
   </script>
 </body>
-
 </html>
