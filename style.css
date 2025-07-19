@@ -300,74 +300,39 @@ footer {
   color: #00d4ff;
   text-decoration: underline;
 }
-.secure-email-contact {
-  background: #f8f9fb;
-  padding: 60px 20px;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
+/* ONLY affects Secure Email form */
+.secure-form {
+  background-color: #0f172a;
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 3rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.secure-email-contact .container {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.secure-email-contact h2.section-title {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #222;
-}
-
-.secure-email-contact p.section-subtitle {
-  font-size: 1rem;
-  margin-bottom: 30px;
-  color: #555;
-}
-
-#contact-form {
-  background: #fff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-#contact-form input,
-#contact-form textarea {
-  padding: 12px 15px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+.secure-form input,
+.secure-form textarea {
   width: 100%;
-  box-sizing: border-box;
-  font-family: inherit;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  background: #1e293b;
+  color: #fff;
 }
 
-#contact-form textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-#contact-form button {
-  padding: 12px;
-  background-color: #0051ff;
-  color: white;
+.secure-form button {
+  padding: 1rem 2rem;
+  background: #14b8a6;
   border: none;
-  border-radius: 10px;
-  font-size: 1rem;
+  color: #fff;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-#contact-form button:hover {
-  background-color: #003fcc;
+.secure-form button:hover {
+  background: #0d9488;
 }
 
-#form-status {
-  font-size: 0.9rem;
-  margin-top: 10px;
-  color: #555;
-}
 
