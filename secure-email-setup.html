@@ -2,115 +2,293 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Secure Email Setup - Eebii</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secure Email Setup | Eebii</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="favicon.ico"/>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #f7f8fa; color: #333; }
-    header { background: #0a2540; color: white; padding: 2rem; text-align: center; }
-    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1rem; margin-top: 0; }
-    .section { padding: 2rem 1rem; max-width: 960px; margin: auto; }
-    .pricing-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 1.5rem; }
-    .card h3 { margin-top: 0; }
-    .card ul { padding-left: 1.2rem; }
-    .card ul li { margin-bottom: 0.5rem; }
-    .faq { margin-top: 2rem; }
-    details { margin-bottom: 1rem; background: #fff; border-radius: 8px; padding: 1rem; border: 1px solid #ccc; }
-    summary { font-weight: 600; cursor: pointer; }
-    form { margin-top: 2rem; display: grid; gap: 1rem; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    form input, form textarea { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc; }
-    form button { background: #0a2540; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; }
-    form button:hover { background: #103c63; }
-    footer { text-align: center; padding: 1rem; background: #eee; font-size: 0.9rem; margin-top: 2rem; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f4f4f4, #e6e9f0);
+      color: #333;
+    }
+
+    .topnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: #20232a;
+      color: white;
+    }
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .nav-links a {
+      margin: 0 0.75rem;
+      color: white;
+      text-decoration: none;
+    }
+    .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .main-content {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #1a1a1a;
+    }
+    .tagline {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .faq-section h2, .pricing-section h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+
+    .faq-item {
+      border: 1px solid #ddd;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      background: white;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .faq-question {
+      background: #eee;
+      padding: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-top: 1px solid #ddd;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .form-section {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-top: 3rem;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      background: #20232a;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-top: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .pricing-table th, .pricing-table td {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .pricing-table th {
+      background-color: #2979ff;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #20232a;
+      color: #ccc;
+      margin-top: 4rem;
+    }
+    footer .sitemap a {
+      color: #ccc;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+      }
+
+      .nav-links a {
+        margin: 1rem 0;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Secure Email Setup for Your Business</h1>
-    <p>Professional Email Address Setup – Managed by Eebii</p>
-    <small>Eebii — Your Business. Secured. Supported. Simplified.</small>
-  </header>
 
-  <div class="section">
-    <h2>Why You Need a Professional Email?</h2>
-    <p>Using your own business email (like contact@yourdomain.com) builds trust, improves communication, and reflects professionalism. We offer complete email setup using Zoho Mail, configured for your brand with secure access.</p>
-
-    <h2>Plans & Pricing (Monthly)</h2>
-    <div class="pricing-table">
-      <div class="card">
-        <h3>Basic</h3>
-        <ul>
-          <li>✅ contact@yourdomain.com</li>
-          <li>✅ Webmail access</li>
-          <li>✅ SPF, DKIM setup</li>
-        </ul>
-        <strong>₹99/mo</strong>
-      </div>
-      <div class="card">
-        <h3>Startup</h3>
-        <ul>
-          <li>✅ contact@yourdomain.com</li>
-          <li>✅ Gmail/Outlook Access</li>
-          <li>✅ Branding</li>
-          <li>✅ Managed support</li>
-        </ul>
-        <strong>₹199/mo</strong>
-      </div>
-      <div class="card">
-        <h3>Pro</h3>
-        <ul>
-          <li>✅ contact@yourdomain.com</li>
-          <li>✅ Team emails setup</li>
-          <li>✅ Email Routing</li>
-          <li>✅ Complete DNS Management</li>
-        </ul>
-        <strong>₹299/mo</strong>
-      </div>
+  <nav class="topnav">
+    <div class="nav-brand">Eebii</div>
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
     </div>
-    <p><strong>✅ One-time Setup Fee Included</strong><br>We handle full setup, DNS records, and configuration.</p>
+  </nav>
 
-    <h2>What's Included?</h2>
-    <ul>
-      <li>Domain-based email creation (e.g., contact@yourbusiness.com)</li>
-      <li>Zoho Mail setup with DNS configuration</li>
-      <li>Email tested on Gmail, Outlook & Mobile</li>
-      <li>Free consultation & support during setup</li>
-    </ul>
+  <div class="main-content">
+    <h1>Secure Email Setup</h1>
+    <p class="tagline">Eebii — Your Business. Secured. Supported. Simplified.</p>
+    <p>We help individuals and businesses set up secure and professional email addresses using custom domains, hosted with Zoho Mail or similar platforms. You can get started with a one-time installation plan and then pick from our monthly email plans as your business grows.</p>
 
-    <div class="faq">
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>Is Zoho free or paid?</summary>
-        <p>We use Zoho’s Mail Lite (paid) for reliable delivery, with your domain professionally linked.</p>
-      </details>
-      <details>
-        <summary>Can I check mails on Gmail or Outlook?</summary>
-        <p>Yes! We configure POP/IMAP/SMTP so you can use your favorite email app.</p>
-      </details>
-      <details>
-        <summary>Will you help after setup?</summary>
-        <p>Yes, we offer support and maintenance in all our plans.</p>
-      </details>
-      <details>
-        <summary>Do I need to purchase Zoho or domain?</summary>
-        <p>If you already have them, we use those. If not, we help you set them up.</p>
-      </details>
+    <div class="pricing-section">
+      <h2>Professional Email Plans</h2>
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Emails Included</th>
+            <th>Features</th>
+            <th>Monthly Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Basic</td>
+            <td>1 Email</td>
+            <td>5GB, Web/Mobile Setup, Signature</td>
+            <td>₹199/month</td>
+          </tr>
+          <tr>
+            <td>Startup</td>
+            <td>3 Emails</td>
+            <td>Domain Mgmt, Gmail/Outlook Setup</td>
+            <td>₹499/month</td>
+          </tr>
+          <tr>
+            <td>Pro</td>
+            <td>5+ Emails</td>
+            <td>Branding, Full Support</td>
+            <td>₹999/month</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 1rem;">🔧 <strong>Setup Fee:</strong> ₹1,499 (one-time installation & configuration)</p>
+      <ul>
+        <li>Includes custom domain, secure hosting, and complete setup</li>
+        <li>Ideal for startups, freelancers, and growing teams</li>
+      </ul>
     </div>
 
-    <h2>Contact Us to Get Started</h2>
-    <form method="POST" action="https://formspree.io/f/yourformid">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Now</button>
-    </form>
+    <div class="faq-section">
+      <h2>FAQs</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Why do I need professional email?</div>
+        <div class="faq-answer">A custom email like contact@yourdomain.com boosts credibility, supports branding, and improves deliverability.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I use my own domain?</div>
+        <div class="faq-answer">Yes, we help you configure any domain with email hosting (Zoho, Gmail, Outlook etc.)</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Is support included?</div>
+        <div class="faq-answer">Yes, monthly plans include full support and assistance when needed.</div>
+      </div>
+    </div>
+
+    <div class="form-section" id="contact">
+      <h2>Request Setup</h2>
+      <form action="https://formspree.io/f/mnqenayz" method="POST">
+        <label for="name">Your Name</label>
+        <input type="text" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" name="email" required>
+
+        <label for="message">Details</label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+
   </div>
 
   <footer>
-    &copy; 2025 Eebii. All rights reserved.
+    <div class="sitemap">
+      <a href="index.html">Home</a> |
+      <a href="about.html">About</a> |
+      <a href="index.html#services">Services</a> |
+      <a href="blog.html">Blog</a> |
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
+    <p>&copy; 2025 Eebii. All rights reserved.</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const links = document.getElementById('nav-links');
+      links.style.display = (links.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  </script>
+
 </body>
 </html>
