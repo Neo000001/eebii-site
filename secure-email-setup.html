@@ -3,109 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Secure Email Setup | Eebii</title>
+  <title>Secure Email Setup – Eebii</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header>
-    <nav>
-      <a href="index.html" class="logo">Eebii</a>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="secure-email-setup.html" class="active">Secure Email</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- Navigation -->
+<nav class="topnav">
+  <div class="nav-brand">Eebii</div>
+  <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Secure Email Setup</h1>
-      <p>Give your business a professional identity with a secure custom domain email setup.</p>
-    </div>
-  </section>
+<!-- Hero Section -->
+<header class="hero">
+  <h1>Secure Email Setup</h1>
+  <p>Professional email with your domain. Easy setup. Reliable support.</p>
+</header>
 
-  <!-- Why Not Gmail/Yahoo -->
-  <section class="content">
-    <div class="container">
-      <h2>Why Not Use Gmail or Yahoo?</h2>
-      <p>Free email services like Gmail or Yahoo are great for personal use—but using them for business lacks professionalism and may impact customer trust. Imagine receiving a quote from <strong>yourbusiness@gmail.com</strong>—would you trust it?</p>
-    </div>
-  </section>
+<!-- Pricing Table -->
+<section class="section">
+  <h2>Pricing Plans</h2>
+  <div class="table-container">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Storage</th>
+          <th>Users</th>
+          <th>Features</th>
+          <th>Monthly Price</th>
+          <th>Annual Support</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Basic</td>
+          <td>5 GB / User</td>
+          <td>1</td>
+          <td>Email, Webmail Access, Support</td>
+          <td>₹99</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>Standard</td>
+          <td>10 GB / User</td>
+          <td>Up to 5</td>
+          <td>Email, Webmail, Setup & Support</td>
+          <td>₹199</td>
+          <td>Included</td>
+        </tr>
+        <tr>
+          <td>Pro</td>
+          <td>30 GB / User</td>
+          <td>Unlimited</td>
+          <td>Secure Mail, Webmail, Full Support</td>
+          <td>₹299</td>
+          <td>Included</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">* Domain purchase is not included. We'll assist you in getting the best domain name.</p>
+  </div>
+</section>
 
-  <!-- Business Email Benefits -->
-  <section class="content alt-bg">
-    <div class="container">
-      <h2>Benefits of Business Email</h2>
-      <ul>
-        <li>Branded email (e.g., <strong>you@yourcompany.com</strong>)</li>
-        <li>Improved trust and credibility</li>
-        <li>Better security and spam protection</li>
-        <li>Custom signatures and team management</li>
-        <li>Access from desktop & mobile</li>
-      </ul>
-    </div>
-  </section>
+<!-- Contact Form -->
+<section class="section">
+  <h2>Request Setup or Ask a Question</h2>
+  <form action="https://formspree.io/f/xyzpkgrj" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <input type="text" name="company" placeholder="Company Name (Optional)" />
+    <input type="text" name="domain" placeholder="Preferred Domain (if any)" />
+    <textarea name="message" placeholder="How can we help you?" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
-  <!-- Trust -->
-  <section class="content">
-    <div class="container">
-      <h2>Why Secure Email Builds Trust</h2>
-      <p>When customers see your official domain in the email, they know they’re dealing with a verified brand. It reduces phishing risk and improves deliverability. Our setup ensures your email has proper SPF, DKIM, and DMARC records configured.</p>
-    </div>
-  </section>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="index.html#services">Services</a> |
+    <a href="blog.html">Blog</a> |
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <p>&copy; 2025 Eebii. All rights reserved.</p>
+</footer>
 
-  <!-- Plans -->
-  <section class="content alt-bg">
-    <div class="container">
-      <h2>Plans & Pricing</h2>
-      <img src="A_pricing_table_image_represents_Eebii_Professiona.png" alt="Secure Email Plans" style="max-width:100%; height:auto;" />
-      <p>* Domain charges are separate and can be discussed. Custom plans are available upon request.</p>
-    </div>
-  </section>
-
-  <!-- Contact Form -->
-  <section class="content">
-    <div class="container">
-      <h2>Get Started</h2>
-      <p>Fill out the form below and we’ll help you get your business email setup quickly.</p>
-      <form action="https://formspree.io/f/xyzpkgrj" method="POST" class="form">
-        <label for="name">Name</label>
-        <input type="text" name="name" required />
-        
-        <label for="email">Your Email</label>
-        <input type="email" name="email" required />
-        
-        <label for="company">Company Name</label>
-        <input type="text" name="company" required />
-        
-        <label for="message">Message / Requirements</label>
-        <textarea name="message" rows="5" required></textarea>
-        
-        <button type="submit">Send Inquiry</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Eebii. All rights reserved.</p>
-      <ul class="footer-links">
-        <li><a href="sitemap.html">Sitemap</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </footer>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("nav-links");
+    nav.classList.toggle("show");
+  }
+</script>
 
 </body>
 </html>
