@@ -1,138 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Secure Email Setup – Eebii</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Email Setup | Eebii</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #0a3d62;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1, h2, h3 {
+      color: #0a3d62;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f8ff;
+    }
+
+    #faq {
+      padding: 40px 20px;
+    }
+
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .faq-item {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .faq-question {
+      width: 100%;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background-color: #eef6ff;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 15px 20px;
+      background-color: #fff;
+      border-top: 1px solid #ddd;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .faq-question .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-question .arrow {
+      transform: rotate(180deg);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
-
-  <!-- Navigation -->
-  <nav class="topnav">
-    <div class="nav-brand">Eebii</div>
-    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="nav-links">
+  <header>
+    <h1>Secure Email Setup</h1>
+    <nav>
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="index.html#services">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
-    </div>
-  </nav>
+      <a href="#setup">Setup Steps</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
 
-  <main class="container">
-    <section class="section">
-      <h1>🔐 Secure Business Email Setup</h1>
-      <p><strong>Professional Email that Builds Trust</strong></p>
-      <p>At Eebii, we offer a complete, secure, and fully managed business email solution — tailored for individuals, startups, and small businesses. Start using your own custom email address like <code>yourname@yourbusiness.com</code> for a professional image.</p>
-    </section>
-
-    <section class="section">
-      <h2>✨ Why Choose Eebii?</h2>
-      <ul>
-        <li>✅ Fully managed setup and maintenance</li>
-        <li>✅ Works with Gmail, Outlook, Zoho & more</li>
-        <li>✅ Email signatures, mobile access & branding</li>
-        <li>✅ Data privacy and secure hosting</li>
-        <li>✅ Fast setup with zero technical hassle</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>💼 Our Email Plans</h2>
-      <table class="pricing-table">
+  <main>
+    <section id="setup">
+      <h2>Professional Email Setup with Your Domain</h2>
+      <p>We help you set up a secure and reliable email system using your own domain (e.g., info@yourcompany.com). The following table outlines the steps involved:</p>
+      <table>
         <thead>
           <tr>
-            <th>Plan</th>
-            <th>Emails Included</th>
-            <th>Included Features</th>
-            <th>Monthly Price</th>
+            <th>Step</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Basic</strong></td>
-            <td>1 Email</td>
-            <td>5GB Storage • Web & Mobile Setup • Email Signature</td>
-            <td>₹199</td>
+            <td>1</td>
+            <td>Purchase or use existing domain from providers like Namecheap, GoDaddy, etc.</td>
           </tr>
           <tr>
-            <td><strong>Startup</strong></td>
-            <td>Up to 3 Emails</td>
-            <td>Domain Integration • Gmail/Outlook Setup • Support</td>
-            <td>₹499</td>
+            <td>2</td>
+            <td>Choose an email provider (Zoho Mail, Google Workspace, etc.)</td>
           </tr>
           <tr>
-            <td><strong>Pro</strong></td>
-            <td>5+ Emails</td>
-            <td>Company Branding • Admin Panel • Premium Support</td>
-            <td>₹999</td>
+            <td>3</td>
+            <td>Verify domain ownership by adding DNS records</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Set up MX, SPF, DKIM, and DMARC records to improve security and delivery</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Create users and mailboxes for your organization</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Test email sending, receiving, and security validation</td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <section class="section">
-      <h2>🧾 Frequently Asked Questions</h2>
-      <div class="faq">
-        <p><strong>Q: What do I need to get started?</strong><br>
-        A: Just your domain details — or we can help you buy one. We handle the rest!</p>
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">Is my email secure with Eebii?<span class="arrow">&#9662;</span></button>
+          <div class="faq-answer">
+            <p>Yes. All our email services are encrypted with TLS and managed with strict security protocols, ensuring full privacy and compliance.</p>
+          </div>
+        </div>
 
-        <p><strong>Q: Will my email work on Gmail or Outlook?</strong><br>
-        A: Absolutely! We configure your email to work seamlessly on Gmail, Outlook, or any preferred email app.</p>
+        <div class="faq-item">
+          <button class="faq-question">Can I use my own domain email?<span class="arrow">&#9662;</span></button>
+          <div class="faq-answer">
+            <p>Absolutely. We help you set up your professional email using your domain name (e.g., info@yourcompany.com).</p>
+          </div>
+        </div>
 
-        <p><strong>Q: How long does setup take?</strong><br>
-        A: Standard setup is completed within 24 hours after access is given.</p>
-
-        <p><strong>Q: Do you offer ongoing support?</strong><br>
-        A: Yes, all our plans include technical support and changes on request.</p>
+        <div class="faq-item">
+          <button class="faq-question">Do you offer support?<span class="arrow">&#9662;</span></button>
+          <div class="faq-answer">
+            <p>Yes. Our IT team is available for support and troubleshooting whenever needed — even post setup.</p>
+          </div>
+        </div>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>🚀 Ready to Get Started?</h2>
-      <p>Let’s build your brand identity with a secure, professional email setup.</p>
-    </section>
-
-    <!-- Contact Form -->
-    <section class="section contact-form">
-      <form action="mailto:youremail@eebii.com" method="POST" enctype="text/plain">
-        <label for="name">Name*</label>
-        <input type="text" id="name" name="Name" required>
-
-        <label for="email">Email*</label>
-        <input type="email" id="email" name="Email" required>
-
-        <label for="phone">Phone*</label>
-        <input type="tel" id="phone" name="Phone" required>
-
-        <label for="plan">Preferred Plan</label>
-        <select name="Plan" id="plan">
-          <option value="Basic">Basic – ₹199/month</option>
-          <option value="Startup">Startup – ₹499/month</option>
-          <option value="Pro">Pro – ₹999/month</option>
-        </select>
-
-        <label for="message">Additional Notes</label>
-        <textarea id="message" name="Message" rows="4"></textarea>
-
-        <button type="submit">Submit Request</button>
-      </form>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Eebii. All rights reserved.</p>
   </footer>
 
   <script>
-    function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
-      navLinks.classList.toggle('active');
-    }
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
   </script>
 </body>
+
 </html>
