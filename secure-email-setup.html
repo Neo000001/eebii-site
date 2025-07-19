@@ -232,7 +232,7 @@
 
       <div class="faq-item">
         <div class="faq-question">Why do I need professional email?</div>
-        <div class="faq-answer">A custom email like contact@yourdomain.com boosts credibility, supports branding, and improves deliverability.</div>
+        <div class="faq-answer">A custom email like contact@yourbussiness.com boosts credibility, supports branding, and improves deliverability.</div>
       </div>
 
       <div class="faq-item">
@@ -246,21 +246,21 @@
       </div>
     </div>
 
-    <div class="form-section" id="contact">
-      <h2>Request Setup</h2>
-      <form action="https://formspree.io/f/mnqenayz" method="POST">
-        <label for="name">Your Name</label>
-        <input type="text" name="name" required>
+   <!-- Contact Section for Secure Email -->
+<section class="contact" id="secure-email-contact">
+  <div class="container">
+    <h2>Get in Touch for Secure Email Setup</h2>
+    <p>Have questions or ready to get started? Fill out the form and we'll get back to you.</p>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="form-status"></p>
+    </form>
+  </div>
+</section>
 
-        <label for="email">Your Email</label>
-        <input type="email" name="email" required>
-
-        <label for="message">Details</label>
-        <textarea name="message" rows="5" required></textarea>
-
-        <button type="submit">Submit Request</button>
-      </form>
-    </div>
 
   </div>
 
@@ -289,6 +289,31 @@
       });
     });
   </script>
+  <script>
+  document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const status = document.getElementById("form-status");
+
+    try {
+      const res = await fetch("https://formspree.io/f/xldnazvb", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" }
+      });
+      if (res.ok) {
+        status.textContent = "🎉 Thank you! Your message has been received.";
+        form.reset();
+      } else {
+        status.textContent = "❌ There was a problem submitting your form.";
+      }
+    } catch (err) {
+      status.textContent = "❌ Error sending form. Please try again later.";
+    }
+  });
+</script>
+
 
 </body>
 </html>
