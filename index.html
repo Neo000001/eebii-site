@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
-<script defer src="blog-loader.js"></script>
 
 <body>
 
@@ -56,28 +55,30 @@
       <h2>Eebii Ecosystem</h2>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: stretch;">
 
-        <div class="card" onclick="window.open('https://invoice.eebii.com', '_blank')"
+        <!-- Eebii Invoice -->
+        <div class="card" onclick="window.open('https://invoice.eebii.com/', '_blank')"
           style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
           <div style="text-align: center;">
             <img src="invoice-icon.png" alt="Invoice Logo"
-              style="width: 80px; height: 80px; margin-bottom: 10px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: inline-block;">
-            <h3 style="margin-top: 5px; color: #fff;">GST Invoice Generator</h3>
-            <p style="color: #ccc; font-size: 0.95rem; margin-top: 1rem; line-height: 1.5;">Create neat, GST-compliant invoices instantly. No login required.</p>
+              style="width: 80px; height: 80px; margin-bottom: 0.8rem; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: inline-block;">
+            <h3 style="color: #fff;">Eebii Invoice</h3>
+            <p style="color: #ccc; font-size: 0.95rem; margin-top: 1rem; line-height: 1.5;">Powerful GST-compliant invoicing tool for Indian businesses. 100% Secure & Private.</p>
           </div>
-          <a href="https://invoice.eebii.com" target="_blank" class="hero-btn"
+          <a href="https://invoice.eebii.com/" target="_blank" class="hero-btn"
             style="display: inline-block; margin-top: 1.2rem; padding: 0.6rem 1.2rem; font-size: 0.9rem;"
             onclick="event.stopPropagation()">Open Tool</a>
         </div>
 
+        <!-- PDF Suite -->
         <div class="card" onclick="window.open('https://pdfsuite.eebii.com', '_blank')"
           style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
           <div style="text-align: center;">
-            <div style="padding: 18px 0;"> <!-- Adding padding to match the Invoice logo area height -->
-              <div
-                style="font-size: 2.2rem; font-weight: bold; margin-bottom: 10px; font-family: 'Segoe UI', sans-serif;">
+            <div style="padding: 18px 0; display: inline-block;">
+              <div style="font-size: 2.2rem; font-weight: bold; margin-bottom: 5px; font-family: 'Segoe UI', sans-serif;">
                 <span style="color: #fff;">PDF</span><span style="color: #00d4ff;">Suite</span>
               </div>
             </div>
+            <h3 style="color: #fff;">Cloud PDF Editor</h3>
             <p style="color: #ccc; font-size: 0.95rem; margin-top: 1rem; line-height: 1.5;">Merge, compress, and convert PDF files directly in your browser.</p>
           </div>
           <a href="https://pdfsuite.eebii.com" target="_blank" class="hero-btn"
@@ -106,11 +107,11 @@
           <div style="text-align: center;">
             <i class="fas fa-graduation-cap" style="color: #00d4ff; font-size: 2.5rem; margin-bottom: 0.8rem; display: block; padding-top: 15px;"></i>
             <h3 style="color: #fff;">Eebii Academy</h3>
-            <p style="color: #ccc; font-size: 0.95rem; margin-top: 1rem; line-height: 1.5;">Learn Corporate IT, Cybersecurity, Unreal Engine, Blender AI, and VFX.</p>
+            <p style="color: #ccc; font-size: 0.95rem; margin-top: 1rem; line-height: 1.5;">Creative AI & Game Design is <strong>OPEN!</strong> Learn Unreal Engine, Blender AI, and Cybersecurity.</p>
           </div>
           <a href="academy.html" class="hero-btn"
             style="display: inline-block; margin-top: 1.2rem; padding: 0.6rem 1.2rem; font-size: 0.9rem;"
-            onclick="event.stopPropagation()">Join Waitlist</a>
+            onclick="event.stopPropagation()">Enroll Now</a>
         </div>
 
         <div class="card" onclick="location.href='eebii-flow.html'"
@@ -188,52 +189,151 @@
       </div>
     </div>
   </section>
-  <!-- email pramo -->
-  <section id="secure-email-setup" class="bg-gradient-to-r from-blue-50 to-white py-16 px-6">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-blue-900 mb-4">📧 Secure Email Setup</h2>
-      <p class="text-lg text-gray-700 mb-2">Own Your Email. Strengthen Your Brand.</p>
-      <p class="text-sm text-gray-500 mb-6">Get a custom email like <span
-          class="font-medium">you@yourbusiness.com</span></p>
+  <!-- Eebii Ecosystem Highlights -->
+  <section id="highlights" style="background: #0d0f14; padding: 5rem 2rem; border-top: 1px solid #1f2229; border-bottom: 1px solid #1f2229;">
+    <div class="container" style="max-width: 1100px; margin: auto;">
+      <h2 style="text-align: center; color: #fff; font-size: 2.2rem; margin-bottom: 0.5rem; letter-spacing: -1px; text-transform: uppercase; font-weight: 800;">Latest News & Updates</h2>
+      <p style="text-align: center; color: #6b7280; font-size: 1.1rem; margin-bottom: 3.5rem;">Corporate highlights from the Eebii Business Ecosystem.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        
+        <!-- Highlight Card 1 -->
+        <div style="background: #16181d; border: 1px solid #1f2229; border-radius: 12px; padding: 2rem; transition: 0.3s; border-left: 4px solid #00d4ff;">
+          <div style="display: flex; gap: 15px; align-items: flex-start;">
+            <i class="fas fa-bullhorn" style="color: #00d4ff; font-size: 1.2rem; margin-top: 5px;"></i>
+            <div>
+              <span style="font-size: 0.7rem; color: #00d4ff; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">Product Launch</span>
+              <h3 style="color: #fff; margin: 5px 0 10px; font-size: 1.3rem;">Eebii Flow is Live</h3>
+              <p style="color: #9ca3af; font-size: 0.95rem; line-height: 1.5; margin: 0;">Our official WhatsApp Business API SaaS is now in production. Start scaling your customer outreach today.</p>
+              <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: block; margin-top: 15px;">Check Features →</a>
+            </div>
+          </div>
+        </div>
 
-      <ul class="text-left text-sm text-gray-800 mb-6 space-y-2 max-w-md mx-auto">
-        <li>✅ Domain Setup</li>
-        <li>✅ Zoho / Gmail / Outlook Integration</li>
-        <li>✅ SPF, DKIM, DMARC Configuration</li>
-        <li>✅ One-time Setup – <strong>₹1,499</strong></li>
-      </ul>
+        <!-- Highlight Card 2 -->
+        <div style="background: #16181d; border: 1px solid #1f2229; border-radius: 12px; padding: 2rem; transition: 0.3s; border-left: 4px solid #f28b06;">
+          <div style="display: flex; gap: 15px; align-items: flex-start;">
+            <i class="fas fa-graduation-cap" style="color: #f28b06; font-size: 1.2rem; margin-top: 5px;"></i>
+            <div>
+              <span style="font-size: 0.7rem; color: #f28b06; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">Academic Update</span>
+              <h3 style="color: #fff; margin: 5px 0 10px; font-size: 1.3rem;">Game Design Open</h3>
+              <p style="color: #9ca3af; font-size: 0.95rem; line-height: 1.5; margin: 0;">Enrollment for "Creative AI & Game Design" is now officially open via Eebii Academy. Secure your seat today.</p>
+              <a href="academy.html" style="color: #00d4ff; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: block; margin-top: 15px;">Enroll Now →</a>
+            </div>
+          </div>
+        </div>
 
-      <div class="flex justify-center space-x-4">
-        <a href="/secure-email-setup.html"
-          class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition">Get Started →</a>
-        <a href="/secure-email-setup.html#learn-more" class="text-blue-700 hover:underline">Learn More</a>
+        <!-- Highlight Card 3 -->
+        <div style="background: #16181d; border: 1px solid #1f2229; border-radius: 12px; padding: 2rem; transition: 0.3s; border-left: 4px solid #ffffff;">
+          <div style="display: flex; gap: 15px; align-items: flex-start;">
+            <i class="fas fa-sync" style="color: #ffffff; font-size: 1.2rem; margin-top: 5px;"></i>
+            <div>
+              <span style="font-size: 0.7rem; color: #ffffff; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">Software Update</span>
+              <h3 style="color: #fff; margin: 5px 0 10px; font-size: 1.3rem;">Invoice Cloud Sync</h3>
+              <p style="color: #9ca3af; font-size: 0.95rem; line-height: 1.5; margin: 0;">Our #1 Billing engine now supports 100% secure automated cloud syncing across all your devices.</p>
+              <a href="blog-invoice-pro-guide.html" style="color: #00d4ff; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: block; margin-top: 15px;">Pro vs Free Guide →</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Why Eebii Section -->
-  <section class="services" id="why" style="background: #121212; padding: 4rem 2rem;">
-    <div class="container">
-      <h2>Why Eebii</h2>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        <div class="card" style="background: #1e1e1e;">
-          <i class="fas fa-layer-group" style="font-size: 2.5rem; margin-bottom: 10px; color: #00d4ff;"></i>
-          <h3>IT + Tools in one platform</h3>
-          <p style="color: #ccc; font-size: 0.95rem; margin-top: 1rem; line-height: 1.5; display:block;">Our combination
-            of essential software tools and expert IT support helps you solve more.</p>
+  <!-- The Eebii Advantage: Detailed Enterprise Showcase -->
+  <section id="why" style="background: #0d0f14; padding: 8rem 2rem; border-top: 1px solid #1f2229; border-bottom: 1px solid #1f2229;">
+    <div class="container" style="max-width: 1200px; margin: auto;">
+      <div style="text-align: center; margin-bottom: 6rem;">
+        <h2 style="color: #fff; font-size: 3rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 1.5rem;">Why Forward-Thinking Businesses Choose Eebii</h2>
+        <p style="color: #6b7280; font-size: 1.2rem; max-width: 700px; margin: auto; line-height: 1.6;">We bridge the gap between complex technology and small business simplicity through our unique three-pillar ecosystem.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 3rem;">
+        
+        <!-- Deep Dive 1: Ecosystem -->
+        <div style="background: #16181d; border: 1px solid #1f2229; border-radius: 24px; padding: 3rem; position: relative; overflow: hidden;">
+          <div style="position: absolute; right: -20px; top: -20px; font-size: 10rem; color: rgba(255,255,255,0.02); pointer-events: none;"><i class="fas fa-layer-group"></i></div>
+          <h3 style="color: #00d4ff; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 800;">Unified Business Ecosystem</h3>
+          <p style="color: #ccc; margin-bottom: 2rem; line-height: 1.7;">Beyond simple software — we provide an interconnected platform where tools and human expertise meet.</p>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 1.2rem; display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-check-circle" style="color: #00d4ff; margin-top: 5px;"></i>
+              <span><strong>Cross-Platform Synergy:</strong> Your invoice data syncs seamlessly with our CRM and security tools.</span>
+            </li>
+            <li style="margin-bottom: 1.2rem; display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-check-circle" style="color: #00d4ff; margin-top: 5px;"></i>
+              <span><strong>Hybrid Logic:</strong> High-performance browser-based tools paired with redundant cloud backups.</span>
+            </li>
+            <li style="display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-check-circle" style="color: #00d4ff; margin-top: 5px;"></i>
+              <span><strong>All-In-One Support:</strong> One dashboard for your website, servers, apps, and digital communications.</span>
+            </li>
+          </ul>
         </div>
-        <div class="card" style="background: #1e1e1e;">
-          <i class="fas fa-flag" style="font-size: 2.5rem; margin-bottom: 10px; color: #00d4ff;"></i>
-          <h3>Built for Indian businesses</h3>
-          <p style="color: #ccc; font-size: 0.95rem; margin-top: 1rem; line-height: 1.5; display:block;">Optimized for
-            India with native full GST, CGST, SGST, IGST capability.</p>
+
+        <!-- Deep Dive 2: Indian Market -->
+        <div style="background: #16181d; border: 1px solid #1f2229; border-radius: 24px; padding: 3rem; position: relative; overflow: hidden;">
+          <div style="position: absolute; right: -20px; top: -20px; font-size: 10rem; color: rgba(255,255,255,0.02); pointer-events: none;"><i class="fas fa-flag"></i></div>
+          <h3 style="color: #f28b06; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 800;">Precision-Built for Bharat</h3>
+          <p style="color: #ccc; margin-bottom: 2rem; line-height: 1.7;">Tailored to the specific legal, linguistic, and structural requirements of the Indian business landscape.</p>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 1.2rem; display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-check-circle" style="color: #f28b06; margin-top: 5px;"></i>
+              <span><strong>Native GST Compliance:</strong> Full support for CGST, SGST, IGST and HSN/SAC codes baked into every tool.</span>
+            </li>
+            <li style="margin-bottom: 1.2rem; display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-check-circle" style="color: #f28b06; margin-top: 5px;"></i>
+              <span><strong>SME First:</strong> Affordable, scalable enterprise-level features brought to the smallest Indian MSMEs.</span>
+            </li>
+            <li style="display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-check-circle" style="color: #f28b06; margin-top: 5px;"></i>
+              <span><strong>Malayalam & Regional Support:</strong> Localized experts who understand your language and business culture.</span>
+            </li>
+          </ul>
         </div>
-        <div class="card" style="background: #1e1e1e;">
-          <i class="fas fa-lock" style="font-size: 2.5rem; margin-bottom: 10px; color: #00d4ff;"></i>
-          <h3>Secure & scalable</h3>
-          <p style="color: #ccc; font-size: 0.95rem; margin-top: 1rem; line-height: 1.5; display:block;">
-            Enterprise-grade security paired with fast performance for teams of any size.</p>
+
+        <!-- Deep Dive 3: Security -->
+        <div style="background: #16181d; border: 1px solid #1f2229; border-radius: 24px; padding: 3rem; position: relative; overflow: hidden;">
+          <div style="position: absolute; right: -20px; top: -20px; font-size: 10rem; color: rgba(255,255,255,0.02); pointer-events: none;"><i class="fas fa-shield-halved"></i></div>
+          <h3 style="color: #fff; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 800;">Bank-Grade Security & Privacy</h3>
+          <p style="color: #ccc; margin-bottom: 2rem; line-height: 1.7;">Eebii is built on a "Privacy First" foundation — your data belongs to you, and we keep it that way.</p>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 1.2rem; display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-shield" style="color: #fff; opacity:0.6; margin-top: 5px;"></i>
+              <span><strong>Local Processing:</strong> Tools like PDF Suite and Invoice process all data in your browser — zero uploads.</span>
+            </li>
+            <li style="margin-bottom: 1.2rem; display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-shield" style="color: #fff; opacity:0.6; margin-top: 5px;"></i>
+              <span><strong>Military Encryption:</strong> SSL/TLS for all communication and enterprise encryption for cloud sync data.</span>
+            </li>
+            <li style="display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-shield" style="color: #fff; opacity:0.6; margin-top: 5px;"></i>
+              <span><strong>Proactive Monitoring:</strong> Real-time firewall management and threat detection to prevent cyber breaches.</span>
+            </li>
+          </ul>
         </div>
+
+        <!-- Deep Dive 4: Support -->
+        <div style="background: #16181d; border: 1px solid #1f2229; border-radius: 24px; padding: 3rem; position: relative; overflow: hidden;">
+          <div style="position: absolute; right: -20px; top: -20px; font-size: 10rem; color: rgba(255,255,255,0.02); pointer-events: none;"><i class="fas fa-headset"></i></div>
+          <h3 style="color: #00d4ff; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 800;">Real Human Expert Support</h3>
+          <p style="color: #ccc; margin-bottom: 2rem; line-height: 1.7;">No endless bots. Just high-level technical engineers available whenever your business needs assistance.</p>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 1.2rem; display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-comments" style="color: #00d4ff; margin-top: 5px;"></i>
+              <span><strong>On-Demand Remote Fixes:</strong> Instant troubleshooting for system errors, networks, and server glitches.</span>
+            </li>
+            <li style="margin-bottom: 1.2rem; display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-comments" style="color: #00d4ff; margin-top: 5px;"></i>
+              <span><strong>Zero-Bot Policy:</strong> You talk directly to certified IT professionals who know your business setup personally.</span>
+            </li>
+            <li style="display: flex; gap: 12px; color: #9ca3af; font-size: 1rem;">
+              <i class="fas fa-comments" style="color: #00d4ff; margin-top: 5px;"></i>
+              <span><strong>Cross-Product Training:</strong> Free walkthroughs on how to maximize your efficiency using Eebii ecosystem tools.</span>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>
@@ -245,14 +345,12 @@
       <h2 style="text-align: center; color: #fff; font-size: 2rem; margin-bottom: 2rem;"><i class="fas fa-book" style="color: #00d4ff;"></i> From Our Blog</h2>
 
       <div class="blog-grid" id="blog-grid"
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
         <!-- Blog cards will be dynamically inserted here -->
       </div>
-
-      <div style="text-align: center; margin-top: 3rem;">
-        <a href="blog.html" class="hero-btn" style="padding: 0.8rem 2.5rem; text-decoration: none;">Explore All Articles →</a>
+      <div style="text-align: center; padding-top: 4rem; margin-top: 2rem; border-top: 1px solid #1f2229;">
+        <a href="blog.html" class="hero-btn" style="padding: 1rem 3rem; text-decoration: none; font-weight: 700;">Explore All Articles →</a>
       </div>
-
     </div>
   </section>
 
@@ -281,39 +379,38 @@
   </section>
 
   <!-- Footer -->
-  <footer style="text-align: center; padding: 4rem 1rem; background: #111; color: #ccc; border-top: 1px solid #333; margin-top: 4rem;">
+            <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; margin-top: 4rem; font-family: 'Inter', sans-serif;">
     <div class="container">
-      <div style="margin-bottom: 2rem;">
-        <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1rem; font-weight: bold;">Home</a>
-        <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1rem;">About</a>
-        <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1rem;">Services</a>
-        <a href="blog.html" style="color: #ccc; text-decoration: none; margin: 0 1rem;">Blog</a>
-        <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1rem;">Contact</a>
+      <div style="margin-bottom: 2.5rem;">
+        <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
+        <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">About</a>
+        <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Services</a>
+        <a href="blog.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Blog</a>
+        <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Contact</a>
       </div>
-      
-      <div style="margin-bottom: 2rem; font-size: 0.9rem; opacity: 0.7;">
-        <a href="terms.html" style="color: #ccc; text-decoration: none; margin: 0 0.5rem;">Terms</a> |
-        <a href="disclaimer.html" style="color: #ccc; text-decoration: none; margin: 0 0.5rem;">Disclaimer</a> |
-        <a href="privacy-policy.html" style="color: #ccc; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a>
-      </div>
-
-      <div style="margin-bottom: 2rem; border-top: 1px solid #222; padding-top: 2rem;">
-        <p style="color: #777; font-size: 0.85rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Eebii Ecosystem Hub</p>
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem;">
+      <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
+        <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
           <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
-          <span style="color: #444;"> | </span>
+          <span style="color: #333;">|</span>
           <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
-          <span style="color: #444;"> | </span>
+          <span style="color: #333;">|</span>
           <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
-          <span style="color: #444;"> | </span>
+          <span style="color: #333;">|</span>
           <a href="academy.html" style="color: #00d4ff; text-decoration: none;">Eebii Academy</a>
-          <span style="color: #444;"> | </span>
+          <span style="color: #333;">|</span>
           <a href="service-digital-marketing.html" style="color: #00d4ff; text-decoration: none;">Digital Marketing</a>
         </div>
       </div>
-
-      <p style="margin-top: 2rem; font-size: 0.9rem;">📧 <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
-      <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 Eebii. All rights reserved.</p>
+      <div style="margin-top: 2rem; border-top: 1px solid #1a1d23; padding-top: 1.5rem;">
+        <a href="terms.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Terms</a>
+        <span style="color: #333;">|</span>
+        <a href="disclaimer.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Disclaimer</a>
+        <span style="color: #333;">|</span>
+        <a href="privacy-policy.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Privacy Policy</a>
+      </div>
+      <p style="margin-top: 2.5rem; font-size: 0.9rem;">📧 <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+      <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
     </div>
   </footer>
   <!-- Scripts -->
@@ -372,7 +469,7 @@
       }
     });
   </script>
-  <script src="blog-loader.js"></script>
+  <script src="blog-loader.js?v=2"></script>
 
 </body>
 

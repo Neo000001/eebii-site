@@ -2,8 +2,10 @@ fetch('blog-data.json')
   .then(res => res.json())
   .then(posts => {
     const blogGrid = document.getElementById('blog-grid');
+    if (!blogGrid) return;
+    blogGrid.innerHTML = ''; // Clear existing cards to prevent duplicates
 
-    posts.reverse().slice(0, 3).forEach(post => {
+    posts.reverse().slice(0, 5).forEach(post => {
       const card = document.createElement('div');
       card.className = 'card post';
       card.style.cssText = 'text-align: left; cursor: pointer; height: 100%; justify-content: space-between;';

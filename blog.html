@@ -26,124 +26,140 @@
   </nav>
   <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
 
-  <!-- Blog Header -->
-  <main class="blog-post">
-    <h1 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-book" style="color: #00d4ff;"></i> Our Blog</h1>
- 
-    <!-- Search + Filter -->
-    <div class="blog-filters" style="text-align: center; margin-bottom: 2rem;">
-      <div style="position: relative; display: inline-block;">
-        <i class="fas fa-search" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #666;"></i>
-        <input type="text" id="blogSearch" placeholder="Search blog..." style="padding: 0.5rem 0.5rem 0.5rem 2rem; width: 250px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff;" />
-      </div>
-      <select id="blogCategory" style="padding: 0.5rem; margin-left: 1rem; border-radius: 6px;">
-        <option value="all">All Categories</option>
-        <option value="support">Remote Support</option>
-        <option value="network">Network</option>
-        <option value="cloud">Cloud</option>
-        <option value="security">Security</option>
-        <option value="service">Service</option>
-        <option value="pdf">PDF Tools</option>
-        <option value="invoicing">Invoicing</option>
-        <option value="tools">Other Tools</option>
-        <option value="privacy">Privacy</option>
-        <option value="trends">Tech Trends</option>
-      </select>
-    </div>
+    <!-- Blog Header -->
+    <main style="max-width: 1200px; margin: 40px auto; padding: 2rem;">
+      <h1 style="text-align: center; color: #fff; font-size: 3rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 3rem;">
+        <i class="fas fa-book-open" style="color: #00d4ff;"></i> Eebii Knowledge Base
+      </h1>
 
-    <!-- Blog Posts -->
-    <div class="blog-grid" id="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-      <!-- Blog cards will be injected here dynamically -->
-    </div>
-  </main>
-
-  <!-- Footer -->
-        <footer style="text-align: center; padding: 4rem 1rem; background: #111; color: #ccc; border-top: 1px solid #333; margin-top: 4rem;">
-    <div class="container">
-      <div style="margin-bottom: 2rem;">
-        <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1rem; font-weight: bold;">Home</a>
-        <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1rem;">About</a>
-        <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1rem;">Services</a>
-        <a href="blog.html" style="color: #ccc; text-decoration: none; margin: 0 1rem;">Blog</a>
-        <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1rem;">Contact</a>
-      </div>
-      
-      <div style="margin-bottom: 2rem; font-size: 0.9rem; opacity: 0.7;">
-        <a href="terms.html" style="color: #ccc; text-decoration: none; margin: 0 0.5rem;">Terms</a> |
-        <a href="disclaimer.html" style="color: #ccc; text-decoration: none; margin: 0 0.5rem;">Disclaimer</a> |
-        <a href="privacy-policy.html" style="color: #ccc; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a>
-      </div>
-
-      <div style="margin-bottom: 2rem; border-top: 1px solid #222; padding-top: 2rem;">
-        <p style="color: #777; font-size: 0.85rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Eebii Ecosystem Hub</p>
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem;">
-          <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
-          <span style="color: #444;"> | </span>
-          <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
-          <span style="color: #444;"> | </span>
-          <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
-          <span style="color: #444;"> | </span>
-          <a href="academy.html" style="color: #00d4ff; text-decoration: none;">Eebii Academy</a>
-          <span style="color: #444;"> | </span>
-          <a href="service-digital-marketing.html" style="color: #00d4ff; text-decoration: none;">Digital Marketing</a>
+      <!-- Search + Filter -->
+      <div class="blog-filters" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 5rem; flex-wrap: wrap; padding: 0 1rem;">
+        <div style="position: relative; width: 100%; max-width: 400px;">
+          <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #666; font-size: 0.9rem;"></i>
+          <input type="text" id="blogSearch" placeholder="Search insights..." 
+            style="padding: 1rem 1rem 1rem 3rem; width: 100%; border-radius: 12px; border: 1px solid #2d2d2d; background: #16181d; color: #fff; font-family: 'Inter', sans-serif; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);" />
+        </div>
+        <div style="position: relative;">
+           <select id="blogCategory" 
+            style="padding: 1rem 2.5rem 1rem 1rem; border-radius: 12px; border: 1px solid #2d2d2d; background: #16181d; color: #fff; min-width: 200px; font-family: 'Inter', sans-serif; cursor: pointer; appearance: none; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);">
+            <option value="all">All Topics</option>
+            <option value="support">Remote Support</option>
+            <option value="network">Networking</option>
+            <option value="cloud">Cloud Servers</option>
+            <option value="security">Cybersecurity</option>
+            <option value="marketing">Marketing</option>
+            <option value="productivity">Productivity</option>
+            <option value="invoicing">Billing & GST</option>
+            <option value="pdf">PDF Tools</option>
+            <option value="privacy">Data Privacy</option>
+            <option value="trends">Future Trends</option>
+          </select>
+          <i class="fas fa-chevron-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #666; font-size: 0.8rem;"></i>
         </div>
       </div>
 
-      <p style="margin-top: 2rem; font-size: 0.9rem;">&#128231; <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
-      <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 Eebii. All rights reserved.</p>
-    </div>
-  </footer>
+      <!-- Blog Posts -->
+      <div class="blog-grid" id="blog-grid" 
+        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+        <!-- Dynamic loading -->
+      </div>
+    </main>
 
-  <!-- Blog Loader Script -->
-  <script>
-    function toggleMenu() {
-      document.getElementById("nav-links").classList.toggle("active");
-    }
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; margin-top: 4rem; font-family: 'Inter', sans-serif;">
+      <div class="container">
+        <div style="margin-bottom: 2.5rem;">
+          <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
+          <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">About</a>
+          <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Services</a>
+          <a href="blog.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem; font-weight: 700;">Blog</a>
+          <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Contact</a>
+        </div>
+        <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
+          <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
+          <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
+            <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+            <span style="color: #333;">|</span>
+            <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
+            <span style="color: #333;">|</span>
+            <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
+            <span style="color: #333;">|</span>
+            <a href="academy.html" style="color: #00d4ff; text-decoration: none;">Eebii Academy</a>
+            <span style="color: #333;">|</span>
+            <a href="service-digital-marketing.html" style="color: #00d4ff; text-decoration: none;">Digital Marketing</a>
+          </div>
+        </div>
+        <div style="margin-top: 2rem; border-top: 1px solid #1a1d23; padding-top: 1.5rem;">
+          <a href="terms.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Terms</a>
+          <span style="color: #333;">|</span>
+          <a href="disclaimer.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Disclaimer</a>
+          <span style="color: #333;">|</span>
+          <a href="privacy-policy.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Privacy Policy</a>
+        </div>
+        <p style="margin-top: 2.5rem; font-size: 0.9rem;">📧 <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+        <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
+      </div>
+    </footer>
 
-    const blogGrid = document.getElementById("blog-grid");
-    const searchInput = document.getElementById("blogSearch");
-    const categorySelect = document.getElementById("blogCategory");
+    <!-- Blog Loader Script -->
+    <script>
+      function toggleMenu() {
+        document.getElementById("nav-links").classList.toggle("active");
+      }
 
-    let posts = [];
+      const blogGrid = document.getElementById("blog-grid");
+      const searchInput = document.getElementById("blogSearch");
+      const categorySelect = document.getElementById("blogCategory");
 
-    fetch("blog-data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        posts = data;
-        renderPosts(posts);
-      });
+      let posts = [];
 
-    function renderPosts(postList) {
-      blogGrid.innerHTML = "";
-      postList.forEach((post) => {
-        const div = document.createElement("div");
-        div.className = "post";
-        div.setAttribute("data-category", post.category);
-        div.innerHTML = `
-          <h3>${post.title}</h3>
-          <p class="meta">By ${post.author} | ${post.date} | Category: ${post.category}</p>
-          <p>${post.summary}</p>
-          <a href="${post.slug}">Read More</a>
-        `;
-        blogGrid.appendChild(div);
-      });
-    }
+      fetch("blog-data.json?v=2")
+        .then((res) => res.json())
+        .then((data) => {
+          posts = data.reverse();
+          renderPosts(posts);
+        });
 
-    function filterBlogs() {
-      const search = searchInput.value.toLowerCase();
-      const category = categorySelect.value;
-      const filtered = posts.filter((post) => {
-        const text = `${post.title} ${post.summary} ${post.category}`.toLowerCase();
-        const matchesSearch = text.includes(search);
-        const matchesCategory = category === "all" || post.category === category;
-        return matchesSearch && matchesCategory;
-      });
-      renderPosts(filtered);
-    }
+      function renderPosts(postList) {
+        blogGrid.innerHTML = "";
+        postList.forEach((post) => {
+          const card = document.createElement("div");
+          card.className = "card post";
+          card.style.cssText = "background: #16181d; border: 1px solid #1f2229; border-radius: 12px; padding: 1.5rem; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between;";
+          card.onclick = () => window.location.href = post.slug;
+          
+          card.innerHTML = `
+            <div>
+              <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center;">
+                <span style="color: #00d4ff; background: rgba(0, 212, 255, 0.1); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">${post.category}</span>
+                <span style="color: #666; font-size: 0.75rem;">${post.date}</span>
+              </div>
+              <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.8rem; line-height: 1.3; font-weight: 700;">${post.title}</h3>
+              <p style="color: #9ca3af; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">${post.summary}</p>
+            </div>
+            <a href="${post.slug}" style="color: #00d4ff; text-decoration: none; font-weight: 700; font-size: 0.9rem;">Read Full Insight →</a>
+          `;
+          blogGrid.appendChild(card);
+        });
+      }
 
-    searchInput.addEventListener("input", filterBlogs);
-    categorySelect.addEventListener("change", filterBlogs);
-  </script>
+      function filterBlogs() {
+        const search = searchInput.value.toLowerCase();
+        const category = categorySelect.value;
+        const filtered = posts.filter((post) => {
+          const text = `${post.title} ${post.summary} ${post.category}`.toLowerCase();
+          const matchesSearch = text.includes(search);
+          const matchesCategory = category === "all" || post.category === category;
+          return matchesSearch && matchesCategory;
+        });
+        renderPosts(filtered);
+      }
+
+      searchInput.addEventListener("input", filterBlogs);
+      categorySelect.addEventListener("change", filterBlogs);
+    </script>
+</body>
+</html>
 
 </body>
 </html>

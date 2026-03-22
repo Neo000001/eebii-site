@@ -13,7 +13,7 @@
     "date": "July 2025",
     "author": "Eebii",
     "category": "network",
-    "summary": "Avoid slow networks and security issues — these 5 mistakes could be hurting your business."
+    "summary": "Avoid slow networks and security issues \u2014 these 5 mistakes could be hurting your business."
   },
   {
     "title": "Firewall vs Antivirus: What's the Difference?",
@@ -29,7 +29,7 @@
     "date": "July 2025",
     "author": "Eebii",
     "category": "security",
-    "summary": "From firewalls to backups — discover the top tips to protect your small business network."
+    "summary": "From firewalls to backups \u2014 discover the top tips to protect your small business network."
   },
   {
     "title": "Why Moving to the Cloud is a Smart Step for Your Business",
@@ -37,7 +37,7 @@
     "date": "July 2025",
     "author": "Eebii",
     "category": "cloud",
-    "summary": "Discover how cloud solutions make your business more secure, flexible, and cost-effective — and how Eebii can help."
+    "summary": "Discover how cloud solutions make your business more secure, flexible, and cost-effective \u2014 and how Eebii can help."
   },
   {
     "title": "Eebii Invoice: Free Tool vs. Pro Features",
@@ -77,7 +77,7 @@
     "date": "October 2025",
     "author": "Eebii Team",
     "category": "privacy",
-    "summary": "Eebii's tools run entirely in your browser — no data is uploaded or stored. Your privacy is 100% protected."
+    "summary": "Eebii's tools run entirely in your browser \u2014 no data is uploaded or stored. Your privacy is 100% protected."
   },
   {
     "title": "Eebii IT Consulting: Stop Buying the Wrong Tech",
@@ -117,7 +117,7 @@
     "date": "February 2026",
     "author": "Eebii Team",
     "category": "pdf",
-    "summary": "Merge, compress, convert, and manage PDFs easily — all in your browser with Eebii PDF Suite. No signup required."
+    "summary": "Merge, compress, convert, and manage PDFs easily \u2014 all in your browser with Eebii PDF Suite. No signup required."
   },
   {
     "title": "Top 3 Technology Investments for Small Businesses in 2026",
@@ -142,6 +142,21 @@
     "category": "invoicing",
     "summary": "Discover the best free GST invoice generator in India for 2026. Create professional invoices instantly without login.",
     "slug": "blog-best-free-invoice-generator.html"
+  },
+  {
+    "title": "Digital Marketing for Indian SMEs: 2026 Strategy Guide",
+    "slug": "blog-digital-marketing-sme.html",
+    "date": "March 2026",
+    "author": "Eebii Team",
+    "category": "marketing",
+    "summary": "Master the latest local SEO and WhatsApp marketing trends to grow your Indian small business in 2026."
+  },
+  {
+    "title": "The Power of Eebii Ecosystem: Generate, Sign, and Secure Invoices",
+    "slug": "blog-ecosystem-workflow.html",
+    "date": "March 2026",
+    "author": "Eebii Team",
+    "category": "productivity",
+    "summary": "Discover the seamless 2-minute workflow of combining Eebii Invoice with PDF Suite for professional business billing."
   }
 ]
-
