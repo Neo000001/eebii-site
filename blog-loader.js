@@ -3,16 +3,10 @@ fetch('blog-data.json')
   .then(posts => {
     const blogGrid = document.getElementById('blog-grid');
 
-    // Hide the static card if dynamic posts exist
-    if (posts.length > 0) {
-      const staticCard = document.querySelector('.post');
-      if (staticCard) staticCard.style.display = 'none';
-    }
-
     posts.reverse().slice(0, 3).forEach(post => {
       const card = document.createElement('div');
-      card.className = 'post';
-      card.style.cssText = 'text-align: left; cursor: pointer;';
+      card.className = 'card post';
+      card.style.cssText = 'text-align: left; cursor: pointer; height: 100%; justify-content: space-between;';
       card.onclick = () => window.location.href = post.slug;
       card.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem;">
