@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="topnav">
-    <div class="nav-brand">Eebii</div>
+    <nav class="topnav">
+    <a href="index.html" class="nav-brand" style="color: #fff; text-decoration: none;">Eebii</a>
+    <div class="nav-toggle" onclick="toggleMenu()">?</div>
     <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -17,57 +18,72 @@
       <a href="index.html#contact">Contact</a>
     </div>
   </nav>
+  <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
 
   <main class="blog" style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
-    <h1>📡 Top 5 Office Networking Mistakes (And How to Avoid Them)</h1>
+    <h1>?? Top 5 Office Networking Mistakes (And How to Avoid Them)</h1>
     <p class="meta"><em>By Eebii IT Solutions • July 2025 • Category: Network Setup</em></p>
 
     <p>Setting up an office network sounds simple — until things stop working. Many small businesses unknowingly make critical mistakes in their networking that lead to slow internet, security holes, and constant frustration.</p>
 
     <p>Here are the <strong>top 5 networking mistakes</strong> we see (and how you can avoid them).</p>
 
-    <h2>1. ❌ Using the Default Router Settings</h2>
+    <h2>1. ? Using the Default Router Settings</h2>
     <p>Leaving the default password, Wi-Fi name (SSID), or admin access open is a major security risk.</p>
     <p><strong>Fix</strong>: Change all default credentials and disable WPS. Set a strong Wi-Fi password.</p>
 
-    <h2>2. 🧱 Putting the Router in a Bad Spot</h2>
+    <h2>2. ?? Putting the Router in a Bad Spot</h2>
     <p>Hiding the router under desks or in closets reduces signal strength.</p>
     <p><strong>Fix</strong>: Place the router in a <strong>central open area</strong>, away from metal objects and walls.</p>
 
-    <h2>3. 🔌 Mixing Too Many Devices on Wi-Fi</h2>
+    <h2>3. ?? Mixing Too Many Devices on Wi-Fi</h2>
     <p>Smart TVs, phones, laptops, printers — all sharing Wi-Fi? That causes drops.</p>
     <p><strong>Fix</strong>: Use <strong>LAN (wired)</strong> connections for static devices (like desktops & printers).</p>
 
-    <h2>4. 🔒 No Firewall or Guest Network</h2>
+    <h2>4. ?? No Firewall or Guest Network</h2>
     <p>Allowing guests or staff to use your primary Wi-Fi exposes sensitive data.</p>
     <p><strong>Fix</strong>: Set up a <strong>guest Wi-Fi network</strong> and enable a proper firewall (like FortiGate or SonicWall).</p>
 
-    <h2>5. 💽 Not Backing Up Router Configuration</h2>
+    <h2>5. ?? Not Backing Up Router Configuration</h2>
     <p>After a power failure or reset, all settings vanish — unless you saved them.</p>
     <p><strong>Fix</strong>: Backup your router config after setup and store it safely.</p>
 
-    <h2>✅ Conclusion</h2>
+    <h2>? Conclusion</h2>
     <p>Your network is your business's backbone. A few smart decisions can save you <strong>hours of downtime</strong> and protect your data.</p>
 
-    <p>👉 <a href="index.html#contact">Contact us today</a> for help with secure and professional office setups.</p>
+    <p>?? <a href="index.html#contact">Contact us today</a> for help with secure and professional office setups.</p>
 
     <div style="text-align: center; margin-top: 3rem;">
       <a href="blog.html" style="padding: 0.6rem 1.2rem; background: #00d4ff; color: #0f2027; border-radius: 6px; font-weight: bold; text-decoration: none;">
-        🔙 Back to Blog
+        ?? Back to Blog
       </a>
     </div>
   </main>
 
-  <footer style="text-align: center; padding: 2rem 1rem; background: #20232a; color: #ccc;">
-    <div class="sitemap">
-      <a href="index.html">Home</a> |
-      <a href="about.html">About</a>
-      <a href="index.html#services">Services</a> |
-      <a href="blog.html">Blog</a> |
-      <a href="index.html#contact">Contact</a>
+    <footer style="text-align: center; padding: 3rem 1rem; background: #16181d; color: #ccc; border-top: 2px solid #222;">
+    <div class="sitemap" style="margin-bottom: 1.5rem;">
+      <a href="index.html" style="color: #ccc; text-decoration: none;">Home</a> |
+      <a href="about.html" style="color: #ccc; text-decoration: none;">About</a> |
+      <a href="index.html#services" style="color: #ccc; text-decoration: none;">Services</a> |
+      <a href="blog.html" style="color: #ccc; text-decoration: none;">Blog</a> |
+      <a href="index.html#contact" style="color: #ccc; text-decoration: none;">Contact</a>
     </div>
-    <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
-    <p>&copy; 2025 Eebii. All rights reserved.</p>
+    <div class="sitemap" style="margin-bottom: 2rem; font-size: 0.9rem;">
+      <a href="terms.html" style="color: #ccc; text-decoration: none;">Terms</a> |
+      <a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Disclaimer</a> |
+      <a href="privacy-policy.html" style="color: #ccc; text-decoration: none;">Privacy Policy</a>
+    </div>
+    <div style="margin-bottom: 1.5rem; opacity: 0.8; font-size: 0.85rem;">
+      <p>Eebii Ecosystem:
+        <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff;">Invoice Generator</a> &bull;
+        <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff;">PDF Suite</a> &bull;
+        <a href="eebii-flow.html" style="color: #00d4ff;">Eebii Flow</a> &bull;
+        <a href="academy.html" style="color: #00d4ff;">Academy</a>
+      </p>
+    </div>
+    <p style="margin-top: 1rem;">&#128231; <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+    <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.9rem;">&copy; 2026 Eebii. All rights reserved.</p>
   </footer>
 </body>
 </html>
+

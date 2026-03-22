@@ -1,66 +1,250 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Main Pages -->
+  <!-- ═══ CORE PAGES ═══════════════════════════════════ -->
   <url>
     <loc>https://eebii.com/</loc>
-    <lastmod>2025-07-19</lastmod>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
 
   <url>
     <loc>https://eebii.com/about.html</loc>
-    <lastmod>2025-07-19</lastmod>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://eebii.com/blog.html</loc>
-    <lastmod>2025-07-19</lastmod>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/privacy-policy.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.40</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/terms.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.40</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/disclaimer.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.40</priority>
+  </url>
+
+  <!-- ═══ EEBII PLATFORMS ══════════════════════════════ -->
+  <url>
+    <loc>https://eebii.com/academy.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/eebii-flow.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/learn.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══ SERVICE PAGES ════════════════════════════════ -->
+  <url>
+    <loc>https://eebii.com/service-it-support.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://eebii.com/secure-email-setup.html</loc>
-    <lastmod>2025-07-19</lastmod>
+    <loc>https://eebii.com/service-network-security.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/service-cloud-servers.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/service-it-consulting.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/service-firewall-vpn.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/service-it-training.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/service-web-hosting.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/service-software-dev.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- ═══ BLOG POSTS — TOOLS & PRODUCTS ═══════════════ -->
+  <url>
+    <loc>https://eebii.com/blog-best-free-invoice-generator.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://eebii.com/#services</loc>
-    <lastmod>2025-07-19</lastmod>
+    <loc>https://eebii.com/blog-invoice-pro-guide.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://eebii.com/#contact</loc>
-    <lastmod>2025-07-19</lastmod>
+    <loc>https://eebii.com/blog-gst-invoice-guide.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
-  <!-- Blog Posts -->
+  <url>
+    <loc>https://eebii.com/blog-pdf-suite.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/blog-pdf-compress.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/blog-eebii-workforce.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/blog-eebii-privacy-revolution.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══ BLOG POSTS — PLATFORMS ══════════════════════ -->
+  <url>
+    <loc>https://eebii.com/blog-eebii-academy.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/blog-eebii-flow.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- ═══ BLOG POSTS — SERVICES ════════════════════════ -->
+  <url>
+    <loc>https://eebii.com/blog-eebii-web-hosting.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/blog-eebii-software-development.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://eebii.com/blog-eebii-it-consulting.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══ BLOG POSTS — SECURITY & IT ══════════════════ -->
   <url>
     <loc>https://eebii.com/blog-firewall-vs-antivirus.html</loc>
-    <lastmod>2025-07-19</lastmod>
-    <priority>0.60</priority>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
   </url>
 
   <url>
     <loc>https://eebii.com/blog-networking-mistakes.html</loc>
-    <lastmod>2025-07-19</lastmod>
-    <priority>0.60</priority>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
   </url>
 
   <url>
     <loc>https://eebii.com/blog-remote-it-support.html</loc>
-    <lastmod>2025-07-19</lastmod>
-    <priority>0.60</priority>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
   </url>
 
   <url>
     <loc>https://eebii.com/blog-smallbiz-network-security.html</loc>
-    <lastmod>2025-07-19</lastmod>
-    <priority>0.60</priority>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- ═══ BLOG POSTS — INDUSTRY ════════════════════════ -->
+  <url>
+    <loc>https://eebii.com/blog-tech-trends-2026.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
 
 </urlset>

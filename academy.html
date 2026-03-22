@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eebii Academy | IT & Creative AI</title>
+  
+  <meta name="description" content="Eebii Academy - Professional e-learning platform covering Corporate IT Training, Cybersecurity, Unreal Engine Game Design, Blender AI, and VFX.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body { background-color: #0f1115; }
+    .service-hero {
+      background: linear-gradient(rgba(0, 15, 30, 0.8), rgba(0, 45, 75, 0.8));
+      padding: 8rem 2rem;
+      text-align: center;
+      color: #fff;
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .service-hero h1 { font-size: 4.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 900; letter-spacing: 2px; }
+    .service-hero h2 { font-size: 1.5rem; color: #66aaff; font-weight: bold; letter-spacing: 3px; margin-bottom: 2rem; }
+    .service-hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem auto; color: #ccc; }
+    
+    .course-content { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; color: #ddd; }
+    
+    .section-title {
+      font-size: 2.5rem;
+      color: #00d4ff;
+      text-align: center;
+      border-bottom: 2px solid #00d4ff;
+      display: inline-block;
+      margin: 3rem 0 2rem 50%;
+      transform: translateX(-50%);
+      padding-bottom: 0.5rem;
+    }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+    .feature-box { background: #111a22; padding: 2rem; border-radius: 12px; border: 1px solid #1c3042; text-align: center; transition: transform 0.3s ease; }
+    .feature-box:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1); }
+    .feature-box i { font-size: 3rem; color: #00d4ff; margin-bottom: 1rem; }
+    .feature-box h3 { font-size: 1.3rem; margin-bottom: 1rem; color: #fff; }
+    .feature-box p { color: #aaa; line-height: 1.6; }
+
+    /* specific creative courses styling */
+    .course-card {
+      background: #111a22;
+      border: 1px solid #1c3042;
+      border-left: 5px solid #00d4ff;
+      border-radius: 8px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .course-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1); }
+    .course-icon { font-size: 3.5rem; color: #fff; flex-shrink: 0; }
+    .course-body h3 { font-size: 1.8rem; color: #66aaff; margin-bottom: 1rem; }
+    .course-body ul { list-style: none; padding: 0; margin-top: 1rem; }
+    .course-body li { margin-bottom: 0.8rem; color: #bbb; display: flex; align-items: baseline; }
+    .course-body li::before { content: "\f054"; font-family: "Font Awesome 5 Free"; font-weight: 900; color: #00d4ff; font-size: 0.8rem; margin-right: 15px; }
+
+    /* Waitlist Form Styles */
+    .waitlist-form {
+      background: #1e1e1e;
+      border: 1px solid #2d2d2d;
+      border-radius: 12px;
+      padding: 3rem;
+      max-width: 600px;
+      margin: 4rem auto;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .waitlist-form input, .waitlist-form select {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background: #111;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .waitlist-form select {
+      cursor: pointer;
+    }
+    .waitlist-btn { 
+      display: inline-block; 
+      width: 100%;
+      padding: 1rem; 
+      background: #00d4ff; 
+      color: #0f2027; 
+      font-weight: bold; 
+      border-radius: 6px; 
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem; 
+      transition: background 0.3s ease; 
+    }
+    .waitlist-btn:hover { background: #fff; color: #000; }
+  </style>
+</head>
+<body>
+    <nav class="topnav">
+    <a href="index.html" class="nav-brand" style="color: #fff; text-decoration: none;">Eebii</a>
+    <div class="nav-toggle" onclick="toggleMenu()">?</div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+  <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
+
+  <header class="service-hero">
+    <h1>EEBII ACADEMY</h1>
+    <h2>LEARN. CREATE. INNOVATE.</h2>
+    <p>The dual-track e-learning platform bridging Corporate IT fundamentals with high-end, AI-powered Creative Production.</p>
+    <div style="margin-top: 2rem;">
+      <span style="background: rgba(0, 212, 255, 0.2); border: 1px solid #00d4ff; color: #00d4ff; padding: 0.8rem 1.5rem; border-radius: 30px; font-weight: bold; letter-spacing: 2px;">LAUNCHING IN 2026</span>
+    </div>
+  </header>
+
+  <main class="course-content">
+
+    <h2 class="section-title">Track 1: Corporate IT & Productivity</h2>
+    <p style="text-align: center; color: #aaa; margin-bottom: 3rem; font-size: 1.1rem;">
+      Empower your workforce with targeted mini-courses covering essential cyber defense, office productivity suites, and internal IT administration.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-box">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Cyber Defense</h3>
+        <p>Courses dedicated to spotting phishing emails, handling passwords securely, and mastering local data encryption.</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Software & Tools</h3>
+        <p>Master standard business tools including Eebii PDF Suite, enterprise CRM systems, and digital collaboration software.</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-network-wired"></i>
+        <h3>Basic IT Support</h3>
+        <p>Equip department heads with Level-1 troubleshooting, drastically reducing organizational IT downtime.</p>
+      </div>
+    </div>
+
+    <!-- TRACK 2: CREATIVE -->
+    <h2 class="section-title">Track 2: Creative AI & Game Design</h2>
+    <p style="text-align: center; color: #aaa; margin-bottom: 3rem; font-size: 1.1rem;">
+      Advanced digital asset creation and visual compositing powered by Artificial Intelligence.
+    </p>
+
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-gamepad"></i></div>
+      <div class="course-body">
+        <h3>Game Design in Unreal using AI</h3>
+        <p style="color:#aaa;">Master the entire pipeline of modern game development using cutting-edge AI integration within Unreal Engine.</p>
+        <ul>
+          <li>Project selection and ideation</li>
+          <li>Concept—Storyboarding, Visual Ref</li>
+          <li>3D/2D Asset development in Blender (Materials, texturing)</li>
+          <li>Blueprinting (Visual scripting)</li>
+          <li>Optimization & Packing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff" width="45" height="45">
+          <path d="M226.7 54.4c-94.8 5.7-160.8 107.5-127.3 194.2l-37.1-70.2C35 127 67.5 59.8 138.8 29.5c56.8-24.1 113.8-3.1 154.2 38.3L135 137.9c-23.7-41.9-57-55.6-70-55.6 -18 0-32.9 14.5-32.9 31.8 0 54 81 127.1 163.6 150.3 33.2 9.3 64.9 3.5 86.6-13.8L126.9 301.9c16.3 35.5 56.6 57 101.4 56.5 45.4-.5 86.3-24.5 104-62L226.7 54.4zm233 133.2c16 34.6 19.3 75 7.6 113.8-19.4 64.7-76.3 113.1-143.9 122.9-61.9-90.8-124-181.6-185.9-272.5 45.8 45.4 65 99.1 53.6 142.1-10.4 39.4-44.4 70.9-88 84.8 136-22 230.1-137.9 203.4-239.5l-62 119.5c1.1-23.2-9-46.7-27.4-61.5-14.7-11.8-33.8-16.7-52.5-14.8L459.7 187.6zM281.3 277l52.6 77c-17.1 11.2-39.7 13.5-62.1 6.2-22.1-7.2-40.4-23.9-50-45.7 6.4 12.5 17.5 22.8 30.6 28 17.2 6.9 36.9 3.3 50.8-8.8l-21.9-56.7zM182 376.6c29.1 13.5 61.5 14.8 91.5 3.7 69.8-25.9 119.6-96 122-171L248 359c-29.4-32.8-49.8-71.3-51.5-103.5-1.5-27.9 12.7-54.8 32.7-74.6L143 313.2c11.1 27 26.2 46.8 39 63.4zm44-118c21.8-16 50.3-15.5 71.9 2-10 13-26.6 22-55.8 20.6-5.8-.3-11.2-1.3-16.1-2.6z" />
+        </svg>
+      </div>
+      <div class="course-body">
+        <h3>Blender with AI</h3>
+        <p style="color:#aaa;">Accelerate your 3D pipeline by letting AI assist in modeling, texturing, and rendering.</p>
+        <ul>
+          <li>Concept – AI</li>
+          <li>Modeling – AI, assisted and manual</li>
+          <li>Texturing with Substance Painter</li>
+          <li>Environment Design – VFX Addons</li>
+          <li>Render – Blender / Unreal Engine</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-magic"></i></div>
+      <div class="course-body">
+        <h3>VFX Masterclass</h3>
+        <p style="color:#aaa;">Learn industry-standard visual composition tools to bring your 3D environments to life in post-production.</p>
+        <ul>
+          <li>Advanced Blender compositing</li>
+          <li>Adobe After Effects integration</li>
+          <li>Color grading and post-processing in Davinci Resolve</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Waitlist Registration -->
+    <div class="waitlist-form">
+      <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">Admissions Open Soon</h3>
+      <p style="color: #aaa; margin-bottom: 2rem;">Ready to master Corporate IT or AI Game Development? Join the waitlist.</p>
+      
+      <form id="waitlist-form">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="email" name="email" placeholder="Your Email Address" required>
+        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+        
+        <select name="interest" required>
+          <option value="" disabled selected>What do you want to study?</option>
+          <option value="Unreal Engine Game Design">Game Design in Unreal Engine using AI</option>
+          <option value="Blender with AI">Blender with AI</option>
+          <option value="VFX Masterclass">VFX Masterclass</option>
+          <option value="Corporate IT & Cyber Defense">Corporate IT & Cyber Defense</option>
+          <option value="Multiple Tracks">Interested in Multiple Tracks</option>
+        </select>
+        
+        <select name="profession" required>
+          <option value="" disabled selected>Are you currently working?</option>
+          <option value="Working Professional">Yes, I am a Working Professional</option>
+          <option value="Business Owner">Yes, I am a Business Owner</option>
+          <option value="Student">No, I am a Student</option>
+          <option value="Job Seeker">Looking for Job Opportunities</option>
+        </select>
+
+        <button type="submit" class="waitlist-btn">Join the Waitlist</button>
+      </form>
+      <p id="waitlist-status" style="display: none; color: #00d4ff; margin-top: 1.5rem; font-weight: bold;">?? You're on the list! We'll reach out soon.</p>
+    </div>
+
+    <script>
+      document.getElementById("waitlist-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        const status = document.getElementById("waitlist-status");
+        
+        // Add a hidden field to denote this came from Academy Waitlist
+        data.append("source", "Eebii Academy Waitlist");
+
+        try {
+          // Send to the same Eebii Formspree endpoint you use for contact
+          const res = await fetch("https://formspree.io/f/xldnazvb", {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" }
+          });
+          if (res.ok) {
+            status.textContent = "?? You're on the list! We'll text or email you soon.";
+            status.style.display = "block";
+            form.reset();
+          } else {
+            status.textContent = "? There was a problem joining the waitlist.";
+            status.style.color = "#ff4d4d";
+            status.style.display = "block";
+          }
+        } catch (err) {
+          status.textContent = "? Error submitting. Please try again later.";
+          status.style.color = "#ff4d4d";
+          status.style.display = "block";
+        }
+      });
+    </script>
+
+    <div style="text-align: center; margin-top: 4rem; color: #888;">
+      <p style="letter-spacing: 2px;">POWERED BY EEBII</p>
+      <p>www.eebii.com &nbsp;&nbsp;|&nbsp;&nbsp; learn.eebii.com</p>
+    </div>
+
+  </main>
+
+    <footer style="text-align: center; padding: 3rem 1rem; background: #16181d; color: #ccc; border-top: 2px solid #222;">
+    <div class="sitemap" style="margin-bottom: 1.5rem;">
+      <a href="index.html" style="color: #ccc; text-decoration: none;">Home</a> |
+      <a href="about.html" style="color: #ccc; text-decoration: none;">About</a> |
+      <a href="index.html#services" style="color: #ccc; text-decoration: none;">Services</a> |
+      <a href="blog.html" style="color: #ccc; text-decoration: none;">Blog</a> |
+      <a href="index.html#contact" style="color: #ccc; text-decoration: none;">Contact</a>
+    </div>
+    <div class="sitemap" style="margin-bottom: 2rem; font-size: 0.9rem;">
+      <a href="terms.html" style="color: #ccc; text-decoration: none;">Terms</a> |
+      <a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Disclaimer</a> |
+      <a href="privacy-policy.html" style="color: #ccc; text-decoration: none;">Privacy Policy</a>
+    </div>
+    <div style="margin-bottom: 1.5rem; opacity: 0.8; font-size: 0.85rem;">
+      <p>Eebii Ecosystem:
+        <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff;">Invoice Generator</a> &bull;
+        <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff;">PDF Suite</a> &bull;
+        <a href="eebii-flow.html" style="color: #00d4ff;">Eebii Flow</a> &bull;
+        <a href="academy.html" style="color: #00d4ff;">Academy</a>
+      </p>
+    </div>
+    <p style="margin-top: 1rem;">&#128231; <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+    <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.9rem;">&copy; 2026 Eebii. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="topnav">
-    <div class="nav-brand">Eebii</div>
+    <nav class="topnav">
+    <a href="index.html" class="nav-brand" style="color: #fff; text-decoration: none;">Eebii</a>
+    <div class="nav-toggle" onclick="toggleMenu()">?</div>
     <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -17,9 +18,10 @@
       <a href="index.html#contact">Contact</a>
     </div>
   </nav>
+  <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
 
   <main class="blog" style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
-    <h1>💻 Why Every Small Business Needs Remote IT Support</h1>
+    <h1>?? Why Every Small Business Needs Remote IT Support</h1>
     <p class="meta"><em>By Eebii IT Solutions • July 2025 • Category: Remote Support</em></p>
 
     <p>As a small business owner, you're juggling everything — sales, customer service, operations, and now, technical issues too.</p>
@@ -32,7 +34,7 @@
 
     <p>These are <strong>real interruptions</strong> that kill your productivity.</p>
 
-    <h2>🛠️ The Solution: Remote IT Support (From Eebii)</h2>
+    <h2>??? The Solution: Remote IT Support (From Eebii)</h2>
     <p>With <strong>Remote IT Support</strong>, you get <strong>instant access to expert help</strong> — without waiting for someone to visit your office.</p>
 
     <h3>Here’s what we do remotely:</h3>
@@ -48,15 +50,15 @@
 
     <blockquote>All done securely using AnyDesk or TeamViewer</blockquote>
 
-    <h2>🎯 Benefits to Your Business</h2>
+    <h2>?? Benefits to Your Business</h2>
     <ul>
-      <li>💰 <strong>Save Money</strong> — No need to hire in-house IT</li>
-      <li>⏱️ <strong>Save Time</strong> — No waiting days for visits</li>
-      <li>🔒 <strong>Stay Secure</strong> — We fix & prevent future problems</li>
-      <li>📍 <strong>Available Anywhere in India</strong></li>
+      <li>?? <strong>Save Money</strong> — No need to hire in-house IT</li>
+      <li>?? <strong>Save Time</strong> — No waiting days for visits</li>
+      <li>?? <strong>Stay Secure</strong> — We fix & prevent future problems</li>
+      <li>?? <strong>Available Anywhere in India</strong></li>
     </ul>
 
-    <h2>📦 Plans for All Sizes</h2>
+    <h2>?? Plans for All Sizes</h2>
     <p>We offer support as:</p>
     <ul>
       <li>One-time fix sessions</li>
@@ -64,29 +66,43 @@
       <li>Full IT setup consultations</li>
     </ul>
 
-    <h2>📨 Ready to Get Help Instantly?</h2>
+    <h2>?? Ready to Get Help Instantly?</h2>
     <p>
-      👉 <a href="index.html#contact">Send us a message</a><br />
+      ?? <a href="index.html#contact">Send us a message</a><br />
       Let Eebii handle your IT… so you can focus on your business.
     </p>
 
     <div style="text-align: center; margin-top: 3rem;">
       <a href="blog.html" style="padding: 0.6rem 1.2rem; background: #00d4ff; color: #0f2027; border-radius: 6px; font-weight: bold; text-decoration: none;">
-        🔙 Back to Blog
+        ?? Back to Blog
       </a>
     </div>
   </main>
 
-  <footer style="text-align: center; padding: 2rem 1rem; background: #20232a; color: #ccc;">
-    <div class="sitemap">
-      <a href="index.html">Home</a> |
-      <a href="about.html">About</a> |
-      <a href="index.html#services">Services</a> |
-      <a href="blog.html">Blog</a> |
-      <a href="index.html#contact">Contact</a>
+    <footer style="text-align: center; padding: 3rem 1rem; background: #16181d; color: #ccc; border-top: 2px solid #222;">
+    <div class="sitemap" style="margin-bottom: 1.5rem;">
+      <a href="index.html" style="color: #ccc; text-decoration: none;">Home</a> |
+      <a href="about.html" style="color: #ccc; text-decoration: none;">About</a> |
+      <a href="index.html#services" style="color: #ccc; text-decoration: none;">Services</a> |
+      <a href="blog.html" style="color: #ccc; text-decoration: none;">Blog</a> |
+      <a href="index.html#contact" style="color: #ccc; text-decoration: none;">Contact</a>
     </div>
-    <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
-    <p>&copy; 2025 Eebii. All rights reserved.</p>
+    <div class="sitemap" style="margin-bottom: 2rem; font-size: 0.9rem;">
+      <a href="terms.html" style="color: #ccc; text-decoration: none;">Terms</a> |
+      <a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Disclaimer</a> |
+      <a href="privacy-policy.html" style="color: #ccc; text-decoration: none;">Privacy Policy</a>
+    </div>
+    <div style="margin-bottom: 1.5rem; opacity: 0.8; font-size: 0.85rem;">
+      <p>Eebii Ecosystem:
+        <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff;">Invoice Generator</a> &bull;
+        <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff;">PDF Suite</a> &bull;
+        <a href="eebii-flow.html" style="color: #00d4ff;">Eebii Flow</a> &bull;
+        <a href="academy.html" style="color: #00d4ff;">Academy</a>
+      </p>
+    </div>
+    <p style="margin-top: 1rem;">&#128231; <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+    <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.9rem;">&copy; 2026 Eebii. All rights reserved.</p>
   </footer>
 </body>
 </html>
+

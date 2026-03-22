@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eebii Flow — WhatsApp Business SaaS Platform | Bulk Messaging & Campaign Automation</title>
+    <meta name="description"
+        content="Eebii Flow is a production-ready WhatsApp Business API SaaS platform for Indian businesses. Multi-tenant, 50+ API endpoints, transparent billing, campaign automation and enterprise security. Early access open.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050d05;
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #ddd;
+        }
+
+        /* ─── Hero ────────────────────────────── */
+        .flow-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 5rem;
+            background: radial-gradient(ellipse at 50% 0%, rgba(37, 211, 102, 0.18) 0%, transparent 65%), #050d05;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flow-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2325D366' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            pointer-events: none;
+        }
+
+        .production-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 255, 0.12);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            color: #00d4ff;
+            padding: 0.5rem 1.3rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .production-badge span.dot {
+            width: 8px;
+            height: 8px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: pulse 1.5s ease infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(1.4);
+            }
+        }
+
+        .flow-hero h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 900;
+            color: #fff;
+            margin: 0 0 0.5rem;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+
+        .flow-hero h1 span {
+            color: #00d4ff;
+        }
+
+        .flow-hero .tagline {
+            font-size: 1.3rem;
+            color: #888;
+            max-width: 650px;
+            margin: 1.5rem auto 3rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .num {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #00d4ff;
+            line-height: 1;
+        }
+
+        .hero-stat .label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1.1rem 2.5rem;
+            background: #00d4ff;
+            color: #000;
+            font-weight: 800;
+            font-size: 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 1.1rem 2.5rem;
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            color: #00d4ff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ─── Section Wrapper ───────────────── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-label {
+            color: #00d4ff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin: 0 0 1rem;
+        }
+
+        .section-sub {
+            color: #888;
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #0d200d;
+            margin: 0;
+        }
+
+        /* ─── Feature Grid ───────────────────── */
+        .feat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .feat-card {
+            background: #0a170a;
+            border: 1px solid #1a3d1a;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feat-card:hover {
+            transform: translateY(-6px);
+            border-color: #00d4ff;
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .feat-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 212, 255, 0.12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feat-icon i {
+            font-size: 1.5rem;
+            color: #00d4ff;
+        }
+
+        .feat-card h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin: 0 0 0.8rem;
+        }
+
+        .feat-card p {
+            color: #777;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* ─── Comparison Table ───────────────── */
+        .compare-section {
+            background: #070f07;
+            border-top: 1px solid #0d200d;
+            border-bottom: 1px solid #0d200d;
+        }
+
+        .compare-table-wrap {
+            overflow-x: auto;
+            margin-top: 3rem;
+        }
+
+        table.compare {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        table.compare th {
+            background: #0d1f0d;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            font-weight: 700;
+            border: 1px solid #1a3d1a;
+        }
+
+        table.compare th.highlight {
+            background: rgba(37, 211, 102, 0.15);
+            color: #00d4ff;
+        }
+
+        table.compare td {
+            padding: 0.9rem 1.5rem;
+            border: 1px solid #111f11;
+            color: #aaa;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        table.compare td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: #ccc;
+        }
+
+        table.compare td.highlight {
+            color: #00d4ff;
+            font-weight: 700;
+        }
+
+        .yes {
+            color: #00d4ff;
+            font-size: 1.1rem;
+        }
+
+        .no {
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        /* ─── Stack Pills ────────────────────── */
+        .stack-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 3rem;
+        }
+
+        .tech-pill {
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid #1a3d1a;
+            background: #0a170a;
+            color: #00d4ff;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ─── Architecture ───────────────────── */
+        .arch-box {
+            background: #0a170a;
+            border: 1px solid #1a3d1a;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #00d4ff;
+            line-height: 2;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* ─── Metrics ────────────────────────── */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .metric-card {
+            background: #0a170a;
+            border: 1px solid #1a3d1a;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .metric-card .big {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00d4ff;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-card .desc {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* ─── Waitlist ───────────────────────── */
+        .waitlist-section {
+            background: radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.12) 0%, transparent 70%), #050d05;
+        }
+
+        .waitlist-card {
+            background: #0a170a;
+            border: 1px solid #1a3d1a;
+            border-radius: 20px;
+            max-width: 620px;
+            margin: 4rem auto 0;
+            padding: 3.5rem;
+            text-align: center;
+        }
+
+        .waitlist-card h2 {
+            color: #fff;
+            font-size: 2rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .waitlist-card p {
+            color: #777;
+            margin: 0 0 2.5rem;
+        }
+
+        .waitlist-card input,
+        .waitlist-card select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 50px;
+            border: 1px solid #1a3d1a;
+            background: #070f07;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        .waitlist-card input:focus,
+        .waitlist-card select:focus {
+            border-color: #00d4ff;
+        }
+
+        .flow-submit {
+            width: 100%;
+            padding: 1.1rem;
+            background: #00d4ff;
+            color: #000;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .flow-submit:hover {
+            background: #1db954;
+        }
+
+        /* ─── Footer ─────────────────────────── */
+        .flow-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #030803;
+            border-top: 1px solid #0d200d;
+            color: #555;
+        }
+
+        .flow-footer a {
+            color: #00d4ff;
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.9rem;
+        }
+
+        .flow-footer a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <nav class="topnav">
+        <a href="index.html" class="nav-brand" style="color: inherit; text-decoration: none;">Eebii</a>
+        <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="index.html#services">Services</a>
+            <a href="academy.html">Academy</a>
+            <a href="blog.html">Blog</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ══════════════════════════════════ -->
+    <header class="flow-hero">
+        <div class="production-badge"><span class="dot"></span> Production Ready — v1.0.0</div>
+        <h1>Eebii <span>Flow</span></h1>
+        <p class="tagline">Enterprise-grade WhatsApp Business SaaS Platform. Multi-tenant. Transparent billing. Campaign
+            automation. Built for Indian SMEs.</p>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="num">15,000+</div>
+                <div class="label">Lines of Code</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">50+</div>
+                <div class="label">API Endpoints</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">79+</div>
+                <div class="label">Features Built</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">20+</div>
+                <div class="label">DB Tables</div>
+            </div>
+        </div>
+
+        <div class="hero-btns">
+            <a href="#waitlist" class="btn-primary"><i class="fab fa-whatsapp"></i> &nbsp;Get Early Access</a>
+            <a href="#features" class="btn-outline">Explore Features</a>
+        </div>
+    </header>
+
+    <hr class="divider">
+
+    <!-- ═══ FEATURES ═══════════════════════════════ -->
+    <div id="features">
+        <div class="section">
+            <div class="section-label">Platform Features</div>
+            <h2 class="section-title">Everything Your Business Needs</h2>
+            <p class="section-sub">79+ features built and ready. From single message sends to bulk campaigns hitting
+                10,000+ contacts.</p>
+
+            <div class="feat-grid">
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>Bulk Messaging Engine</h3>
+                    <p>Send personalized, template-approved messages to thousands of contacts simultaneously via the
+                        official WhatsApp Cloud API. No bans, no grey-area tools.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Campaign Automation</h3>
+                    <p>Schedule drip campaigns, follow-up sequences, and reminder flows to go out automatically. Pause,
+                        resume, and track every campaign in real-time.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-wallet"></i></div>
+                    <h3>Transparent Wallet Billing</h3>
+                    <p>Prepaid wallet system with full cost breakdown: Meta Cost + Platform Fee + Tax. No hidden
+                        charges. Auto-recharge when balance runs low.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Real-Time Analytics</h3>
+                    <p>Delivery receipts, read rates, click tracking and campaign performance dashboards. Know exactly
+                        what is working every single minute.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Real-Time Inbox</h3>
+                    <p>Threaded conversation management, agent assignment, internal notes, and WebSocket live updates.
+                        Your team can handle thousands of customer chats.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-reply"></i></div>
+                    <h3>Chatbot Auto-Replies</h3>
+                    <p>Build keyword-triggered instant responses. Customers get immediate answers around the clock
+                        without human agents being present.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-users"></i></div>
+                    <h3>Team & Role Management</h3>
+                    <p>Multi-tenant workspaces with full RBAC. Roles: Owner, Manager, Agent. Give your accountant
+                        read-only, your sales reps send-only.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-address-book"></i></div>
+                    <h3>Contact Management</h3>
+                    <p>Import via CSV, segment by tags, detect duplicates, validate international numbers. Full contact
+                        history with every conversation.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Enterprise Security</h3>
+                    <p>Dual-token JWT auth, bcrypt hashing, account lockout, rate limiting, HMAC webhook signatures,
+                        full Audit Log for compliance.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Ad & Campaign Manager</h3>
+                    <p>Create and manage WhatsApp Click-to-Message ad campaigns. Track ad performance, leads, and
+                        cost-per-acquisition directly from the dashboard.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon"><i class="fas fa-plug"></i></div>
+                    <h3>50+ REST API Endpoints</h3>
+                    <p>Full programmatic access. Integrate Eebii Flow with your Shopify store, CRM, or Zapier workflow.
+                        Webhooks, API keys and complete documentation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ═══ COMPARE ════════════════════════════════ -->
+    <div class="compare-section">
+        <div class="section">
+            <div class="section-label">Competitive Analysis</div>
+            <h2 class="section-title">Eebii Flow vs The Competition</h2>
+            <p class="section-sub">30–50% cheaper than Twilio, MessageBird & Gupshup — and our pricing is 100%
+                transparent.</p>
+
+            <div class="compare-table-wrap">
+                <table class="compare">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;">Feature</th>
+                            <th class="highlight"><i class="fab fa-whatsapp"></i> Eebii Flow</th>
+                            <th>Twilio</th>
+                            <th>Gupshup</th>
+                            <th>Interakt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Transparent Pricing</td>
+                            <td class="highlight"><span class="yes">✓</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="yes">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Full Cost Breakdown</td>
+                            <td class="highlight"><span class="yes">✓</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Auto-Recharge Wallet</td>
+                            <td class="highlight"><span class="yes">✓</span></td>
+                            <td><span class="yes">✓</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Real-Time Inbox</td>
+                            <td class="highlight"><span class="yes">✓</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="yes">✓</span></td>
+                            <td><span class="yes">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Spam Template Detection</td>
+                            <td class="highlight"><span class="yes">✓</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Full Audit Logs</td>
+                            <td class="highlight"><span class="yes">✓</span></td>
+                            <td><span class="yes">✓</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>RBAC (4 Roles)</td>
+                            <td class="highlight"><span class="yes">✓</span></td>
+                            <td><span class="yes">✓</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="yes">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ad Campaign Manager</td>
+                            <td class="highlight"><span class="yes">✓</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                            <td><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>India Price (per msg)</td>
+                            <td class="highlight" style="color:#00d4ff;font-weight:900;">₹1.24</td>
+                            <td>~₹1.73</td>
+                            <td>~₹1.80</td>
+                            <td>₹1.50</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+
+
+    <hr class="divider">
+
+    <!-- ═══ PRICING ════════════════════════════════ -->
+    <div class="compare-section">
+        <div class="section">
+            <div class="section-label">Pricing</div>
+            <h2 class="section-title">Simple. Transparent. Pay As You Go.</h2>
+            <p class="section-sub">No monthly subscription traps. Load your wallet, send messages, and see exactly what
+                you pay — broken down to the last rupee.</p>
+
+            <div
+                style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+                <div class="metric-card">
+                    <div class="big">&#8377;1.24</div>
+                    <div class="desc">Per marketing message in India — the most competitive rate available</div>
+                </div>
+                <div class="metric-card">
+                    <div class="big">98%</div>
+                    <div class="desc">Average WhatsApp open rate — vs 18% for email campaigns</div>
+                </div>
+                <div class="metric-card">
+                    <div class="big">50%</div>
+                    <div class="desc">Cheaper per message than Twilio &amp; Gupshup for Indian businesses</div>
+                </div>
+            </div>
+
+            <!-- Per-Message Cost Breakdown -->
+            <h3 style="color:#fff; font-size:1.4rem; margin:4rem 0 0.5rem; font-weight:800;">What You Actually Pay Per
+                Message</h3>
+            <p style="color:#777; margin-bottom:2rem; font-size:1rem;">Your wallet dashboard shows every cost component
+                separately. No bundled opaque pricing.</p>
+            <div style="overflow-x:auto;">
+                <table class="compare" style="min-width:500px;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;">Cost Component</th>
+                            <th class="highlight">India</th>
+                            <th>USA</th>
+                            <th>UAE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WhatsApp (Meta) Base Cost</td>
+                            <td class="highlight">$0.0136</td>
+                            <td>$0.0313</td>
+                            <td>$0.0624</td>
+                        </tr>
+                        <tr>
+                            <td>Eebii Platform Fee (10%)</td>
+                            <td class="highlight">$0.00136</td>
+                            <td>$0.00313</td>
+                            <td>$0.00624</td>
+                        </tr>
+                        <tr>
+                            <td>Tax</td>
+                            <td class="highlight">0%</td>
+                            <td>0%</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:800; color:#fff;">Your Total Cost</td>
+                            <td class="highlight" style="font-weight:900; font-size:1.2rem; color:#00d4ff;">&#8377;1.24
+                            </td>
+                            <td style="color:#00d4ff; font-weight:700;">~&#8377;2.82</td>
+                            <td style="color:#00d4ff; font-weight:700;">~&#8377;5.64</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="color:#555; font-size:0.85rem; margin-top:1rem;">* Prices converted at &#8377;83/$1. Marketing
+                message rates shown. Utility &amp; Authentication messages are even cheaper.</p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ═══ WAITLIST ═══════════════════════════════ -->
+    <div class="waitlist-section" id="waitlist">
+        <div class="section" style="text-align:center;">
+            <div class="section-label">Early Access</div>
+            <h2 class="section-title" style="margin:0 auto 1rem;">Be First In Line</h2>
+            <p class="section-sub" style="margin: 0 auto;">
+                Eebii Flow is nearing public launch. Register now for exclusive early pricing and priority onboarding.
+            </p>
+
+            <div class="waitlist-card">
+                <h2>Request Early Access</h2>
+                <p>Secure your account before the official launch. Early users get exclusive pricing.</p>
+                <form id="flow-form">
+                    <input type="text" name="name" placeholder="Your Full Name" required>
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <input type="tel" name="phone" placeholder="Your WhatsApp Number" required>
+                    <select name="business_size" required>
+                        <option value="" disabled selected>Size of your business?</option>
+                        <option>Solo / Freelancer (1 person)</option>
+                        <option>Small Team (2–10 employees)</option>
+                        <option>Medium Business (11–50 employees)</option>
+                        <option>Large Enterprise (50+ employees)</option>
+                    </select>
+                    <select name="interest" required>
+                        <option value="" disabled selected>Primary use case?</option>
+                        <option>Bulk Marketing Campaigns</option>
+                        <option>Customer Support Inbox</option>
+                        <option>Order & Shipping Notifications</option>
+                        <option>Ad Campaign Management</option>
+                        <option>All of the Above</option>
+                    </select>
+                    <button type="submit" class="flow-submit">🚀 &nbsp;Request Early Access</button>
+                </form>
+                <p id="flow-status" style="display:none; color:#00d4ff; margin-top:1.5rem; font-weight:bold;">
+                    🎉 You're on the list! We'll WhatsApp you soon with your onboarding link.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("flow-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const data = new FormData(e.target);
+            data.append("source", "Eebii Flow — Early Access Waitlist");
+            const status = document.getElementById("flow-status");
+            try {
+                const res = await fetch("https://formspree.io/f/xldnazvb", {
+                    method: "POST", body: data, headers: { Accept: "application/json" }
+                });
+                if (res.ok) {
+                    status.style.display = "block";
+                    e.target.reset();
+                }
+            } catch (err) { }
+        });
+    </script>
+
+    <footer class="flow-footer">
+        <div style="margin-bottom: 1rem;">
+            <a href="index.html">Home</a>
+            <a href="academy.html">Academy</a>
+            <a href="blog.html">Blog</a>
+            <a href="blog-eebii-flow.html">Read Announcement</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
+        <p style="margin-top:0.5rem; font-size:0.85rem;">Built with ❤️ by Eebii IT &nbsp;|&nbsp; Version 1.0.0
+            &nbsp;|&nbsp; Status: Production Ready</p>
+        <p>&copy; 2026 Eebii. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

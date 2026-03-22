@@ -99,9 +99,9 @@ a {
 }
 .hero-btn {
   background: #00d4ff;
-  color: #0f2027;
+  color: #000;
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 40px;
   text-decoration: none;
   font-weight: bold;
 }
@@ -118,8 +118,10 @@ a {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Force 4 columns */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  align-items: stretch;
+  perspective: 1500px; /* Enable 3D depth for children */
 }
 @media (max-width: 1024px) {
   .grid {
@@ -128,21 +130,38 @@ a {
 }
 @media (max-width: 600px) {
   .grid {
-    grid-template-columns: 1fr; /* Stack on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Balanced columns */
   }
 }
 .card {
-  background: #1e1e1e;
+  background: rgba(30, 30, 30, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   color: #fff;
-  padding: 1.5rem;
-  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 250px;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.1), transparent 70%);
+  pointer-events: none;
 }
 .card:hover {
-  background: #2c2c2c;
-  transform: translateY(-5px);
+  transform: translateY(-15px) scale(1.03) rotateX(4deg) rotateY(2deg);
+  background: rgba(40, 40, 40, 0.85);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.15);
 }
 .card i {
   font-size: 2rem;
@@ -153,12 +172,14 @@ a {
 }
 .card .info {
   font-size: 0.9rem;
-  color: #ccc;
+  color: #aaa;
   margin-top: 1rem;
-  display: none;
+  display: none; /* Hidden until clicked */
+  line-height: 1.5;
 }
 .card .info.show {
-  display: block;
+  display: block; /* Persistent open state */
+  margin-top: 1rem;
 }
 
 /* Blog Section */

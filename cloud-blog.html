@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="topnav">
-    <div class="nav-brand">Eebii</div>
+    <nav class="topnav">
+    <a href="index.html" class="nav-brand" style="color: #fff; text-decoration: none;">Eebii</a>
+    <div class="nav-toggle" onclick="toggleMenu()">?</div>
     <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -17,57 +18,72 @@
       <a href="index.html#contact">Contact</a>
     </div>
   </nav>
+  <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
 
   <main class="blog" style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
-    <h1>☁️ Why Moving to the Cloud is a Smart Step for Your Business</h1>
+    <h1>?? Why Moving to the Cloud is a Smart Step for Your Business</h1>
     <p class="meta"><em>By Eebii IT Solutions • July 2025 • Category: Eebii Cloud</em></p>
 
     <p>In today’s fast-moving digital world, your business needs to be fast, secure, and flexible. That’s exactly what cloud solutions offer.</p>
     <p>At <strong>Eebii</strong>, we help businesses like yours <strong>migrate to the cloud confidently and securely</strong> — so you can focus on growing, not troubleshooting.</p>
 
-    <h2>🔍 What is the Cloud?</h2>
+    <h2>?? What is the Cloud?</h2>
     <p>The cloud is a system of internet-based servers used to store, manage, and access your data or services — instead of relying on local devices or physical servers in your office.</p>
 
-    <h2>🌟 Benefits of Cloud for Your Business</h2>
+    <h2>?? Benefits of Cloud for Your Business</h2>
     <ul>
-      <li>✅ <strong>Access Anywhere, Anytime:</strong> Work from the office, home, or on the move.</li>
-      <li>🔐 <strong>Enhanced Security:</strong> We implement encryption, firewalls, and access control.</li>
-      <li>📈 <strong>Scalable Resources:</strong> Easily expand or reduce services as your business evolves.</li>
-      <li>💸 <strong>Cost-Effective:</strong> No need for expensive on-site servers and maintenance.</li>
-      <li>🔄 <strong>Automatic Backups:</strong> Reliable backup and restore systems prevent data loss.</li>
+      <li>? <strong>Access Anywhere, Anytime:</strong> Work from the office, home, or on the move.</li>
+      <li>?? <strong>Enhanced Security:</strong> We implement encryption, firewalls, and access control.</li>
+      <li>?? <strong>Scalable Resources:</strong> Easily expand or reduce services as your business evolves.</li>
+      <li>?? <strong>Cost-Effective:</strong> No need for expensive on-site servers and maintenance.</li>
+      <li>?? <strong>Automatic Backups:</strong> Reliable backup and restore systems prevent data loss.</li>
     </ul>
 
-    <h2>🛠️ Eebii Cloud Services Include:</h2>
+    <h2>??? Eebii Cloud Services Include:</h2>
     <ul>
-      <li>☁️ Cloud storage & file server setup</li>
-      <li>📤 Google Workspace / Microsoft 365 migration</li>
-      <li>🔄 Hybrid cloud deployment</li>
-      <li>🔐 Secure remote access solutions</li>
-      <li>👨‍🏫 Staff training and post-deployment support</li>
+      <li>?? Cloud storage & file server setup</li>
+      <li>?? Google Workspace / Microsoft 365 migration</li>
+      <li>?? Hybrid cloud deployment</li>
+      <li>?? Secure remote access solutions</li>
+      <li>????? Staff training and post-deployment support</li>
     </ul>
 
-    <h2>🚀 Start Your Cloud Journey with Eebii</h2>
+    <h2>?? Start Your Cloud Journey with Eebii</h2>
     <p>Whether you're moving your first files or planning a complete cloud infrastructure, <strong>Eebii</strong> is your trusted IT partner.</p>
 
-    <p>👉 <a href="index.html#contact">Contact us</a> today for a free consultation and take the first step to a smarter, cloud-powered business.</p>
+    <p>?? <a href="index.html#contact">Contact us</a> today for a free consultation and take the first step to a smarter, cloud-powered business.</p>
 
     <div style="text-align: center; margin-top: 3rem;">
       <a href="blog.html" style="padding: 0.6rem 1.2rem; background: #00d4ff; color: #0f2027; border-radius: 6px; font-weight: bold; text-decoration: none;">
-        🔙 Back to Blog
+        ?? Back to Blog
       </a>
     </div>
   </main>
 
-  <footer style="text-align: center; padding: 2rem 1rem; background: #20232a; color: #ccc;">
-    <div class="sitemap">
-      <a href="index.html">Home</a> |
-      <a href="about.html">About</a> |
-      <a href="index.html#services">Services</a> |
-      <a href="blog.html">Blog</a> |
-      <a href="index.html#contact">Contact</a>
+    <footer style="text-align: center; padding: 3rem 1rem; background: #16181d; color: #ccc; border-top: 2px solid #222;">
+    <div class="sitemap" style="margin-bottom: 1.5rem;">
+      <a href="index.html" style="color: #ccc; text-decoration: none;">Home</a> |
+      <a href="about.html" style="color: #ccc; text-decoration: none;">About</a> |
+      <a href="index.html#services" style="color: #ccc; text-decoration: none;">Services</a> |
+      <a href="blog.html" style="color: #ccc; text-decoration: none;">Blog</a> |
+      <a href="index.html#contact" style="color: #ccc; text-decoration: none;">Contact</a>
     </div>
-    <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
-    <p>&copy; 2025 Eebii. All rights reserved.</p>
+    <div class="sitemap" style="margin-bottom: 2rem; font-size: 0.9rem;">
+      <a href="terms.html" style="color: #ccc; text-decoration: none;">Terms</a> |
+      <a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Disclaimer</a> |
+      <a href="privacy-policy.html" style="color: #ccc; text-decoration: none;">Privacy Policy</a>
+    </div>
+    <div style="margin-bottom: 1.5rem; opacity: 0.8; font-size: 0.85rem;">
+      <p>Eebii Ecosystem:
+        <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff;">Invoice Generator</a> &bull;
+        <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff;">PDF Suite</a> &bull;
+        <a href="eebii-flow.html" style="color: #00d4ff;">Eebii Flow</a> &bull;
+        <a href="academy.html" style="color: #00d4ff;">Academy</a>
+      </p>
+    </div>
+    <p style="margin-top: 1rem;">&#128231; <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+    <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.9rem;">&copy; 2026 Eebii. All rights reserved.</p>
   </footer>
 </body>
 </html>
+

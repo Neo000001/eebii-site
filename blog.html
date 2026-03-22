@@ -1,17 +1,20 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Blog | Eebii IT Solutions</title>
+  <meta name="description" content="Read the latest IT tips, cybersecurity guides, product announcements and business technology insights from the Eebii team.">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
 
   <!-- Navigation -->
-  <nav class="topnav">
-    <div class="nav-brand">Eebii</div>
+    <nav class="topnav">
+    <a href="index.html" class="nav-brand" style="color: #fff; text-decoration: none;">Eebii</a>
+    <div class="nav-toggle" onclick="toggleMenu()">?</div>
     <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -20,44 +23,68 @@
       <a href="index.html#contact">Contact</a>
     </div>
   </nav>
+  <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
 
   <!-- Blog Header -->
   <main class="blog" style="padding: 4rem 2rem;">
-    <h1 style="text-align: center; margin-bottom: 2rem;">📚 Our Blog</h1>
+    <h1 style="text-align: center; margin-bottom: 2rem;">ðŸ“š Our Blog</h1>
 
     <!-- Search + Filter -->
     <div class="blog-filters" style="text-align: center; margin-bottom: 2rem;">
-      <input type="text" id="blogSearch" placeholder="🔍 Search blog..." style="padding: 0.5rem; width: 250px; border-radius: 6px;" />
+      <input type="text" id="blogSearch" placeholder="ðŸ” Search blog..." style="padding: 0.5rem; width: 250px; border-radius: 6px;" />
       <select id="blogCategory" style="padding: 0.5rem; margin-left: 1rem; border-radius: 6px;">
         <option value="all">All Categories</option>
         <option value="support">Remote Support</option>
         <option value="network">Network</option>
         <option value="cloud">Cloud</option>
         <option value="security">Security</option>
+        <option value="service">Service</option>
+        <option value="pdf">PDF Tools</option>
+        <option value="invoicing">Invoicing</option>
+        <option value="tools">Other Tools</option>
+        <option value="privacy">Privacy</option>
+        <option value="trends">Tech Trends</option>
       </select>
     </div>
 
     <!-- Blog Posts -->
-    <div class="blog-grid" id="blog-grid">
+    <div class="blog-grid" id="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
       <!-- Blog cards will be injected here dynamically -->
     </div>
   </main>
 
   <!-- Footer -->
-  <footer style="text-align: center; padding: 2rem 1rem; background: #20232a; color: #ccc;">
-    <div class="sitemap">
-      <a href="index.html">Home</a> |
-      <a href="about.html">About</a> |
-      <a href="index.html#services">Services</a> |
-      <a href="blog.html">Blog</a> |
-      <a href="index.html#contact">Contact</a>
+    <footer style="text-align: center; padding: 3rem 1rem; background: #16181d; color: #ccc; border-top: 2px solid #222;">
+    <div class="sitemap" style="margin-bottom: 1.5rem;">
+      <a href="index.html" style="color: #ccc; text-decoration: none;">Home</a> |
+      <a href="about.html" style="color: #ccc; text-decoration: none;">About</a> |
+      <a href="index.html#services" style="color: #ccc; text-decoration: none;">Services</a> |
+      <a href="blog.html" style="color: #ccc; text-decoration: none;">Blog</a> |
+      <a href="index.html#contact" style="color: #ccc; text-decoration: none;">Contact</a>
     </div>
-    <p>📧 <a href="mailto:contact@eebii.com">contact@eebii.com</a></p>
-    <p>&copy; 2025 Eebii. All rights reserved.</p>
+    <div class="sitemap" style="margin-bottom: 2rem; font-size: 0.9rem;">
+      <a href="terms.html" style="color: #ccc; text-decoration: none;">Terms</a> |
+      <a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Disclaimer</a> |
+      <a href="privacy-policy.html" style="color: #ccc; text-decoration: none;">Privacy Policy</a>
+    </div>
+    <div style="margin-bottom: 1.5rem; opacity: 0.8; font-size: 0.85rem;">
+      <p>Eebii Ecosystem:
+        <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff;">Invoice Generator</a> &bull;
+        <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff;">PDF Suite</a> &bull;
+        <a href="eebii-flow.html" style="color: #00d4ff;">Eebii Flow</a> &bull;
+        <a href="academy.html" style="color: #00d4ff;">Academy</a>
+      </p>
+    </div>
+    <p style="margin-top: 1rem;">&#128231; <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+    <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.9rem;">&copy; 2026 Eebii. All rights reserved.</p>
   </footer>
 
   <!-- Blog Loader Script -->
   <script>
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("active");
+    }
+
     const blogGrid = document.getElementById("blog-grid");
     const searchInput = document.getElementById("blogSearch");
     const categorySelect = document.getElementById("blogCategory");
@@ -79,7 +106,7 @@
         div.setAttribute("data-category", post.category);
         div.innerHTML = `
           <h3>${post.title}</h3>
-          <p class="meta">By ${post.author} • ${post.date} • Category: ${post.category}</p>
+          <p class="meta">By ${post.author} â€¢ ${post.date} â€¢ Category: ${post.category}</p>
           <p>${post.summary}</p>
           <a href="${post.slug}">Read More</a>
         `;
@@ -105,3 +132,4 @@
 
 </body>
 </html>
+

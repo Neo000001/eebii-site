@@ -1,6 +1,6 @@
 [
   {
-    "title": "💻 Why Every Small Business Needs Remote IT Support",
+    "title": "Why Every Small Business Needs Remote IT Support",
     "slug": "blog-remote-it-support.html",
     "date": "July 2025",
     "author": "Eebii",
@@ -8,7 +8,7 @@
     "summary": "Tech problems waste time. Learn how remote support keeps your business running."
   },
   {
-    "title": "📡 Top 5 Office Networking Mistakes",
+    "title": "Top 5 Office Networking Mistakes",
     "slug": "blog-networking-mistakes.html",
     "date": "July 2025",
     "author": "Eebii",
@@ -16,7 +16,7 @@
     "summary": "Avoid slow networks and security issues — these 5 mistakes could be hurting your business."
   },
   {
-    "title": "🔐 Firewall vs Antivirus: What’s the Difference?",
+    "title": "Firewall vs Antivirus: What's the Difference?",
     "slug": "blog-firewall-vs-antivirus.html",
     "date": "July 2025",
     "author": "Eebii",
@@ -24,7 +24,7 @@
     "summary": "Understand how firewalls and antivirus differ, and why both are essential for protecting your devices and network."
   },
   {
-    "title": "🛡️ Best Practices for Securing Small Business Networks",
+    "title": "Best Practices for Securing Small Business Networks",
     "slug": "blog-smallbiz-network-security.html",
     "date": "July 2025",
     "author": "Eebii",
@@ -32,7 +32,7 @@
     "summary": "From firewalls to backups — discover the top tips to protect your small business network."
   },
   {
-    "title": "☁️ Why Moving to the Cloud is a Smart Step for Your Business",
+    "title": "Why Moving to the Cloud is a Smart Step for Your Business",
     "slug": "cloud-blog.html",
     "date": "July 2025",
     "author": "Eebii",
@@ -40,11 +40,108 @@
     "summary": "Discover how cloud solutions make your business more secure, flexible, and cost-effective — and how Eebii can help."
   },
   {
-  "title": "How to Create a GST Invoice Online in India (2026 Guide)",
-  "author": "Eebii Team",
-  "date": "March 2026",
-  "category": "support",
-  "summary": "Complete step-by-step guide explaining CGST, SGST, IGST and how to generate GST invoices online for free.",
-  "slug": "blog-gst-invoice-guide.html"
-}
+    "title": "Eebii Invoice: Free Tool vs. Pro Features",
+    "slug": "blog-invoice-pro-guide.html",
+    "date": "August 2025",
+    "author": "Eebii Team",
+    "category": "invoicing",
+    "summary": "Compare the free and pro features of the Eebii Invoice tool and find out which one is right for your business."
+  },
+  {
+    "title": "Eebii Workforce: Automate Attendance & Payroll for Indian MSMEs",
+    "slug": "blog-eebii-workforce.html",
+    "date": "September 2025",
+    "author": "Eebii Team",
+    "category": "tools",
+    "summary": "Discover how Eebii Workforce helps Indian MSMEs automate attendance tracking and payroll processing effortlessly."
+  },
+  {
+    "title": "Eebii Web Hosting: Lightning Fast Cloud Servers",
+    "slug": "blog-eebii-web-hosting.html",
+    "date": "September 2025",
+    "author": "Eebii Team",
+    "category": "service",
+    "summary": "Get lightning-fast, secure cloud hosting for your business website with Eebii's enterprise-grade infrastructure."
+  },
+  {
+    "title": "Custom Software Development by Eebii: Scale Effectively",
+    "slug": "blog-eebii-software-development.html",
+    "date": "October 2025",
+    "author": "Eebii Team",
+    "category": "service",
+    "summary": "Learn how Eebii builds custom software to help Indian businesses automate, scale, and stay competitive."
+  },
+  {
+    "title": "The Eebii Privacy Revolution: 100% Local Free Tools",
+    "slug": "blog-eebii-privacy-revolution.html",
+    "date": "October 2025",
+    "author": "Eebii Team",
+    "category": "privacy",
+    "summary": "Eebii's tools run entirely in your browser — no data is uploaded or stored. Your privacy is 100% protected."
+  },
+  {
+    "title": "Eebii IT Consulting: Stop Buying the Wrong Tech",
+    "slug": "blog-eebii-it-consulting.html",
+    "date": "November 2025",
+    "author": "Eebii Team",
+    "category": "service",
+    "summary": "Don't waste money on tech that doesn't fit your business. Eebii IT Consulting helps you make the right choices."
+  },
+  {
+    "title": "Eebii Flow: WhatsApp Bulk Messaging Revolution for Indian SMEs",
+    "slug": "blog-eebii-flow.html",
+    "date": "December 2025",
+    "author": "Eebii Team",
+    "category": "tools",
+    "summary": "Send bulk WhatsApp messages professionally and legally to grow your Indian SME business with Eebii Flow."
+  },
+  {
+    "title": "Announcing Eebii Academy: IT Training Meets AI Game Design",
+    "slug": "blog-eebii-academy.html",
+    "date": "January 2026",
+    "author": "Eebii Team",
+    "category": "service",
+    "summary": "Eebii Academy is launching IT training programs and AI-powered game design courses for aspiring tech professionals."
+  },
+  {
+    "title": "How to Safely Compress PDF Files for Email in 2026",
+    "slug": "blog-pdf-compress.html",
+    "date": "February 2026",
+    "author": "Eebii Team",
+    "category": "pdf",
+    "summary": "Learn the safest and fastest way to compress PDF files for email without losing quality, using Eebii PDF Suite."
+  },
+  {
+    "title": "The Ultimate Guide to Managing PDFs: Meet Eebii PDF Suite (2026)",
+    "slug": "blog-pdf-suite.html",
+    "date": "February 2026",
+    "author": "Eebii Team",
+    "category": "pdf",
+    "summary": "Merge, compress, convert, and manage PDFs easily — all in your browser with Eebii PDF Suite. No signup required."
+  },
+  {
+    "title": "Top 3 Technology Investments for Small Businesses in 2026",
+    "slug": "blog-tech-trends-2026.html",
+    "date": "March 2026",
+    "author": "Eebii Team",
+    "category": "trends",
+    "summary": "Discover the top technology investments that will give Indian small businesses a competitive edge in 2026."
+  },
+  {
+    "title": "How to Create a GST Invoice Online in India (2026 Guide)",
+    "author": "Eebii Team",
+    "date": "March 2026",
+    "category": "invoicing",
+    "summary": "Complete step-by-step guide explaining CGST, SGST, IGST and how to generate GST invoices online for free.",
+    "slug": "blog-gst-invoice-guide.html"
+  },
+  {
+    "title": "Best Free Invoice Generator in India (2026)",
+    "author": "Eebii Team",
+    "date": "March 2026",
+    "category": "invoicing",
+    "summary": "Discover the best free GST invoice generator in India for 2026. Create professional invoices instantly without login.",
+    "slug": "blog-best-free-invoice-generator.html"
+  }
 ]
+

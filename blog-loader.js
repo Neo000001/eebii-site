@@ -9,14 +9,19 @@ fetch('blog-data.json')
       if (staticCard) staticCard.style.display = 'none';
     }
 
-    posts.slice(0, 3).forEach(post => {
+    posts.reverse().slice(0, 3).forEach(post => {
       const card = document.createElement('div');
       card.className = 'post';
+      card.style.cssText = 'text-align: left; cursor: pointer;';
+      card.onclick = () => window.location.href = post.slug;
       card.innerHTML = `
-        <img src="https://img.icons8.com/fluency/48/blog.png" alt="Blog icon" style="width: 48px; margin-bottom: 1rem;" />
-        <h3 style="color: #00d4ff;">${post.title}</h3>
-        <p style="color: #aaa;">${post.summary}</p>
-        <a href="${post.slug}" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.4rem; background-color: #00d4ff; color: #0f2027; border-radius: 6px; text-decoration: none; font-weight: bold;">
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem;">
+          <span style="background: #00d4ff22; color: #00d4ff; font-size: 0.75rem; font-weight: bold; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;">${post.category || 'general'}</span>
+          <span style="color: #666; font-size: 0.8rem;">${post.date || ''}</span>
+        </div>
+        <h3 style="color: #fff; font-size: 1.05rem; margin: 0 0 0.6rem; line-height: 1.4;">${post.title}</h3>
+        <p style="color: #aaa; font-size: 0.9rem; line-height: 1.6; margin: 0 0 1rem;">${post.summary}</p>
+        <a href="${post.slug}" style="display: inline-block; padding: 0.5rem 1.1rem; background-color: #00d4ff; color: #0f2027; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.85rem;">
           Read More →
         </a>
       `;
@@ -24,3 +29,4 @@ fetch('blog-data.json')
     });
   })
   .catch(err => console.error("Blog loader failed:", err));
+
