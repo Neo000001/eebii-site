@@ -126,7 +126,7 @@
         postList.forEach((post) => {
           const card = document.createElement("div");
           card.className = "card post";
-          card.style.cssText = "background: #16181d; border: 1px solid #1f2229; border-radius: 12px; padding: 1.5rem; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between;";
+          card.style.cssText = "background: #16181d; border: 1px solid #1f2229; border-radius: 12px; padding: 1.5rem; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; min-height: 100%;";
           card.onclick = () => window.location.href = post.slug;
           
           card.innerHTML = `

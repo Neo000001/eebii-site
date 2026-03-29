@@ -813,6 +813,10 @@
     </div>
 
     <script>
+        function toggleMenu() {
+            document.getElementById("nav-links").classList.toggle("active");
+        }
+
         document.getElementById("flow-form").addEventListener("submit", async function (e) {
             e.preventDefault();
             const data = new FormData(e.target);
