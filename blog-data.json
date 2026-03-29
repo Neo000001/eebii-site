@@ -158,5 +158,37 @@
     "author": "Eebii Team",
     "category": "productivity",
     "summary": "Discover the seamless 2-minute workflow of combining Eebii Invoice with PDF Suite for professional business billing."
+  },
+  {
+    "title": "The Definitive 2026 Eebii Master Guide: Scaling Indian MSMEs",
+    "slug": "blog-eebii-master-guide.html",
+    "date": "March 2026",
+    "author": "Eebii Team",
+    "category": "strategy",
+    "summary": "The ultimate masterclass mega-guide on scaling from local servers to secure, automated cloud architecture using the Eebii ecosystem."
+  },
+  {
+    "title": "The Ultimate Guide to Network Printer Sharing & Troubleshooting",
+    "slug": "blog-printer-sharing-troubleshooting.html",
+    "date": "April 2026",
+    "author": "Eebii IT Support",
+    "category": "support",
+    "summary": "Learn exactly how to share printers across Windows/Mac networks and fix 'Printer Offline' and print spooler errors instantly."
+  },
+  {
+    "title": "5 Everyday IT Crises Every Office Faces (And How To Fix Them)",
+    "slug": "blog-everyday-it-issues-troubleshooting.html",
+    "date": "April 2026",
+    "author": "Eebii Academy",
+    "category": "support",
+    "summary": "Learn to solve the most common daily office tech disasters—from bad Wi-Fi to crashing browsers. Join Eebii Academy for professional IT training."
+  },
+  {
+    "title": "A Day in the Life: How the Eebii Ecosystem Automates Your Entire Business",
+    "slug": "blog-day-in-the-life-eebii-ecosystem.html",
+    "date": "April 2026",
+    "author": "Eebii Solutions",
+    "category": "productivity",
+    "summary": "Discover how the interconnected Eebii Ecosystem resolves IT disasters, automates invoicing, and streamlines communication during a standard business day."
   }
 ]
