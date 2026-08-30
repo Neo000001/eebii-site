@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eebii Invoice — Free Generator & PRO Business ERP</title>
+  <meta name="description" content="Choose your Eebii Invoice solution: Upgrade to Eebii Invoice PRO for automated GST accounting & inventory, or use the basic Free Invoice Generator tool.">
+  
+  <!-- Google Fonts & Tailwind CSS CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    
+    .font-display {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Floating & Pulse Animations */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 25px rgba(37, 99, 235, 0.25); }
+      50% { box-shadow: 0 0 45px rgba(37, 99, 235, 0.5); }
+    }
+
+    .animate-float { animation: floatSlow 6s ease-in-out infinite; }
+    .pulse-pro-card { animation: pulseGlow 4s ease-in-out infinite; }
+
+    /* Light Theme Card Elevation */
+    .light-nav {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .light-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .light-card:hover {
+      border-color: #93c5fd;
+      box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .pro-highlight-card {
+      background: #ffffff;
+      border: 2.5px solid #2563eb;
+      box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.2);
+    }
+
+    .gradient-hero-text {
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 40%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="min-h-screen overflow-x-hidden selection:bg-blue-600 selection:text-white antialiased bg-slate-50 text-slate-900">
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-blue-200/40 rounded-full blur-[140px] pointer-events-none z-0"></div>
+  <div class="fixed top-1/3 right-1/4 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[140px] pointer-events-none z-0"></div>
+
+  <div class="relative z-10">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 light-nav px-4 sm:px-8 py-4">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        
+        <!-- Brand Logo -->
+        <a href="https://eebii.com" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-0.5 shadow-md shadow-blue-600/20 group-hover:scale-105 transition">
+            <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center overflow-hidden p-1">
+              <img src="https://pro.eebii.com/logo.png" alt="Eebii Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%232563eb\'><path d=\'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z\'/></svg>';" />
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-display text-xl font-extrabold text-slate-900 tracking-tight">Eebii Invoice</span>
+              <span class="text-[10px] font-black text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200 tracking-wider">HUB</span>
+            </div>
+            <span class="text-[10px] text-slate-500 font-medium block -mt-0.5">Powered by Eebii</span>
+          </div>
+        </a>
+
+        <!-- Header CTA Link -->
+        <div class="flex items-center gap-3">
+          <a href="https://pro.eebii.com/register" class="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl transition shadow-lg shadow-blue-600/20 flex items-center gap-1.5">
+            <span>Try Eebii PRO Free</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO HEADER -->
+    <section class="pt-12 sm:pt-16 pb-12 px-4 sm:px-6 text-center max-w-5xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold mb-6 animate-float">
+        <span class="flex h-2 w-2 rounded-full bg-blue-600"></span>
+        <span>Eebii Official Billing Solutions Gateway</span>
+      </div>
+
+      <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-6">
+        Select Your Billing & Invoicing Tool <br class="hidden sm:inline">
+        <span class="gradient-hero-text">Powered by Eebii</span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Whether you need an instant free 1-off invoice generator or a full-scale GST inventory & tax return cloud ERP, we've got you covered.
+      </p>
+    </section>
+
+    <!-- MAIN TWO OPTIONS LAUNCHER (PRO HEAVILY PROMOTED) -->
+    <section class="py-6 px-4 sm:px-6 max-w-6xl mx-auto mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- OPTION 1: EEBII INVOICE PRO (FEATURED & HEAVILY PROMOTED - 7 COLS) -->
+        <div class="md:col-span-7 pro-highlight-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden pulse-pro-card">
+          
+          <!-- Top Flagship Badge -->
+          <div class="flex items-center justify-between gap-4 mb-6">
+            <span class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+              ★ FLAGSHIP BUSINESS SOLUTION — RECOMMENDED
+            </span>
+            <span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold px-3 py-1 rounded-full">
+              14-Day Free Trial
+            </span>
+          </div>
+
+          <div class="space-y-5">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-0.5 shadow-md shadow-blue-600/30 flex-shrink-0">
+                <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center overflow-hidden p-1">
+                  <img src="https://pro.eebii.com/logo.png" alt="Eebii Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%232563eb\'><path d=\'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z\'/></svg>';" />
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Eebii Invoice</h2>
+                  <span class="text-xs font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 uppercase tracking-wider">PRO</span>
+                </div>
+                <p class="text-xs text-slate-500 font-semibold">Complete GST Billing, Inventory & Tax Filing ERP</p>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              Designed for growing SMEs, retailers, and wholesalers. Manage customer ledgers, inventory stock reorder alerts, transport delivery challans, and generate 1-click GSTR-1 JSON return files.
+            </p>
+
+            <!-- Key Pro Features Bullet Checklist -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-semibold text-slate-800">
+              <div class="flex items-center gap-2 bg-blue-50 p-2.5 rounded-xl border border-blue-100">
+                <span class="text-blue-600 font-bold">✓</span> GSTR-1 Portal JSON Export
+              </div>
+              <div class="flex items-center gap-2 bg-blue-50 p-2.5 rounded-xl border border-blue-100">
+                <span class="text-blue-600 font-bold">✓</span> Dual Sales Pipelines (DC + INV)
+              </div>
+              <div class="flex items-center gap-2 bg-blue-50 p-2.5 rounded-xl border border-blue-100">
+                <span class="text-blue-600 font-bold">✓</span> Low Stock Reorder Bell Alerts
+              </div>
+              <div class="flex items-center gap-2 bg-blue-50 p-2.5 rounded-xl border border-blue-100">
+                <span class="text-blue-600 font-bold">✓</span> 4 Customizable PDF Templates
+              </div>
+              <div class="flex items-center gap-2 bg-blue-50 p-2.5 rounded-xl border border-blue-100">
+                <span class="text-blue-600 font-bold">✓</span> Customer & Stock Directory
+              </div>
+              <div class="flex items-center gap-2 bg-blue-50 p-2.5 rounded-xl border border-blue-100">
+                <span class="text-blue-600 font-bold">✓</span> 2FA OTP & Role Security
+              </div>
+            </div>
+          </div>
+
+          <!-- PRO Launch Buttons -->
+          <div class="pt-8 space-y-3">
+            <a href="https://pro.eebii.com/register" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold py-4 px-6 rounded-2xl text-center text-sm sm:text-base transition shadow-xl shadow-blue-600/30 flex items-center justify-center gap-2 group">
+              <span>Launch Eebii PRO Portal (Start Free Trial)</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+
+            <div class="flex items-center justify-center gap-4 text-xs text-slate-500 font-medium">
+              <span>✓ Instant setup in 30 seconds</span>
+              <span>•</span>
+              <span>✓ Zero credit card required for trial</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- OPTION 2: FREE INVOICE GENERATOR TOOL (BASIC - 5 COLS) -->
+        <div class="md:col-span-5 light-card rounded-3xl p-8 flex flex-col justify-between border border-slate-300">
+          
+          <div class="space-y-5">
+            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-300">
+              BASIC QUICK TOOL
+            </span>
+
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 p-0.5 shadow-md shadow-emerald-600/20 flex-shrink-0">
+                <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center overflow-hidden p-1">
+                  <img src="https://pro.eebii.com/logo.png" alt="Eebii Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23059669\'><path d=\'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z\'/></svg>';" />
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 class="text-xl font-extrabold text-slate-900">Eebii Invoice</h2>
+                  <span class="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 uppercase tracking-wider">FREE TOOL</span>
+                </div>
+                <p class="text-xs text-slate-500 font-semibold">Quick 1-Off PDF Invoice Creator</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Need to send a quick one-off PDF invoice right now without creating an account? Use our lightweight free web generator.
+            </p>
+
+            <div class="space-y-2.5 text-xs text-slate-600 border-t border-slate-200 pt-4">
+              <div class="flex items-center gap-2">
+                <span class="text-slate-400">✓</span> Instant browser PDF download
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-400">✓</span> Basic CGST/SGST tax calculation
+              </div>
+              <div class="flex items-center gap-2 text-amber-700 bg-amber-50 p-2 rounded-xl border border-amber-200">
+                <span>⚠️ Note: Does NOT save customer records, stock inventory, or GSTR return files.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Free Tool Launch Button -->
+          <div class="pt-8">
+            <a href="https://invoice.eebii.com" target="_blank" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl text-center text-xs sm:text-sm transition flex items-center justify-center gap-2">
+              <span>Open Free Basic Tool</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMPARISON TABLE (PRO VS FREE TOOL) -->
+    <section class="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-t border-slate-200">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="font-display text-2xl sm:text-4xl font-black text-slate-900 mb-3">Compare Eebii Invoice Solutions</h2>
+        <p class="text-slate-600 text-xs sm:text-sm">See why thousands of businesses upgrade from basic tools to Eebii Invoice PRO.</p>
+      </div>
+
+      <div class="light-card rounded-3xl overflow-hidden border border-slate-300 shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-slate-100 text-slate-800 font-extrabold uppercase text-[11px] border-b border-slate-300">
+                <th class="p-4 sm:p-5">Features & Capabilities</th>
+                <th class="p-4 sm:p-5 bg-blue-50 text-blue-800 border-x border-blue-200 text-center">🌟 Eebii PRO</th>
+                <th class="p-4 sm:p-5 text-slate-600 text-center">⚡ Free Tool</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-800">
+              <tr>
+                <td class="p-4 font-semibold text-slate-900">Customer & Product Database</td>
+                <td class="p-4 bg-blue-50/50 text-center font-bold text-emerald-700">✓ Unlimited Auto-Saved</td>
+                <td class="p-4 text-center text-slate-400">❌ Manual Re-typing</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-slate-900">GSTR-1 Portal JSON Download</td>
+                <td class="p-4 bg-blue-50/50 text-center font-bold text-emerald-700">✓ 1-Click Direct Upload</td>
+                <td class="p-4 text-center text-slate-400">❌ Not Available</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-slate-900">Warehouse Inventory & Reorder Alerts</td>
+                <td class="p-4 bg-blue-50/50 text-center font-bold text-emerald-700">✓ Low Stock Bell Alerts</td>
+                <td class="p-4 text-center text-slate-400">❌ Not Available</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-slate-900">Delivery Challan Transport Dispatch</td>
+                <td class="p-4 bg-blue-50/50 text-center font-bold text-emerald-700">✓ Full Dual Pipeline</td>
+                <td class="p-4 text-center text-slate-400">❌ Not Available</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-slate-900">PDF Invoice Templates</td>
+                <td class="p-4 bg-blue-50/50 text-center font-bold text-blue-700">4 Premium Themes</td>
+                <td class="p-4 text-center text-slate-500">1 Basic Layout</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-slate-900">Security & Multi-User Access</td>
+                <td class="p-4 bg-blue-50/50 text-center font-bold text-emerald-700">✓ 2FA OTP & Roles</td>
+                <td class="p-4 text-center text-slate-400">❌ Single Session</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 px-6 py-12 text-xs text-slate-600">
+      <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-200 pb-8">
+          <div class="flex items-center gap-3">
+            <img src="https://pro.eebii.com/logo.png" alt="Eebii Logo" class="w-8 h-8 object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%232563eb\'><path d=\'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z\'/></svg>';" />
+            <div>
+              <span class="font-display font-extrabold text-slate-900 text-base">Eebii Invoice HUB</span>
+              <span class="text-[10px] text-slate-500 block">Powered by Eebii</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold">
+            <a href="https://pro.eebii.com/login" class="hover:text-blue-600 transition">Sign In to PRO</a>
+            <a href="https://pro.eebii.com/register" class="hover:text-blue-600 transition">Start Free Trial</a>
+            <a href="https://invoice.eebii.com" target="_blank" class="text-emerald-700 hover:text-emerald-800 transition">Free Generator Tool</a>
+          </div>
+        </div>
+
+        <div class="text-center text-slate-500 space-y-2">
+          <p>© 2026 Eebii Inc. All rights reserved. Powered by <a href="https://eebii.com" target="_blank" rel="noopener noreferrer" class="font-bold text-blue-600 hover:text-blue-700 underline">Eebii</a>.</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
