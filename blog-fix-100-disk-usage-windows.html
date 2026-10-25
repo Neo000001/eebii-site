@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Fix 100% Disk Usage on Windows 11 & Windows 10 (2026 Guide) | Eebii</title>
+  <meta name="description"
+    content="Stop system freezing and fix 100% disk usage in Windows 11/10 Task Manager. Step-by-step IT solutions: disable SysMain safely, adjust pagefile.sys virtual memory, run DISM/SFC scans, and fix StorAHCI controller glitches.">
+  <meta name="keywords" content="100 disk usage windows 11, fix 100 percent disk usage, task manager high disk usage, disable sysmain superfetch, windows 11 slow lagging, fix 100 disk usage ssd, chkdsk sfc scannow">
+  <link rel="canonical" href="https://www.eebii.com/blog-fix-100-disk-usage-windows.html">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Open Graph / Twitter Cards -->
+  <meta property="og:title" content="How to Fix 100% Disk Usage on Windows 11 & 10 (Proven Solutions)">
+  <meta property="og:description" content="Fix Windows Task Manager 100% disk usage and laptop freezing permanently with proven IT administrator methods.">
+  <meta property="og:image" content="https://www.eebii.com/img-disk-usage-troubleshoot.jpg">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Schema.org TechArticle, HowTo, & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "How to Fix 100% Disk Usage in Windows 11 and Windows 10 Task Manager",
+        "image": "https://www.eebii.com/img-disk-usage-troubleshoot.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "Eebii IT Support"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Eebii",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.eebii.com/invoice-icon.png"
+          }
+        },
+        "datePublished": "2026-04-15",
+        "dateModified": "2026-04-15",
+        "description": "Step-by-step engineering tutorial to resolve 100% disk utilization spikes caused by SysMain, virtual memory misallocation, and AHCI driver interrupts."
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Stop 100% Disk Usage in Windows",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Disable SysMain Service",
+            "text": "Open Services (services.msc), locate SysMain, change Startup type to Disabled, and stop the service."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Recalculate Virtual Memory",
+            "text": "Set custom paging file initial size to 1.5x physical RAM and maximum size to 3x physical RAM."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Repair System Files",
+            "text": "Run DISM /Online /Cleanup-Image /RestoreHealth followed by sfc /scannow in an elevated command prompt."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is it safe to disable SysMain in Windows 11?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, it is completely safe. SysMain (formerly Superfetch) preloads frequently used applications into RAM. On modern NVMe and SATA SSDs, it often triggers excessive background read/write loops resulting in 100% disk usage without providing any measurable performance benefit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is my disk at 100% when only 1 MB/s is being used?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Task Manager's 100% disk percentage measures 'Active Time' (the percentage of time the storage controller is processing I/O requests), not transfer speed. If disk response time exceeds 500ms due to high queue depth or driver timeouts, active time hits 100% even at low megabyte transfer rates."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body {
+      background-color: #090b10;
+      color: #f3f4f6;
+      font-family: var(--font-main);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .article-wrapper {
+      max-width: 920px;
+      margin: 40px auto 70px;
+      padding: 50px 60px;
+      background: #11141b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .article-wrapper {
+        padding: 30px 20px;
+        margin: 20px 15px;
+      }
+    }
+
+    .article-header {
+      margin-bottom: 35px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 25px;
+    }
+
+    .article-header h1 {
+      color: #ffffff;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.25;
+      margin: 15px 0;
+      font-weight: 800;
+      letter-spacing: -1px;
+      font-family: var(--font-display);
+    }
+
+    .meta-line {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-line span {
+      color: var(--cyan-primary);
+      font-weight: bold;
+    }
+
+    .article-image-box {
+      margin: 2.5rem 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #000;
+    }
+
+    .article-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .article-image-caption {
+      padding: 10px 15px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      background: #0e1117;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .article-wrapper h2 {
+      color: #ffffff;
+      font-size: 1.6rem;
+      margin: 45px 0 20px;
+      font-weight: 700;
+      border-left: 4px solid var(--cyan-primary);
+      padding-left: 15px;
+      font-family: var(--font-display);
+    }
+
+    .article-wrapper h3 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      margin: 30px 0 15px;
+      font-weight: 600;
+    }
+
+    .article-wrapper p {
+      margin-bottom: 1.5rem;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+      line-height: 1.85;
+    }
+
+    .article-wrapper ul,
+    .article-wrapper ol {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+
+    .article-wrapper li {
+      margin-bottom: 0.8rem;
+      color: #cbd5e1;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .article-wrapper li strong {
+      color: #ffffff;
+    }
+
+    .terminal-box {
+      background: #06080c;
+      border: 1px solid #1f2430;
+      border-radius: var(--radius-sm);
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0 2rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      color: #38bdf8;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .terminal-box::before {
+      content: "ADMINISTRATOR COMMAND PROMPT";
+      display: block;
+      font-size: 0.68rem;
+      color: #64748b;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #1a202c;
+      padding-bottom: 0.3rem;
+    }
+
+    .terminal-box code {
+      color: #4ade80;
+    }
+
+    .diagnostic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: #090b10;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .diagnostic-table th {
+      background: #161b24;
+      color: var(--cyan-primary);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .diagnostic-table td {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+
+    .back-link {
+      color: var(--cyan-primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    .back-link:hover {
+      color: #fff;
+      transform: translateX(-4px);
+    }
+
+    .pro-tip-box {
+      background: rgba(0, 212, 255, 0.06);
+      border-left: 4px solid var(--cyan-primary);
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 2rem 0;
+    }
+
+    .pro-tip-box h4 {
+      color: var(--cyan-primary);
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+    }
+
+    .pro-tip-box p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="topnav">
+      <a href="index.html" class="nav-brand">Eebii</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#tools">Ecosystem</a>
+        <a href="barcode-generator.html">Barcode Tool</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="nav-cta-btn">
+          Invoice Pro →
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Article Body -->
+  <main class="article-wrapper">
+    <a href="blog.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Knowledge Hub</a>
+
+    <header class="article-header">
+      <div class="meta-line">
+        By Eebii IT Support <span>|</span> April 2026 <span>|</span> Category: System Optimization <span>|</span> 8 Min Read
+      </div>
+      <h1>How to Fix 100% Disk Usage on Windows 11 & Windows 10 (2026 Guide)</h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6; margin-top: 10px;">
+        Diagnose the root cause of extreme PC sluggishness, frozen cursors, and Task Manager disk spikes with tested system engineering methods.
+      </p>
+    </header>
+
+    <!-- Technical Diagram -->
+    <div class="article-image-box">
+      <img src="img-disk-usage-troubleshoot.jpg" alt="Windows Performance Dashboard showing 100 percent disk usage diagnostics on SSD and HDD with SysMain and paging memory bottlenecks">
+      <div class="article-image-caption">
+        <strong>Figure 2.1:</strong> Windows Storage Performance Architecture: Isolating the bottleneck between CPU queues, paging memory (pagefile.sys), and background storage I/O loops.
+      </div>
+    </div>
+
+    <p>
+      You press <code>Ctrl + Shift + Esc</code> to open Task Manager because your computer has slowed to a crawl. The mouse cursor stutters, folders take ten seconds to open, and applications randomly freeze with "(Not Responding)". In Task Manager, your CPU and RAM usage are completely normal at 20% or 30%—but the <strong>Disk column is pinned at an alarming, solid 100%</strong> in bright orange or red.
+    </p>
+
+    <p>
+      Even more confusing: the total read/write throughput might only be <strong>0.5 MB/s or 2 MB/s</strong>, yet Windows insists your drive is fully saturated. At Eebii, our workstation engineers see this issue constantly on business laptops and desktop workstations. Here is the technical explanation for why this happens and how to permanently eliminate it.
+    </p>
+
+    <h2>The Technical Truth: Active Time vs. Transfer Speed</h2>
+    <p>
+      The percentage shown in Task Manager is <strong>Active Time</strong>, not transfer speed. Active time measures the percentage of elapsed time during which the storage drive is actively handling read or write requests:
+    </p>
+    <ul>
+      <li>If a program requests 500 small 4KB files, and the drive controller takes 1,000 milliseconds (1 second) to fulfill those requests due to high queue depth, the active time is <strong>100%</strong>, even though only 2MB of actual data moved.</li>
+      <li>When <em>Average Response Time</em> exceeds <strong>500ms to 2,000ms</strong>, the operating system kernel is waiting on the storage controller, which causes the entire Windows user interface to freeze.</li>
+    </ul>
+
+    <h2>Solution 1: Disable the "SysMain" (Superfetch) Service</h2>
+    <p>
+      In modern versions of Windows 11 and 10, the single most common cause of sustained 100% disk usage is a background service named <strong>SysMain</strong> (historically known as Superfetch).
+    </p>
+    <p>
+      SysMain was originally engineered for spinning mechanical hard drives (HDDs) to preload frequently used software into RAM during idle periods. However, on modern SATA and NVMe solid-state drives (SSDs), SysMain frequently enters an unthrottled index-and-read loop that bombards the drive with non-stop random read operations.
+    </p>
+
+    <h3>How to Disable SysMain Instantly:</h3>
+    <ol>
+      <li>Press <code>Win + R</code>, type <code>services.msc</code>, and hit Enter.</li>
+      <li>Scroll down through the services list and find <strong>SysMain</strong>.</li>
+      <li>Right-click <strong>SysMain</strong> and select <strong>Properties</strong>.</li>
+      <li>Click the <strong>Stop</strong> button to halt current disk thrashing immediately.</li>
+      <li>Set <strong>Startup type</strong> to <strong>Disabled</strong>.</li>
+      <li>Click <strong>Apply</strong> and <strong>OK</strong>.</li>
+    </ol>
+
+    <div class="terminal-box">
+      <code>REM Or execute via Admin Command Prompt:</code><br>
+      <code>net stop "sysmain"</code><br>
+      <code>sc config "sysmain" start=disabled</code>
+    </div>
+
+    <p>
+      Within 30 seconds of stopping SysMain, Task Manager disk utilization will typically plummet from 100% down to under 5%.
+    </p>
+
+    <h2>Solution 2: Fix Corrupted Virtual Memory (pagefile.sys)</h2>
+    <p>
+      When your system runs low on physical RAM, Windows offloads memory blocks to a hidden file on your drive called <code>pagefile.sys</code>. If this virtual memory allocation becomes fragmented or corrupted, Windows enters an endless swapping loop that pins your disk at 100%.
+    </p>
+
+    <h3>How to Recalculate and Set Clean Virtual Memory:</h3>
+    <ol>
+      <li>Press <code>Win + R</code>, type <code>sysdm.cpl</code>, and press Enter to open <strong>System Properties</strong>.</li>
+      <li>Go to the <strong>Advanced</strong> tab, and under <em>Performance</em>, click <strong>Settings</strong>.</li>
+      <li>In the Performance Options window, go to the <strong>Advanced</strong> tab and click <strong>Change...</strong> under Virtual memory.</li>
+      <li><strong>Uncheck:</strong> <em>"Automatically manage paging file size for all drives"</em>.</li>
+      <li>Select your <strong>C: drive</strong>, choose <strong>Custom size</strong>, and configure based on your physical RAM:
+        <ul>
+          <li><strong>Initial size (MB):</strong> 1.5 × your physical RAM (e.g., for 8GB RAM: <code>8 × 1024 × 1.5 = 12288 MB</code>).</li>
+          <li><strong>Maximum size (MB):</strong> 3 × your physical RAM (e.g., for 8GB RAM: <code>8 × 1024 × 3 = 24576 MB</code>).</li>
+        </ul>
+      </li>
+      <li>Click <strong>Set</strong>, then click <strong>OK</strong> and restart your system.</li>
+    </ol>
+
+    <h2>Solution 3: Repair Corrupted System Files (DISM & SFC Sequence)</h2>
+    <p>
+      Corrupted Windows system binaries cause background worker processes (like <code>TiWorker.exe</code> and <code>TrustedInstaller.exe</code>) to repeatedly restart failed integrity checks, triggering massive disk queue bottlenecks.
+    </p>
+    <p>
+      Launch Command Prompt as Administrator and run the Microsoft Deployment Image Servicing and Management (DISM) tool followed by the System File Checker (SFC):
+    </p>
+
+    <div class="terminal-box">
+      <code>DISM.exe /Online /Cleanup-image /Restorehealth</code><br>
+      <code>sfc /scannow</code>
+    </div>
+
+    <p>
+      <strong>Why the order matters:</strong> Running <code>sfc /scannow</code> first is ineffective if the local component store is damaged. DISM downloads verified replacement system files directly from Microsoft’s update servers; SFC then uses those verified files to repair damaged local operating system binaries.
+    </p>
+
+    <h2>Solution 4: Disable Windows Search Indexer Temporarily</h2>
+    <p>
+      If your disk spikes to 100% specifically whenever you open File Explorer or create new files, the Windows Search Indexer (<code>searchindexer.exe</code>) may be caught in an infinite loop re-indexing corrupted files or email PST archives.
+    </p>
+    <div class="terminal-box">
+      <code>REM Test if Windows Search is the culprit:</code><br>
+      <code>net stop "Windows Search"</code>
+    </div>
+    <p>
+      If your disk usage drops immediately to normal levels, open the Start Menu, search for <strong>Indexing Options</strong>, click <strong>Advanced</strong>, and click <strong>Rebuild</strong> to regenerate a clean search index from scratch.
+    </p>
+
+    <h2>Solution 5: Fix the StorAHCI.sys MSI Driver Bug</h2>
+    <p>
+      Certain SATA and NVMe solid-state drives suffer from a documented firmware incompatibility with Microsoft’s default <code>StorAHCI.sys</code> inbox storage driver when Message Signaled Interrupts (MSI) mode is enabled.
+    </p>
+    <p>
+      When this glitch occurs, the drive controller fails to complete an input/output operation, the driver issues a hard hardware reset, and the entire system locks up at 100% disk usage for 30 to 60 seconds with 0 KB/s transfer activity.
+    </p>
+    <ol>
+      <li>Open <strong>Device Manager</strong> (<code>devmgmt.msc</code>).</li>
+      <li>Expand <strong>IDE ATA/ATAPI controllers</strong>, right-click the standard SATA AHCI Controller, and open <strong>Properties</strong>.</li>
+      <li>Under the <strong>Driver</strong> tab, click <em>Driver Details</em>. If <code>storahci.sys</code> is listed, you are using the default driver.</li>
+      <li>Install official chipset storage drivers from your motherboard or laptop manufacturer (e.g., Intel Rapid Storage Technology or AMD RAID/SATA drivers) to replace the generic inbox driver.</li>
+    </ol>
+
+    <h2>Solution 6: Mechanical HDD vs. Modern NVMe SSD</h2>
+    <p>
+      If your laptop or PC is running Windows 11 on a traditional mechanical spinning hard disk drive (5400 RPM or 7200 RPM HDD), <strong>100% disk usage is fundamentally inevitable</strong>.
+    </p>
+    <p>
+      Modern operating systems are engineered with hundreds of background telemetry, security scanning, and asynchronous update threads that demand high random 4K read/write IOPS. An HDD delivers roughly <strong>80 to 120 IOPS</strong>, while a basic NVMe SSD delivers over <strong>300,000 IOPS</strong>. Upgrading your boot drive to an SSD is the single most cost-effective hardware improvement for any business workstation.
+    </p>
+
+    <h2>Summary Troubleshooting Checklist</h2>
+    <table class="diagnostic-table">
+      <thead>
+        <tr>
+          <th>Diagnostic Step</th>
+          <th>Target Process</th>
+          <th>Expected Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Disable SysMain</td>
+          <td><code>SysMain / Superfetch</code></td>
+          <td>Immediate 70-90% drop in active disk time on SSDs.</td>
+        </tr>
+        <tr>
+          <td>Fix Virtual Memory</td>
+          <td><code>pagefile.sys</code></td>
+          <td>Eliminates memory paging thrash when launching multiple apps.</td>
+        </tr>
+        <tr>
+          <td>DISM + SFC</td>
+          <td><code>ntoskrnl.exe / TiWorker</code></td>
+          <td>Repairs broken system components and update loops.</td>
+        </tr>
+        <tr>
+          <td>Rebuild Search Index</td>
+          <td><code>SearchIndexer.exe</code></td>
+          <td>Stops File Explorer hanging and continuous background indexing.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Related Services Callout -->
+    <div style="background: #161b24; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2.2rem; margin-top: 3.5rem; text-align: center;">
+      <h3 style="color: #fff; margin-top: 0; font-size: 1.4rem;">Looking for Proactive Business IT Support?</h3>
+      <p style="color: var(--text-muted); max-width: 620px; margin: 0.5rem auto 1.5rem; font-size: 0.95rem;">
+        Eebii provides enterprise workstation maintenance, remote hardware diagnostics, and secure cloud tools tailored for Indian businesses.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="service-it-support.html" class="hero-btn" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); color: #000;">
+          Workstation & IT Support →
+        </a>
+        <a href="barcode-generator.html" class="hero-btn hero-btn-outline">
+          Barcode Designer Tool
+        </a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="hero-btn hero-btn-outline">
+          Eebii Invoice Pro
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Corporate Footer -->
+  <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; font-family: var(--font-main);">
+    <div class="container">
+      <div style="margin-bottom: 2.5rem;">
+        <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
+        <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">About</a>
+        <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Services</a>
+        <a href="blog.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Blog</a>
+        <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Contact</a>
+      </div>
+      <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
+        <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
+          <span style="color: #333;">|</span>
+          <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="barcode-generator.html" style="color: #00d4ff; text-decoration: none;">Barcode Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
+          <span style="color: #333;">|</span>
+          <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
+          <span style="color: #333;">|</span>
+          <a href="academy.html" style="color: #00d4ff; text-decoration: none;">Eebii Academy</a>
+          <span style="color: #333;">|</span>
+          <a href="service-digital-marketing.html" style="color: #00d4ff; text-decoration: none;">Digital Marketing</a>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; border-top: 1px solid #1a1d23; padding-top: 1.5rem;">
+        <a href="terms.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Terms</a>
+        <span style="color: #333;">|</span>
+        <a href="disclaimer.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Disclaimer</a>
+        <span style="color: #333;">|</span>
+        <a href="privacy-policy.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Privacy Policy</a>
+      </div>
+      <p style="margin-top: 2.5rem; font-size: 0.9rem;">📧 <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+      <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      if (nav) nav.classList.toggle("active");
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Fix "DNS Server Not Responding" Error on Windows & Mac (2026 Guide) | Eebii</title>
+  <meta name="description"
+    content="Resolve the 'DNS Server Not Responding' and ERR_NAME_NOT_RESOLVED errors fast. Step-by-step IT solutions: flush host cache, switch to Google/Cloudflare public DNS, and fix port 53 firewall blocks.">
+  <meta name="keywords" content="dns server not responding, how to fix dns server not responding, change dns windows 11, google dns 8.8.8.8, cloudflare dns 1.1.1.1, err_name_not_resolved, ipconfig registerdns">
+  <link rel="canonical" href="https://www.eebii.com/blog-fix-dns-server-not-responding.html">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Open Graph / Twitter Cards -->
+  <meta property="og:title" content="How to Fix 'DNS Server Not Responding' (2026 Guide)">
+  <meta property="og:description" content="Clear stale host caches, switch to secure public DNS resolvers, and unblock web browsing immediately.">
+  <meta property="og:image" content="https://www.eebii.com/img-dns-troubleshoot.jpg">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Schema.org TechArticle, HowTo, & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "How to Fix 'DNS Server Not Responding' Error on Windows and Office Networks",
+        "image": "https://www.eebii.com/img-dns-troubleshoot.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "Eebii IT Support"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Eebii",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.eebii.com/invoice-icon.png"
+          }
+        },
+        "datePublished": "2026-04-15",
+        "dateModified": "2026-04-15",
+        "description": "Technical guide detailing Domain Name System troubleshooting, cache clearing, public DNS migration, and firewall port 53 verification."
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Fix DNS Server Not Responding",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Flush DNS Cache and Register",
+            "text": "Execute ipconfig /flushdns and ipconfig /registerdns in elevated Command Prompt."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Change IPv4 DNS to Public Resolvers",
+            "text": "Set Preferred DNS to 8.8.8.8 (Google) or 1.1.1.1 (Cloudflare) in network adapter properties."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Clear Browser Host Cache",
+            "text": "Navigate to chrome://net-internals/#dns in Chrome/Edge and click Clear host cache."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does 'DNS Server Not Responding' mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It means your web browser cannot translate domain names (like eebii.com) into numerical IP addresses (like 172.67.182.10) because your assigned DNS server is offline, overloaded, or blocked by local security software."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the best DNS to fix DNS Server Not Responding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Google Public DNS (Primary: 8.8.8.8, Secondary: 8.8.4.4) and Cloudflare DNS (Primary: 1.1.1.1, Secondary: 1.0.0.1) provide 99.99% uptime, global anycast routing, and sub-15ms response times."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body {
+      background-color: #090b10;
+      color: #f3f4f6;
+      font-family: var(--font-main);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .article-wrapper {
+      max-width: 920px;
+      margin: 40px auto 70px;
+      padding: 50px 60px;
+      background: #11141b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .article-wrapper {
+        padding: 30px 20px;
+        margin: 20px 15px;
+      }
+    }
+
+    .article-header {
+      margin-bottom: 35px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 25px;
+    }
+
+    .article-header h1 {
+      color: #ffffff;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.25;
+      margin: 15px 0;
+      font-weight: 800;
+      letter-spacing: -1px;
+      font-family: var(--font-display);
+    }
+
+    .meta-line {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-line span {
+      color: var(--cyan-primary);
+      font-weight: bold;
+    }
+
+    .article-image-box {
+      margin: 2.5rem 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #000;
+    }
+
+    .article-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .article-image-caption {
+      padding: 10px 15px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      background: #0e1117;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .article-wrapper h2 {
+      color: #ffffff;
+      font-size: 1.6rem;
+      margin: 45px 0 20px;
+      font-weight: 700;
+      border-left: 4px solid var(--cyan-primary);
+      padding-left: 15px;
+      font-family: var(--font-display);
+    }
+
+    .article-wrapper h3 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      margin: 30px 0 15px;
+      font-weight: 600;
+    }
+
+    .article-wrapper p {
+      margin-bottom: 1.5rem;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+      line-height: 1.85;
+    }
+
+    .article-wrapper ul,
+    .article-wrapper ol {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+
+    .article-wrapper li {
+      margin-bottom: 0.8rem;
+      color: #cbd5e1;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .article-wrapper li strong {
+      color: #ffffff;
+    }
+
+    .terminal-box {
+      background: #06080c;
+      border: 1px solid #1f2430;
+      border-radius: var(--radius-sm);
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0 2rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      color: #38bdf8;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .terminal-box::before {
+      content: "ADMINISTRATOR COMMAND PROMPT";
+      display: block;
+      font-size: 0.68rem;
+      color: #64748b;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #1a202c;
+      padding-bottom: 0.3rem;
+    }
+
+    .terminal-box code {
+      color: #4ade80;
+    }
+
+    .diagnostic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: #090b10;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .diagnostic-table th {
+      background: #161b24;
+      color: var(--cyan-primary);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .diagnostic-table td {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+
+    .back-link {
+      color: var(--cyan-primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    .back-link:hover {
+      color: #fff;
+      transform: translateX(-4px);
+    }
+
+    .pro-tip-box {
+      background: rgba(0, 212, 255, 0.06);
+      border-left: 4px solid var(--cyan-primary);
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 2rem 0;
+    }
+
+    .pro-tip-box h4 {
+      color: var(--cyan-primary);
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+    }
+
+    .pro-tip-box p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="topnav">
+      <a href="index.html" class="nav-brand">Eebii</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#tools">Ecosystem</a>
+        <a href="barcode-generator.html">Barcode Tool</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="nav-cta-btn">
+          Invoice Pro →
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Article Body -->
+  <main class="article-wrapper">
+    <a href="blog.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Knowledge Hub</a>
+
+    <header class="article-header">
+      <div class="meta-line">
+        By Eebii IT Support <span>|</span> April 2026 <span>|</span> Category: Network Protocols <span>|</span> 7 Min Read
+      </div>
+      <h1>How to Fix "DNS Server Not Responding" Error on Windows & Mac (2026 Guide)</h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6; margin-top: 10px;">
+        A practical diagnostic guide to clearing broken domain name resolution, unblocking port 53, and configuring enterprise public DNS resolvers.
+      </p>
+    </header>
+
+    <!-- Technical Diagram -->
+    <div class="article-image-box">
+      <img src="img-dns-troubleshoot.jpg" alt="Modern network architecture diagram explaining DNS resolution process and troubleshooting steps for DNS Server Not Responding error">
+      <div class="article-image-caption">
+        <strong>Figure 3.1:</strong> Modern DNS Resolution Workflow: Tracking query traversal from the browser cache through root servers, TLD authoritatives, and recursive public resolvers (8.8.8.8 and 1.1.1.1).
+      </div>
+    </div>
+
+    <p>
+      You attempt to visit a website in Google Chrome, Microsoft Edge, or Safari, and the browser stalls with a spinning loader before displaying: <strong>"DNS Server Not Responding"</strong> or <code>ERR_NAME_NOT_RESOLVED</code>. When you run Windows Network Diagnostics, it spits back the generic conclusion: <em>"Your computer is trying to use a DNS server that is incorrect or doesn't exist."</em>
+    </p>
+
+    <p>
+      Yet, your Wi-Fi icon shows full strength, and messaging apps like WhatsApp or Zoom might still connect. Why does this happen? The <strong>Domain Name System (DNS)</strong> is the telephone directory of the global internet. When DNS fails, your computer can reach raw numerical IP addresses, but it cannot translate human letters (like <code>eebii.com</code>) into destination web servers.
+    </p>
+
+    <h2>Why DNS Queries Fail in Office and Home Networks</h2>
+    <p>
+      When your browser attempts to load a website, it sends an outbound UDP or TCP request over <strong>Port 53</strong> to your assigned DNS resolver. The resolution pipeline breaks down due to three primary causes:
+    </p>
+    <ul>
+      <li><strong>ISP DNS Server Outage:</strong> Telecom internet providers (like Airtel, Jio, BSNL, Comcast, or Vodafone) run regional recursive DNS nodes that frequently succumb to high query volume, DDoS reflection attacks, or configuration routing updates.</li>
+      <li><strong>Poisoned or Stale Local Host Cache:</strong> If an IP address for a domain changed, but your operating system or browser cache retained the obsolete IP, subsequent requests fail.</li>
+      <li><strong>Antivirus / Firewall Port 53 Blocking:</strong> Third-party security suites (such as Norton, McAfee, or Avast) often flag rapid DNS packet exchanges as malware command-and-control traffic, silently dropping outbound DNS packets.</li>
+    </ul>
+
+    <h2>Step 1: Clear the Two-Tier DNS Cache (Windows & Browser)</h2>
+    <p>
+      Both your Windows operating system and modern Chromium browsers maintain separate, isolated DNS caches. You must purge both:
+    </p>
+
+    <h3>Part A: Flush the Windows OS DNS Cache</h3>
+    <p>
+      Open Command Prompt as Administrator (<code>Win + X</code> -> Terminal / CMD as Admin) and execute:
+    </p>
+    <div class="terminal-box">
+      <code>ipconfig /flushdns</code><br>
+      <code>ipconfig /registerdns</code>
+    </div>
+    <p>
+      <code>/flushdns</code> clears the local memory cache; <code>/registerdns</code> immediately refreshes dynamic DHCP registrations and establishes new DNS leases with active domain controllers.
+    </p>
+
+    <h3>Part B: Clear Google Chrome & Edge Host Cache</h3>
+    <ol>
+      <li>In your Chrome or Edge address bar, navigate to: <code>chrome://net-internals/#dns</code> (or <code>edge://net-internals/#dns</code>).</li>
+      <li>Click the clear button: <strong>"Clear host cache"</strong>.</li>
+      <li>Next, navigate to: <code>chrome://net-internals/#sockets</code> and click <strong>"Flush socket pools"</strong>.</li>
+    </ol>
+
+    <h2>Step 2: Switch to Enterprise Public DNS Resolvers</h2>
+    <p>
+      Relying on your default internet service provider's DNS is the single biggest cause of recurring browsing errors. Migrating your network adapter to enterprise-grade public DNS provides 99.99% uptime, DNSSEC cryptographic verification, and lower latency:
+    </p>
+
+    <table class="diagnostic-table">
+      <thead>
+        <tr>
+          <th>DNS Provider</th>
+          <th>Primary IPv4</th>
+          <th>Secondary IPv4</th>
+          <th>Primary Key Advantage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Public DNS</strong></td>
+          <td><code>8.8.8.8</code></td>
+          <td><code>8.8.4.4</code></td>
+          <td>Global Anycast presence, unmatched global routing speed.</td>
+        </tr>
+        <tr>
+          <td><strong>Cloudflare 1.1.1.1</strong></td>
+          <td><code>1.1.1.1</code></td>
+          <td><code>1.0.0.1</code></td>
+          <td>Fastest raw DNS response time worldwide (&lt; 14ms) + strict privacy.</td>
+        </tr>
+        <tr>
+          <td><strong>Quad9 Security DNS</strong></td>
+          <td><code>9.9.9.9</code></td>
+          <td><code>149.112.112.112</code></td>
+          <td>Real-time automated blocking of known phishing and malware domains.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Configuring Public DNS in Windows 11 / 10:</h3>
+    <ol>
+      <li>Press <code>Win + R</code>, type <code>ncpa.cpl</code>, and press Enter.</li>
+      <li>Right-click your active connection (<strong>Wi-Fi</strong> or <strong>Ethernet</strong>) and select <strong>Properties</strong>.</li>
+      <li>Select <strong>Internet Protocol Version 4 (TCP/IPv4)</strong> and click <strong>Properties</strong>.</li>
+      <li>Select <strong>Use the following DNS server addresses</strong>:
+        <ul>
+          <li>Preferred DNS server: <code>8.8.8.8</code></li>
+          <li>Alternate DNS server: <code>1.1.1.1</code></li>
+        </ul>
+      </li>
+      <li>Check the box: <em>"Validate settings upon exit"</em> and click <strong>OK</strong>.</li>
+    </ol>
+
+    <h2>Step 3: Verify Firewall UDP/TCP Port 53 Traffic</h2>
+    <p>
+      DNS lookups operate fundamentally over <strong>UDP port 53</strong> (and TCP port 53 for responses larger than 512 bytes). If your office firewall or third-party antivirus software blocks this port, no DNS query will ever succeed.
+    </p>
+    <p>
+      To test if your computer can reach Google DNS over port 53, run a quick PowerShell test:
+    </p>
+    <div class="terminal-box">
+      <code>Test-NetConnection -ComputerName 8.8.8.8 -Port 53</code>
+    </div>
+    <p>
+      If the output returns <code>TcpTestSucceeded : True</code>, your physical and network connection to the DNS resolver is healthy. If it returns <code>False</code>, your antivirus firewall (e.g. Norton/Kaspersky) or router firewall is actively intercepting and dropping port 53 requests. Temporarily disable third-party firewall shields to verify.
+    </p>
+
+    <h2>Step 4: Disable Ghost Virtual Network Adapters</h2>
+    <p>
+      If you have software installed such as VMware, VirtualBox, Docker Desktop, or old VPN clients, Windows creates virtual network bridge adapters (like <em>vEthernet</em>, <em>VirtualBox Host-Only Ethernet</em>, or <em>TAP-Windows Adapter</em>).
+    </p>
+    <p>
+      Windows occasionally attempts to route physical internet DNS lookups through these internal virtual adapters. When the virtual adapter fails to respond, your browser throws "DNS Server Not Responding".
+    </p>
+    <ol>
+      <li>Press <code>Win + R</code>, type <code>ncpa.cpl</code>, and press Enter.</li>
+      <li>Review the list of adapters. Right-click any unused VPN TAP adapters, Hyper-V virtual switches, or VirtualBox adapters.</li>
+      <li>Select <strong>Disable</strong> for each unused virtual adapter.</li>
+      <li>Restart your primary web browser and reload the page.</li>
+    </ol>
+
+    <h2>Step 5: Router-Level DNS Configuration</h2>
+    <p>
+      Rather than configuring DNS manually on every individual phone, laptop, and tablet, you can configure Google or Cloudflare DNS directly inside your main router:
+    </p>
+    <ol>
+      <li>Open your browser and enter your router gateway IP (typically <code>192.168.1.1</code> or <code>192.168.0.1</code>).</li>
+      <li>Log in with your administrator credentials.</li>
+      <li>Navigate to <strong>Network / WAN Settings</strong> or <strong>DHCP Server Configuration</strong>.</li>
+      <li>Locate the <strong>DNS Server / Nameserver</strong> fields.</li>
+      <li>Replace the default ISP entries with <code>8.8.8.8</code> (Primary) and <code>1.1.1.1</code> (Secondary).</li>
+      <li>Save and reboot the router. Every connected device in your office will automatically inherit reliable, lightning-fast DNS resolution.</li>
+    </ol>
+
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    <div style="margin-top: 1.5rem;">
+      <h3 style="color: var(--cyan-primary);">Q: Why does DNS fail on one website, but work on others?</h3>
+      <p>
+        If popular sites like YouTube or Google load fine, but a specific website triggers "DNS Server Not Responding", the failure is on the target website's nameservers (such as their Cloudflare, GoDaddy, or Route 53 DNS records failing to propagate or their domain registration expiring).
+      </p>
+
+      <h3 style="color: var(--cyan-primary);">Q: Will changing to Google or Cloudflare DNS make my internet faster?</h3>
+      <p>
+        Yes. While it won't change your raw download speed (e.g. 100 Mbps), it dramatically reduces the initial latency when clicking links. Instead of waiting 150ms for a congested ISP DNS server to locate a domain, Cloudflare or Google resolves the query in 5ms to 15ms, making website browsing feel significantly snappier.
+      </p>
+    </div>
+
+    <!-- Related Services Callout -->
+    <div style="background: #161b24; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2.2rem; margin-top: 3.5rem; text-align: center;">
+      <h3 style="color: #fff; margin-top: 0; font-size: 1.4rem;">Upgrade Your Corporate Network Security</h3>
+      <p style="color: var(--text-muted); max-width: 620px; margin: 0.5rem auto 1.5rem; font-size: 0.95rem;">
+        Eebii provides managed DNS filtering, enterprise firewall installations, and IT consulting to protect your business network against cyber threats.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="service-network-security.html" class="hero-btn" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); color: #000;">
+          Network Security Services →
+        </a>
+        <a href="barcode-generator.html" class="hero-btn hero-btn-outline">
+          Barcode Designer Tool
+        </a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="hero-btn hero-btn-outline">
+          Eebii Invoice Pro
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Corporate Footer -->
+  <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; font-family: var(--font-main);">
+    <div class="container">
+      <div style="margin-bottom: 2.5rem;">
+        <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
+        <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">About</a>
+        <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Services</a>
+        <a href="blog.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Blog</a>
+        <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Contact</a>
+      </div>
+      <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
+        <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
+          <span style="color: #333;">|</span>
+          <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="barcode-generator.html" style="color: #00d4ff; text-decoration: none;">Barcode Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
+          <span style="color: #333;">|</span>
+          <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
+          <span style="color: #333;">|</span>
+          <a href="academy.html" style="color: #00d4ff; text-decoration: none;">Eebii Academy</a>
+          <span style="color: #333;">|</span>
+          <a href="service-digital-marketing.html" style="color: #00d4ff; text-decoration: none;">Digital Marketing</a>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; border-top: 1px solid #1a1d23; padding-top: 1.5rem;">
+        <a href="terms.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Terms</a>
+        <span style="color: #333;">|</span>
+        <a href="disclaimer.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Disclaimer</a>
+        <span style="color: #333;">|</span>
+        <a href="privacy-policy.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Privacy Policy</a>
+      </div>
+      <p style="margin-top: 2.5rem; font-size: 0.9rem;">📧 <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+      <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      if (nav) nav.classList.toggle("active");
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Fix "Wi-Fi Connected, But No Internet Access" (2026 Step-by-Step Guide) | Eebii</title>
+  <meta name="description"
+    content="Fix the 'Connected, No Internet' error on Windows 11, Windows 10, laptops, and office networks. Step-by-step diagnostic commands, DNS flush, TCP/IP stack reset, and router gateway troubleshooting by Eebii IT Support.">
+  <meta name="keywords" content="wifi connected no internet, connected but no internet access, fix wifi windows 11, ipconfig flushdns, netsh winsock reset, default gateway not available, dns probe finished no internet">
+  <link rel="canonical" href="https://www.eebii.com/blog-fix-wifi-connected-no-internet.html">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Open Graph / Twitter Cards -->
+  <meta property="og:title" content="How to Fix 'Wi-Fi Connected, But No Internet Access' (2026 Guide)">
+  <meta property="og:description" content="Step-by-step diagnostic commands, DNS flush, and network stack resets to fix the 'Connected, No Internet' error permanently.">
+  <meta property="og:image" content="https://www.eebii.com/img-wifi-troubleshoot.jpg">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Schema.org TechArticle, HowTo, & FAQPage for Rich Google Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "How to Fix 'Wi-Fi Connected, But No Internet Access' in Windows 11 and Office Networks",
+        "image": "https://www.eebii.com/img-wifi-troubleshoot.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "Eebii IT Support"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Eebii",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.eebii.com/invoice-icon.png"
+          }
+        },
+        "datePublished": "2026-04-15",
+        "dateModified": "2026-04-15",
+        "description": "Comprehensive engineering guide to resolving Windows network gateway drops, stale DNS caches, and DHCP lease failures."
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Fix Connected No Internet on Windows",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Flush DNS and Reset TCP/IP Stack",
+            "text": "Open Command Prompt as Administrator and execute netsh winsock reset followed by ipconfig /flushdns."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Switch to Public DNS",
+            "text": "Configure your Wi-Fi adapter IPv4 settings to use Google Public DNS 8.8.8.8 and 8.8.4.4."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Release and Renew DHCP IP",
+            "text": "Run ipconfig /release and ipconfig /renew to resolve local IP address collisions."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why does my Wi-Fi say 'Connected, no internet'?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This occurs when your computer successfully establishes a wireless link to the local router (LAN), but the router is unable to route packets to the wider internet (WAN) due to ISP outages, stale DNS caches, IP address conflicts, or corrupted TCP/IP network stacks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What commands fix 'Connected, no internet' in Windows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open CMD as Administrator and run: ipconfig /flushdns, ipconfig /release, ipconfig /renew, netsh winsock reset, and netsh int ip reset. Then restart your computer."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body {
+      background-color: #090b10;
+      color: #f3f4f6;
+      font-family: var(--font-main);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .article-wrapper {
+      max-width: 920px;
+      margin: 40px auto 70px;
+      padding: 50px 60px;
+      background: #11141b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .article-wrapper {
+        padding: 30px 20px;
+        margin: 20px 15px;
+      }
+    }
+
+    .article-header {
+      margin-bottom: 35px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 25px;
+    }
+
+    .article-header h1 {
+      color: #ffffff;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.25;
+      margin: 15px 0;
+      font-weight: 800;
+      letter-spacing: -1px;
+      font-family: var(--font-display);
+    }
+
+    .meta-line {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-line span {
+      color: var(--cyan-primary);
+      font-weight: bold;
+    }
+
+    .article-image-box {
+      margin: 2.5rem 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #000;
+    }
+
+    .article-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .article-image-caption {
+      padding: 10px 15px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      background: #0e1117;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .article-wrapper h2 {
+      color: #ffffff;
+      font-size: 1.6rem;
+      margin: 45px 0 20px;
+      font-weight: 700;
+      border-left: 4px solid var(--cyan-primary);
+      padding-left: 15px;
+      font-family: var(--font-display);
+    }
+
+    .article-wrapper h3 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      margin: 30px 0 15px;
+      font-weight: 600;
+    }
+
+    .article-wrapper p {
+      margin-bottom: 1.5rem;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+      line-height: 1.85;
+    }
+
+    .article-wrapper ul,
+    .article-wrapper ol {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+
+    .article-wrapper li {
+      margin-bottom: 0.8rem;
+      color: #cbd5e1;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .article-wrapper li strong {
+      color: #ffffff;
+    }
+
+    .terminal-box {
+      background: #06080c;
+      border: 1px solid #1f2430;
+      border-radius: var(--radius-sm);
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0 2rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      color: #38bdf8;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .terminal-box::before {
+      content: "ADMINISTRATOR COMMAND PROMPT";
+      display: block;
+      font-size: 0.68rem;
+      color: #64748b;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #1a202c;
+      padding-bottom: 0.3rem;
+    }
+
+    .terminal-box code {
+      color: #4ade80;
+    }
+
+    .diagnostic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: #090b10;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .diagnostic-table th {
+      background: #161b24;
+      color: var(--cyan-primary);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .diagnostic-table td {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+
+    .back-link {
+      color: var(--cyan-primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    .back-link:hover {
+      color: #fff;
+      transform: translateX(-4px);
+    }
+
+    .pro-tip-box {
+      background: rgba(0, 212, 255, 0.06);
+      border-left: 4px solid var(--cyan-primary);
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 2rem 0;
+    }
+
+    .pro-tip-box h4 {
+      color: var(--cyan-primary);
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+    }
+
+    .pro-tip-box p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="topnav">
+      <a href="index.html" class="nav-brand">Eebii</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#tools">Ecosystem</a>
+        <a href="barcode-generator.html">Barcode Tool</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="nav-cta-btn">
+          Invoice Pro →
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Article Body -->
+  <main class="article-wrapper">
+    <a href="blog.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Knowledge Hub</a>
+
+    <header class="article-header">
+      <div class="meta-line">
+        By Eebii IT Support <span>|</span> April 2026 <span>|</span> Category: Network & Infrastructure <span>|</span> 7 Min Read
+      </div>
+      <h1>How to Fix "Wi-Fi Connected, But No Internet Access" (2026 Step-by-Step Guide)</h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6; margin-top: 10px;">
+        A comprehensive IT engineer troubleshooting manual for resolving Windows 11, Windows 10, and office router network drops without reformatting your system.
+      </p>
+    </header>
+
+    <!-- Technical Diagram -->
+    <div class="article-image-box">
+      <img src="img-wifi-troubleshoot.jpg" alt="Technical diagram illustrating Wi-Fi Connected But No Internet diagnostic flowchart and packet flow">
+      <div class="article-image-caption">
+        <strong>Figure 1.1:</strong> Network Packet Trace & Diagnostic Checkpoints: Identifying whether the failure lies in the local Wi-Fi link (LAN), router gateway, or upstream ISP fiber backbone.
+      </div>
+    </div>
+
+    <p>
+      Few technical errors are more exasperating than looking at your Windows system tray, seeing a solid Wi-Fi connection with full signal bars, only to find the dreaded yellow exclamation mark or globe icon accompanied by the message: <strong>"Connected, no internet"</strong>.
+    </p>
+
+    <p>
+      Your laptop connects to the router with ease, but web pages refuse to load, Teams and Slack disconnect, and DNS queries fail with <code>ERR_NAME_NOT_RESOLVED</code>. At Eebii, our managed network engineers troubleshoot this issue daily across hundreds of client workstations. Here is the exact diagnostic workflow we use to isolate the root cause and restore full connectivity in under five minutes.
+    </p>
+
+    <h2>The Fundamental Problem: LAN vs. WAN</h2>
+    <p>
+      To resolve the error, you must first understand what Windows is telling you. The "Connected" indicator verifies that your device's wireless card has successfully authenticated and established a local link with your Wi-Fi access point (the <strong>Local Area Network or LAN</strong>).
+    </p>
+    <p>
+      However, the "No Internet" status indicates that your operating system sent probe packets to Microsoft’s Network Connectivity Status Indicator (NCSI) servers (such as <code>www.msftncsi.com/ncsi.txt</code>), and received no reply. The breakdown almost always stems from one of four choke points:
+    </p>
+    <ul>
+      <li><strong>A Corrupted TCP/IP Network Stack or Winsock Catalog:</strong> Windows socket handlers are failing to bind incoming network packets.</li>
+      <li><strong>Stale or Poisoned Local DNS Cache:</strong> Your computer is querying an outdated or unresponsive ISP Domain Name System resolver.</li>
+      <li><strong>DHCP Lease or IP Collision:</strong> Two devices on the same office or home network were accidentally assigned the same local IP address.</li>
+      <li><strong>Upstream ISP Gateway Drop:</strong> The router itself lost connection to the Internet Service Provider's optical line terminal (OLT).</li>
+    </ul>
+
+    <h2>Phase 1: The 60-Second Command Line Diagnostic</h2>
+    <p>
+      Before randomly rebooting hardware, open a terminal to pinpoint where the packet chain is severing. Press <code>Win + R</code>, type <code>cmd</code>, and press <strong>Ctrl + Shift + Enter</strong> to launch Command Prompt as Administrator. Execute these three ping tests in order:
+    </p>
+
+    <table class="diagnostic-table">
+      <thead>
+        <tr>
+          <th>Command Executed</th>
+          <th>What It Tests</th>
+          <th>Interpretation of Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>ping 127.0.0.1</code></td>
+          <td>Internal Loopback Adapter</td>
+          <td>If this fails, your physical wireless card driver or Windows TCP/IP kernel stack is damaged.</td>
+        </tr>
+        <tr>
+          <td><code>ping 192.168.1.1</code> (or your gateway)</td>
+          <td>Local Router / Gateway Link</td>
+          <td>If this fails, the problem is between your laptop and your Wi-Fi router (bad password, IP conflict, or MAC filter).</td>
+        </tr>
+        <tr>
+          <td><code>ping 8.8.8.8</code></td>
+          <td>Direct WAN / Internet Access</td>
+          <td>If this succeeds but websites still don't open, your internet is working, but your <strong>DNS resolver is dead</strong>!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Phase 2: The Core Network Stack Flush (The #1 Fix)</h2>
+    <p>
+      In over 70% of business workstation cases, the root cause is a corrupted Winsock catalog or stale dynamic IP lease. Execute the following sequential stack reset in your elevated Command Prompt:
+    </p>
+
+    <div class="terminal-box">
+      <code>ipconfig /flushdns</code><br>
+      <code>ipconfig /release</code><br>
+      <code>ipconfig /renew</code><br>
+      <code>netsh winsock reset</code><br>
+      <code>netsh int ip reset</code>
+    </div>
+
+    <p>
+      <strong>What this does:</strong>
+    </p>
+    <ol>
+      <li><code>/flushdns</code> clears the local memory cache of translated domain names, removing corrupted IP routing tables.</li>
+      <li><code>/release</code> and <code>/renew</code> forcibly drops your existing local IP address and requests a clean, uncontested IP address from your router's DHCP pool.</li>
+      <li><code>netsh winsock reset</code> restores the Windows Sockets API catalog to clean defaults, immediately clearing glitches caused by VPN software, proxy crashes, or third-party firewall hooks.</li>
+    </ol>
+    <p>Once complete, restart your computer to apply the new socket catalog.</p>
+
+    <h2>Phase 3: Switch From Unstable ISP DNS to Enterprise Public DNS</h2>
+    <p>
+      Most residential and small business routers inherit the default DNS servers assigned by local telecom providers (Airtel, Jio, BSNL, ACT, Spectrum). When these regional ISP DNS nodes experience congestion or downtime, your device will display "Connected, No Internet" even though the underlying fiber line is perfectly healthy.
+    </p>
+
+    <div class="pro-tip-box">
+      <h4><i class="fas fa-bolt"></i> Recommended Enterprise Public DNS Addresses</h4>
+      <p>
+        <strong>Google Public DNS:</strong> Primary: <code>8.8.8.8</code> | Alternate: <code>8.8.4.4</code><br>
+        <strong>Cloudflare High-Speed Privacy DNS:</strong> Primary: <code>1.1.1.1</code> | Alternate: <code>1.0.0.1</code>
+      </p>
+    </div>
+
+    <h3>How to Configure Static DNS in Windows 11 & 10:</h3>
+    <ol>
+      <li>Press <code>Win + R</code>, type <code>ncpa.cpl</code>, and hit Enter to open <strong>Network Connections</strong>.</li>
+      <li>Right-click your active <strong>Wi-Fi</strong> adapter and select <strong>Properties</strong>.</li>
+      <li>Scroll down, click on <strong>Internet Protocol Version 4 (TCP/IPv4)</strong>, and click <strong>Properties</strong>.</li>
+      <li>Select the radio button: <em>"Use the following DNS server addresses"</em>.</li>
+      <li>Enter <code>8.8.8.8</code> as Preferred DNS server, and <code>1.1.1.1</code> as Alternate DNS server.</li>
+      <li>Check the box <em>"Validate settings upon exit"</em> and click <strong>OK</strong>.</li>
+    </ol>
+
+    <h2>Phase 4: Disable 802.11 Power Saving (Fixes Random Disconnects)</h2>
+    <p>
+      If your laptop connects to Wi-Fi initially upon boot, but drops to "No Internet" after waking up from sleep or 15 minutes of idle time, Windows Power Management is turning off your wireless chip to conserve battery.
+    </p>
+    <ol>
+      <li>Right-click the Start Menu and select <strong>Device Manager</strong>.</li>
+      <li>Expand <strong>Network Adapters</strong>, right-click your Wi-Fi card (Intel Wi-Fi 6 AX200, Realtek, or Qualcomm), and choose <strong>Properties</strong>.</li>
+      <li>Navigate to the <strong>Power Management</strong> tab.</li>
+      <li><strong>Uncheck:</strong> <em>"Allow the computer to turn off this device to save power"</em>.</li>
+      <li>Click <strong>OK</strong> and test stability.</li>
+    </ol>
+
+    <h2>Phase 5: The Correct Router Power-Cycle (The 30-Second Rule)</h2>
+    <p>
+      If multiple devices in your office (phones, tablets, workstations) simultaneously show "Connected, No Internet", the failure is at the gateway router, not your individual computer.
+    </p>
+    <p>
+      Do not simply press the power button off and on immediately. Modern fiber routers contain volatile capacitors that retain electrical charge for several seconds, keeping memory registers active:
+    </p>
+    <ol>
+      <li>Unplug the AC power cord from the back of the router/modem.</li>
+      <li>Wait a full <strong>30 seconds</strong> to allow internal capacitors to fully discharge and clear the router's NAT routing tables and ARP cache.</li>
+      <li>Plug the power cord back in. Allow 2 to 3 minutes for the PON/WAN fiber sync lights to turn solid green before testing internet access.</li>
+    </ol>
+
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    <div style="margin-top: 1.5rem;">
+      <h3 style="color: var(--cyan-primary);">Q: Why does my phone work on Wi-Fi, but my laptop says 'No Internet'?</h3>
+      <p>
+        This confirms your ISP fiber is active. The failure is localized to your laptop—usually caused by a corrupted Windows DNS cache, aggressive third-party antivirus firewall blocking port 53, or an outdated Wi-Fi adapter driver. Running <code>netsh winsock reset</code> and setting static DNS (8.8.8.8) will resolve this immediately.
+      </p>
+
+      <h3 style="color: var(--cyan-primary);">Q: Can a VPN cause 'Connected, No Internet'?</h3>
+      <p>
+        Yes. When a VPN client (like NordVPN, Cisco AnyConnect, or OpenVPN) crashes or disconnects abruptly, its virtual TAP network adapter often fails to restore default routing tables. Open your VPN software, toggle the Kill Switch off, or disable the VPN TAP adapter in <code>ncpa.cpl</code>.
+      </p>
+    </div>
+
+    <!-- Related Services & Tools -->
+    <div style="background: #161b24; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2.2rem; margin-top: 3.5rem; text-align: center;">
+      <h3 style="color: #fff; margin-top: 0; font-size: 1.4rem;">Need Enterprise Network Support?</h3>
+      <p style="color: var(--text-muted); max-width: 620px; margin: 0.5rem auto 1.5rem; font-size: 0.95rem;">
+        Eebii provides managed IT infrastructure, commercial firewall deployments, and 24/7 technical support for businesses across India.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="service-network-security.html" class="hero-btn" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); color: #000;">
+          Explore Network Services →
+        </a>
+        <a href="barcode-generator.html" class="hero-btn hero-btn-outline">
+          Try Barcode Generator
+        </a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="hero-btn hero-btn-outline">
+          Eebii Invoice Pro
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Corporate Footer -->
+  <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; font-family: var(--font-main);">
+    <div class="container">
+      <div style="margin-bottom: 2.5rem;">
+        <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
+        <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">About</a>
+        <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Services</a>
+        <a href="blog.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Blog</a>
+        <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Contact</a>
+      </div>
+      <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
+        <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
+          <span style="color: #333;">|</span>
+          <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="barcode-generator.html" style="color: #00d4ff; text-decoration: none;">Barcode Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
+          <span style="color: #333;">|</span>
+          <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
+          <span style="color: #333;">|</span>
+          <a href="academy.html" style="color: #00d4ff; text-decoration: none;">Eebii Academy</a>
+          <span style="color: #333;">|</span>
+          <a href="service-digital-marketing.html" style="color: #00d4ff; text-decoration: none;">Digital Marketing</a>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; border-top: 1px solid #1a1d23; padding-top: 1.5rem;">
+        <a href="terms.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Terms</a>
+        <span style="color: #333;">|</span>
+        <a href="disclaimer.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Disclaimer</a>
+        <span style="color: #333;">|</span>
+        <a href="privacy-policy.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Privacy Policy</a>
+      </div>
+      <p style="margin-top: 2.5rem; font-size: 0.9rem;">📧 <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+      <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      if (nav) nav.classList.toggle("active");
+    }
+  </script>
+
+</body>
+
+</html>

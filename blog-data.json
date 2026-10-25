@@ -190,5 +190,29 @@
     "author": "Eebii Solutions",
     "category": "productivity",
     "summary": "Discover how the interconnected Eebii Ecosystem resolves IT disasters, automates invoicing, and streamlines communication during a standard business day."
+  },
+  {
+    "title": "How to Fix 'Wi-Fi Connected, But No Internet Access' (2026 Step-by-Step Guide)",
+    "slug": "blog-fix-wifi-connected-no-internet.html",
+    "date": "April 2026",
+    "author": "Eebii IT Support",
+    "category": "network",
+    "summary": "Fix the 'Connected, No Internet' error on Windows 11, Windows 10, laptops, and office networks. Step-by-step diagnostic commands, DNS flush, and TCP/IP stack reset."
+  },
+  {
+    "title": "How to Fix 100% Disk Usage on Windows 11 & Windows 10 (2026 Guide)",
+    "slug": "blog-fix-100-disk-usage-windows.html",
+    "date": "April 2026",
+    "author": "Eebii IT Support",
+    "category": "support",
+    "summary": "Stop system freezing and fix 100% disk usage in Windows 11/10 Task Manager. Disable SysMain safely, adjust pagefile.sys virtual memory, and run DISM/SFC scans."
+  },
+  {
+    "title": "How to Fix 'DNS Server Not Responding' Error on Windows & Mac (2026 Guide)",
+    "slug": "blog-fix-dns-server-not-responding.html",
+    "date": "April 2026",
+    "author": "Eebii IT Support",
+    "category": "network",
+    "summary": "Resolve 'DNS Server Not Responding' and ERR_NAME_NOT_RESOLVED errors fast. Flush host cache, switch to Google/Cloudflare public DNS, and fix port 53 firewall blocks."
   }
 ]
