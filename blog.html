@@ -1,168 +1,822 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Blog | Eebii IT Solutions</title>
-  <meta name="description" content="Read the latest IT tips, cybersecurity guides, product announcements and business technology insights from the Eebii team.">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eebii Knowledge Base & IT Insights Hub — Technical Guides & Strategy</title>
+  <meta name="description"
+    content="Authoritative IT guides, GST billing tutorials, cybersecurity frameworks, and cloud workflows for Indian MSMEs and modern enterprises.">
+  <meta name="keywords"
+    content="IT blog, GST invoice guide India, small business network security, cloud storage, FortiGate firewall, PDF suite tools, Eebii Academy">
+  <meta name="author" content="Eebii Technologies">
+  <link rel="canonical" href="https://eebii.com/blog.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="blog">
+  <meta property="og:url" content="https://eebii.com/blog.html">
+  <meta property="og:title" content="Eebii Knowledge Base & Enterprise Tech Publication">
+  <meta property="og:description"
+    content="In-depth tutorials, taxation playbooks, and IT infrastructure insights from certified systems engineers.">
+  <meta property="og:image" content="https://eebii.com/invoice-icon.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://eebii.com/blog.html">
+  <meta name="twitter:title" content="Eebii Knowledge Base & Enterprise Tech Publication">
+  <meta name="twitter:description"
+    content="Practical IT troubleshooting, GST compliance guides, and cyber security best practices for Indian businesses.">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Structured Data Schema for CollectionPage & Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://eebii.com/blog.html#webpage",
+        "url": "https://eebii.com/blog.html",
+        "name": "Eebii Knowledge Base & Corporate IT Insights",
+        "description": "Comprehensive IT guides, GST billing manuals, and cyber defense best practices for Indian MSMEs.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://eebii.com/#website",
+          "name": "Eebii",
+          "url": "https://eebii.com"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://eebii.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Base",
+            "item": "https://eebii.com/blog.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .blog-hero {
+      background: radial-gradient(ellipse 70% 50% at 50% -20%, rgba(0, 212, 255, 0.15), transparent), var(--bg-base);
+      padding: 5rem 1.5rem 3.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+    .featured-article-card {
+      background: linear-gradient(145deg, rgba(22, 28, 42, 0.95), rgba(12, 16, 24, 0.95));
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 1100px;
+      margin: -2.5rem auto 3.5rem;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 212, 255, 0.1);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      text-align: left;
+      position: relative;
+      z-index: 5;
+    }
+    @media (max-width: 860px) {
+      .featured-article-card {
+        grid-template-columns: 1fr;
+        margin-top: 1rem;
+        padding: 1.8rem;
+      }
+    }
+    .search-filter-hub {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .search-input-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+    }
+    .search-input-wrap i {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+    }
+    .search-input-wrap input {
+      padding-left: 3rem;
+      font-size: 1rem;
+      background: rgba(18, 23, 34, 0.9);
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .category-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .category-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 0.45rem 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .category-pill:hover {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--cyan-primary);
+      border-color: rgba(0, 212, 255, 0.3);
+    }
+    .category-pill.active {
+      background: var(--cyan-primary);
+      color: #050b14;
+      border-color: var(--cyan-primary);
+      font-weight: 700;
+    }
+    .blog-item-card {
+      transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+    .blog-item-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-hover);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 212, 255, 0.1);
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Navigation -->
+  <header>
     <nav class="topnav">
-    <a href="index.html" class="nav-brand" style="color: #fff; text-decoration: none;">Eebii</a>
-    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="index.html#services">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
-    </div>
-  </nav>
-  <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
+      <div class="nav-brand-group">
+        <a href="index.html" class="nav-brand">
+          <span>Eebii</span>
+          <span class="brand-badge">INSIGHTS</span>
+        </a>
+      </div>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#tools">Ecosystem</a>
+        <a href="index.html#gst-calculator">GST Utility</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog.html" class="active">Knowledge Hub</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" class="nav-cta-btn">
+          Invoice Pro <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Blog Header -->
-    <main style="max-width: 1200px; margin: 40px auto; padding: 2rem;">
-      <h1 style="text-align: center; color: #fff; font-size: 3rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 3rem;">
-        <i class="fas fa-book-open" style="color: #00d4ff;"></i> Eebii Knowledge Base
+  <!-- Blog Hero -->
+  <div class="blog-hero">
+    <div class="container">
+      <div style="font-size: 0.8rem; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; color: var(--cyan-primary); letter-spacing: 1.5px; margin-bottom: 0.8rem;">
+        <i class="fas fa-newspaper"></i> Corporate Editorial Desk
+      </div>
+      <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 800; letter-spacing: -1.5px; margin-bottom: 1rem;">
+        Eebii Knowledge Base & Tech Insights
       </h1>
+      <p style="max-width: 680px; margin: 0 auto; color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+        Expert technical blueprints, Indian GST taxation manuals, network defense architecture, and productivity playbooks written by IT practitioners.
+      </p>
+    </div>
+  </div>
 
-      <!-- Search + Filter -->
-      <div class="blog-filters" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 5rem; flex-wrap: wrap; padding: 0 1rem;">
-        <div style="position: relative; width: 100%; max-width: 400px;">
-          <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #666; font-size: 0.9rem;"></i>
-          <input type="text" id="blogSearch" placeholder="Search insights..." 
-            style="padding: 1rem 1rem 1rem 3rem; width: 100%; border-radius: 12px; border: 1px solid #2d2d2d; background: #16181d; color: #fff; font-family: 'Inter', sans-serif; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);" />
+  <main class="container" style="padding-top: 3.5rem; padding-bottom: 6rem;">
+    
+    <!-- Featured Article Spotlight (AdSense high-value editorial spotlight) -->
+    <div class="featured-article-card">
+      <div>
+        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 1rem;">
+          <span class="card-badge" style="background: rgba(0, 212, 255, 0.15); color: var(--cyan-primary); border-color: rgba(0, 212, 255, 0.3); margin: 0;">
+            EDITOR'S CHOICE
+          </span>
+          <span style="color: var(--text-dim); font-size: 0.85rem;">March 2026 • 9 min read</span>
         </div>
-        <div style="position: relative;">
-           <select id="blogCategory" 
-            style="padding: 1rem 2.5rem 1rem 1rem; border-radius: 12px; border: 1px solid #2d2d2d; background: #16181d; color: #fff; min-width: 200px; font-family: 'Inter', sans-serif; cursor: pointer; appearance: none; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);">
-            <option value="all">All Topics</option>
-            <option value="strategy">Business Strategy</option>
-            <option value="support">Remote Support</option>
-            <option value="network">Networking</option>
-            <option value="cloud">Cloud Servers</option>
-            <option value="security">Cybersecurity</option>
-            <option value="marketing">Marketing</option>
-            <option value="productivity">Productivity</option>
-            <option value="invoicing">Billing & GST</option>
-            <option value="pdf">PDF Tools</option>
-            <option value="privacy">Data Privacy</option>
-            <option value="trends">Future Trends</option>
-          </select>
-          <i class="fas fa-chevron-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #666; font-size: 0.8rem;"></i>
-        </div>
+        <h2 style="font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 1rem; line-height: 1.25;">
+          <a href="blog-eebii-master-guide.html" style="color: #ffffff;">The Definitive 2026 Eebii Master Guide: Scaling Indian MSMEs</a>
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+          The ultimate masterclass mega-guide on scaling your business operations from volatile local servers to secure, automated cloud architecture using the Eebii ecosystem. Includes comprehensive GST tax compliance frameworks.
+        </p>
+        <a href="blog-eebii-master-guide.html" class="hero-btn" style="padding: 0.75rem 1.8rem; font-size: 0.95rem;">
+          Read Master Guide <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
+        </a>
+      </div>
+      <div style="background: rgba(10, 13, 20, 0.7); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;">
+        <h4 style="color: var(--cyan-primary); font-size: 1.1rem; margin-bottom: 1rem;">Key Insights Covered:</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; color: #cbd5e1; font-size: 0.9rem; line-height: 1.6;">
+          <li style="margin-bottom: 0.75rem; display: flex; gap: 8px;">
+            <i class="fas fa-check-circle" style="color: var(--cyan-primary); margin-top: 4px;"></i>
+            <span>Eliminating Excel billing headaches with GST automated calculation</span>
+          </li>
+          <li style="margin-bottom: 0.75rem; display: flex; gap: 8px;">
+            <i class="fas fa-check-circle" style="color: var(--cyan-primary); margin-top: 4px;"></i>
+            <span>Setting up private local PDF conversion workflows</span>
+          </li>
+          <li style="display: flex; gap: 8px;">
+            <i class="fas fa-check-circle" style="color: var(--cyan-primary); margin-top: 4px;"></i>
+            <span>Securing office networks with enterprise FortiGate firewalls</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Search + Topic Filter Hub -->
+    <div class="search-filter-hub">
+      <div class="search-input-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="blogSearch" placeholder="Search across 24+ guides (e.g., GST, Firewall, PDF, Cloud)..." autocomplete="off">
       </div>
 
-      <!-- Blog Posts -->
-      <div class="blog-grid" id="blog-grid" 
-        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 2rem;">
-        <!-- Dynamic loading -->
+      <div class="category-pills" id="categoryPills">
+        <button type="button" class="category-pill active" data-cat="all">All Topics (24)</button>
+        <button type="button" class="category-pill" data-cat="invoicing">Billing & GST</button>
+        <button type="button" class="category-pill" data-cat="security">Cybersecurity</button>
+        <button type="button" class="category-pill" data-cat="support">IT Support</button>
+        <button type="button" class="category-pill" data-cat="pdf">PDF Tools</button>
+        <button type="button" class="category-pill" data-cat="cloud">Cloud & Networks</button>
+        <button type="button" class="category-pill" data-cat="tools">Automation</button>
+        <button type="button" class="category-pill" data-cat="service">Consulting & Training</button>
       </div>
-    </main>
+    </div>
 
-    <!-- Footer -->
-    <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; margin-top: 4rem; font-family: 'Inter', sans-serif;">
-      <div class="container">
-        <div style="margin-bottom: 2.5rem;">
-          <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
-          <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">About</a>
-          <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Services</a>
-          <a href="blog.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem; font-weight: 700;">Blog</a>
-          <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Contact</a>
+    <!-- Results Count Indicator -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle);">
+      <span style="font-size: 0.9rem; color: var(--text-dim);" id="resultCount">Showing 24 articles</span>
+      <span style="font-size: 0.85rem; color: var(--cyan-primary);">
+        <i class="fas fa-rss"></i> Updated Weekly
+      </span>
+    </div>
+
+    <!-- Pre-rendered Static HTML Blog Cards Grid (Googlebot/AdSense bot crawls 100% of these immediately!) -->
+    <div class="blog-grid" id="blog-grid">
+
+      <!-- 1 -->
+      <article class="post blog-item-card" data-cat="support" data-title="Why Every Small Business Needs Remote IT Support">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Support</span>
+            <span class="post-date">July 2025</span>
+            <span class="post-read">• 5 min read</span>
+          </div>
+          <h3><a href="blog-remote-it-support.html" style="color: inherit;">Why Every Small Business Needs Remote IT Support</a></h3>
+          <p>Technical glitches and server freezes waste hours of billable time. Discover how on-demand remote support resolves office IT crises instantaneously without costly callout fees.</p>
         </div>
-        <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
-          <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
-          <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
-            <a href="https://invoice.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
-            <span style="color: #333;">|</span>
-            <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
-            <span style="color: #333;">|</span>
-            <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
-            <span style="color: #333;">|</span>
-            <a href="academy.html" style="color: #00d4ff; text-decoration: none;">Eebii Academy</a>
-            <span style="color: #333;">|</span>
-            <a href="service-digital-marketing.html" style="color: #00d4ff; text-decoration: none;">Digital Marketing</a>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-remote-it-support.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="post blog-item-card" data-cat="cloud" data-title="Top 5 Office Networking Mistakes">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Networking</span>
+            <span class="post-date">July 2025</span>
+            <span class="post-read">• 6 min read</span>
+          </div>
+          <h3><a href="blog-networking-mistakes.html" style="color: inherit;">Top 5 Office Networking Mistakes</a></h3>
+          <p>Avoid sluggish LAN speeds, Wi-Fi blindspots, and critical vulnerabilities. Discover the 5 most common network architecture mistakes sabotaging growing enterprises.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-networking-mistakes.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="post blog-item-card" data-cat="security" data-title="Firewall vs Antivirus: What's the Difference?">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Security</span>
+            <span class="post-date">July 2025</span>
+            <span class="post-read">• 5 min read</span>
+          </div>
+          <h3><a href="blog-firewall-vs-antivirus.html" style="color: inherit;">Firewall vs Antivirus: What's the Difference?</a></h3>
+          <p>Understand the critical operational distinction between network perimeter packet filtering and endpoint malware remediation, and why modern compliance demands both.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-firewall-vs-antivirus.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="post blog-item-card" data-cat="security" data-title="Best Practices for Securing Small Business Networks">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Security</span>
+            <span class="post-date">July 2025</span>
+            <span class="post-read">• 7 min read</span>
+          </div>
+          <h3><a href="blog-smallbiz-network-security.html" style="color: inherit;">Best Practices for Securing Small Business Networks</a></h3>
+          <p>From next-gen hardware firewalls to zero-trust employee Wi-Fi segmentation — discover actionable protocols to protect your Indian business network from ransom attacks.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-smallbiz-network-security.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="post blog-item-card" data-cat="cloud" data-title="Why Moving to the Cloud is a Smart Step for Your Business">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Cloud</span>
+            <span class="post-date">July 2025</span>
+            <span class="post-read">• 6 min read</span>
+          </div>
+          <h3><a href="cloud-blog.html" style="color: inherit;">Why Moving to the Cloud is a Smart Step for Your Business</a></h3>
+          <p>Explore how modern cloud architectures reduce hardware overhead, ensure seamless offsite disaster recovery, and empower hybrid remote teams with bank-grade security.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="cloud-blog.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="post blog-item-card" data-cat="invoicing" data-title="Eebii Invoice: Free Tool vs. Pro Features">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Invoicing</span>
+            <span class="post-date">August 2025</span>
+            <span class="post-read">• 7 min read</span>
+          </div>
+          <h3><a href="blog-invoice-pro-guide.html" style="color: inherit;">Eebii Invoice: Free Tool vs. Pro Features</a></h3>
+          <p>An in-depth technical comparison contrasting our free browser-based GST invoice generator against the enterprise cloud sync, role permissions, and accounting features of Invoice Pro.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-invoice-pro-guide.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="post blog-item-card" data-cat="tools" data-title="Eebii Workforce: Automate Attendance & Payroll for Indian MSMEs">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Tools</span>
+            <span class="post-date">September 2025</span>
+            <span class="post-read">• 5 min read</span>
+          </div>
+          <h3><a href="blog-eebii-workforce.html" style="color: inherit;">Eebii Workforce: Automate Attendance & Payroll</a></h3>
+          <p>Discover how Eebii Workforce solves attendance logging, shift tracking, and statutory salary calculations for growing manufacturing and retail MSMEs across India.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-eebii-workforce.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="post blog-item-card" data-cat="cloud" data-title="Eebii Web Hosting: Lightning Fast Cloud Servers">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Hosting</span>
+            <span class="post-date">September 2025</span>
+            <span class="post-read">• 5 min read</span>
+          </div>
+          <h3><a href="blog-eebii-web-hosting.html" style="color: inherit;">Eebii Web Hosting: Lightning Fast Cloud Servers</a></h3>
+          <p>Deploy your corporate portal on enterprise cloud infrastructure with guaranteed 99.9% uptime, global edge caching, automated SSL certificates, and round-the-clock defense.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-eebii-web-hosting.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="post blog-item-card" data-cat="service" data-title="Custom Software Development by Eebii: Scale Effectively">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Engineering</span>
+            <span class="post-date">October 2025</span>
+            <span class="post-read">• 6 min read</span>
+          </div>
+          <h3><a href="blog-eebii-software-development.html" style="color: inherit;">Custom Software Development by Eebii</a></h3>
+          <p>Off-the-shelf software often fails to mirror unique business logic. Learn how bespoke Web APIs and internal portals eliminate friction and multiply operational margins.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-eebii-software-development.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="post blog-item-card" data-cat="tools" data-title="The Eebii Privacy Revolution: 100% Local Free Tools">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Privacy</span>
+            <span class="post-date">October 2025</span>
+            <span class="post-read">• 5 min read</span>
+          </div>
+          <h3><a href="blog-eebii-privacy-revolution.html" style="color: inherit;">The Eebii Privacy Revolution: 100% Local Free Tools</a></h3>
+          <p>Most online converters quietly upload sensitive PDFs and invoices to remote data centers. Discover how Eebii executes 100% of calculations directly inside your local browser sandbox.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-eebii-privacy-revolution.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="post blog-item-card" data-cat="service" data-title="Eebii IT Consulting: Stop Buying the Wrong Tech">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Consulting</span>
+            <span class="post-date">November 2025</span>
+            <span class="post-read">• 6 min read</span>
+          </div>
+          <h3><a href="blog-eebii-it-consulting.html" style="color: inherit;">Eebii IT Consulting: Stop Buying the Wrong Tech</a></h3>
+          <p>Unscrupulous hardware vendors routinely oversell unnecessary enterprise equipment to small businesses. Our independent consulting audits save you tens of thousands in capital expenditure.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-eebii-it-consulting.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 12 -->
+      <article class="post blog-item-card" data-cat="tools" data-title="Eebii Flow: WhatsApp Bulk Messaging Revolution for Indian SMEs">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">WhatsApp</span>
+            <span class="post-date">December 2025</span>
+            <span class="post-read">• 7 min read</span>
+          </div>
+          <h3><a href="blog-eebii-flow.html" style="color: inherit;">Eebii Flow: WhatsApp Bulk Messaging Revolution</a></h3>
+          <p>Broadcast promotional updates, payment reminders, and dispatch notices legally via the official Meta Cloud API with 98% open rates and zero phone ban risk.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-eebii-flow.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 13 -->
+      <article class="post blog-item-card" data-cat="service" data-title="Announcing Eebii Academy: IT Training Meets AI Game Design">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Academy</span>
+            <span class="post-date">January 2026</span>
+            <span class="post-read">• 5 min read</span>
+          </div>
+          <h3><a href="blog-eebii-academy.html" style="color: inherit;">Announcing Eebii Academy: IT Training & AI Design</a></h3>
+          <p>Bridge the technology skill gap with hands-on curriculums in cybersecurity analysis, Unreal Engine 5 virtual production, and generative AI workflow automation.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-eebii-academy.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 14 -->
+      <article class="post blog-item-card" data-cat="pdf" data-title="How to Safely Compress PDF Files for Email in 2026">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">PDF</span>
+            <span class="post-date">February 2026</span>
+            <span class="post-read">• 4 min read</span>
+          </div>
+          <h3><a href="blog-pdf-compress.html" style="color: inherit;">How to Safely Compress PDF Files for Email</a></h3>
+          <p>Shrink bulky scanned contracts from 25MB down to under 2MB without losing optical clarity or uploading confidential client signatures to overseas servers.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-pdf-compress.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 15 -->
+      <article class="post blog-item-card" data-cat="pdf" data-title="The Ultimate Guide to Managing PDFs: Meet Eebii PDF Suite">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">PDF</span>
+            <span class="post-date">February 2026</span>
+            <span class="post-read">• 6 min read</span>
+          </div>
+          <h3><a href="blog-pdf-suite.html" style="color: inherit;">The Ultimate Guide to Managing PDFs in 2026</a></h3>
+          <p>Merge, re-order, split, and convert PDF documentation at blazing speed right in your browser. Zero registration, zero subscriptions, and complete security.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-pdf-suite.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 16 -->
+      <article class="post blog-item-card" data-cat="service" data-title="Top 3 Technology Investments for Small Businesses in 2026">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Trends</span>
+            <span class="post-date">March 2026</span>
+            <span class="post-read">• 6 min read</span>
+          </div>
+          <h3><a href="blog-tech-trends-2026.html" style="color: inherit;">Top 3 Tech Investments for Small Businesses</a></h3>
+          <p>Discover which technology infrastructure upgrades deliver immediate ROI, fortify remote operations, and outperform legacy software for Indian enterprises in 2026.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-tech-trends-2026.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 17 -->
+      <article class="post blog-item-card" data-cat="invoicing" data-title="How to Create a GST Invoice Online in India (2026 Guide)">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Invoicing</span>
+            <span class="post-date">March 2026</span>
+            <span class="post-read">• 8 min read</span>
+          </div>
+          <h3><a href="blog-gst-invoice-guide.html" style="color: inherit;">How to Create a GST Invoice Online in India</a></h3>
+          <p>Step-by-step master guide covering CGST, SGST, IGST tax breakdown rules, state code classifications, and how to issue audit-proof GST bills instantly online.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-gst-invoice-guide.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 18 -->
+      <article class="post blog-item-card" data-cat="invoicing" data-title="Best Free Invoice Generator in India (2026)">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Invoicing</span>
+            <span class="post-date">March 2026</span>
+            <span class="post-read">• 7 min read</span>
+          </div>
+          <h3><a href="blog-best-free-invoice-generator.html" style="color: inherit;">Best Free Invoice Generator in India (2026)</a></h3>
+          <p>Compare top GST invoicing tools and discover why thousands of freelancers and MSME directors choose Eebii's private browser generator over bulky accounting software.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-best-free-invoice-generator.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 19 -->
+      <article class="post blog-item-card" data-cat="service" data-title="Digital Marketing for Indian SMEs: 2026 Strategy Guide">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Marketing</span>
+            <span class="post-date">March 2026</span>
+            <span class="post-read">• 6 min read</span>
+          </div>
+          <h3><a href="blog-digital-marketing-sme.html" style="color: inherit;">Digital Marketing for Indian SMEs: 2026 Strategy</a></h3>
+          <p>Master local Google Business Profile SEO, targeted meta campaigns, and WhatsApp CRM pipelines to consistently capture high-intent commercial leads.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-digital-marketing-sme.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 20 -->
+      <article class="post blog-item-card" data-cat="tools" data-title="The Power of Eebii Ecosystem: Generate, Sign, and Secure Invoices">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Productivity</span>
+            <span class="post-date">March 2026</span>
+            <span class="post-read">• 5 min read</span>
+          </div>
+          <h3><a href="blog-ecosystem-workflow.html" style="color: inherit;">The Power of Eebii Ecosystem: Generate, Sign & Secure</a></h3>
+          <p>Discover the seamless 2-minute workflow combining Eebii Invoice Pro with PDF Suite and WhatsApp Flow for frictionless client billing and instant payments.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-ecosystem-workflow.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 21 -->
+      <article class="post blog-item-card" data-cat="service" data-title="The Definitive 2026 Eebii Master Guide: Scaling Indian MSMEs">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Strategy</span>
+            <span class="post-date">March 2026</span>
+            <span class="post-read">• 9 min read</span>
+          </div>
+          <h3><a href="blog-eebii-master-guide.html" style="color: inherit;">The Definitive 2026 Eebii Master Guide</a></h3>
+          <p>The definitive masterclass blueprint on transitioning from local spreadsheets to automated cloud infrastructure using the integrated Eebii ecosystem.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-eebii-master-guide.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 22 -->
+      <article class="post blog-item-card" data-cat="support" data-title="The Ultimate Guide to Network Printer Sharing & Troubleshooting">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Support</span>
+            <span class="post-date">April 2026</span>
+            <span class="post-read">• 6 min read</span>
+          </div>
+          <h3><a href="blog-printer-sharing-troubleshooting.html" style="color: inherit;">Network Printer Sharing & Troubleshooting Guide</a></h3>
+          <p>Learn exactly how to share printers across mixed Windows/Mac office networks and eliminate "Printer Offline", spooler stalls, and IP address collisions forever.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-printer-sharing-troubleshooting.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 23 -->
+      <article class="post blog-item-card" data-cat="support" data-title="5 Everyday IT Crises Every Office Faces (And How To Fix Them)">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Support</span>
+            <span class="post-date">April 2026</span>
+            <span class="post-read">• 7 min read</span>
+          </div>
+          <h3><a href="blog-everyday-it-issues-troubleshooting.html" style="color: inherit;">5 Everyday IT Crises Every Office Faces</a></h3>
+          <p>Learn how to diagnose and triage the 5 most disruptive daily tech emergencies: slow Wi-Fi latency, browser crashing loops, blue screens, and backup failures.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-everyday-it-issues-troubleshooting.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- 24 -->
+      <article class="post blog-item-card" data-cat="tools" data-title="A Day in the Life: How the Eebii Ecosystem Automates Your Entire Business">
+        <div>
+          <div class="post-meta">
+            <span class="post-cat">Productivity</span>
+            <span class="post-date">April 2026</span>
+            <span class="post-read">• 8 min read</span>
+          </div>
+          <h3><a href="blog-day-in-the-life-eebii-ecosystem.html" style="color: inherit;">A Day in the Life: Automating with Eebii</a></h3>
+          <p>Follow an Indian business owner through a high-pressure workday: handling client proposals, issuing GST e-invoices, securing file servers, and automating team attendance.</p>
+        </div>
+        <div style="margin-top: 1.2rem;">
+          <a href="blog-day-in-the-life-eebii-ecosystem.html" class="read-more-btn">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- No Results Placeholder (when searching) -->
+    <div id="noResults" style="display: none; text-align: center; padding: 4rem 1rem; color: var(--text-dim);">
+      <i class="fas fa-search" style="font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+      <h3 style="color: #fff;">No matching guides found</h3>
+      <p>Try searching for broader keywords such as "GST", "Invoice", "Security", or "PDF".</p>
+      <button type="button" onclick="resetFilters()" class="hero-btn" style="margin-top: 1rem;">Reset All Filters</button>
+    </div>
+
+    <!-- AdSense Compliant Banner Slot Placeholder -->
+    <div style="max-width: 900px; margin: 4rem auto 0; padding: 1.5rem; background: rgba(18, 23, 34, 0.4); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); text-align: center;">
+      <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 0.5rem;">
+        Sponsored Knowledge Resources
+      </div>
+      <!-- Once AdSense is approved, user's AdSense script or responsive auto-ad renders here -->
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
+        Looking for enterprise GST accounting software? <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" style="color: var(--cyan-primary); font-weight: 700;">Explore Eebii Invoice Pro Features →</a>
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Corporate Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <div style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.8rem;">
+            Eebii
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; max-width: 320px;">
+            Your Business. Secured. Supported. Simplified.
+            Empowering Indian enterprises with cloud tools, cybersecurity, and managed IT services.
+          </p>
+          <div style="margin-top: 1.2rem; color: var(--text-dim); font-size: 0.85rem;">
+            📧 <a href="mailto:contact@eebii.com" style="color: var(--cyan-primary);">contact@eebii.com</a>
           </div>
         </div>
-        <div style="margin-top: 2rem; border-top: 1px solid #1a1d23; padding-top: 1.5rem;">
-          <a href="terms.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Terms</a>
-          <span style="color: #333;">|</span>
-          <a href="disclaimer.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Disclaimer</a>
-          <span style="color: #333;">|</span>
-          <a href="privacy-policy.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Privacy Policy</a>
+
+        <div class="footer-col">
+          <h4>Ecosystem Tools</h4>
+          <ul>
+            <li><a href="https://pro.eebii.com/features" target="_blank" rel="noopener">Eebii Invoice Pro</a></li>
+            <li><a href="https://invoice.eebii.com" target="_blank" rel="noopener">Free GST Generator</a></li>
+            <li><a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener">Cloud PDF Suite</a></li>
+            <li><a href="eebii-flow.html">Eebii Flow (WhatsApp API)</a></li>
+            <li><a href="academy.html">Eebii Academy</a></li>
+            <li><a href="index.html#gst-calculator">Instant GST Calculator</a></li>
+          </ul>
         </div>
-        <p style="margin-top: 2.5rem; font-size: 0.9rem;">📧 <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
-        <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
+
+        <div class="footer-col">
+          <h4>Core IT Services</h4>
+          <ul>
+            <li><a href="service-it-support.html">IT Support & Maintenance</a></li>
+            <li><a href="service-network-security.html">Network & Firewall Security</a></li>
+            <li><a href="service-cloud-servers.html">Cloud & File Storage</a></li>
+            <li><a href="service-it-consulting.html">Enterprise IT Consulting</a></li>
+            <li><a href="service-digital-marketing.html">Digital Marketing & SEO</a></li>
+            <li><a href="service-web-hosting.html">Cloud Server Hosting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul>
+            <li><a href="about.html">About Eebii</a></li>
+            <li><a href="blog.html">Knowledge Base</a></li>
+            <li><a href="privacy-policy.html">Privacy & AdSense Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="disclaimer.html">Legal Disclaimer</a></li>
+            <li><a href="sitemap.xml">XML Sitemap</a></li>
+          </ul>
+        </div>
       </div>
-    </footer>
 
-    <!-- Blog Loader Script -->
-    <script>
-      function toggleMenu() {
-        document.getElementById("nav-links").classList.toggle("active");
-      }
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Eebii Technologies. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 1.2rem; font-size: 0.85rem;">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <span>•</span>
+          <a href="terms.html">Terms</a>
+          <span>•</span>
+          <a href="disclaimer.html">Disclaimer</a>
+          <span>•</span>
+          <a href="index.html#contact">Contact Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-      const blogGrid = document.getElementById("blog-grid");
-      const searchInput = document.getElementById("blogSearch");
-      const categorySelect = document.getElementById("blogCategory");
+  <!-- Instant Search & Category Filter Script -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("active");
+    }
 
-      let posts = [];
+    const searchInput = document.getElementById("blogSearch");
+    const categoryPills = document.querySelectorAll(".category-pill");
+    const blogCards = document.querySelectorAll(".blog-item-card");
+    const resultCount = document.getElementById("resultCount");
+    const noResults = document.getElementById("noResults");
 
-      fetch("blog-data.json?v=6")
-        .then((res) => res.json())
-        .then((data) => {
-          posts = data.reverse();
-          renderPosts(posts);
-        });
+    let activeCategory = "all";
 
-      function renderPosts(postList) {
-        blogGrid.innerHTML = "";
-        postList.forEach((post) => {
-          const card = document.createElement("div");
-          card.className = "card post";
-          card.style.cssText = "background: #16181d; border: 1px solid #1f2229; border-radius: 12px; padding: 1.5rem; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; min-height: 100%;";
-          card.onclick = () => window.location.href = post.slug;
-          
-          card.innerHTML = `
-            <div>
-              <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center;">
-                <span style="color: #00d4ff; background: rgba(0, 212, 255, 0.1); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">${post.category}</span>
-                <span style="color: #666; font-size: 0.75rem;">${post.date}</span>
-              </div>
-              <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.8rem; line-height: 1.3; font-weight: 700;">${post.title}</h3>
-              <p style="color: #9ca3af; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">${post.summary}</p>
-            </div>
-            <a href="${post.slug}" style="color: #00d4ff; text-decoration: none; font-weight: 700; font-size: 0.9rem;">Read Full Insight →</a>
-          `;
-          blogGrid.appendChild(card);
-        });
-      }
+    function filterArticles() {
+      const query = (searchInput.value || "").trim().toLowerCase();
+      let visibleCount = 0;
 
-      function filterBlogs() {
-        const search = searchInput.value.toLowerCase();
-        const category = categorySelect.value;
-        const filtered = posts.filter((post) => {
-          const text = `${post.title} ${post.summary} ${post.category}`.toLowerCase();
-          const matchesSearch = text.includes(search);
-          const matchesCategory = category === "all" || post.category === category;
-          return matchesSearch && matchesCategory;
-        });
-        renderPosts(filtered);
-      }
+      blogCards.forEach(card => {
+        const cardCat = card.getAttribute("data-cat") || "";
+        const cardTitle = (card.getAttribute("data-title") || "").toLowerCase();
+        const cardText = card.textContent.toLowerCase();
 
-      searchInput.addEventListener("input", filterBlogs);
-      categorySelect.addEventListener("change", filterBlogs);
-    </script>
+        const matchesCat = (activeCategory === "all") || (cardCat === activeCategory);
+        const matchesQuery = (!query) || cardTitle.includes(query) || cardText.includes(query);
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = "flex";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      resultCount.textContent = `Showing ${visibleCount} article${visibleCount === 1 ? '' : 's'}`;
+      noResults.style.display = (visibleCount === 0) ? "block" : "none";
+    }
+
+    searchInput.addEventListener("input", filterArticles);
+
+    categoryPills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        categoryPills.forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        activeCategory = pill.getAttribute("data-cat");
+        filterArticles();
+      });
+    });
+
+    function resetFilters() {
+      searchInput.value = "";
+      categoryPills.forEach(p => p.classList.remove("active"));
+      categoryPills[0].classList.add("active");
+      activeCategory = "all";
+      filterArticles();
+    }
+  </script>
 </body>
+
 </html>
-
-</body>
-</html>
-
-

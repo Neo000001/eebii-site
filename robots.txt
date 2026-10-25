@@ -1,11 +1,13 @@
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 User-agent: *
 Disallow: /admin/
 Disallow: /temp/
-Disallow: /*?*
 Allow: /
 
-# Important Map
+# Sitemap
 Sitemap: https://eebii.com/sitemap.xml
-
-# Eebii SEO Crawl Rules
-Crawl-delay: 5
