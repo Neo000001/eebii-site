@@ -1,75 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us | Eebii</title>
-  <meta name="description" content="Learn more about Eebii, your trusted IT solutions provider for secure, scalable, and simplified business technology." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Eebii Technologies</title>
+  <meta name="description"
+    content="Learn about Eebii — a premier Indian technology enterprise empowering MSMEs with managed IT services, cloud software, cybersecurity, and digital business tools.">
+  <link rel="canonical" href="https://www.eebii.com/about.html">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
+
   <!-- Navigation -->
+  <header>
     <nav class="topnav">
-    <a href="index.html" class="nav-brand" style="color: #fff; text-decoration: none;">Eebii</a>
-    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="index.html#services">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="index.html" class="nav-brand">Eebii</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="index.html#tools">Ecosystem</a>
+        <a href="barcode-generator.html">Barcode Tool</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="nav-cta-btn">
+          Invoice Pro →
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Header -->
+  <section style="padding: 5rem 1.5rem 3rem; text-align: center; background: radial-gradient(circle at 50% 20%, rgba(0, 212, 255, 0.08) 0%, rgba(9, 11, 16, 1) 75%); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+      <span class="section-tag"><i class="fas fa-building"></i> Enterprise Technology & Innovation</span>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); font-family: var(--font-display); font-weight: 800; color: #fff; margin-bottom: 1rem; letter-spacing: -1px;">
+        Engineering Reliable Business Technology
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7;">
+        Eebii is dedicated to simplifying corporate IT infrastructure, cloud software, and daily business operations for growing enterprises and MSMEs.
+      </p>
     </div>
-  </nav>
-  <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
+  </section>
 
-  <!-- Main Content -->
-  <main class="container about-section">
-    <h1>About Eebii</h1>
-    <p><strong>Eebii</strong> is a forward-thinking IT solutions provider focused on helping small and mid-sized businesses stay secure, connected, and productive. We specialize in setting up smart networks, firewalls, cloud servers, and providing reliable support that businesses can depend on.</p>
+  <!-- Narrative Content -->
+  <main class="container" style="max-width: 960px; margin: 4rem auto; padding: 0 1.5rem;">
 
-    <p>With a commitment to simplicity and security, we take the complexity out of IT — ensuring our clients can concentrate on what matters most: growing their business. Whether you're building from the ground up or upgrading your digital systems, Eebii is your trusted partner for modern IT success.</p>
+    <div style="background: #11141b; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 3rem; margin-bottom: 3rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);">
+      <h2 style="font-size: 1.8rem; font-family: var(--font-display); color: #fff; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 12px;">
+        <i class="fas fa-compass" style="color: var(--cyan-primary);"></i> Who We Are
+      </h2>
+      <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+        <strong>Eebii</strong> was established with a singular vision: to make enterprise-grade technology accessible, secure, and intuitive for modern businesses. In an era where digital agility determines competitive advantage, organizations cannot afford fragmented IT, opaque systems, or unreliable technical support.
+      </p>
+      <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.8; margin-bottom: 0;">
+        From configuring resilient office networks and perimeter firewalls to building specialized cloud platforms like <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary); text-decoration: underline; font-weight: 600;">Eebii Invoice Pro</a> and in-browser utilities, we serve as an end-to-end technology partner for companies looking to scale with confidence.
+      </p>
+    </div>
 
-    <h2>Our Mission</h2>
-    <p>Our mission is to deliver dependable, scalable, and secure IT solutions that empower businesses to thrive. Through transparency, innovation, and continuous support, we make enterprise-grade IT services accessible to all businesses — no matter their size.</p>
+    <!-- Core Pillars Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem; margin-bottom: 3.5rem;">
+      <div style="background: #11141b; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem; border-top: 3px solid var(--cyan-primary);">
+        <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--cyan-primary); margin-bottom: 1rem; display: block;"></i>
+        <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.6rem;">Security First</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+          Zero-compromise data privacy. From hardware firewall deployments to client-side in-browser utilities, your proprietary data remains protected.
+        </p>
+      </div>
 
-    <h2>What We Do</h2>
-    <ul>
-      <li>IT Support & Maintenance</li>
-      <li>Firewall & Cybersecurity Configuration</li>
-      <li>Office Network Setup and Optimization</li>
-      <li>Cloud-Based File Servers and Storage</li>
-      <li>Staff IT Training and Awareness</li>
-      <li>Website Hosting, Setup, and Support</li>
-      <li>Software Development & Automation Tools</li>
-    </ul>
+      <div style="background: #11141b; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem; border-top: 3px solid var(--emerald-accent);">
+        <i class="fas fa-bolt" style="font-size: 2rem; color: var(--emerald-accent); margin-bottom: 1rem; display: block;"></i>
+        <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.6rem;">Operational Agility</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+          Lightweight, high-speed tools designed for daily execution. Fast invoice generation, automated billing, and rapid network troubleshooting.
+        </p>
+      </div>
 
-    <h2>Why Choose Eebii?</h2>
-    <p>We bring hands-on experience, fast response times, and proactive care to every project. Whether it's resolving day-to-day issues or building long-term IT strategies, Eebii provides the expertise and support to help your business run smoothly — and stay protected.</p>
+      <div style="background: #11141b; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem; border-top: 3px solid #f59e0b;">
+        <i class="fas fa-headset" style="font-size: 2rem; color: #f59e0b; margin-bottom: 1rem; display: block;"></i>
+        <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 0.6rem;">Proactive IT Support</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+          Direct access to certified engineers who resolve system, workstation, and connectivity challenges before they impact your bottom line.
+        </p>
+      </div>
+    </div>
 
-    <p>We’re always happy to help you with your IT needs.</p>
+    <!-- The Eebii Ecosystem Section -->
+    <div style="background: #11141b; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 3rem; margin-bottom: 3.5rem;">
+      <h2 style="font-size: 1.8rem; font-family: var(--font-display); color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 12px;">
+        <i class="fas fa-cubes" style="color: var(--cyan-primary);"></i> The Eebii Digital Ecosystem
+      </h2>
+      <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 2rem;">
+        Beyond our infrastructure consulting, Eebii develops interconnected software platforms built specifically for Indian and international business workflows:
+      </p>
 
-    <!-- About Section (already added above) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1.2rem;">
+        <div style="background: #090b10; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1.2rem;">
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.4rem;">
+            <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary); text-decoration: none;">
+              Eebii Invoice Pro ↗
+            </a>
+          </h4>
+          <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0;">
+            Our flagship cloud billing portal at <strong>pro.eebii.com</strong> with automated GST calculations, inventory management, and multi-user access.
+          </p>
+        </div>
 
-<!-- Reusing Contact Form -->
-<section class="contact" id="contact">
-  <div class="container">
-    <h2>Contact Us</h2>
-    <form id="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-      <p id="form-status"></p>
-    </form>
-  </div>
-</section>
+        <div style="background: #090b10; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1.2rem;">
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.4rem;">
+            <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary); text-decoration: none;">
+              Free Invoicing Tool ↗
+            </a>
+          </h4>
+          <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0;">
+            Zero-login browser utility at <strong>invoice.eebii.com</strong> for generating instant GST and non-GST PDF bills with zero server storage.
+          </p>
+        </div>
+
+        <div style="background: #090b10; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1.2rem;">
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.4rem;">
+            <a href="barcode-generator.html" style="color: var(--cyan-primary); text-decoration: none;">
+              Barcode & Label Studio ↗
+            </a>
+          </h4>
+          <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0;">
+            Design and print custom retail price tags, Code 128, and EAN-13 barcodes in any physical millimeter size for thermal printers and A4 sheets.
+          </p>
+        </div>
+
+        <div style="background: #090b10; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1.2rem;">
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.4rem;">
+            <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary); text-decoration: none;">
+              Cloud PDF Suite ↗
+            </a>
+          </h4>
+          <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0;">
+            Private in-browser PDF manipulation suite to merge, split, compress, and organize documents securely.
+          </p>
+        </div>
+
+        <div style="background: #090b10; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1.2rem;">
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.4rem;">
+            <a href="eebii-flow.html" style="color: #25D366; text-decoration: none;">
+              Eebii Flow ↗
+            </a>
+          </h4>
+          <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0;">
+            Official WhatsApp Business API integration platform for broadcast campaigns, automated transaction alerts, and customer helpdesks.
+          </p>
+        </div>
+
+        <div style="background: #090b10; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1.2rem;">
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.4rem;">
+            <a href="academy.html" style="color: #f59e0b; text-decoration: none;">
+              Eebii Academy ↗
+            </a>
+          </h4>
+          <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0;">
+            Hands-on technical training academy specializing in practical Cybersecurity, Unreal Engine 5 development, and 3D design.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form Reused -->
+    <section class="contact" id="contact" style="background: #11141b; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 3rem 2rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);">
+      <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <h2 style="font-size: 2rem; font-family: var(--font-display); color: #fff; margin-bottom: 0.6rem;">Get in Touch</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">
+          Have questions about our IT services or enterprise software? Our team is ready to assist.
+        </p>
+
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required class="field-input" style="margin-bottom: 1rem;" />
+          <input type="email" name="email" placeholder="Your Email" required class="field-input" style="margin-bottom: 1rem;" />
+          <input type="tel" name="phone" placeholder="Phone Number (Optional)" class="field-input" style="margin-bottom: 1rem;" />
+          <textarea name="message" placeholder="Your Message" required class="field-input" rows="4" style="margin-bottom: 1.2rem;"></textarea>
+          <button type="submit" class="hero-btn" style="width: 100%; justify-content: center; padding: 0.9rem;">
+            Send Inquiry
+          </button>
+          <p id="form-status" style="margin-top: 1rem; font-weight: 600; font-size: 0.9rem;"></p>
+        </form>
+      </div>
+    </section>
 
   </main>
 
-  <!-- Footer -->
-          <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; margin-top: 4rem; font-family: 'Inter', sans-serif;">
+  <!-- Corporate Footer -->
+  <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; font-family: var(--font-main);">
     <div class="container">
       <div style="margin-bottom: 2.5rem;">
         <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
@@ -81,9 +206,13 @@
       <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
         <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
         <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
-          <a href="https://pro.eebii.com/features" target="_blank" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
           <span style="color: #333;">|</span>
-          <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
+          <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="barcode-generator.html" style="color: #00d4ff; text-decoration: none;">Barcode Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
           <span style="color: #333;">|</span>
           <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
           <span style="color: #333;">|</span>
@@ -103,31 +232,41 @@
       <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
     </div>
   </footer>
+
   <script>
-  // Contact form
-  document.getElementById("contact-form").addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    const status = document.getElementById("form-status");
-
-    try {
-      const res = await fetch("https://formspree.io/f/xldnazvb", {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" }
-      });
-      if (res.ok) {
-        status.textContent = "  Thank you! Your message has been received. We'll get back to you shortly";
-        form.reset();
-      } else {
-        status.textContent = "? There was a problem submitting your form.";
-      }
-    } catch (err) {
-      status.textContent = "? Error sending form. Please try again later.";
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      if (nav) nav.classList.toggle("active");
     }
-  });
-</script>
-</body>
-</html>
 
+    // Contact form submission
+    document.getElementById("contact-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const status = document.getElementById("form-status");
+
+      try {
+        const res = await fetch("https://formspree.io/f/xldnazvb", {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" }
+        });
+        if (res.ok) {
+          status.textContent = "✓ Thank you! Your message has been received. We'll get back to you shortly.";
+          status.style.color = "#34d399";
+          form.reset();
+        } else {
+          status.textContent = "❌ There was a problem submitting your form.";
+          status.style.color = "#f87171";
+        }
+      } catch (err) {
+        status.textContent = "❌ Error sending form. Please try again later.";
+        status.style.color = "#f87171";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

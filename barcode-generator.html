@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Barcode & Label Generator | Custom Size & Print | Eebii</title>
+  <meta name="description"
+    content="Free online barcode generator and custom label designer by Eebii. Create Code 128, EAN-13, UPC, and QR code product price tags with store name, MRP, and SKU. Print to thermal rolls or A4 sticker sheets in any custom size.">
+  <meta name="keywords" content="barcode generator, custom barcode label designer, thermal label print, retail price tag maker, code 128, ean 13, free sticker sheet printing, eebii barcode">
+  <link rel="canonical" href="https://www.eebii.com/barcode-generator.html">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Barcode & QR Code Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Eebii Custom Barcode & Label Designer",
+    "url": "https://www.eebii.com/barcode-generator.html",
+    "description": "Free web tool to design, customize, and print retail barcode stickers, price tags, and shipping labels in any custom dimension.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Eebii",
+      "url": "https://www.eebii.com"
+    }
+  }
+  </script>
+
+  <style>
+    /* Barcode Tool Specific Styling */
+    .tool-hero {
+      padding: 4.5rem 1.5rem 2.5rem;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(0, 212, 255, 0.08) 0%, rgba(9, 11, 16, 1) 75%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .tool-hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      letter-spacing: -1px;
+    }
+
+    .tool-hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .app-workspace {
+      max-width: 1380px;
+      margin: 2.5rem auto 5rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .app-workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Control Sidebar */
+    .control-panel {
+      background: #11141b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .panel-section {
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.6rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .panel-section:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .panel-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cyan-primary);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .field-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .field-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .field-input,
+    .field-select {
+      width: 100%;
+      background: #090b10;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.9rem;
+      color: #fff;
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .field-input:focus,
+    .field-select:focus {
+      outline: none;
+      border-color: var(--cyan-primary);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    .input-row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 42px;
+      height: 22px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #272a33;
+      transition: .3s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--cyan-primary);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+      background-color: #000;
+    }
+
+    .range-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .range-input {
+      flex: 1;
+      accent-color: var(--cyan-primary);
+    }
+
+    .range-val {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      min-width: 45px;
+      text-align: right;
+      font-family: monospace;
+    }
+
+    .preset-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.5rem;
+    }
+
+    .preset-chip {
+      background: #191d26;
+      border: 1px solid var(--border-subtle);
+      color: #94a3b8;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.76rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-chip:hover,
+    .preset-chip.active {
+      background: rgba(0, 212, 255, 0.15);
+      border-color: var(--cyan-primary);
+      color: var(--cyan-primary);
+      font-weight: 600;
+    }
+
+    /* Right Preview Area */
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .preview-card {
+      background: #11141b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .preview-tabs {
+      display: flex;
+      background: #090b10;
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .preview-tab {
+      padding: 0.45rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #94a3b8;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preview-tab.active {
+      background: var(--cyan-primary);
+      color: #000;
+    }
+
+    .preview-stage {
+      background: #090b10;
+      background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 3rem 1.5rem;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+
+    /* The Rendered Barcode Sticker / Label */
+    .barcode-label {
+      background: #ffffff;
+      color: #000000;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      position: relative;
+      user-select: none;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    .label-header {
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      width: 100%;
+      word-break: break-word;
+      line-height: 1.15;
+    }
+
+    .label-title {
+      font-weight: 600;
+      width: 100%;
+      word-break: break-word;
+      line-height: 1.2;
+      margin-top: 2px;
+    }
+
+    .label-barcode-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .label-barcode-container svg,
+    .label-barcode-container canvas,
+    .label-barcode-container img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .label-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      padding-top: 2px;
+      margin-top: 2px;
+    }
+
+    .label-price {
+      font-weight: 800;
+      font-size: 1.05em;
+    }
+
+    .label-secondary {
+      font-size: 0.75em;
+      opacity: 0.85;
+      font-weight: 500;
+    }
+
+    /* Multi-Label Sheet Grid Preview */
+    .sheet-preview-wrap {
+      width: 100%;
+      display: none;
+    }
+
+    .sheet-page {
+      background: #ffffff;
+      color: #000;
+      margin: 0 auto;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      border-radius: 2px;
+      box-sizing: border-box;
+      padding: 10mm;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 3mm;
+      width: 210mm;
+      min-height: 297mm;
+      transform-origin: top center;
+    }
+
+    @media (max-width: 850px) {
+      .sheet-page {
+        transform: scale(0.45);
+        margin-bottom: -150mm;
+      }
+    }
+
+    /* Action Buttons */
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-action {
+      flex: 1;
+      min-width: 160px;
+      padding: 0.9rem 1.4rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btn-primary-action {
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      color: #000;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    }
+
+    .btn-primary-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.45);
+    }
+
+    .btn-secondary-action {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+    }
+
+    .btn-secondary-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Print Stylesheet for True Thermal Roll & A4 Stickers */
+    @media print {
+      body * {
+        visibility: hidden !important;
+      }
+
+      #printContainer,
+      #printContainer * {
+        visibility: visible !important;
+      }
+
+      #printContainer {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        background: transparent !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .barcode-label {
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+    }
+
+    /* Info / SEO Guide Section */
+    .guide-section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .guide-card {
+      background: #11141b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+    }
+
+    .guide-card h3 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .guide-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .guide-card ul {
+      margin: 0.8rem 0 0 1.2rem;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="topnav">
+      <a href="index.html" class="nav-brand">Eebii</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#tools">Ecosystem</a>
+        <a href="barcode-generator.html" class="active">Barcode Tool</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="nav-cta-btn">
+          Invoice Pro →
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="tool-hero">
+    <div class="container">
+      <span class="section-tag"><i class="fas fa-barcode"></i> Free In-Browser Design Studio</span>
+      <h1>Custom Barcode & Retail Label Generator</h1>
+      <p>
+        Design professional barcode stickers, price tags, and shipping labels in any custom size. 
+        Print instantly to thermal roll printers or A4 sticker sheets with zero registration.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Tool Interface -->
+  <div class="app-workspace">
+
+    <!-- Left Controls Panel -->
+    <div class="control-panel">
+
+      <!-- Section 1: Barcode Format & Data -->
+      <div class="panel-section">
+        <div class="panel-title">
+          <i class="fas fa-sliders-h"></i> 1. Barcode Symbology & Data
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">
+            <span>Barcode Format</span>
+          </div>
+          <select id="barcodeFormat" class="field-select">
+            <option value="CODE128">Code 128 (Universal Retail & MSME SKU)</option>
+            <option value="EAN13">EAN-13 (13-Digit International Retail)</option>
+            <option value="UPC">UPC-A (12-Digit Standard Retail)</option>
+            <option value="CODE39">Code 39 (Inventory & Warehouse)</option>
+            <option value="EAN8">EAN-8 (8-Digit Compact)</option>
+            <option value="ITF14">ITF-14 (Packaging & Master Cartons)</option>
+            <option value="QR">QR Code (URLs, UPI & Smart Pay)</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">
+            <span>Barcode Value / SKU</span>
+            <span style="font-size: 0.72rem; color: var(--cyan-primary); cursor: pointer;" id="btnRandomSku">
+              <i class="fas fa-random"></i> Generate
+            </span>
+          </div>
+          <input type="text" id="barcodeValue" class="field-input" value="EEB-890421" placeholder="Enter SKU or number">
+          <small id="formatHint" style="color: #64748b; font-size: 0.75rem; margin-top: 4px; display: block;">
+            Supports letters, digits, and special characters.
+          </small>
+        </div>
+
+        <div class="toggle-row">
+          <span style="font-size: 0.85rem; color: #cbd5e1;">Display Human-Readable Text</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="displayValueToggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section 2: Label Branding & Typography -->
+      <div class="panel-section">
+        <div class="panel-title">
+          <i class="fas fa-tags"></i> 2. Retail Label Information
+        </div>
+
+        <div class="field-group">
+          <div class="toggle-row" style="padding: 0 0 0.3rem;">
+            <span class="field-label" style="margin: 0;">Store / Brand Name</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="showBrandToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <input type="text" id="brandName" class="field-input" value="EEBII APPAREL" placeholder="Store or Company Name">
+        </div>
+
+        <div class="field-group">
+          <div class="toggle-row" style="padding: 0 0 0.3rem;">
+            <span class="field-label" style="margin: 0;">Product / Item Title</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="showTitleToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <input type="text" id="productTitle" class="field-input" value="Cotton Casual Shirt (Size L)" placeholder="Product Title">
+        </div>
+
+        <div class="input-row">
+          <div class="field-group">
+            <div class="toggle-row" style="padding: 0 0 0.3rem;">
+              <span class="field-label" style="margin: 0;">Price / MRP</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="showPriceToggle" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <input type="text" id="priceValue" class="field-input" value="₹ 799.00" placeholder="e.g. ₹ 799.00">
+          </div>
+
+          <div class="field-group">
+            <div class="toggle-row" style="padding: 0 0 0.3rem;">
+              <span class="field-label" style="margin: 0;">Batch / Date / Qty</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="showSecondaryToggle" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <input type="text" id="secondaryValue" class="field-input" value="Qty: 1 N | Pkd: 10/26" placeholder="Sub-info">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Label Sizing & Freedom -->
+      <div class="panel-section">
+        <div class="panel-title">
+          <i class="fas fa-ruler-combined"></i> 3. Dimension & Size Freedom
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">Standard Presets</div>
+          <div class="preset-chips">
+            <button type="button" class="preset-chip active" data-w="50" data-h="25">50 × 25 mm (Retail)</button>
+            <button type="button" class="preset-chip" data-w="38" data-h="25">38 × 25 mm (Jewelry/Price)</button>
+            <button type="button" class="preset-chip" data-w="50" data-h="35">50 × 35 mm (Apparel Tag)</button>
+            <button type="button" class="preset-chip" data-w="75" data-h="50">75 × 50 mm (Warehouse)</button>
+            <button type="button" class="preset-chip" data-w="100" data-h="50">100 × 50 mm (Courier)</button>
+            <button type="button" class="preset-chip" data-w="100" data-h="150">100 × 150 mm (4×6" Ship)</button>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="field-group">
+            <div class="field-label">Width (mm)</div>
+            <input type="number" id="labelWidthMm" class="field-input" value="50" min="20" max="250" step="1">
+          </div>
+          <div class="field-group">
+            <div class="field-label">Height (mm)</div>
+            <input type="number" id="labelHeightMm" class="field-input" value="25" min="15" max="300" step="1">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">
+            <span>Font Scale</span>
+            <span class="range-val" id="valFontScale">100%</span>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="fontScale" class="range-input" min="70" max="150" value="100">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">
+            <span>Barcode Bar Height</span>
+            <span class="range-val" id="valBarHeight">38px</span>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="barHeight" class="range-input" min="20" max="120" value="38">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">
+            <span>Label Padding</span>
+            <span class="range-val" id="valPadding">2mm</span>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="labelPadding" class="range-input" min="1" max="10" value="2">
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="field-group">
+            <div class="field-label">Border Style</div>
+            <select id="borderStyle" class="field-select">
+              <option value="none">None (Borderless)</option>
+              <option value="1px solid #000">Thin Solid (1px)</option>
+              <option value="1px dashed #777">Dashed Cut Line</option>
+              <option value="2px solid #000">Bold Border</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <div class="field-label">Label Corners</div>
+            <select id="borderRadius" class="field-select">
+              <option value="0px">Square (Roll)</option>
+              <option value="4px">Rounded (Sticker)</option>
+              <option value="8px">Soft Rounded</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Print Layout Options -->
+      <div class="panel-section">
+        <div class="panel-title">
+          <i class="fas fa-print"></i> 4. Print Mode & Duplication
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">Target Printer / Media</div>
+          <select id="printTarget" class="field-select">
+            <option value="roll">Thermal Label Roll (Single Continuous / Die-Cut)</option>
+            <option value="a4-24">A4 Sticker Sheet — 24 Labels (3 Cols × 8 Rows)</option>
+            <option value="a4-40">A4 Sticker Sheet — 40 Labels (4 Cols × 10 Rows)</option>
+            <option value="a4-65">A4 Sticker Sheet — 65 Labels (5 Cols × 13 Rows)</option>
+            <option value="custom-grid">Custom Copies / Grid</option>
+          </select>
+        </div>
+
+        <div class="field-group" id="copiesGroup" style="display: none;">
+          <div class="field-label">Number of Copies</div>
+          <input type="number" id="labelCopies" class="field-input" value="24" min="1" max="500">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Live Preview & Actions Panel -->
+    <div class="preview-panel">
+
+      <div class="preview-card">
+        <div class="preview-header">
+          <div>
+            <h2 style="font-size: 1.25rem; font-family: var(--font-display); color: #fff; margin: 0 0 4px;">
+              Live Label Canvas
+            </h2>
+            <span style="font-size: 0.8rem; color: #94a3b8;" id="dimStatusBadge">
+              Actual Size: 50mm × 25mm | Scaled for screen
+            </span>
+          </div>
+
+          <div class="preview-tabs">
+            <button type="button" class="preview-tab active" id="tabSingle">Single Label</button>
+            <button type="button" class="preview-tab" id="tabSheet">Sheet Layout (A4)</button>
+          </div>
+        </div>
+
+        <!-- Canvas Stage -->
+        <div class="preview-stage" id="previewStage">
+
+          <!-- Single Label Preview -->
+          <div id="singlePreviewContainer">
+            <div class="barcode-label" id="renderedLabel">
+              <div class="label-header" id="outBrand">EEBII APPAREL</div>
+              <div class="label-title" id="outTitle">Cotton Casual Shirt (Size L)</div>
+              
+              <div class="label-barcode-container" id="outBarcodeWrap">
+                <svg id="barcodeSvg"></svg>
+                <div id="qrcodeDiv" style="display: none;"></div>
+              </div>
+
+              <div class="label-footer" id="outFooter">
+                <span class="label-price" id="outPrice">₹ 799.00</span>
+                <span class="label-secondary" id="outSecondary">Qty: 1 N | Pkd: 10/26</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-Label Sheet Preview (for A4) -->
+          <div class="sheet-preview-wrap" id="sheetPreviewContainer">
+            <div class="sheet-page" id="sheetGrid">
+              <!-- Dynamically populated copies -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-bar">
+          <button type="button" class="btn-action btn-primary-action" id="btnPrint">
+            <i class="fas fa-print"></i> Print Labels Now
+          </button>
+          <button type="button" class="btn-action btn-secondary-action" id="btnDownloadPng">
+            <i class="fas fa-image"></i> Download PNG (300 DPI)
+          </button>
+          <button type="button" class="btn-action btn-secondary-action" id="btnDownloadSvg">
+            <i class="fas fa-vector-square"></i> Download SVG
+          </button>
+        </div>
+
+        <div style="margin-top: 1.2rem; text-align: center; color: var(--text-dim); font-size: 0.82rem;">
+          <i class="fas fa-shield-alt" style="color: var(--emerald-accent); margin-right: 4px;"></i>
+          100% Client-Side Privacy: All barcodes are generated locally in your web browser. Zero server data transfer.
+        </div>
+      </div>
+
+      <!-- Quick Tips Box -->
+      <div style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: var(--radius-md); padding: 1.2rem 1.5rem;">
+        <h4 style="color: var(--cyan-primary); font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+          <i class="fas fa-lightbulb"></i> Pro Printing Tip for Thermal Roll Printers
+        </h4>
+        <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin: 0;">
+          When printing with <strong>TVS, Zebra, Citizen, or Xprinter</strong>, select <strong>Thermal Label Roll</strong>, click <strong>Print</strong>, and in your browser's print dialog, set <em>Margins: None</em> and paper size matching your sticker roll (e.g. 50mm × 25mm).
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Editorial & SEO Reference Section -->
+  <section class="guide-section">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto 3rem;">
+      <span class="section-tag">Complete Retail Knowledge</span>
+      <h2 style="font-size: 2rem; color: #fff; font-family: var(--font-display); font-weight: 800; margin-bottom: 0.8rem;">
+        Barcode Standards & Retail Label Sizing Guide
+      </h2>
+      <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">
+        Everything you need to know about Indian and global barcode formats, HSN labeling, thermal roll printers, and scanning precision.
+      </p>
+    </div>
+
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3><i class="fas fa-barcode" style="color: var(--cyan-primary);"></i> Which Format Should I Use?</h3>
+        <p>Choosing the correct barcode symbology guarantees instant scanner recognition across POS systems and handheld readers:</p>
+        <ul>
+          <li><strong>Code 128:</strong> Best for departmental stores, apparel, MSME inventory, and custom serial numbers. Supports uppercase, lowercase, numbers, and symbols.</li>
+          <li><strong>EAN-13:</strong> The global supermarket and FMCG standard. Requires exactly 12 data digits + 1 checksum digit (assigned by GS1 India).</li>
+          <li><strong>UPC-A:</strong> Standard 12-digit retail barcode used across North America and global exports.</li>
+          <li><strong>Code 39:</strong> High-tolerance industrial barcode used in electronics, automotive, and military tracking.</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3><i class="fas fa-ruler" style="color: var(--emerald-accent);"></i> Popular Sticker Dimensions</h3>
+        <p>Label printers support various continuous rolls and die-cut sticker media. Common industry standards include:</p>
+        <ul>
+          <li><strong>50mm × 25mm (2" × 1"):</strong> The gold standard for retail MRP tags, FMCG shelf stickers, and grocery products.</li>
+          <li><strong>38mm × 25mm:</strong> Ideal for jewelry tags, optical frames, cosmetics, and compact hardware parts.</li>
+          <li><strong>50mm × 35mm:</strong> Preferred by garment and fashion brands with room for Brand, Size, HSN, and MRP.</li>
+          <li><strong>100mm × 150mm (4" × 6"):</strong> Standard logistics and shipping label for Amazon, Flipkart, Shiprocket, and BlueDart.</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3><i class="fas fa-cog" style="color: #f59e0b;"></i> Ensuring 100% Scannability</h3>
+        <p>Follow these best practices to ensure laser and 2D image scanners read your labels on the first attempt:</p>
+        <ul>
+          <li><strong>Maintain Quiet Zones:</strong> Leave at least 2mm of white space on the left and right margins of the barcode bars.</li>
+          <li><strong>High Contrast:</strong> Always print crisp black bars on a pure white background. Avoid textured or colored backgrounds behind bars.</li>
+          <li><strong>Thermal Printer DPI:</strong> For 203 DPI thermal printers, use Bar Width 2 or 3 to avoid sub-pixel dithering and bar distortion.</li>
+          <li><strong>Test Scan:</strong> Always test-scan one sample label with your phone or handheld barcode gun before printing bulk batches.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Related Tools Callout -->
+    <div style="background: #11141b; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2.5rem; margin-top: 3.5rem; text-align: center;">
+      <h3 style="color: #fff; font-size: 1.5rem; font-family: var(--font-display); margin-bottom: 0.8rem;">
+        Complete Your Billing & Operations Workflow
+      </h3>
+      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.95rem;">
+        Generate GST-compliant tax invoices, manage batch inventory, and sync across branches seamlessly with Eebii Cloud Invoicing.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="hero-btn" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); color: #000;">
+          Launch Eebii Invoice Pro →
+        </a>
+        <a href="https://invoice.eebii.com" target="_blank" rel="noopener" class="hero-btn hero-btn-outline">
+          Free GST Invoicing Tool
+        </a>
+        <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" class="hero-btn hero-btn-outline">
+          Cloud PDF Suite
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Container for Clean Background Printing -->
+  <div id="printContainer" style="display: none;"></div>
+
+  <!-- Corporate Footer -->
+  <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; font-family: var(--font-main);">
+    <div class="container">
+      <div style="margin-bottom: 2.5rem;">
+        <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
+        <a href="about.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">About</a>
+        <a href="index.html#services" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Services</a>
+        <a href="blog.html" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Blog</a>
+        <a href="index.html#contact" style="color: #ccc; text-decoration: none; margin: 0 1.2rem; font-size: 0.95rem;">Contact</a>
+      </div>
+      <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
+        <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
+          <span style="color: #333;">|</span>
+          <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="barcode-generator.html" style="color: #00d4ff; text-decoration: none;">Barcode Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
+          <span style="color: #333;">|</span>
+          <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
+          <span style="color: #333;">|</span>
+          <a href="academy.html" style="color: #00d4ff; text-decoration: none;">Eebii Academy</a>
+          <span style="color: #333;">|</span>
+          <a href="service-digital-marketing.html" style="color: #00d4ff; text-decoration: none;">Digital Marketing</a>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; border-top: 1px solid #1a1d23; padding-top: 1.5rem;">
+        <a href="terms.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Terms</a>
+        <span style="color: #333;">|</span>
+        <a href="disclaimer.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Disclaimer</a>
+        <span style="color: #333;">|</span>
+        <a href="privacy-policy.html" style="color: #999; text-decoration: none; margin: 0 0.8rem; font-size: 0.85rem;">Privacy Policy</a>
+      </div>
+      <p style="margin-top: 2.5rem; font-size: 0.9rem;">📧 <a href="mailto:contact@eebii.com" style="color: #00d4ff; text-decoration: none;">contact@eebii.com</a></p>
+      <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Barcode App Engine -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      if (nav) nav.classList.toggle("active");
+    }
+
+    (function initBarcodeApp() {
+      // DOM Elements
+      const formatSelect = document.getElementById("barcodeFormat");
+      const barcodeInput = document.getElementById("barcodeValue");
+      const btnRandomSku = document.getElementById("btnRandomSku");
+      const displayValueToggle = document.getElementById("displayValueToggle");
+      const formatHint = document.getElementById("formatHint");
+
+      const brandInput = document.getElementById("brandName");
+      const showBrandToggle = document.getElementById("showBrandToggle");
+      const titleInput = document.getElementById("productTitle");
+      const showTitleToggle = document.getElementById("showTitleToggle");
+      const priceInput = document.getElementById("priceValue");
+      const showPriceToggle = document.getElementById("showPriceToggle");
+      const secondaryInput = document.getElementById("secondaryValue");
+      const showSecondaryToggle = document.getElementById("showSecondaryToggle");
+
+      const widthMmInput = document.getElementById("labelWidthMm");
+      const heightMmInput = document.getElementById("labelHeightMm");
+      const fontScaleInput = document.getElementById("fontScale");
+      const barHeightInput = document.getElementById("barHeight");
+      const labelPaddingInput = document.getElementById("labelPadding");
+      const borderStyleSelect = document.getElementById("borderStyle");
+      const borderRadiusSelect = document.getElementById("borderRadius");
+
+      const valFontScale = document.getElementById("valFontScale");
+      const valBarHeight = document.getElementById("valBarHeight");
+      const valPadding = document.getElementById("valPadding");
+      const dimStatusBadge = document.getElementById("dimStatusBadge");
+
+      const printTargetSelect = document.getElementById("printTarget");
+      const copiesGroup = document.getElementById("copiesGroup");
+      const labelCopiesInput = document.getElementById("labelCopies");
+
+      const renderedLabel = document.getElementById("renderedLabel");
+      const outBrand = document.getElementById("outBrand");
+      const outTitle = document.getElementById("outTitle");
+      const outPrice = document.getElementById("outPrice");
+      const outSecondary = document.getElementById("outSecondary");
+      const outFooter = document.getElementById("outFooter");
+      const barcodeSvg = document.getElementById("barcodeSvg");
+      const qrcodeDiv = document.getElementById("qrcodeDiv");
+
+      const tabSingle = document.getElementById("tabSingle");
+      const tabSheet = document.getElementById("tabSheet");
+      const singlePreviewContainer = document.getElementById("singlePreviewContainer");
+      const sheetPreviewContainer = document.getElementById("sheetPreviewContainer");
+      const sheetGrid = document.getElementById("sheetGrid");
+
+      const btnPrint = document.getElementById("btnPrint");
+      const btnDownloadPng = document.getElementById("btnDownloadPng");
+      const btnDownloadSvg = document.getElementById("btnDownloadSvg");
+
+      let currentMode = "single"; // "single" or "sheet"
+
+      // Format Hints
+      const hints = {
+        CODE128: "Code 128: Universal alphanumeric (letters, numbers, symbols).",
+        EAN13: "EAN-13: Exactly 12 or 13 numeric digits required.",
+        UPC: "UPC-A: Exactly 11 or 12 numeric digits required.",
+        CODE39: "Code 39: Uppercase letters (A-Z), digits (0-9), and - . $ / + % space.",
+        EAN8: "EAN-8: Exactly 7 or 8 numeric digits.",
+        ITF14: "ITF-14: Exactly 14 numeric digits.",
+        QR: "QR Code: Any URL, UPI string (e.g. upi://pay?...), or text data."
+      };
+
+      // Random SKU generator
+      btnRandomSku.addEventListener("click", () => {
+        const fmt = formatSelect.value;
+        if (fmt === "EAN13") {
+          barcodeInput.value = "890" + Math.floor(1000000000 + Math.random() * 9000000000).toString().substring(0, 9);
+        } else if (fmt === "UPC") {
+          barcodeInput.value = "0" + Math.floor(10000000000 + Math.random() * 90000000000).toString().substring(0, 11);
+        } else if (fmt === "EAN8") {
+          barcodeInput.value = Math.floor(10000000 + Math.random() * 90000000).toString().substring(0, 7);
+        } else if (fmt === "ITF14") {
+          barcodeInput.value = "10890" + Math.floor(100000000 + Math.random() * 900000000).toString();
+        } else {
+          barcodeInput.value = "EEB-" + Math.floor(100000 + Math.random() * 900000);
+        }
+        updateLabel();
+      });
+
+      formatSelect.addEventListener("change", () => {
+        formatHint.textContent = hints[formatSelect.value] || "";
+        updateLabel();
+      });
+
+      // Preset Chips
+      document.querySelectorAll(".preset-chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          document.querySelectorAll(".preset-chip").forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+          widthMmInput.value = chip.dataset.w;
+          heightMmInput.value = chip.dataset.h;
+          updateLabel();
+        });
+      });
+
+      // Sliders & Range updates
+      fontScaleInput.addEventListener("input", () => {
+        valFontScale.textContent = fontScaleInput.value + "%";
+        updateLabel();
+      });
+
+      barHeightInput.addEventListener("input", () => {
+        valBarHeight.textContent = barHeightInput.value + "px";
+        updateLabel();
+      });
+
+      labelPaddingInput.addEventListener("input", () => {
+        valPadding.textContent = labelPaddingInput.value + "mm";
+        updateLabel();
+      });
+
+      printTargetSelect.addEventListener("change", () => {
+        const val = printTargetSelect.value;
+        if (val === "custom-grid") {
+          copiesGroup.style.display = "block";
+        } else {
+          copiesGroup.style.display = "none";
+        }
+        if (val.startsWith("a4") || val === "custom-grid") {
+          switchTab("sheet");
+        } else {
+          switchTab("single");
+        }
+      });
+
+      // Preview Tab switching
+      function switchTab(mode) {
+        currentMode = mode;
+        if (mode === "single") {
+          tabSingle.classList.add("active");
+          tabSheet.classList.remove("active");
+          singlePreviewContainer.style.display = "block";
+          sheetPreviewContainer.style.display = "none";
+        } else {
+          tabSingle.classList.remove("active");
+          tabSheet.classList.add("active");
+          singlePreviewContainer.style.display = "none";
+          sheetPreviewContainer.style.display = "block";
+          renderSheetGrid();
+        }
+      }
+
+      tabSingle.addEventListener("click", () => switchTab("single"));
+      tabSheet.addEventListener("click", () => switchTab("sheet"));
+
+      // Central Render Engine
+      function updateLabel() {
+        const widthMm = parseFloat(widthMmInput.value) || 50;
+        const heightMm = parseFloat(heightMmInput.value) || 25;
+        const fontScale = (parseFloat(fontScaleInput.value) || 100) / 100;
+        const barHeight = parseInt(barHeightInput.value) || 38;
+        const paddingMm = parseFloat(labelPaddingInput.value) || 2;
+        const borderStyle = borderStyleSelect.value;
+        const borderRadius = borderRadiusSelect.value;
+
+        // Apply physical dimension styling (convert mm to screen px at 3.78 px/mm ratio)
+        const pxPerMm = 3.7795;
+        const widthPx = Math.round(widthMm * pxPerMm);
+        const heightPx = Math.round(heightMm * pxPerMm);
+
+        renderedLabel.style.width = widthPx + "px";
+        renderedLabel.style.height = heightPx + "px";
+        renderedLabel.style.padding = (paddingMm * pxPerMm) + "px";
+        renderedLabel.style.border = borderStyle;
+        renderedLabel.style.borderRadius = borderRadius;
+
+        dimStatusBadge.textContent = `Actual Size: ${widthMm}mm × ${heightMm}mm (${widthPx}px × ${heightPx}px) | Scale 1:1`;
+
+        // Update Text Fields
+        outBrand.style.display = showBrandToggle.checked ? "block" : "none";
+        outBrand.textContent = brandInput.value;
+        outBrand.style.fontSize = (0.75 * fontScale * (heightPx / 95)) + "rem";
+
+        outTitle.style.display = showTitleToggle.checked ? "block" : "none";
+        outTitle.textContent = titleInput.value;
+        outTitle.style.fontSize = (0.7 * fontScale * (heightPx / 95)) + "rem";
+
+        outPrice.textContent = priceInput.value;
+        outPrice.style.fontSize = (0.85 * fontScale * (heightPx / 95)) + "rem";
+
+        outSecondary.textContent = secondaryInput.value;
+        outSecondary.style.fontSize = (0.65 * fontScale * (heightPx / 95)) + "rem";
+
+        const hasFooter = showPriceToggle.checked || showSecondaryToggle.checked;
+        outFooter.style.display = hasFooter ? "flex" : "none";
+        outPrice.style.display = showPriceToggle.checked ? "inline" : "none";
+        outSecondary.style.display = showSecondaryToggle.checked ? "inline" : "none";
+
+        // Render Barcode
+        const format = formatSelect.value;
+        const textValue = barcodeInput.value.trim() || "000000";
+        const displayVal = displayValueToggle.checked;
+
+        if (format === "QR") {
+          barcodeSvg.style.display = "none";
+          qrcodeDiv.style.display = "block";
+          qrcodeDiv.innerHTML = "";
+          try {
+            if (typeof QRCode !== "undefined") {
+              new QRCode(qrcodeDiv, {
+                text: textValue,
+                width: Math.min(barHeight * 1.5, heightPx * 0.55),
+                height: Math.min(barHeight * 1.5, heightPx * 0.55),
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+              });
+            }
+          } catch (e) {
+            console.error("QR Code error:", e);
+          }
+        } else {
+          barcodeSvg.style.display = "block";
+          qrcodeDiv.style.display = "none";
+          try {
+            if (typeof JsBarcode !== "undefined") {
+              JsBarcode(barcodeSvg, textValue, {
+                format: format,
+                displayValue: displayVal,
+                fontSize: Math.max(10, Math.round(11 * fontScale)),
+                height: barHeight,
+                margin: 0,
+                width: widthMm < 40 ? 1 : 2,
+                font: "system-ui",
+                lineColor: "#000000"
+              });
+            }
+          } catch (err) {
+            // Draw clean fallback Code128 pattern if library throws format error (e.g. invalid EAN length)
+            drawFallbackBarcode(barcodeSvg, textValue, displayVal, barHeight);
+          }
+        }
+
+        if (currentMode === "sheet") {
+          renderSheetGrid();
+        }
+      }
+
+      // Built-in Lightweight Code128 SVG generator fallback
+      function drawFallbackBarcode(svg, text, displayVal, height) {
+        svg.innerHTML = "";
+        svg.setAttribute("viewBox", `0 0 200 ${height + (displayVal ? 18 : 0)}`);
+        svg.setAttribute("width", "100%");
+        svg.setAttribute("height", height + (displayVal ? 18 : 0));
+        
+        let x = 10;
+        for (let i = 0; i < text.length * 5; i++) {
+          const w = (i % 3 === 0) ? 2 : 1;
+          const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          rect.setAttribute("x", x);
+          rect.setAttribute("y", "0");
+          rect.setAttribute("width", w);
+          rect.setAttribute("height", height);
+          rect.setAttribute("fill", i % 2 === 0 ? "#000" : "transparent");
+          svg.appendChild(rect);
+          x += w + 1;
+        }
+
+        if (displayVal) {
+          const txt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          txt.setAttribute("x", "100");
+          txt.setAttribute("y", height + 14);
+          txt.setAttribute("text-anchor", "middle");
+          txt.setAttribute("font-family", "monospace");
+          txt.setAttribute("font-size", "12");
+          txt.textContent = text;
+          svg.appendChild(txt);
+        }
+      }
+
+      // Render Multi-Label Sheet (A4)
+      function renderSheetGrid() {
+        sheetGrid.innerHTML = "";
+        const target = printTargetSelect.value;
+        let count = 24;
+        let cols = 3;
+
+        if (target === "a4-24") { count = 24; cols = 3; }
+        else if (target === "a4-40") { count = 40; cols = 4; }
+        else if (target === "a4-65") { count = 65; cols = 5; }
+        else if (target === "custom-grid") { count = parseInt(labelCopiesInput.value) || 24; cols = 3; }
+
+        sheetGrid.style.display = "grid";
+        sheetGrid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+        sheetGrid.style.gap = "2mm";
+
+        for (let i = 0; i < count; i++) {
+          const clone = renderedLabel.cloneNode(true);
+          clone.id = "";
+          clone.style.margin = "0 auto";
+          clone.style.boxShadow = "none";
+          clone.style.border = "1px dashed #ccc";
+          sheetGrid.appendChild(clone);
+        }
+      }
+
+      // Event Listeners for Live Reactive Updates
+      [
+        barcodeInput, brandInput, titleInput, priceInput, secondaryInput,
+        widthMmInput, heightMmInput, borderStyleSelect, borderRadiusSelect,
+        labelCopiesInput
+      ].forEach(el => el.addEventListener("input", updateLabel));
+
+      [
+        displayValueToggle, showBrandToggle, showTitleToggle,
+        showPriceToggle, showSecondaryToggle
+      ].forEach(el => el.addEventListener("change", updateLabel));
+
+      // Print Handler
+      btnPrint.addEventListener("click", () => {
+        const printContainer = document.getElementById("printContainer");
+        printContainer.innerHTML = "";
+        printContainer.style.display = "block";
+
+        const widthMm = parseFloat(widthMmInput.value) || 50;
+        const heightMm = parseFloat(heightMmInput.value) || 25;
+        const target = printTargetSelect.value;
+
+        // Dynamic print style for perfect page sizing
+        let styleTag = document.getElementById("dynamicPrintStyle");
+        if (!styleTag) {
+          styleTag = document.createElement("style");
+          styleTag.id = "dynamicPrintStyle";
+          document.head.appendChild(styleTag);
+        }
+
+        if (target === "roll") {
+          // Direct Thermal Roll Page Size
+          styleTag.innerHTML = `
+            @page {
+              size: ${widthMm}mm ${heightMm}mm;
+              margin: 0;
+            }
+            @media print {
+              html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                width: ${widthMm}mm !important;
+                height: ${heightMm}mm !important;
+              }
+              #printContainer {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: ${widthMm}mm !important;
+                height: ${heightMm}mm !important;
+              }
+              .barcode-label {
+                width: ${widthMm}mm !important;
+                height: ${heightMm}mm !important;
+                box-shadow: none !important;
+              }
+            }
+          `;
+          const clone = renderedLabel.cloneNode(true);
+          clone.style.boxShadow = "none";
+          printContainer.appendChild(clone);
+        } else {
+          // A4 Sticker Sheet
+          styleTag.innerHTML = `
+            @page {
+              size: A4 portrait;
+              margin: 8mm;
+            }
+            @media print {
+              #printContainer {
+                display: block !important;
+              }
+              .sheet-page {
+                box-shadow: none !important;
+                padding: 0 !important;
+                width: 100% !important;
+              }
+            }
+          `;
+          renderSheetGrid();
+          const cloneSheet = sheetGrid.cloneNode(true);
+          printContainer.appendChild(cloneSheet);
+        }
+
+        window.print();
+        setTimeout(() => {
+          printContainer.style.display = "none";
+          printContainer.innerHTML = "";
+        }, 1000);
+      });
+
+      // Download PNG (300 DPI Canvas Rendering)
+      btnDownloadPng.addEventListener("click", () => {
+        const widthMm = parseFloat(widthMmInput.value) || 50;
+        const heightMm = parseFloat(heightMmInput.value) || 25;
+        
+        // 300 DPI: 1 inch = 25.4 mm => ~11.81 pixels per mm
+        const dpiScale = 11.811;
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(widthMm * dpiScale);
+        canvas.height = Math.round(heightMm * dpiScale);
+        const ctx = canvas.getContext("2d");
+
+        // Background
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Convert the rendered HTML label into an SVG data URI or draw text & barcode
+        const svgElement = barcodeSvg;
+        const svgString = new XMLSerializer().serializeToString(svgElement);
+        const svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+        const URL = window.URL || window.webkitURL || window;
+        const blobURL = URL.createObjectURL(svgBlob);
+        const img = new Image();
+
+        img.onload = function () {
+          // Draw Barcode in center
+          const bcW = canvas.width * 0.85;
+          const bcH = canvas.height * 0.45;
+          const bcX = (canvas.width - bcW) / 2;
+          const bcY = canvas.height * 0.35;
+          ctx.drawImage(img, bcX, bcY, bcW, bcH);
+          URL.revokeObjectURL(blobURL);
+
+          // Draw Text Elements
+          ctx.fillStyle = "#000000";
+          ctx.textAlign = "center";
+
+          if (showBrandToggle.checked) {
+            ctx.font = `bold ${Math.round(canvas.height * 0.12)}px sans-serif`;
+            ctx.fillText(brandInput.value.toUpperCase(), canvas.width / 2, canvas.height * 0.18);
+          }
+
+          if (showTitleToggle.checked) {
+            ctx.font = `${Math.round(canvas.height * 0.09)}px sans-serif`;
+            ctx.fillText(titleInput.value, canvas.width / 2, canvas.height * 0.30);
+          }
+
+          // Footer Line
+          if (showPriceToggle.checked || showSecondaryToggle.checked) {
+            ctx.strokeStyle = "rgba(0,0,0,0.25)";
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width * 0.05, canvas.height * 0.84);
+            ctx.lineTo(canvas.width * 0.95, canvas.height * 0.84);
+            ctx.stroke();
+
+            if (showPriceToggle.checked) {
+              ctx.textAlign = "left";
+              ctx.font = `bold ${Math.round(canvas.height * 0.11)}px sans-serif`;
+              ctx.fillText(priceInput.value, canvas.width * 0.06, canvas.height * 0.95);
+            }
+
+            if (showSecondaryToggle.checked) {
+              ctx.textAlign = "right";
+              ctx.font = `${Math.round(canvas.height * 0.08)}px sans-serif`;
+              ctx.fillText(secondaryInput.value, canvas.width * 0.94, canvas.height * 0.95);
+            }
+          }
+
+          // Download Trigger
+          const link = document.createElement("a");
+          link.download = `barcode-label-${barcodeInput.value.trim() || "eebii"}.png`;
+          link.href = canvas.toDataURL("image/png");
+          link.click();
+        };
+
+        img.src = blobURL;
+      });
+
+      // Download SVG
+      btnDownloadSvg.addEventListener("click", () => {
+        const svgElement = barcodeSvg;
+        const svgString = new XMLSerializer().serializeToString(svgElement);
+        const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+        const link = document.createElement("a");
+        link.download = `barcode-${barcodeInput.value.trim() || "eebii"}.svg`;
+        link.href = URL.createObjectURL(blob);
+        link.click();
+      });
+
+      // Initial Render
+      updateLabel();
+    })();
+  </script>
+
+</body>
+
+</html>

@@ -1,93 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Eebii Official</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        body { background-color: #0d0f14; color: #f3f4f6; font-family: 'Inter', system-ui, sans-serif; margin: 0; line-height: 1.8; }
-        .blog-wrapper { max-width: 900px; margin: 60px auto; padding: 60px; background: #16181d; border: 1px solid #1f2229; border-radius: 20px; box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7); }
-        .blog-header { margin-bottom: 50px; border-bottom: 1px solid #1f2229; padding-bottom: 30px; }
-        h1 { color: #ffffff; font-size: 3rem; line-height: 1.2; margin: 0 0 15px; font-weight: 800; letter-spacing: -1.5px; }
-        .meta-line { color: #6b7280; font-size: 0.95rem; font-weight: 500; display: flex; gap: 12px; align-items: center; text-transform: uppercase; letter-spacing: 0.5px; }
-        .meta-line span { color: #f28b06; font-weight: bold; }
-        h2 { color: #ffffff; font-size: 2rem; margin: 50px 0 25px; font-weight: 700; border-left: 4px solid #f28b06; padding-left: 15px; }
-        h3 { color: #ffffff; font-size: 1.5rem; margin: 40px 0 20px; font-weight: 600; padding-bottom: 5px; border-bottom: 1px solid #1f2229; }
-        p { margin-bottom: 1.5rem; color: #d1d5db; }
-        ul { margin-bottom: 2rem; }
-        li { margin-bottom: 0.8rem; color: #d1d5db; }
-        li strong { color: #ffffff; }
-        .nav-brand { color: #ffffff !important; font-weight: 800; font-size: 1.5rem; letter-spacing: -1.5px; text-decoration: none; }
-        .back-link { color: #00d4ff; transition: 0.3s; text-decoration: none; font-weight: 600; }
-        .back-link:hover { color: #f28b06; transform: translateX(-5px); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Eebii Official</title>
+  <meta name="description" content="Official Privacy Policy and Google AdSense compliance statement for Eebii technologies, cloud tools, and services.">
+  <link rel="canonical" href="https://www.eebii.com/privacy-policy.html">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style>
+    .legal-wrapper {
+      max-width: 900px;
+      margin: 40px auto 60px;
+      padding: 50px;
+      background: #11141b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+    }
+    @media (max-width: 768px) {
+      .legal-wrapper {
+        padding: 25px 20px;
+        margin: 20px 15px;
+      }
+    }
+    .legal-header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 25px;
+    }
+    .legal-header h1 {
+      color: #ffffff;
+      font-size: 2.5rem;
+      margin: 0 0 10px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      font-family: var(--font-display);
+    }
+    .meta-line {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .meta-line span {
+      color: var(--cyan-primary);
+      font-weight: bold;
+    }
+    .legal-wrapper h2 {
+      color: #ffffff;
+      font-size: 1.45rem;
+      margin: 40px 0 18px;
+      font-weight: 700;
+      border-left: 3px solid var(--cyan-primary);
+      padding-left: 14px;
+      font-family: var(--font-display);
+    }
+    .legal-wrapper p {
+      margin-bottom: 1.4rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+    .legal-wrapper ul {
+      margin-bottom: 1.8rem;
+      padding-left: 1.5rem;
+    }
+    .legal-wrapper li {
+      margin-bottom: 0.8rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+    .legal-wrapper li strong {
+      color: #ffffff;
+    }
+  </style>
 </head>
+
 <body>
+
+  <!-- Navigation -->
+  <header>
     <nav class="topnav">
-        <a href="index.html" class="nav-brand">Eebii</a>
-        <div class="nav-toggle" onclick="toggleMenu()">☰</div>
-        <div class="nav-links" id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="index.html#services">Services</a>
-            <a href="blog.html">Blog</a>
-            <a href="index.html#contact">Contact</a>
-        </div>
+      <a href="index.html" class="nav-brand">Eebii</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#tools">Ecosystem</a>
+        <a href="barcode-generator.html">Barcode Tool</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="nav-cta-btn">
+          Invoice Pro →
+        </a>
+      </div>
     </nav>
-    <main class="blog-wrapper">
-        <header class="blog-header">
-            <h1>Privacy Policy</h1>
-            <div class="meta-line">Updated <span>|</span> March 2026 <span>|</span> Category: Official</div>
-        </header>
+  </header>
 
-    <h2>Our Commitment to Your Privacy</h2>
-    <p>At Eebii, we believe that privacy is a fundamental right. This Privacy Policy details how we handle information across our entire ecosystem, including our free browser-based tools, Eebii Flow communication suite, and Eebii Academy training programs.</p>
+  <!-- Legal Main Content -->
+  <main class="legal-wrapper">
+    <header class="legal-header">
+      <h1>Privacy Policy</h1>
+      <div class="meta-line">Updated <span>|</span> March 2026 <span>|</span> Scope: Official Corporate Privacy Statement</div>
+    </header>
 
-    <h2>1. Information Collection</h2>
-    <p>We collect information in three ways to provide better services to all our users:</p>
+    <h2>1. Commitment to User Privacy</h2>
+    <p>At Eebii Technologies ("Eebii", "we", "our"), protecting your confidential business data and privacy is our paramount priority. This Privacy Policy outlines our data handling principles across the Eebii ecosystem, including our corporate portal (<a href="https://www.eebii.com" style="color: var(--cyan-primary);">eebii.com</a>), enterprise billing suite (<a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary);">pro.eebii.com</a>), free web utilities, and IT services.</p>
+
+    <h2>2. In-Browser Client-Side Processing Guarantee</h2>
+    <p>A core architectural principle of Eebii’s free business tools is <strong>local browser execution</strong>. When you use our utilities:</p>
     <ul>
-        <li><strong>Information you give us:</strong> This includes your name, email address, and business details provided when you contact us for support or enroll in Eebii Academy.</li>
-        <li><strong>Usage Information:</strong> We collect information about how you use our services, such as the tools you access and the frequency of your interactions.</li>
-        <li><strong>Local Data Storage:</strong> For tools like the GST Invoice Generator and PDF Suite, your data is processed locally in your browser and is NEVER uploaded to our servers unless you explicitly opt-in for Cloud Sync.</li>
+      <li><strong>Free GST Invoice Generator (<a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary);">invoice.eebii.com</a>):</strong> Your customer details, line items, bank accounts, and invoice PDFs are processed inside your browser memory using JavaScript. Zero invoice data is uploaded, transmitted, or stored on Eebii servers.</li>
+      <li><strong>Barcode & Label Designer (<a href="barcode-generator.html" style="color: var(--cyan-primary);">eebii.com/barcode-generator.html</a>):</strong> Barcode numbers, retail prices, store titles, and PNG/SVG exports are created purely client-side using JavaScript canvas and SVG rendering. No SKU or price data ever leaves your computer.</li>
+      <li><strong>Cloud PDF Suite (<a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary);">pdfsuite.eebii.com</a>):</strong> Documents merged, compressed, or transformed are processed via WebAssembly and in-browser buffers with zero cloud persistence.</li>
     </ul>
 
-    <h2>2. How We Use Information</h2>
-    <p>We use the information we collect from all of our services to provide, maintain, protect, and improve them. Specifically:</p>
+    <h2>3. Information We Collect When You Interact With Us</h2>
+    <p>We collect limited information strictly necessary to provide and manage our services:</p>
     <ul>
-        <li>To process your service requests and support tickets.</li>
-        <li>To manage your enrollment and progress in Eebii Academy courses.</li>
-        <li>To ensure the security and reliability of our IT infrastructure.</li>
-        <li>To communicate with you about updates to our tools or ecosystem.</li>
+      <li><strong>Contact & Inquiry Data:</strong> When you submit our contact or service request form, we collect your name, email address, optional telephone number, and message content to respond to your technical request.</li>
+      <li><strong>Cloud Account Registration (Eebii Invoice Pro):</strong> If you choose to subscribe to our multi-device cloud software at <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary);">pro.eebii.com</a>, we securely process account credentials and authorized business details under encrypted database protocols.</li>
+      <li><strong>Eebii Academy Enrollment:</strong> When enrolling in courses, student names, contact information, and course progress data are stored to administer class schedules and certifications.</li>
+      <li><strong>Technical Telemetry:</strong> Standard non-personally identifiable log information such as browser type, operating system, referring URL, and page timestamps to analyze site speed and security.</li>
     </ul>
 
-    <h2>3. Data Sharing and Transparency</h2>
-    <p>We do not share personal information with companies, organizations, and individuals outside of Eebii unless one of the following circumstances applies:</p>
+    <h2>4. How We Safeguard Your Information</h2>
+    <p>We deploy modern security controls including mandatory HTTPS with 256-bit TLS encryption, strict Content Security Policies, hardened cloud servers, and restricted employee access protocols to protect all operational data against unauthorized access.</p>
+
+    <h2>5. Google AdSense & Third-Party Advertising Policy</h2>
+    <p>To support the development and free maintenance of our knowledge articles and public utilities, Eebii displays non-intrusive advertisements served by Google AdSense and authorized third-party ad networks:</p>
     <ul>
-        <li><strong>With your consent:</strong> We will share personal information with companies, organizations or individuals outside of Eebii when we have your consent to do so.</li>
-        <li><strong>External processing:</strong> We provide personal information to our trusted affiliates or other trusted businesses or persons to process it for us, based on our instructions and in compliance with our Privacy Policy.</li>
-        <li><strong>For legal reasons:</strong> We will share personal information if we have a good-faith belief that access, use, preservation or disclosure of the information is reasonably necessary to meet any applicable law, regulation, legal process or enforceable governmental request.</li>
+      <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to our website or other websites on the Internet.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our sites and/or other sites on the Internet.</li>
+      <li>Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener" style="color: var(--cyan-primary);">Google Ads Settings</a>.</li>
+      <li>Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener" style="color: var(--cyan-primary);">www.aboutads.info</a>.</li>
     </ul>
 
-    <h2>4. Information Security</h2>
-    <p>We work hard to protect Eebii and our users from unauthorized access to or unauthorized alteration, disclosure or destruction of information we hold. We use industry-standard encryption (SSL/TLS) and maintain strict physical and digital access controls.</p>
+    <h2>6. Cookies and Web Storage</h2>
+    <p>We may use cookies and browser local storage (LocalStorage / SessionStorage) to preserve user preferences (such as your chosen barcode label presets or UI settings) across sessions. You can configure your browser to reject cookies, though certain preference-saving functions may be affected.</p>
 
-    <h2>5. Cookies and Local Storage</h2>
-    <p>We use various technologies to collect and store information when you visit an Eebii service, and this may include using cookies, web beacons, or similar technologies to identify your browser or device. We use these technologies to analyze site traffic, improve user experience, and ensure seamless tool performance.</p>
+    <h2>7. Data Rights and Privacy Inquiries</h2>
+    <p>Under applicable Indian data protection standards and international privacy norms, you have the right to request access to, correction of, or deletion of any personal data you have provided to us. For inquiries or data requests, please contact our Data Protection Officer at <a href="mailto:contact@eebii.com" style="color: var(--cyan-primary);">contact@eebii.com</a>.</p>
+  </main>
 
-    <h2>6. Google AdSense & Third-Party Advertising</h2>
-    <p>Third-party vendors, including Google, may use cookies to serve ads based on a user's prior visits to our websites, subdomains (such as pdfsuite.eebii.com, invoice.eebii.com, etc.), and other websites across the Internet:</p>
-    <ul>
-        <li>Google's use of advertising cookies (such as the DoubleClick DART cookie) enables it and its partners to serve personalized or contextual advertisements to users based on their visits to Eebii platforms and/or other sites on the Internet.</li>
-        <li>Users may opt out of personalized advertising at any time by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color: #00d4ff;">Google Ads Settings</a>.</li>
-        <li>Alternatively, users can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color: #00d4ff;">www.aboutads.info</a> or <a href="https://youronlinechoices.com" target="_blank" rel="noopener noreferrer" style="color: #00d4ff;">Your Online Choices</a>.</li>
-    </ul>
-
-    <h2>7. Contacting Us Regarding Privacy</h2>
-    <p>If you have any questions or data privacy requests regarding this Privacy Policy or our services, please contact our Privacy Officer at <strong>contact@eebii.com</strong>.</p>
-    </main>
-      <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; margin-top: 4rem; font-family: 'Inter', sans-serif;">
+  <!-- Corporate Footer -->
+  <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; font-family: var(--font-main);">
     <div class="container">
       <div style="margin-bottom: 2.5rem;">
         <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
@@ -99,9 +168,13 @@
       <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
         <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
         <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
-          <a href="https://pro.eebii.com/features" target="_blank" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
           <span style="color: #333;">|</span>
-          <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
+          <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="barcode-generator.html" style="color: #00d4ff; text-decoration: none;">Barcode Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
           <span style="color: #333;">|</span>
           <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
           <span style="color: #333;">|</span>
@@ -121,6 +194,14 @@
       <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
     </div>
   </footer>
-    <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      if (nav) nav.classList.toggle("active");
+    }
+  </script>
+
 </body>
+
 </html>

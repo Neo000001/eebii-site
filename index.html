@@ -65,7 +65,7 @@
         "name": "Eebii Invoice Pro",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web, Windows, macOS, Android, iOS",
-        "url": "https://pro.eebii.com/features",
+        "url": "https://pro.eebii.com",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -91,11 +91,11 @@
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="#tools">Ecosystem</a>
+        <a href="barcode-generator.html">Barcode Tool</a>
         <a href="#services">Services</a>
         <a href="blog.html">Blog</a>
-        <a href="#gst-calculator">GST Utility</a>
         <a href="#contact">Contact</a>
-        <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" class="nav-cta-btn">
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="nav-cta-btn">
           Invoice Pro →
         </a>
       </div>
@@ -112,7 +112,7 @@
       
       <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
         <a href="#tools" class="hero-btn">Eebii Ecosystem</a>
-        <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" class="hero-btn" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); color: #000;">
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="hero-btn" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); color: #000;">
           Explore Invoice Pro →
         </a>
         <a href="#services" class="hero-btn hero-btn-outline">Our Services</a>
@@ -140,8 +140,8 @@
 
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); align-items: stretch;">
 
-        <!-- Eebii Invoice Pro (Redirects to pro.eebii.com/features as requested) -->
-        <div class="card" onclick="window.open('https://pro.eebii.com/features', '_blank')"
+        <!-- Eebii Invoice Pro (Redirects to pro.eebii.com) -->
+        <div class="card" onclick="window.open('https://pro.eebii.com', '_blank')"
           style="display: flex; flex-direction: column; justify-content: space-between; min-height: 100%; cursor: pointer; border-color: rgba(0, 212, 255, 0.35);">
           <div style="text-align: center;">
             <img src="invoice-icon.png" alt="Invoice Logo"
@@ -152,7 +152,7 @@
             </p>
           </div>
           <div style="text-align: center; margin-top: 1.2rem;">
-            <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" class="hero-btn"
+            <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="hero-btn"
               style="display: inline-block; padding: 0.65rem 1.4rem; font-size: 0.9rem;"
               onclick="event.stopPropagation()">
               Explore Invoice Pro →
@@ -245,130 +245,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       IN-DOMAIN TOOL: Instant GST & Reverse Tax Calculator
-       Solves Google AdSense "Low Value Content" by providing real utility on eebii.com
-       ======================================================================== -->
-  <section class="tax-tool-section" id="gst-calculator">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><i class="fas fa-bolt"></i> Interactive Web Utility</span>
-        <h2 class="section-title">Instant GST & Tax Estimator</h2>
-        <p class="section-subtitle">
-          Calculate Indian Goods & Services Tax (GST) splits, reverse calculations, and invoice values instantly in your browser.
-        </p>
-      </div>
-
-      <div class="tax-tool-container">
-        <div class="tax-tool-grid">
-          
-          <!-- Tool Controls -->
-          <div>
-            <div class="tool-input-group">
-              <label class="tool-label" for="calcAmount">Enter Invoice / Bill Amount (INR)</label>
-              <div class="tool-input-wrapper">
-                <span class="tool-currency-prefix">₹</span>
-                <input type="number" id="calcAmount" class="tool-input" value="10000" min="0" step="any">
-              </div>
-            </div>
-
-            <div class="tool-input-group">
-              <label class="tool-label">Applicable GST Slab</label>
-              <div class="rate-chips" id="rateChips">
-                <button type="button" class="rate-chip" data-rate="0">0% (Nil)</button>
-                <button type="button" class="rate-chip" data-rate="5">5% (Goods)</button>
-                <button type="button" class="rate-chip" data-rate="12">12% (Standard)</button>
-                <button type="button" class="rate-chip active" data-rate="18">18% (IT / Services)</button>
-                <button type="button" class="rate-chip" data-rate="28">28% (Luxury)</button>
-              </div>
-            </div>
-
-            <div class="tool-input-group">
-              <label class="tool-label">Calculation Mode</label>
-              <div class="toggle-group" id="modeToggle">
-                <button type="button" class="toggle-btn active" data-mode="exclusive">
-                  GST Exclusive (+ Tax)
-                </button>
-                <button type="button" class="toggle-btn" data-mode="inclusive">
-                  GST Inclusive (Extract Tax)
-                </button>
-              </div>
-            </div>
-
-            <div class="tool-input-group">
-              <label class="tool-label">Transaction Jurisdiction</label>
-              <div class="toggle-group" id="taxTypeToggle">
-                <button type="button" class="toggle-btn active" data-type="intra">
-                  Intra-State (CGST + SGST)
-                </button>
-                <button type="button" class="toggle-btn" data-type="inter">
-                  Inter-State (IGST)
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Live Breakdown & Export -->
-          <div>
-            <div class="tool-result-box">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border-subtle);">
-                <span style="font-weight: 700; color: #ffffff; font-size: 1.05rem;">
-                  <i class="fas fa-file-invoice-dollar" style="color: var(--cyan-primary); margin-right: 6px;"></i> Tax Computation
-                </span>
-                <span id="displayRateBadge" style="font-size: 0.75rem; background: rgba(0, 212, 255, 0.15); color: var(--cyan-primary); padding: 2px 8px; border-radius: 4px; font-weight: 700;">
-                  GST 18%
-                </span>
-              </div>
-
-              <div class="result-row">
-                <span class="lbl">Net Taxable Amount:</span>
-                <span class="val" id="resTaxable">₹ 10,000.00</span>
-              </div>
-
-              <div class="result-row" id="rowCgst">
-                <span class="lbl">Central GST (<span id="resCgstRate">9%</span>):</span>
-                <span class="val" id="resCgst">₹ 900.00</span>
-              </div>
-
-              <div class="result-row" id="rowSgst">
-                <span class="lbl">State GST (<span id="resSgstRate">9%</span>):</span>
-                <span class="val" id="resSgst">₹ 900.00</span>
-              </div>
-
-              <div class="result-row" id="rowIgst" style="display: none;">
-                <span class="lbl">Integrated GST (<span id="resIgstRate">18%</span>):</span>
-                <span class="val" id="resIgst">₹ 1,800.00</span>
-              </div>
-
-              <div class="result-row">
-                <span class="lbl">Total Tax Accrued:</span>
-                <span class="val" id="resTotalTax" style="color: var(--cyan-primary);">₹ 1,800.00</span>
-              </div>
-
-              <div class="result-row total-row">
-                <span class="lbl" style="font-weight: 700; color: #ffffff;">Gross Payable Total:</span>
-                <span class="val" id="resGrossTotal">₹ 11,800.00</span>
-              </div>
-
-              <div class="tool-actions">
-                <button type="button" id="copyBreakdownBtn" class="hero-btn" style="width: 100%; padding: 0.75rem; font-size: 0.9rem; background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid var(--border-subtle);">
-                  <i class="fas fa-copy"></i> Copy Tax Summary
-                </button>
-                <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" class="hero-btn" style="width: 100%; padding: 0.75rem; font-size: 0.9rem; justify-content: center;">
-                  <i class="fas fa-file-invoice"></i> Create Pro Invoice on pro.eebii.com →
-                </a>
-              </div>
-              <div id="copyNotice" style="display: none; text-align: center; color: var(--emerald-accent); font-size: 0.85rem; margin-top: 0.6rem; font-weight: 600;">
-                ✓ Copied to clipboard!
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
     </div>
   </section>
@@ -467,7 +343,7 @@
           <a href="service-software-dev.html" style="color: #00d4ff; font-weight: 600; margin-top: 1rem; display: inline-block;">Learn More →</a>
         </div>
 
-        <div class="card" onclick="window.open('https://pro.eebii.com/features', '_blank')" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; cursor: pointer;">
+        <div class="card" onclick="window.open('https://pro.eebii.com', '_blank')" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; cursor: pointer;">
           <div>
             <i class="fas fa-file-invoice"></i>
             <h3>Invoice & Billing Tools</h3>
@@ -475,7 +351,7 @@
               Enterprise GST billing and accounting platform built for Indian MSMEs at pro.eebii.com.
             </p>
           </div>
-          <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" style="color: #00d4ff; font-weight: 600; margin-top: 1rem; display: inline-block;" onclick="event.stopPropagation()">Open Tool →</a>
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; font-weight: 600; margin-top: 1rem; display: inline-block;" onclick="event.stopPropagation()">Open Tool →</a>
         </div>
 
         <div class="card" onclick="location.href='service-digital-marketing.html'" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; cursor: pointer;">
@@ -517,8 +393,8 @@
               <p style="color: #9ca3af; font-size: 0.95rem; line-height: 1.5; margin: 0;">
                 Our official billing platform is operational at <strong>pro.eebii.com</strong>. Automated GST calculations, multi-device cloud sync, and GSTR reporting.
               </p>
-              <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: block; margin-top: 15px;">
-                Explore pro.eebii.com Features →
+              <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: block; margin-top: 15px;">
+                Explore pro.eebii.com Portal →
               </a>
             </div>
           </div>
@@ -734,9 +610,11 @@
       <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
         <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
         <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
-          <a href="https://pro.eebii.com/features" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
           <span style="color: #333;">|</span>
           <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="barcode-generator.html" style="color: #00d4ff; text-decoration: none;">Barcode Generator</a>
           <span style="color: #333;">|</span>
           <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
           <span style="color: #333;">|</span>
@@ -765,144 +643,6 @@
       const nav = document.getElementById("nav-links");
       if (nav) nav.classList.toggle("active");
     }
-
-    // ========================================================================
-    // Live GST & Tax Calculator Engine
-    // ========================================================================
-    (function initGstCalculator() {
-      const calcAmountInput = document.getElementById("calcAmount");
-      const rateChips = document.querySelectorAll(".rate-chip");
-      const modeButtons = document.querySelectorAll("#modeToggle .toggle-btn");
-      const typeButtons = document.querySelectorAll("#taxTypeToggle .toggle-btn");
-      
-      const resTaxable = document.getElementById("resTaxable");
-      const resCgst = document.getElementById("resCgst");
-      const resSgst = document.getElementById("resSgst");
-      const resIgst = document.getElementById("resIgst");
-      const resTotalTax = document.getElementById("resTotalTax");
-      const resGrossTotal = document.getElementById("resGrossTotal");
-      const resCgstRate = document.getElementById("resCgstRate");
-      const resSgstRate = document.getElementById("resSgstRate");
-      const resIgstRate = document.getElementById("resIgstRate");
-      const displayRateBadge = document.getElementById("displayRateBadge");
-      
-      const rowCgst = document.getElementById("rowCgst");
-      const rowSgst = document.getElementById("rowSgst");
-      const rowIgst = document.getElementById("rowIgst");
-      const copyBtn = document.getElementById("copyBreakdownBtn");
-      const copyNotice = document.getElementById("copyNotice");
-
-      if (!calcAmountInput) return;
-
-      let currentRate = 18;
-      let currentMode = "exclusive";
-      let currentTaxType = "intra";
-
-      function formatINR(num) {
-        return "₹ " + Number(num).toLocaleString("en-IN", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        });
-      }
-
-      function calculateTax() {
-        const inputVal = parseFloat(calcAmountInput.value) || 0;
-        let taxable = 0;
-        let totalTax = 0;
-        let gross = 0;
-
-        if (currentMode === "exclusive") {
-          taxable = inputVal;
-          totalTax = (taxable * currentRate) / 100;
-          gross = taxable + totalTax;
-        } else {
-          gross = inputVal;
-          taxable = (gross * 100) / (100 + currentRate);
-          totalTax = gross - taxable;
-        }
-
-        if (displayRateBadge) displayRateBadge.textContent = "GST " + currentRate + "%";
-        if (resTaxable) resTaxable.textContent = formatINR(taxable);
-        if (resTotalTax) resTotalTax.textContent = formatINR(totalTax);
-        if (resGrossTotal) resGrossTotal.textContent = formatINR(gross);
-
-        if (currentTaxType === "intra") {
-          if (rowCgst) rowCgst.style.display = "flex";
-          if (rowSgst) rowSgst.style.display = "flex";
-          if (rowIgst) rowIgst.style.display = "none";
-
-          const halfRate = currentRate / 2;
-          const halfTax = totalTax / 2;
-          if (resCgstRate) resCgstRate.textContent = halfRate + "%";
-          if (resSgstRate) resSgstRate.textContent = halfRate + "%";
-          if (resCgst) resCgst.textContent = formatINR(halfTax);
-          if (resSgst) resSgst.textContent = formatINR(halfTax);
-        } else {
-          if (rowCgst) rowCgst.style.display = "none";
-          if (rowSgst) rowSgst.style.display = "none";
-          if (rowIgst) rowIgst.style.display = "flex";
-
-          if (resIgstRate) resIgstRate.textContent = currentRate + "%";
-          if (resIgst) resIgst.textContent = formatINR(totalTax);
-        }
-      }
-
-      calcAmountInput.addEventListener("input", calculateTax);
-
-      rateChips.forEach(chip => {
-        chip.addEventListener("click", () => {
-          rateChips.forEach(c => c.classList.remove("active"));
-          chip.classList.add("active");
-          currentRate = parseFloat(chip.getAttribute("data-rate"));
-          calculateTax();
-        });
-      });
-
-      modeButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-          modeButtons.forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          currentMode = btn.getAttribute("data-mode");
-          calculateTax();
-        });
-      });
-
-      typeButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-          typeButtons.forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          currentTaxType = btn.getAttribute("data-type");
-          calculateTax();
-        });
-      });
-
-      if (copyBtn) {
-        copyBtn.addEventListener("click", () => {
-          const summaryText = 
-            `Eebii GST Computation Summary\n` +
-            `-----------------------------------\n` +
-            `Net Taxable Amount : ${resTaxable.textContent}\n` +
-            `GST Slab           : ${currentRate}%\n` +
-            (currentTaxType === "intra" 
-              ? `CGST (${currentRate/2}%)       : ${resCgst.textContent}\n` +
-                `SGST (${currentRate/2}%)       : ${resSgst.textContent}\n`
-              : `IGST (${currentRate}%)        : ${resIgst.textContent}\n`) +
-            `Total Tax Accrued  : ${resTotalTax.textContent}\n` +
-            `Gross Invoice Total: ${resGrossTotal.textContent}\n` +
-            `-----------------------------------\n` +
-            `Generated via Eebii.com | https://pro.eebii.com/features`;
-
-          navigator.clipboard.writeText(summaryText).then(() => {
-            if (copyNotice) {
-              copyNotice.style.display = "block";
-              setTimeout(() => { copyNotice.style.display = "none"; }, 3000);
-            }
-          });
-        });
-      }
-
-      calculateTax();
-    })();
 
     // Contact Form Handler
     document.getElementById("contact-form").addEventListener("submit", async function (e) {

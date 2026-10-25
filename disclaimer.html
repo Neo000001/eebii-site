@@ -1,67 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disclaimer | Eebii Official</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        body { background-color: #0d0f14; color: #f3f4f6; font-family: 'Inter', system-ui, sans-serif; margin: 0; line-height: 1.8; }
-        .blog-wrapper { max-width: 900px; margin: 60px auto; padding: 60px; background: #16181d; border: 1px solid #1f2229; border-radius: 20px; box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7); }
-        .blog-header { margin-bottom: 50px; border-bottom: 1px solid #1f2229; padding-bottom: 30px; }
-        h1 { color: #ffffff; font-size: 3rem; line-height: 1.2; margin: 0 0 15px; font-weight: 800; letter-spacing: -1.5px; }
-        .meta-line { color: #6b7280; font-size: 0.95rem; font-weight: 500; display: flex; gap: 12px; align-items: center; text-transform: uppercase; letter-spacing: 0.5px; }
-        .meta-line span { color: #f28b06; font-weight: bold; }
-        h2 { color: #ffffff; font-size: 2rem; margin: 50px 0 25px; font-weight: 700; border-left: 4px solid #f28b06; padding-left: 15px; }
-        h3 { color: #ffffff; font-size: 1.5rem; margin: 40px 0 20px; font-weight: 600; padding-bottom: 5px; border-bottom: 1px solid #1f2229; }
-        p { margin-bottom: 1.5rem; color: #d1d5db; }
-        ul { margin-bottom: 2rem; }
-        li { margin-bottom: 0.8rem; color: #d1d5db; }
-        li strong { color: #ffffff; }
-        .nav-brand { color: #ffffff !important; font-weight: 800; font-size: 1.5rem; letter-spacing: -1.5px; text-decoration: none; }
-        .back-link { color: #00d4ff; transition: 0.3s; text-decoration: none; font-weight: 600; }
-        .back-link:hover { color: #f28b06; transform: translateX(-5px); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Disclaimer | Eebii Official</title>
+  <meta name="description" content="Legal disclaimer and terms of liability for Eebii website, IT infrastructure consulting, and web utilities.">
+  <link rel="canonical" href="https://www.eebii.com/disclaimer.html">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style>
+    .legal-wrapper {
+      max-width: 900px;
+      margin: 40px auto 60px;
+      padding: 50px;
+      background: #11141b;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+    }
+    @media (max-width: 768px) {
+      .legal-wrapper {
+        padding: 25px 20px;
+        margin: 20px 15px;
+      }
+    }
+    .legal-header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 25px;
+    }
+    .legal-header h1 {
+      color: #ffffff;
+      font-size: 2.5rem;
+      margin: 0 0 10px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      font-family: var(--font-display);
+    }
+    .meta-line {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .meta-line span {
+      color: var(--cyan-primary);
+      font-weight: bold;
+    }
+    .legal-wrapper h2 {
+      color: #ffffff;
+      font-size: 1.45rem;
+      margin: 40px 0 18px;
+      font-weight: 700;
+      border-left: 3px solid var(--cyan-primary);
+      padding-left: 14px;
+      font-family: var(--font-display);
+    }
+    .legal-wrapper p {
+      margin-bottom: 1.4rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+    .legal-wrapper ul {
+      margin-bottom: 1.8rem;
+      padding-left: 1.5rem;
+    }
+    .legal-wrapper li {
+      margin-bottom: 0.8rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+    .legal-wrapper li strong {
+      color: #ffffff;
+    }
+  </style>
 </head>
+
 <body>
+
+  <!-- Navigation -->
+  <header>
     <nav class="topnav">
-        <a href="index.html" class="nav-brand">Eebii</a>
-        <div class="nav-toggle" onclick="toggleMenu()">☰</div>
-        <div class="nav-links" id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="index.html#services">Services</a>
-            <a href="blog.html">Blog</a>
-            <a href="index.html#contact">Contact</a>
-        </div>
+      <a href="index.html" class="nav-brand">Eebii</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#tools">Ecosystem</a>
+        <a href="barcode-generator.html">Barcode Tool</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="https://pro.eebii.com" target="_blank" rel="noopener" class="nav-cta-btn">
+          Invoice Pro →
+        </a>
+      </div>
     </nav>
-    <main class="blog-wrapper">
-        <header class="blog-header">
-            <h1>Disclaimer</h1>
-            <div class="meta-line">Updated <span>|</span> March 2026 <span>|</span> Category: Official</div>
-        </header>
+  </header>
 
-    <h2>1. General Information Only</h2>
-    <p>The information provided by Eebii on https://eebii.com is for general informational purposes only. All information on the site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the site.</p>
+  <!-- Legal Main Content -->
+  <main class="legal-wrapper">
+    <header class="legal-header">
+      <h1>Legal Disclaimer</h1>
+      <div class="meta-line">Updated <span>|</span> March 2026 <span>|</span> Scope: Official Corporate Disclosure</div>
+    </header>
 
-    <h2>2. Professional Services Disclaimer</h2>
-    <p>Eebii provides IT support, networking, and software tools. While we strive to provide the best technical solutions, the content on our website and results from our tools (such as the GST Invoice Generator) do not constitute legal, financial, or tax advice. You should consult with professional advisors before making any business, legal, or financial decisions based on tool output.</p>
+    <h2>1. General Information Purpose</h2>
+    <p>The information, educational articles, and web tools provided by Eebii on <a href="https://www.eebii.com" style="color: var(--cyan-primary);">https://www.eebii.com</a>, including all related subdomains and properties, are published in good faith for general informational, technical, and operational assistance. While we strive to maintain current and precise data, Eebii makes no warranties regarding the complete accuracy, adequacy, or absolute reliability of any material on this website.</p>
 
-    <h2>3. External Links Disclaimer</h2>
-    <p>The Site may contain (or you may be sent through the Site) links to other websites or content belonging to or originating from third parties or links to websites and features in banners or other advertising. Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability or completeness by us.</p>
+    <h2>2. Professional, Legal & Tax Advice Disclaimer</h2>
+    <p>Eebii Technologies is an IT infrastructure, cloud software, and engineering company. Nothing published on this site or generated by our tools constitutes formal legal, financial, or chartered accounting advice:</p>
+    <ul>
+      <li><strong>Tax & Invoicing Utilities:</strong> While our platforms (<a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary);">Eebii Invoice Pro</a> and <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: var(--cyan-primary);">invoice.eebii.com</a>) adhere to Indian GST frameworks (CGST, SGST, IGST, HSN codes), users must verify computations with a certified chartered accountant or tax professional prior to statutory filings.</li>
+      <li><strong>Barcode Standards:</strong> Symbologies such as EAN-13, UPC, and Code 128 generated via our <a href="barcode-generator.html" style="color: var(--cyan-primary);">Barcode Generator</a> conform to technical encoding specifications. Users are responsible for procuring legitimate registered GS1 barcode numbers for retail shelf sales where legally required.</li>
+      <li><strong>Network & IT Support:</strong> IT recommendations provided on our knowledge hub reflect industry best practices. Specific network topologies and firewall configurations should be evaluated in context by qualified system administrators.</li>
+    </ul>
 
-    <h2>4. "As-Is" and "As-Available"</h2>
-    <p>Our tools, including Eebii Flow, PDF Suite, and Invoice Generator, are provided on an "as-is" and "as-available" basis. We do not guarantee that our tools will be 100% error-free or that access will be continuous. We are not responsible for any data loss, business interruption, or financial discrepancies resulting from the use of our platforms.</p>
+    <h2>3. "As-Is" Software Provision</h2>
+    <p>All browser-based tools, including Cloud PDF Suite, Free Invoicing, and Barcode Designer, are provided on an "as-is" and "as-available" basis. Eebii makes no representations that tool availability will be uninterrupted, error-free, or compatible with all legacy printer drivers and operating systems.</p>
 
-    <h2>5. User Responsibility</h2>
-    <p>You acknowledge that you are using our services and tools at your own risk. It is your responsibility to verify the accuracy of generated invoices, the security of your cloud sync data, and the legality of your communication campaigns via Eebii Flow.</p>
+    <h2>4. Hardware & Thermal Printing Disclaimer</h2>
+    <p>Print output quality, bar scannability, and dimension accuracy are inherently dependent on your local physical hardware (printer DPI, thermal paper quality, print head wear, and browser margin configurations). Eebii is not liable for misprinted labels, unscannable barcodes, or paper waste resulting from local printer settings.</p>
+
+    <h2>5. External Links & Third-Party Services</h2>
+    <p>Our website may feature links to external third-party sites, tools, or references (e.g. WhatsApp Business APIs, Formspree, GS1 standards, payment gateways). Such external links are provided solely for user convenience. Eebii does not endorse, control, or assume liability for third-party privacy policies or practices.</p>
 
     <h2>6. Contact Us</h2>
-    <p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at <strong>contact@eebii.com</strong>.</p>
+    <p>If you have any questions, clarifications, or feedback regarding our legal disclaimer, please reach out to our team at <a href="mailto:contact@eebii.com" style="color: var(--cyan-primary);">contact@eebii.com</a>.</p>
+  </main>
 
-    </main>
-      <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; margin-top: 4rem; font-family: 'Inter', sans-serif;">
+  <!-- Corporate Footer -->
+  <footer style="text-align: center; padding: 4rem 1rem; background: #0b0c10; color: #888; border-top: 1px solid #1f2229; font-family: var(--font-main);">
     <div class="container">
       <div style="margin-bottom: 2.5rem;">
         <a href="index.html" style="color: #fff; text-decoration: none; margin: 0 1.2rem; font-weight: 600; font-size: 0.95rem;">Home</a>
@@ -73,9 +153,13 @@
       <div style="margin-bottom: 2.5rem; border-top: 1px solid #1a1d23; padding-top: 2.5rem;">
         <p style="color: #555; font-size: 0.75rem; margin-bottom: 1.2rem; text-transform: uppercase;">Eebii Ecosystem Hub</p>
         <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem;">
-          <a href="https://pro.eebii.com/features" target="_blank" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
+          <a href="https://pro.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">Eebii Invoice Pro</a>
           <span style="color: #333;">|</span>
-          <a href="https://pdfsuite.eebii.com" target="_blank" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
+          <a href="https://invoice.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">GST Invoice Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="barcode-generator.html" style="color: #00d4ff; text-decoration: none;">Barcode Generator</a>
+          <span style="color: #333;">|</span>
+          <a href="https://pdfsuite.eebii.com" target="_blank" rel="noopener" style="color: #00d4ff; text-decoration: none;">PDF Suite</a>
           <span style="color: #333;">|</span>
           <a href="eebii-flow.html" style="color: #00d4ff; text-decoration: none;">Eebii Flow</a>
           <span style="color: #333;">|</span>
@@ -95,6 +179,14 @@
       <p style="margin-top: 1.2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Eebii. All rights reserved.</p>
     </div>
   </footer>
-    <script>function toggleMenu(){document.getElementById('nav-links').classList.toggle('active');}</script>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      if (nav) nav.classList.toggle("active");
+    }
+  </script>
+
 </body>
+
 </html>
