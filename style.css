@@ -138,34 +138,13 @@ img {
   transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
-.nav-brand-group {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
 .nav-brand {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   font-weight: 800;
   letter-spacing: -0.5px;
   color: #ffffff !important;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-brand .brand-badge {
-  font-size: 0.65rem;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  padding: 3px 8px;
-  border-radius: var(--radius-full);
-  background: rgba(0, 212, 255, 0.12);
-  color: var(--cyan-primary);
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  text-decoration: none;
 }
 
 .nav-links {
@@ -300,58 +279,28 @@ img {
   margin: 0 auto;
 }
 
-.hero-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 1rem;
-  border-radius: var(--radius-full);
-  background: rgba(0, 212, 255, 0.08);
-  border: 1px solid rgba(0, 212, 255, 0.25);
-  color: var(--cyan-primary);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
-}
-
 .hero h1 {
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
   font-weight: 800;
   letter-spacing: -1.5px;
   line-height: 1.15;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.6rem;
   color: #ffffff;
 }
 
-.hero h1 .highlight-text {
-  background: linear-gradient(135deg, #00d4ff 0%, #60a5fa 50%, #c084fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .tagline {
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
   color: var(--cyan-primary);
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
 }
 
 .hero-desc {
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  max-width: 680px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.6;
-}
-
-.typed-text {
   font-size: 1.1rem;
-  color: var(--cyan-primary);
-  font-weight: 600;
-  min-height: 1.6rem;
-  margin-bottom: 2rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
 }
 
 .hero-btn {
