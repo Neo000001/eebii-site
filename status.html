@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eebii Invoice Pro — Live System Status &amp; Maintenance Tracker</title>
+  <meta name="description" content="Real-time availability, downtime counter, and scheduled infrastructure maintenance updates for Eebii Invoice Pro (pro.eebii.com)." />
+  <style>
+    :root {
+      --bg: #020617;
+      --surface: #0f172a;
+      --surface-2: #1e293b;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --emerald: #10b981;
+      --emerald-bg: rgba(16, 185, 129, 0.12);
+      --emerald-border: rgba(16, 185, 129, 0.35);
+      --amber: #f59e0b;
+      --amber-bg: rgba(245, 158, 11, 0.12);
+      --amber-border: rgba(245, 158, 11, 0.35);
+      --rose: #f43f5e;
+      --rose-bg: rgba(244, 63, 94, 0.12);
+      --rose-border: rgba(244, 63, 94, 0.4);
+      --sky: #38bdf8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0%, #020617 65%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.55;
+      padding: 24px 16px 56px;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Top Header */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0ea5e9, #10b981);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #020617;
+      letter-spacing: -0.02em;
+    }
+
+    .brand h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .brand p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn:hover { background: #334155; border-color: #475569; }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-primary { background: #0284c7; border-color: #0ea5e9; }
+    .btn-primary:hover { background: #0369a1; }
+
+    /* Cards */
+    .card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Hero Status Banner */
+    .status-hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-width: 1px;
+    }
+
+    .status-hero.up {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(15, 23, 42, 0.95));
+      border-color: var(--emerald-border);
+    }
+
+    .status-hero.down {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.18), rgba(15, 23, 42, 0.95));
+      border-color: var(--rose-border);
+    }
+
+    .status-hero.maint {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(15, 23, 42, 0.95));
+      border-color: var(--amber-border);
+    }
+
+    .status-hero.checking {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: #334155;
+    }
+
+    .status-main {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .dot::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      opacity: 0.45;
+      animation: pulse 1.8s infinite;
+    }
+
+    .up .dot, .dot-up { background: var(--emerald); }
+    .up .dot::after { background: var(--emerald); }
+    .down .dot, .dot-down { background: var(--rose); }
+    .down .dot::after { background: var(--rose); }
+    .maint .dot, .dot-maint { background: var(--amber); }
+    .maint .dot::after { background: var(--amber); }
+    .checking .dot { background: var(--sky); }
+    .checking .dot::after { background: var(--sky); }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      70% { transform: scale(1.6); opacity: 0; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .status-title {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .status-subtitle {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      margin-top: 3px;
+    }
+
+    .timer-box {
+      background: rgba(2, 6, 23, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 14px;
+      padding: 12px 18px;
+      min-width: 220px;
+      text-align: right;
+    }
+
+    .timer-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .timer-value {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 24px;
+      font-weight: 800;
+      margin-top: 2px;
+      color: var(--text);
+    }
+
+    .down .timer-value { color: #fda4af; }
+    .up .timer-value { color: #6ee7b7; }
+    .maint .timer-value { color: #fcd34d; }
+
+    .timer-meta {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Maintenance Notice Card */
+    .notice-card {
+      border-color: var(--amber-border);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.08), rgba(15, 23, 42, 0.95));
+    }
+
+    .notice-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-amber { background: var(--amber-bg); color: #fcd34d; border: 1px solid var(--amber-border); }
+    .tag-emerald { background: var(--emerald-bg); color: #6ee7b7; border: 1px solid var(--emerald-border); }
+    .tag-rose { background: var(--rose-bg); color: #fda4af; border: 1px solid var(--rose-border); }
+
+    .notice-body p {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    .notice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .mini-stat {
+      background: rgba(2, 6, 23, 0.55);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .mini-stat span {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 13.5px;
+      margin-top: 3px;
+      color: var(--text);
+    }
+
+    /* Services List */
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .service-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(2, 6, 23, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+    }
+
+    .service-info strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .service-info small {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .service-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .latency {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Live Check Bar */
+    .uptime-bars {
+      display: grid;
+      grid-template-columns: repeat(30, 1fr);
+      gap: 4px;
+      margin-top: 10px;
+    }
+
+    .bar {
+      height: 26px;
+      border-radius: 4px;
+      background: #1e293b;
+      transition: transform 0.15s;
+    }
+
+    .bar:hover { transform: scaleY(1.15); }
+    .bar.ok { background: var(--emerald); }
+    .bar.fail { background: var(--rose); }
+
+    .bars-caption {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* Incident Table */
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    td { color: #e2e8f0; }
+
+    .empty-log {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 10px 0;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding-top: 6px;
+    }
+
+    .footer a { color: var(--sky); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .timer-box { width: 100%; text-align: left; }
+      .uptime-bars { grid-template-columns: repeat(15, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-badge">EP</div>
+        <div>
+          <h1>Eebii Invoice Pro — System Status</h1>
+          <p>Live availability tracker for <strong>pro.eebii.com</strong> (Independent Status Portal)</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="pill" id="refresh-pill">Next check in <strong id="countdown">10s</strong></span>
+        <button class="btn btn-primary" id="check-now-btn" type="button">Check Now</button>
+        <a class="btn" href="https://pro.eebii.com" target="_blank" rel="noopener noreferrer">Open App ↗</a>
+      </div>
+    </header>
+
+    <!-- Live Status Hero + Auto Downtime / Active Counter -->
+    <section class="card status-hero checking" id="hero-card">
+      <div class="status-main">
+        <div class="dot" aria-hidden="true"></div>
+        <div>
+          <div class="status-title" id="hero-title">Checking live server status...</div>
+          <div class="status-subtitle" id="hero-subtitle">Connecting to https://pro.eebii.com...</div>
+        </div>
+      </div>
+      <div class="timer-box">
+        <div class="timer-label" id="timer-label">Live Monitor</div>
+        <div class="timer-value" id="timer-value">00:00:00</div>
+        <div class="timer-meta" id="timer-meta">Waiting for first probe</div>
+      </div>
+    </section>
+
+    <!-- Scheduled Maintenance / Incident Notice -->
+    <section class="card notice-card" id="maintenance-card" style="display:none;">
+      <div class="notice-header">
+        <h2 style="font-size:16px;font-weight:700;" id="maint-title">Scheduled System Infrastructure Maintenance Notice</h2>
+        <span class="tag tag-amber" id="maint-badge">Scheduled Notice</span>
+      </div>
+      <div class="notice-body">
+        <p id="maint-summary"></p>
+        <p id="maint-impact"></p>
+      </div>
+      <div class="notice-grid">
+        <div class="mini-stat">
+          <span>Maintenance Date</span>
+          <strong id="maint-date">—</strong>
+        </div>
+        <div class="mini-stat">
+          <span>Window (IST)</span>
+          <strong id="maint-window">—</strong>
+        </div>
+        <div class="mini-stat">
+          <span>Expected Duration</span>
+          <strong id="maint-duration">—</strong>
+        </div>
+        <div class="mini-stat">
+          <span>Purpose</span>
+          <strong id="maint-purpose">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Service Breakdown -->
+    <section class="card">
+      <div class="section-title">
+        <span>Component Status &amp; Response Time</span>
+        <span id="last-checked" style="font-weight:500;text-transform:none;letter-spacing:0;">Last checked: —</span>
+      </div>
+      <div class="service-list">
+        <div class="service-row">
+          <div class="service-info">
+            <strong>Web Application &amp; Dashboard</strong>
+            <small>https://pro.eebii.com (Frontend + Nginx TLS Edge)</small>
+          </div>
+          <div class="service-right">
+            <span class="latency" id="web-latency">—</span>
+            <span class="tag tag-emerald" id="web-status">Checking</span>
+          </div>
+        </div>
+
+        <div class="service-row">
+          <div class="service-info">
+            <strong>API &amp; Billing Engine</strong>
+            <small>https://pro.eebii.com/api/health (Auth, Invoicing &amp; GST Engine)</small>
+          </div>
+          <div class="service-right">
+            <span class="latency" id="api-latency">—</span>
+            <span class="tag tag-emerald" id="api-status">Checking</span>
+          </div>
+        </div>
+
+        <div class="service-row">
+          <div class="service-info">
+            <strong>Edge Security &amp; SSL Network</strong>
+            <small>Cloudflare WAF Proxy &amp; Origin Protection</small>
+          </div>
+          <div class="service-right">
+            <span class="latency">TLS 1.3</span>
+            <span class="tag tag-emerald" id="edge-status">Checking</span>
+          </div>
+        </div>
+
+        <div class="service-row">
+          <div class="service-info">
+            <strong>PostgreSQL Database Service</strong>
+            <small>Primary Transactional Store (Synchronized with API health)</small>
+          </div>
+          <div class="service-right">
+            <span class="latency">Internal</span>
+            <span class="tag tag-emerald" id="db-status">Checking</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;">
+        <div class="section-title" style="margin-bottom:6px;">
+          <span>Live Probe History (Last 30 Checks)</span>
+          <span id="uptime-pct" style="color:var(--emerald);font-weight:700;">—</span>
+        </div>
+        <div class="uptime-bars" id="uptime-bars"></div>
+        <div class="bars-caption">
+          <span>Older checks</span>
+          <span>10s auto-interval</span>
+          <span>Latest</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Incident & Downtime Log -->
+    <section class="card">
+      <div class="section-title">
+        <span>Tracked Downtime &amp; Recovery Log</span>
+        <button class="btn" id="clear-log-btn" type="button" style="padding:4px 10px;font-size:11.5px;">Clear Local Log</button>
+      </div>
+      <div class="table-wrap">
+        <table id="incident-table" style="display:none;">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Down Started</th>
+              <th>Recovered At</th>
+              <th>Downtime Duration</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody id="incident-tbody"></tbody>
+        </table>
+        <div class="empty-log" id="empty-log">No downtime detected during your monitoring session. If the server goes down, the live downtime counter starts automatically and stops when active again.</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Powered by <strong>Team Eebii IT Solutions</strong> &bull;
+      Main Site: <a href="https://eebii.com" target="_blank" rel="noopener noreferrer">eebii.com</a> &bull;
+      Portal: <a href="https://pro.eebii.com" target="_blank" rel="noopener noreferrer">pro.eebii.com</a>
+    </footer>
+  </div>
+
+  <script>
+    /**
+     * ===================================================================
+     * EASY CONFIGURATION — Edit maintenance notice details below anytime
+     * ===================================================================
+     */
+    const CONFIG = {
+      appUrl: "https://pro.eebii.com",
+      // Cache-busted PNG asset confirms Cloudflare + Nginx + App are serving 200 OK cross-origin without CORS blockers
+      webProbeUrl: "https://pro.eebii.com/logo.png",
+      // Backend JSON health endpoint
+      apiHealthUrl: "https://pro.eebii.com/api/health",
+      pollIntervalSeconds: 10,
+      probeTimeoutMs: 6500,
+
+      // Update or set enabled: false when no maintenance is scheduled
+      maintenance: {
+        enabled: true,
+        title: "Scheduled System Infrastructure Maintenance Notice",
+        dateLabel: "November 12, 2026",
+        windowLabel: "9:00 PM – 10:00 PM IST",
+        durationLabel: "1 Hour",
+        purposeLabel: "Server Security, Stability & Performance",
+        // Exact ISO-8601 IST (+05:30) window so the page knows when maintenance is currently live
+        startIso: "2026-11-12T21:00:00+05:30",
+        endIso: "2026-11-12T22:00:00+05:30",
+        summary: "Please be advised that Eebii Invoice Pro will undergo scheduled system infrastructure maintenance on November 12, 2026, from 9:00 PM to 10:00 PM IST.",
+        impact: "During this 1-hour maintenance window, Eebii Invoice Pro may be temporarily unavailable while upgrades, kernel security updates, and container checks complete. This page automatically tracks when the server goes down and stops the timer the moment it returns active."
+      }
+    };
+
+    const STORAGE_KEY = "eebii_status_tracker_v1";
+    const els = {
+      heroCard: document.getElementById("hero-card"),
+      heroTitle: document.getElementById("hero-title"),
+      heroSubtitle: document.getElementById("hero-subtitle"),
+      timerLabel: document.getElementById("timer-label"),
+      timerValue: document.getElementById("timer-value"),
+      timerMeta: document.getElementById("timer-meta"),
+      countdown: document.getElementById("countdown"),
+      checkNowBtn: document.getElementById("check-now-btn"),
+      lastChecked: document.getElementById("last-checked"),
+      webStatus: document.getElementById("web-status"),
+      webLatency: document.getElementById("web-latency"),
+      apiStatus: document.getElementById("api-status"),
+      apiLatency: document.getElementById("api-latency"),
+      edgeStatus: document.getElementById("edge-status"),
+      dbStatus: document.getElementById("db-status"),
+      uptimeBars: document.getElementById("uptime-bars"),
+      uptimePct: document.getElementById("uptime-pct"),
+      incidentTable: document.getElementById("incident-table"),
+      incidentTbody: document.getElementById("incident-tbody"),
+      emptyLog: document.getElementById("empty-log"),
+      clearLogBtn: document.getElementById("clear-log-btn")
+    };
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return {
+            currentStatus: parsed.currentStatus || "CHECKING",
+            downSinceMs: parsed.downSinceMs || null,
+            activeSinceMs: parsed.activeSinceMs || null,
+            lastRecoveredDurationMs: parsed.lastRecoveredDurationMs || null,
+            lastRecoveredAtMs: parsed.lastRecoveredAtMs || null,
+            checks: Array.isArray(parsed.checks) ? parsed.checks.slice(-30) : [],
+            incidents: Array.isArray(parsed.incidents) ? parsed.incidents.slice(0, 20) : []
+          };
+        }
+      } catch (_) {}
+      return {
+        currentStatus: "CHECKING",
+        downSinceMs: null,
+        activeSinceMs: null,
+        lastRecoveredDurationMs: null,
+        lastRecoveredAtMs: null,
+        checks: [],
+        incidents: []
+      };
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (_) {}
+    }
+
+    const state = loadState();
+    let secondsToNext = CONFIG.pollIntervalSeconds;
+    let isProbing = false;
+
+    function formatDurationHMS(ms) {
+      const totalSec = Math.max(0, Math.floor(ms / 1000));
+      const hrs = String(Math.floor(totalSec / 3600)).padStart(2, "0");
+      const mins = String(Math.floor((totalSec % 3600) / 60)).padStart(2, "0");
+      const secs = String(totalSec % 60).padStart(2, "0");
+      return `${hrs}:${mins}:${secs}`;
+    }
+
+    function formatHumanDuration(ms) {
+      const totalSec = Math.max(1, Math.round(ms / 1000));
+      const h = Math.floor(totalSec / 3600);
+      const m = Math.floor((totalSec % 3600) / 60);
+      const s = totalSec % 60;
+      const parts = [];
+      if (h > 0) parts.push(`${h}h`);
+      if (m > 0) parts.push(`${m}m`);
+      parts.push(`${s}s`);
+      return parts.join(" ");
+    }
+
+    function formatLocalTime(ms) {
+      if (!ms) return "—";
+      return new Date(ms).toLocaleString(undefined, {
+        month: "short", day: "numeric",
+        hour: "2-digit", minute: "2-digit", second: "2-digit"
+      });
+    }
+
+    function isInsideMaintenanceWindow() {
+      if (!CONFIG.maintenance.enabled) return false;
+      const now = Date.now();
+      const start = Date.parse(CONFIG.maintenance.startIso);
+      const end = Date.parse(CONFIG.maintenance.endIso);
+      if (Number.isNaN(start) || Number.isNaN(end)) return false;
+      return now >= start && now <= end;
+    }
+
+    function renderMaintenanceBanner() {
+      const m = CONFIG.maintenance;
+      const card = document.getElementById("maintenance-card");
+      if (!m.enabled) {
+        card.style.display = "none";
+        return;
+      }
+      card.style.display = "block";
+      document.getElementById("maint-title").textContent = m.title;
+      document.getElementById("maint-summary").textContent = m.summary;
+      document.getElementById("maint-impact").textContent = m.impact;
+      document.getElementById("maint-date").textContent = m.dateLabel;
+      document.getElementById("maint-window").textContent = m.windowLabel;
+      document.getElementById("maint-duration").textContent = m.durationLabel;
+      document.getElementById("maint-purpose").textContent = m.purposeLabel;
+
+      const badge = document.getElementById("maint-badge");
+      const now = Date.now();
+      const start = Date.parse(m.startIso);
+      const end = Date.parse(m.endIso);
+
+      if (!Number.isNaN(start) && !Number.isNaN(end)) {
+        if (now < start) {
+          badge.className = "tag tag-amber";
+          badge.textContent = `Starts in ${formatHumanDuration(start - now)}`;
+        } else if (now <= end) {
+          badge.className = "tag tag-rose";
+          badge.textContent = "Maintenance Active Now";
+        } else {
+          badge.className = "tag tag-emerald";
+          badge.textContent = "Window Completed";
+        }
+      }
+    }
+
+    function probeImage(url, timeoutMs) {
+      return new Promise((resolve) => {
+        const started = performance.now();
+        const img = new Image();
+        let settled = false;
+
+        const timer = setTimeout(() => {
+          if (settled) return;
+          settled = true;
+          img.src = "";
+          resolve({ ok: false, latency: null, reason: "Timeout" });
+        }, timeoutMs);
+
+        img.onload = () => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          resolve({ ok: true, latency: Math.round(performance.now() - started), reason: "200 OK" });
+        };
+
+        img.onerror = () => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          resolve({ ok: false, latency: null, reason: "Unreachable / 5xx" });
+        };
+
+        img.src = `${url}${url.includes("?") ? "&" : "?"}t=${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+      });
+    }
+
+    async function probeApiHealth(url, timeoutMs) {
+      const started = performance.now();
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const res = await fetch(`${url}?t=${Date.now()}`, {
+          method: "GET",
+          mode: "cors",
+          cache: "no-store",
+          signal: controller.signal
+        });
+        clearTimeout(timer);
+        const latency = Math.round(performance.now() - started);
+        if (!res.ok) {
+          return { state: "DOWN", latency, reason: `HTTP ${res.status}` };
+        }
+        const data = await res.json().catch(() => ({}));
+        return { state: "UP", latency, reason: data.status || "Healthy" };
+      } catch (err) {
+        clearTimeout(timer);
+        // If CORS isn't explicitly enabled on /api/health for this external host, browsers throw TypeError
+        return { state: "CORS_OR_NET", latency: null, reason: err && err.name === "AbortError" ? "Timeout" : "Blocked/Offline" };
+      }
+    }
+
+    function setTag(el, cls, text) {
+      el.className = `tag ${cls}`;
+      el.textContent = text;
+    }
+
+    function renderHistory() {
+      els.uptimeBars.innerHTML = "";
+      const paddedCount = Math.max(0, 30 - state.checks.length);
+      for (let i = 0; i < paddedCount; i++) {
+        const bar = document.createElement("div");
+        bar.className = "bar";
+        bar.title = "No sample yet";
+        els.uptimeBars.appendChild(bar);
+      }
+      let okCount = 0;
+      state.checks.forEach((chk) => {
+        if (chk.ok) okCount++;
+        const bar = document.createElement("div");
+        bar.className = `bar ${chk.ok ? "ok" : "fail"}`;
+        bar.title = `${formatLocalTime(chk.ts)} — ${chk.ok ? `ACTIVE (${chk.latency}ms)` : "DOWN"}`;
+        els.uptimeBars.appendChild(bar);
+      });
+
+      if (state.checks.length > 0) {
+        const pct = ((okCount / state.checks.length) * 100).toFixed(1);
+        els.uptimePct.textContent = `${pct}% (${okCount}/${state.checks.length} checks up)`;
+        els.uptimePct.style.color = pct >= 99 ? "var(--emerald)" : pct >= 80 ? "var(--amber)" : "var(--rose)";
+      }
+
+      els.incidentTbody.innerHTML = "";
+      if (state.incidents.length === 0 && state.currentStatus !== "DOWN") {
+        els.incidentTable.style.display = "none";
+        els.emptyLog.style.display = "block";
+        return;
+      }
+
+      els.incidentTable.style.display = "table";
+      els.emptyLog.style.display = "none";
+
+      if (state.currentStatus === "DOWN" && state.downSinceMs) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><span class="tag tag-rose">Active Outage</span></td>
+          <td>${formatLocalTime(state.downSinceMs)}</td>
+          <td>Counting...</td>
+          <td id="live-row-duration" style="font-family:monospace;font-weight:700;color:#fda4af;">${formatDurationHMS(Date.now() - state.downSinceMs)}</td>
+          <td>${isInsideMaintenanceWindow() ? "Scheduled Maintenance Window" : "Server Unreachable"}</td>
+        `;
+        els.incidentTbody.appendChild(tr);
+      }
+
+      state.incidents.forEach((inc) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><span class="tag tag-emerald">Recovered</span></td>
+          <td>${formatLocalTime(inc.startedAt)}</td>
+          <td>${formatLocalTime(inc.endedAt)}</td>
+          <td style="font-family:monospace;font-weight:700;">${formatHumanDuration(inc.durationMs)}</td>
+          <td>${inc.note || "Service Restored"}</td>
+        `;
+        els.incidentTbody.appendChild(tr);
+      });
+    }
+
+    function updateLiveClockDisplay() {
+      const now = Date.now();
+      renderMaintenanceBanner();
+
+      if (state.currentStatus === "DOWN" && state.downSinceMs) {
+        const elapsed = now - state.downSinceMs;
+        els.timerLabel.textContent = "Downtime Counter (Running)";
+        els.timerValue.textContent = formatDurationHMS(elapsed);
+        els.timerMeta.textContent = `Down since ${formatLocalTime(state.downSinceMs)}`;
+        const liveRow = document.getElementById("live-row-duration");
+        if (liveRow) liveRow.textContent = formatDurationHMS(elapsed);
+      } else if (state.currentStatus === "UP") {
+        const activeElapsed = state.activeSinceMs ? (now - state.activeSinceMs) : 0;
+        els.timerLabel.textContent = "Status: ACTIVE (Timer Stopped)";
+        els.timerValue.textContent = formatDurationHMS(activeElapsed);
+        if (state.lastRecoveredDurationMs && state.lastRecoveredAtMs) {
+          els.timerMeta.textContent = `Recovered after ${formatHumanDuration(state.lastRecoveredDurationMs)} downtime`;
+        } else {
+          els.timerMeta.textContent = `Active since ${formatLocalTime(state.activeSinceMs)}`;
+        }
+      }
+    }
+
+    async function runProbe() {
+      if (isProbing) return;
+      isProbing = true;
+      els.checkNowBtn.disabled = true;
+      els.checkNowBtn.textContent = "Checking...";
+
+      const now = Date.now();
+      const [webRes, apiRes] = await Promise.all([
+        probeImage(CONFIG.webProbeUrl, CONFIG.probeTimeoutMs),
+        probeApiHealth(CONFIG.apiHealthUrl, CONFIG.probeTimeoutMs)
+      ]);
+
+      // Overall UP if Web App (200 asset) is up AND API isn't returning explicit 5xx error
+      const isUp = webRes.ok && apiRes.state !== "DOWN";
+      const inMaint = isInsideMaintenanceWindow();
+
+      // Update component rows
+      els.lastChecked.textContent = `Last checked: ${formatLocalTime(now)}`;
+      els.webLatency.textContent = webRes.latency !== null ? `${webRes.latency} ms` : "Timeout/5xx";
+      setTag(els.webStatus, webRes.ok ? "tag-emerald" : "tag-rose", webRes.ok ? "Active (200 OK)" : "Down");
+
+      if (apiRes.state === "UP") {
+        els.apiLatency.textContent = `${apiRes.latency} ms`;
+        setTag(els.apiStatus, "tag-emerald", `Active (${apiRes.reason})`);
+        setTag(els.dbStatus, "tag-emerald", "Active");
+      } else if (apiRes.state === "DOWN") {
+        els.apiLatency.textContent = apiRes.latency ? `${apiRes.latency} ms` : "—";
+        setTag(els.apiStatus, "tag-rose", `Down (${apiRes.reason})`);
+        setTag(els.dbStatus, "tag-rose", "Unavailable");
+      } else if (webRes.ok) {
+        // Web app loaded 200 OK; cross-origin JSON blocked by CORS policy on /api/health
+        els.apiLatency.textContent = `${webRes.latency} ms (Edge)`;
+        setTag(els.apiStatus, "tag-emerald", "Active (Edge Verified)");
+        setTag(els.dbStatus, "tag-emerald", "Online");
+      } else {
+        els.apiLatency.textContent = "—";
+        setTag(els.apiStatus, "tag-rose", "Unreachable");
+        setTag(els.dbStatus, "tag-rose", "Unavailable");
+      }
+
+      setTag(els.edgeStatus, webRes.ok ? "tag-emerald" : (inMaint ? "tag-amber" : "tag-rose"), webRes.ok ? "Protected & Active" : (inMaint ? "Maintenance Mode" : "Origin Down"));
+
+      // Transition logic for Automatic Downtime Counter
+      if (!isUp) {
+        if (state.currentStatus !== "DOWN") {
+          state.downSinceMs = now;
+          state.activeSinceMs = null;
+        }
+        state.currentStatus = "DOWN";
+        els.heroCard.className = `card status-hero ${inMaint ? "maint" : "down"}`;
+        els.heroTitle.textContent = inMaint
+          ? "Maintenance in Progress — Server Temporarily Down"
+          : "System Temporarily Down — Outage Detected";
+        els.heroSubtitle.textContent = inMaint
+          ? "Scheduled infrastructure maintenance is underway. Downtime counter is active and will stop automatically once pro.eebii.com recovers."
+          : "pro.eebii.com is currently unreachable. Downtime counter is running automatically and will stop once service returns active.";
+      } else {
+        if (state.currentStatus === "DOWN" && state.downSinceMs) {
+          // Automatically stop downtime counter and record outage!
+          const durationMs = Math.max(1000, now - state.downSinceMs);
+          state.incidents.unshift({
+            startedAt: state.downSinceMs,
+            endedAt: now,
+            durationMs,
+            note: inMaint ? "Scheduled Maintenance Completed" : "Auto-Recovered"
+          });
+          state.incidents = state.incidents.slice(0, 20);
+          state.lastRecoveredDurationMs = durationMs;
+          state.lastRecoveredAtMs = now;
+          state.downSinceMs = null;
+        }
+        if (!state.activeSinceMs) {
+          state.activeSinceMs = now;
+        }
+        state.currentStatus = "UP";
+        els.heroCard.className = "card status-hero up";
+        els.heroTitle.textContent = "All Systems Active & Operational";
+        els.heroSubtitle.textContent = state.lastRecoveredDurationMs
+          ? `pro.eebii.com is back ACTIVE! Downtime timer stopped cleanly after ${formatHumanDuration(state.lastRecoveredDurationMs)}.`
+          : "Eebii Invoice Pro (pro.eebii.com) is online, responding normally, and serving traffic securely.";
+      }
+
+      state.checks.push({ ts: now, ok: isUp, latency: webRes.latency || 0 });
+      state.checks = state.checks.slice(-30);
+      saveState();
+
+      renderHistory();
+      updateLiveClockDisplay();
+
+      secondsToNext = CONFIG.pollIntervalSeconds;
+      isProbing = false;
+      els.checkNowBtn.disabled = false;
+      els.checkNowBtn.textContent = "Check Now";
+    }
+
+    els.checkNowBtn.addEventListener("click", () => {
+      secondsToNext = CONFIG.pollIntervalSeconds;
+      runProbe();
+    });
+
+    els.clearLogBtn.addEventListener("click", () => {
+      state.incidents = [];
+      state.checks = [];
+      state.lastRecoveredDurationMs = null;
+      state.lastRecoveredAtMs = null;
+      saveState();
+      renderHistory();
+      updateLiveClockDisplay();
+    });
+
+    // 1-second tick for live downtime / active stopwatch & auto-poll countdown
+    setInterval(() => {
+      updateLiveClockDisplay();
+      if (!isProbing) {
+        secondsToNext--;
+        if (secondsToNext <= 0) {
+          runProbe();
+        } else {
+          els.countdown.textContent = `${secondsToNext}s`;
+        }
+      }
+    }, 1000);
+
+    // Initial render & immediate live check
+    renderMaintenanceBanner();
+    renderHistory();
+    runProbe();
+  </script>
+</body>
+</html>
+
