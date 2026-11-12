@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eebii Invoice Pro — Live System Status &amp; Maintenance Tracker</title>
-  <meta name="description" content="Real-time availability, downtime counter, and scheduled infrastructure maintenance updates for Eebii Invoice Pro (pro.eebii.com)." />
+  <title>Eebii Invoice Pro — Live System Status</title>
+  <meta name="description" content="Real-time service status and maintenance updates for Eebii Invoice Pro." />
   <style>
     :root {
       --bg: #020617;
       --surface: #0f172a;
-      --surface-2: #1e293b;
       --border: #1e293b;
       --text: #f8fafc;
       --muted: #94a3b8;
@@ -37,14 +36,13 @@
     }
 
     .container {
-      max-width: 920px;
+      max-width: 880px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    /* Top Header */
     .header {
       display: flex;
       flex-wrap: wrap;
@@ -71,19 +69,10 @@
       font-weight: 800;
       font-size: 16px;
       color: #020617;
-      letter-spacing: -0.02em;
     }
 
-    .brand h1 {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .brand p {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .brand h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+    .brand p { font-size: 13px; color: var(--muted); }
 
     .header-actions {
       display: flex;
@@ -126,7 +115,6 @@
     .btn-primary { background: #0284c7; border-color: #0ea5e9; }
     .btn-primary:hover { background: #0369a1; }
 
-    /* Cards */
     .card {
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid var(--border);
@@ -135,14 +123,12 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     }
 
-    /* Hero Status Banner */
     .status-hero {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      border-width: 1px;
     }
 
     .status-hero.up {
@@ -165,11 +151,7 @@
       border-color: #334155;
     }
 
-    .status-main {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
+    .status-main { display: flex; align-items: flex-start; gap: 14px; }
 
     .dot {
       width: 14px;
@@ -189,11 +171,11 @@
       animation: pulse 1.8s infinite;
     }
 
-    .up .dot, .dot-up { background: var(--emerald); }
+    .up .dot { background: var(--emerald); }
     .up .dot::after { background: var(--emerald); }
-    .down .dot, .dot-down { background: var(--rose); }
+    .down .dot { background: var(--rose); }
     .down .dot::after { background: var(--rose); }
-    .maint .dot, .dot-maint { background: var(--amber); }
+    .maint .dot { background: var(--amber); }
     .maint .dot::after { background: var(--amber); }
     .checking .dot { background: var(--sky); }
     .checking .dot::after { background: var(--sky); }
@@ -204,17 +186,8 @@
       100% { transform: scale(1.6); opacity: 0; }
     }
 
-    .status-title {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-    }
-
-    .status-subtitle {
-      font-size: 13.5px;
-      color: #cbd5e1;
-      margin-top: 3px;
-    }
+    .status-title { font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+    .status-subtitle { font-size: 13.5px; color: #cbd5e1; margin-top: 3px; }
 
     .timer-box {
       background: rgba(2, 6, 23, 0.72);
@@ -245,16 +218,12 @@
     .up .timer-value { color: #6ee7b7; }
     .maint .timer-value { color: #fcd34d; }
 
-    .timer-meta {
-      font-size: 11.5px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
+    .timer-meta { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
 
-    /* Maintenance Notice Card */
+    /* Maintenance Card (Auto-hides once complete & active) */
     .notice-card {
       border-color: var(--amber-border);
-      background: linear-gradient(180deg, rgba(245, 158, 11, 0.08), rgba(15, 23, 42, 0.95));
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.09), rgba(15, 23, 42, 0.96));
     }
 
     .notice-header {
@@ -286,11 +255,12 @@
       font-size: 14px;
       color: #cbd5e1;
       margin-bottom: 10px;
+      white-space: pre-line;
     }
 
     .notice-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 10px;
       margin-top: 12px;
     }
@@ -311,16 +281,10 @@
       letter-spacing: 0.04em;
     }
 
-    .mini-stat strong {
-      display: block;
-      font-size: 13.5px;
-      margin-top: 3px;
-      color: var(--text);
-    }
+    .mini-stat strong { display: block; font-size: 13.5px; margin-top: 3px; color: var(--text); }
 
-    /* Services List */
     .section-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -332,11 +296,7 @@
       gap: 10px;
     }
 
-    .service-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .service-list { display: flex; flex-direction: column; gap: 10px; }
 
     .service-row {
       display: flex;
@@ -350,21 +310,9 @@
       padding: 13px 15px;
     }
 
-    .service-info strong {
-      display: block;
-      font-size: 14px;
-    }
-
-    .service-info small {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .service-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .service-info strong { display: block; font-size: 14px; }
+    .service-info small { font-size: 12px; color: var(--muted); }
+    .service-right { display: flex; align-items: center; gap: 12px; }
 
     .latency {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -372,7 +320,6 @@
       color: var(--muted);
     }
 
-    /* Live Check Bar */
     .uptime-bars {
       display: grid;
       grid-template-columns: repeat(30, 1fr);
@@ -380,13 +327,7 @@
       margin-top: 10px;
     }
 
-    .bar {
-      height: 26px;
-      border-radius: 4px;
-      background: #1e293b;
-      transition: transform 0.15s;
-    }
-
+    .bar { height: 26px; border-radius: 4px; background: #1e293b; transition: transform 0.15s; }
     .bar:hover { transform: scaleY(1.15); }
     .bar.ok { background: var(--emerald); }
     .bar.fail { background: var(--rose); }
@@ -399,35 +340,13 @@
       margin-top: 8px;
     }
 
-    /* Incident Table */
     .table-wrap { overflow-x: auto; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    th {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-    }
-
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
     td { color: #e2e8f0; }
 
-    .empty-log {
-      font-size: 13px;
-      color: var(--muted);
-      padding: 10px 0;
-    }
+    .empty-log { font-size: 13px; color: var(--muted); padding: 8px 0; }
 
     .footer {
       text-align: center;
@@ -447,51 +366,49 @@
 </head>
 <body>
   <div class="container">
-    <!-- Header -->
     <header class="header">
       <div class="brand">
         <div class="brand-badge">EP</div>
         <div>
-          <h1>Eebii Invoice Pro — System Status</h1>
-          <p>Live availability tracker for <strong>pro.eebii.com</strong> (Independent Status Portal)</p>
+          <h1>Eebii Invoice Pro — Live Status</h1>
+          <p>Real-time service monitor for <strong>pro.eebii.com</strong></p>
         </div>
       </div>
       <div class="header-actions">
-        <span class="pill" id="refresh-pill">Next check in <strong id="countdown">10s</strong></span>
+        <span class="pill">Next check in <strong id="countdown">10s</strong></span>
         <button class="btn btn-primary" id="check-now-btn" type="button">Check Now</button>
         <a class="btn" href="https://pro.eebii.com" target="_blank" rel="noopener noreferrer">Open App ↗</a>
       </div>
     </header>
 
-    <!-- Live Status Hero + Auto Downtime / Active Counter -->
+    <!-- Live Status + Auto Downtime / Active Counter -->
     <section class="card status-hero checking" id="hero-card">
       <div class="status-main">
         <div class="dot" aria-hidden="true"></div>
         <div>
-          <div class="status-title" id="hero-title">Checking live server status...</div>
-          <div class="status-subtitle" id="hero-subtitle">Connecting to https://pro.eebii.com...</div>
+          <div class="status-title" id="hero-title">Checking live service status...</div>
+          <div class="status-subtitle" id="hero-subtitle">Connecting to pro.eebii.com...</div>
         </div>
       </div>
       <div class="timer-box">
         <div class="timer-label" id="timer-label">Live Monitor</div>
         <div class="timer-value" id="timer-value">00:00:00</div>
-        <div class="timer-meta" id="timer-meta">Waiting for first probe</div>
+        <div class="timer-meta" id="timer-meta">Waiting for check</div>
       </div>
     </section>
 
-    <!-- Scheduled Maintenance / Incident Notice -->
+    <!-- Maintenance Notice (Automatically disappears once window ends and app is active) -->
     <section class="card notice-card" id="maintenance-card" style="display:none;">
       <div class="notice-header">
-        <h2 style="font-size:16px;font-weight:700;" id="maint-title">Scheduled System Infrastructure Maintenance Notice</h2>
-        <span class="tag tag-amber" id="maint-badge">Scheduled Notice</span>
+        <h2 style="font-size:16px;font-weight:700;" id="maint-title"></h2>
+        <span class="tag tag-amber" id="maint-badge">Scheduled</span>
       </div>
       <div class="notice-body">
-        <p id="maint-summary"></p>
-        <p id="maint-impact"></p>
+        <p id="maint-message"></p>
       </div>
       <div class="notice-grid">
         <div class="mini-stat">
-          <span>Maintenance Date</span>
+          <span>Date</span>
           <strong id="maint-date">—</strong>
         </div>
         <div class="mini-stat">
@@ -499,27 +416,27 @@
           <strong id="maint-window">—</strong>
         </div>
         <div class="mini-stat">
-          <span>Expected Duration</span>
+          <span>Duration</span>
           <strong id="maint-duration">—</strong>
         </div>
         <div class="mini-stat">
-          <span>Purpose</span>
-          <strong id="maint-purpose">—</strong>
+          <span>Notice</span>
+          <strong id="maint-note">Auto-clears once completed</strong>
         </div>
       </div>
     </section>
 
-    <!-- Detailed Service Breakdown -->
+    <!-- Public Service Status (Zero internal infrastructure / IP details) -->
     <section class="card">
       <div class="section-title">
-        <span>Component Status &amp; Response Time</span>
+        <span>Service Health</span>
         <span id="last-checked" style="font-weight:500;text-transform:none;letter-spacing:0;">Last checked: —</span>
       </div>
       <div class="service-list">
         <div class="service-row">
           <div class="service-info">
-            <strong>Web Application &amp; Dashboard</strong>
-            <small>https://pro.eebii.com (Frontend + Nginx TLS Edge)</small>
+            <strong>Eebii Invoice Pro Web Application</strong>
+            <small>pro.eebii.com — Login, Dashboard &amp; Billing Portal</small>
           </div>
           <div class="service-right">
             <span class="latency" id="web-latency">—</span>
@@ -529,114 +446,95 @@
 
         <div class="service-row">
           <div class="service-info">
-            <strong>API &amp; Billing Engine</strong>
-            <small>https://pro.eebii.com/api/health (Auth, Invoicing &amp; GST Engine)</small>
+            <strong>Invoicing, GST/VAT &amp; Client Portal Services</strong>
+            <small>Quotes, Invoices, Reports &amp; Public Customer Links</small>
           </div>
           <div class="service-right">
-            <span class="latency" id="api-latency">—</span>
-            <span class="tag tag-emerald" id="api-status">Checking</span>
-          </div>
-        </div>
-
-        <div class="service-row">
-          <div class="service-info">
-            <strong>Edge Security &amp; SSL Network</strong>
-            <small>Cloudflare WAF Proxy &amp; Origin Protection</small>
-          </div>
-          <div class="service-right">
-            <span class="latency">TLS 1.3</span>
-            <span class="tag tag-emerald" id="edge-status">Checking</span>
-          </div>
-        </div>
-
-        <div class="service-row">
-          <div class="service-info">
-            <strong>PostgreSQL Database Service</strong>
-            <small>Primary Transactional Store (Synchronized with API health)</small>
-          </div>
-          <div class="service-right">
-            <span class="latency">Internal</span>
-            <span class="tag tag-emerald" id="db-status">Checking</span>
+            <span class="latency" id="svc-latency">—</span>
+            <span class="tag tag-emerald" id="svc-status">Checking</span>
           </div>
         </div>
       </div>
 
       <div style="margin-top:18px;">
         <div class="section-title" style="margin-bottom:6px;">
-          <span>Live Probe History (Last 30 Checks)</span>
+          <span id="history-label">Recent Checks (Last 30 Probes)</span>
           <span id="uptime-pct" style="color:var(--emerald);font-weight:700;">—</span>
         </div>
         <div class="uptime-bars" id="uptime-bars"></div>
         <div class="bars-caption">
-          <span>Older checks</span>
-          <span>10s auto-interval</span>
+          <span>Earlier</span>
+          <span id="monitor-mode-label">Live 10s Monitor</span>
           <span>Latest</span>
         </div>
       </div>
     </section>
 
-    <!-- Incident & Downtime Log -->
+    <!-- Outage / Downtime History -->
     <section class="card">
       <div class="section-title">
-        <span>Tracked Downtime &amp; Recovery Log</span>
-        <button class="btn" id="clear-log-btn" type="button" style="padding:4px 10px;font-size:11.5px;">Clear Local Log</button>
+        <span>Downtime &amp; Recovery History</span>
+        <button class="btn" id="clear-log-btn" type="button" style="padding:4px 10px;font-size:11.5px;">Clear Browser Log</button>
       </div>
       <div class="table-wrap">
         <table id="incident-table" style="display:none;">
           <thead>
             <tr>
               <th>Status</th>
-              <th>Down Started</th>
-              <th>Recovered At</th>
-              <th>Downtime Duration</th>
-              <th>Note</th>
+              <th>Down Since</th>
+              <th>Active Again At</th>
+              <th>Total Downtime</th>
+              <th>Details</th>
             </tr>
           </thead>
           <tbody id="incident-tbody"></tbody>
         </table>
-        <div class="empty-log" id="empty-log">No downtime detected during your monitoring session. If the server goes down, the live downtime counter starts automatically and stops when active again.</div>
+        <div class="empty-log" id="empty-log">No downtime recorded. If pro.eebii.com becomes unavailable, the downtime counter starts automatically and stops as soon as the app is active again.</div>
       </div>
     </section>
 
     <footer class="footer">
-      Powered by <strong>Team Eebii IT Solutions</strong> &bull;
-      Main Site: <a href="https://eebii.com" target="_blank" rel="noopener noreferrer">eebii.com</a> &bull;
-      Portal: <a href="https://pro.eebii.com" target="_blank" rel="noopener noreferrer">pro.eebii.com</a>
+      Team Eebii IT Solutions &bull;
+      <a href="https://eebii.com" target="_blank" rel="noopener noreferrer">eebii.com</a> &bull;
+      <a href="https://pro.eebii.com" target="_blank" rel="noopener noreferrer">pro.eebii.com</a>
     </footer>
   </div>
 
   <script>
     /**
-     * ===================================================================
-     * EASY CONFIGURATION — Edit maintenance notice details below anytime
-     * ===================================================================
+     * =========================================================================
+     * CONFIGURATION — Edit only when posting a new maintenance announcement.
+     * No server code required. No IP addresses or internal details exposed.
+     * Once `endIso` passes and pro.eebii.com is active, notice auto-hides!
+     * =========================================================================
      */
     const CONFIG = {
       appUrl: "https://pro.eebii.com",
-      // Cache-busted PNG asset confirms Cloudflare + Nginx + App are serving 200 OK cross-origin without CORS blockers
-      webProbeUrl: "https://pro.eebii.com/logo.png",
-      // Backend JSON health endpoint
-      apiHealthUrl: "https://pro.eebii.com/api/health",
+      probeAssetUrl: "https://pro.eebii.com/logo.png",
+      // Optional: if hosted on GitHub Pages with the 24/7 GitHub Actions monitor,
+      // place ./status-history.json alongside this HTML file and it loads automatically.
+      feedUrl: "./status-history.json",
       pollIntervalSeconds: 10,
       probeTimeoutMs: 6500,
 
-      // Update or set enabled: false when no maintenance is scheduled
       maintenance: {
         enabled: true,
         title: "Scheduled System Infrastructure Maintenance Notice",
         dateLabel: "November 12, 2026",
         windowLabel: "9:00 PM – 10:00 PM IST",
         durationLabel: "1 Hour",
-        purposeLabel: "Server Security, Stability & Performance",
-        // Exact ISO-8601 IST (+05:30) window so the page knows when maintenance is currently live
+        // Auto-clears automatically after endIso once pro.eebii.com responds active!
         startIso: "2026-11-12T21:00:00+05:30",
         endIso: "2026-11-12T22:00:00+05:30",
-        summary: "Please be advised that Eebii Invoice Pro will undergo scheduled system infrastructure maintenance on November 12, 2026, from 9:00 PM to 10:00 PM IST.",
-        impact: "During this 1-hour maintenance window, Eebii Invoice Pro may be temporarily unavailable while upgrades, kernel security updates, and container checks complete. This page automatically tracks when the server goes down and stops the timer the moment it returns active."
+        message:
+          "Please be advised that Eebii Invoice Pro will undergo scheduled system infrastructure maintenance today, November 12, 2026, from 9:00 PM to 10:00 PM IST.\n\n" +
+          "During this 1-hour maintenance window, Eebii Invoice Pro will be temporarily unavailable, and users will not be able to access the application or its services.\n\n" +
+          "This maintenance is being carried out to improve server security, system stability, and overall performance.\n\n" +
+          "We appreciate your patience and apologize for any inconvenience caused.\n— Team Eebii IT Solutions"
       }
     };
 
-    const STORAGE_KEY = "eebii_status_tracker_v1";
+    const STORAGE_KEY = "eebii_public_status_v2";
     const els = {
       heroCard: document.getElementById("hero-card"),
       heroTitle: document.getElementById("hero-title"),
@@ -649,12 +547,12 @@
       lastChecked: document.getElementById("last-checked"),
       webStatus: document.getElementById("web-status"),
       webLatency: document.getElementById("web-latency"),
-      apiStatus: document.getElementById("api-status"),
-      apiLatency: document.getElementById("api-latency"),
-      edgeStatus: document.getElementById("edge-status"),
-      dbStatus: document.getElementById("db-status"),
+      svcStatus: document.getElementById("svc-status"),
+      svcLatency: document.getElementById("svc-latency"),
       uptimeBars: document.getElementById("uptime-bars"),
       uptimePct: document.getElementById("uptime-pct"),
+      historyLabel: document.getElementById("history-label"),
+      monitorModeLabel: document.getElementById("monitor-mode-label"),
       incidentTable: document.getElementById("incident-table"),
       incidentTbody: document.getElementById("incident-tbody"),
       emptyLog: document.getElementById("empty-log"),
@@ -672,6 +570,7 @@
             activeSinceMs: parsed.activeSinceMs || null,
             lastRecoveredDurationMs: parsed.lastRecoveredDurationMs || null,
             lastRecoveredAtMs: parsed.lastRecoveredAtMs || null,
+            hadDownDuringMaintenance: Boolean(parsed.hadDownDuringMaintenance),
             checks: Array.isArray(parsed.checks) ? parsed.checks.slice(-30) : [],
             incidents: Array.isArray(parsed.incidents) ? parsed.incidents.slice(0, 20) : []
           };
@@ -683,18 +582,18 @@
         activeSinceMs: null,
         lastRecoveredDurationMs: null,
         lastRecoveredAtMs: null,
+        hadDownDuringMaintenance: false,
         checks: [],
         incidents: []
       };
     }
 
     function saveState() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      } catch (_) {}
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {}
     }
 
     const state = loadState();
+    let remoteFeed = null;
     let secondsToNext = CONFIG.pollIntervalSeconds;
     let isProbing = false;
 
@@ -726,104 +625,100 @@
       });
     }
 
-    function isInsideMaintenanceWindow() {
-      if (!CONFIG.maintenance.enabled) return false;
+    function getMaintenancePhase() {
+      const m = CONFIG.maintenance;
+      if (!m.enabled) return "NONE";
       const now = Date.now();
-      const start = Date.parse(CONFIG.maintenance.startIso);
-      const end = Date.parse(CONFIG.maintenance.endIso);
-      if (Number.isNaN(start) || Number.isNaN(end)) return false;
-      return now >= start && now <= end;
+      const start = Date.parse(m.startIso);
+      const end = Date.parse(m.endIso);
+      if (Number.isNaN(start) || Number.isNaN(end)) return "ACTIVE";
+      if (now < start) return "UPCOMING";
+      if (now <= end) return "ACTIVE";
+      return "ENDED";
     }
 
-    function renderMaintenanceBanner() {
+    function updateMaintenanceCard() {
       const m = CONFIG.maintenance;
       const card = document.getElementById("maintenance-card");
-      if (!m.enabled) {
+      const phase = getMaintenancePhase();
+
+      // Auto-clear notice completely once maintenance window ends AND service is UP
+      if (phase === "NONE" || (phase === "ENDED" && state.currentStatus !== "DOWN")) {
         card.style.display = "none";
         return;
       }
+
       card.style.display = "block";
       document.getElementById("maint-title").textContent = m.title;
-      document.getElementById("maint-summary").textContent = m.summary;
-      document.getElementById("maint-impact").textContent = m.impact;
+      document.getElementById("maint-message").textContent = m.message;
       document.getElementById("maint-date").textContent = m.dateLabel;
       document.getElementById("maint-window").textContent = m.windowLabel;
       document.getElementById("maint-duration").textContent = m.durationLabel;
-      document.getElementById("maint-purpose").textContent = m.purposeLabel;
 
       const badge = document.getElementById("maint-badge");
       const now = Date.now();
       const start = Date.parse(m.startIso);
       const end = Date.parse(m.endIso);
 
-      if (!Number.isNaN(start) && !Number.isNaN(end)) {
-        if (now < start) {
-          badge.className = "tag tag-amber";
-          badge.textContent = `Starts in ${formatHumanDuration(start - now)}`;
-        } else if (now <= end) {
-          badge.className = "tag tag-rose";
-          badge.textContent = "Maintenance Active Now";
-        } else {
-          badge.className = "tag tag-emerald";
-          badge.textContent = "Window Completed";
-        }
+      if (phase === "UPCOMING") {
+        badge.className = "tag tag-amber";
+        badge.textContent = `Scheduled · Starts in ${formatHumanDuration(start - now)}`;
+      } else if (phase === "ACTIVE") {
+        badge.className = "tag tag-rose";
+        badge.textContent = `Under Maintenance · Ends in ${formatHumanDuration(end - now)}`;
+      } else {
+        badge.className = "tag tag-amber";
+        badge.textContent = "Completing Maintenance...";
       }
     }
 
-    function probeImage(url, timeoutMs) {
+    function probeAppOnline(url, timeoutMs) {
       return new Promise((resolve) => {
         const started = performance.now();
         const img = new Image();
-        let settled = false;
+        let done = false;
 
         const timer = setTimeout(() => {
-          if (settled) return;
-          settled = true;
+          if (done) return;
+          done = true;
           img.src = "";
-          resolve({ ok: false, latency: null, reason: "Timeout" });
+          resolve({ ok: false, latency: null });
         }, timeoutMs);
 
         img.onload = () => {
-          if (settled) return;
-          settled = true;
+          if (done) return;
+          done = true;
           clearTimeout(timer);
-          resolve({ ok: true, latency: Math.round(performance.now() - started), reason: "200 OK" });
+          resolve({ ok: true, latency: Math.round(performance.now() - started) });
         };
 
         img.onerror = () => {
-          if (settled) return;
-          settled = true;
+          if (done) return;
+          done = true;
           clearTimeout(timer);
-          resolve({ ok: false, latency: null, reason: "Unreachable / 5xx" });
+          resolve({ ok: false, latency: null });
         };
 
-        img.src = `${url}${url.includes("?") ? "&" : "?"}t=${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+        img.src = `${url}?t=${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
       });
     }
 
-    async function probeApiHealth(url, timeoutMs) {
-      const started = performance.now();
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), timeoutMs);
+    async function loadOptional247Feed() {
+      if (window.location.protocol === "file:") return;
       try {
-        const res = await fetch(`${url}?t=${Date.now()}`, {
-          method: "GET",
-          mode: "cors",
-          cache: "no-store",
-          signal: controller.signal
-        });
-        clearTimeout(timer);
-        const latency = Math.round(performance.now() - started);
-        if (!res.ok) {
-          return { state: "DOWN", latency, reason: `HTTP ${res.status}` };
+        const res = await fetch(`${CONFIG.feedUrl}?t=${Date.now()}`, { cache: "no-store" });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && Array.isArray(data.checks)) {
+          remoteFeed = data;
+          els.monitorModeLabel.textContent = "24/7 Cloud Monitor + 10s Live";
+          els.historyLabel.textContent = "24/7 Uptime History (Last 30 Checks)";
+          if (data.currentStatus === "DOWN" && data.downSinceMs && state.currentStatus !== "UP") {
+            state.downSinceMs = data.downSinceMs;
+            state.currentStatus = "DOWN";
+          }
         }
-        const data = await res.json().catch(() => ({}));
-        return { state: "UP", latency, reason: data.status || "Healthy" };
-      } catch (err) {
-        clearTimeout(timer);
-        // If CORS isn't explicitly enabled on /api/health for this external host, browsers throw TypeError
-        return { state: "CORS_OR_NET", latency: null, reason: err && err.name === "AbortError" ? "Timeout" : "Blocked/Offline" };
-      }
+      } catch (_) {}
     }
 
     function setTag(el, cls, text) {
@@ -832,31 +727,41 @@
     }
 
     function renderHistory() {
+      const checksToShow = (remoteFeed && Array.isArray(remoteFeed.checks) && remoteFeed.checks.length > 0)
+        ? remoteFeed.checks.slice(-30)
+        : state.checks;
+
       els.uptimeBars.innerHTML = "";
-      const paddedCount = Math.max(0, 30 - state.checks.length);
-      for (let i = 0; i < paddedCount; i++) {
+      const pad = Math.max(0, 30 - checksToShow.length);
+      for (let i = 0; i < pad; i++) {
         const bar = document.createElement("div");
         bar.className = "bar";
-        bar.title = "No sample yet";
+        bar.title = "Pending sample";
         els.uptimeBars.appendChild(bar);
       }
+
       let okCount = 0;
-      state.checks.forEach((chk) => {
+      checksToShow.forEach((chk) => {
         if (chk.ok) okCount++;
         const bar = document.createElement("div");
         bar.className = `bar ${chk.ok ? "ok" : "fail"}`;
-        bar.title = `${formatLocalTime(chk.ts)} — ${chk.ok ? `ACTIVE (${chk.latency}ms)` : "DOWN"}`;
+        bar.title = `${formatLocalTime(chk.ts)} — ${chk.ok ? `ACTIVE (${chk.latency || 0} ms)` : "DOWN"}`;
         els.uptimeBars.appendChild(bar);
       });
 
-      if (state.checks.length > 0) {
-        const pct = ((okCount / state.checks.length) * 100).toFixed(1);
-        els.uptimePct.textContent = `${pct}% (${okCount}/${state.checks.length} checks up)`;
+      if (checksToShow.length > 0) {
+        const pct = ((okCount / checksToShow.length) * 100).toFixed(1);
+        els.uptimePct.textContent = `${pct}% (${okCount}/${checksToShow.length} checks active)`;
         els.uptimePct.style.color = pct >= 99 ? "var(--emerald)" : pct >= 80 ? "var(--amber)" : "var(--rose)";
       }
 
+      const combinedIncidents = [
+        ...(remoteFeed && Array.isArray(remoteFeed.incidents) ? remoteFeed.incidents : []),
+        ...state.incidents
+      ].slice(0, 20);
+
       els.incidentTbody.innerHTML = "";
-      if (state.incidents.length === 0 && state.currentStatus !== "DOWN") {
+      if (combinedIncidents.length === 0 && state.currentStatus !== "DOWN") {
         els.incidentTable.style.display = "none";
         els.emptyLog.style.display = "block";
         return;
@@ -867,46 +772,58 @@
 
       if (state.currentStatus === "DOWN" && state.downSinceMs) {
         const tr = document.createElement("tr");
+        const phase = getMaintenancePhase();
         tr.innerHTML = `
-          <td><span class="tag tag-rose">Active Outage</span></td>
+          <td><span class="tag tag-rose">${phase === "ACTIVE" ? "Maintenance Down" : "Down"}</span></td>
           <td>${formatLocalTime(state.downSinceMs)}</td>
           <td>Counting...</td>
           <td id="live-row-duration" style="font-family:monospace;font-weight:700;color:#fda4af;">${formatDurationHMS(Date.now() - state.downSinceMs)}</td>
-          <td>${isInsideMaintenanceWindow() ? "Scheduled Maintenance Window" : "Server Unreachable"}</td>
+          <td>${phase === "ACTIVE" ? "Scheduled Maintenance Window" : "Service Unreachable"}</td>
         `;
         els.incidentTbody.appendChild(tr);
       }
 
-      state.incidents.forEach((inc) => {
+      combinedIncidents.forEach((inc) => {
         const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td><span class="tag tag-emerald">Recovered</span></td>
-          <td>${formatLocalTime(inc.startedAt)}</td>
-          <td>${formatLocalTime(inc.endedAt)}</td>
-          <td style="font-family:monospace;font-weight:700;">${formatHumanDuration(inc.durationMs)}</td>
-          <td>${inc.note || "Service Restored"}</td>
-        `;
+        const badgeTd = document.createElement("td");
+        const badgeSpan = document.createElement("span");
+        badgeSpan.className = "tag tag-emerald";
+        badgeSpan.textContent = "Active Again";
+        badgeTd.appendChild(badgeSpan);
+
+        const startTd = document.createElement("td");
+        startTd.textContent = formatLocalTime(inc.startedAt);
+        const endTd = document.createElement("td");
+        endTd.textContent = formatLocalTime(inc.endedAt);
+        const durTd = document.createElement("td");
+        durTd.style.fontFamily = "monospace";
+        durTd.style.fontWeight = "700";
+        durTd.textContent = formatHumanDuration(inc.durationMs);
+        const noteTd = document.createElement("td");
+        noteTd.textContent = inc.note || "Recovered";
+
+        tr.append(badgeTd, startTd, endTd, durTd, noteTd);
         els.incidentTbody.appendChild(tr);
       });
     }
 
     function updateLiveClockDisplay() {
       const now = Date.now();
-      renderMaintenanceBanner();
+      updateMaintenanceCard();
 
       if (state.currentStatus === "DOWN" && state.downSinceMs) {
         const elapsed = now - state.downSinceMs;
-        els.timerLabel.textContent = "Downtime Counter (Running)";
+        els.timerLabel.textContent = "Downtime Timer (Running)";
         els.timerValue.textContent = formatDurationHMS(elapsed);
         els.timerMeta.textContent = `Down since ${formatLocalTime(state.downSinceMs)}`;
         const liveRow = document.getElementById("live-row-duration");
         if (liveRow) liveRow.textContent = formatDurationHMS(elapsed);
       } else if (state.currentStatus === "UP") {
         const activeElapsed = state.activeSinceMs ? (now - state.activeSinceMs) : 0;
-        els.timerLabel.textContent = "Status: ACTIVE (Timer Stopped)";
+        els.timerLabel.textContent = "Active (Downtime Stopped)";
         els.timerValue.textContent = formatDurationHMS(activeElapsed);
         if (state.lastRecoveredDurationMs && state.lastRecoveredAtMs) {
-          els.timerMeta.textContent = `Recovered after ${formatHumanDuration(state.lastRecoveredDurationMs)} downtime`;
+          els.timerMeta.textContent = `Stopped after ${formatHumanDuration(state.lastRecoveredDurationMs)} downtime`;
         } else {
           els.timerMeta.textContent = `Active since ${formatLocalTime(state.activeSinceMs)}`;
         }
@@ -920,64 +837,43 @@
       els.checkNowBtn.textContent = "Checking...";
 
       const now = Date.now();
-      const [webRes, apiRes] = await Promise.all([
-        probeImage(CONFIG.webProbeUrl, CONFIG.probeTimeoutMs),
-        probeApiHealth(CONFIG.apiHealthUrl, CONFIG.probeTimeoutMs)
-      ]);
+      await loadOptional247Feed();
+      const res = await probeAppOnline(CONFIG.probeAssetUrl, CONFIG.probeTimeoutMs);
+      const phase = getMaintenancePhase();
 
-      // Overall UP if Web App (200 asset) is up AND API isn't returning explicit 5xx error
-      const isUp = webRes.ok && apiRes.state !== "DOWN";
-      const inMaint = isInsideMaintenanceWindow();
-
-      // Update component rows
       els.lastChecked.textContent = `Last checked: ${formatLocalTime(now)}`;
-      els.webLatency.textContent = webRes.latency !== null ? `${webRes.latency} ms` : "Timeout/5xx";
-      setTag(els.webStatus, webRes.ok ? "tag-emerald" : "tag-rose", webRes.ok ? "Active (200 OK)" : "Down");
+      els.webLatency.textContent = res.ok ? `${res.latency} ms` : "Unreachable";
+      els.svcLatency.textContent = res.ok ? `${res.latency} ms` : "Offline";
 
-      if (apiRes.state === "UP") {
-        els.apiLatency.textContent = `${apiRes.latency} ms`;
-        setTag(els.apiStatus, "tag-emerald", `Active (${apiRes.reason})`);
-        setTag(els.dbStatus, "tag-emerald", "Active");
-      } else if (apiRes.state === "DOWN") {
-        els.apiLatency.textContent = apiRes.latency ? `${apiRes.latency} ms` : "—";
-        setTag(els.apiStatus, "tag-rose", `Down (${apiRes.reason})`);
-        setTag(els.dbStatus, "tag-rose", "Unavailable");
-      } else if (webRes.ok) {
-        // Web app loaded 200 OK; cross-origin JSON blocked by CORS policy on /api/health
-        els.apiLatency.textContent = `${webRes.latency} ms (Edge)`;
-        setTag(els.apiStatus, "tag-emerald", "Active (Edge Verified)");
-        setTag(els.dbStatus, "tag-emerald", "Online");
-      } else {
-        els.apiLatency.textContent = "—";
-        setTag(els.apiStatus, "tag-rose", "Unreachable");
-        setTag(els.dbStatus, "tag-rose", "Unavailable");
-      }
+      setTag(els.webStatus, res.ok ? "tag-emerald" : (phase === "ACTIVE" ? "tag-amber" : "tag-rose"), res.ok ? "Active" : (phase === "ACTIVE" ? "Maintenance" : "Down"));
+      setTag(els.svcStatus, res.ok ? "tag-emerald" : (phase === "ACTIVE" ? "tag-amber" : "tag-rose"), res.ok ? "Active" : (phase === "ACTIVE" ? "Maintenance" : "Down"));
 
-      setTag(els.edgeStatus, webRes.ok ? "tag-emerald" : (inMaint ? "tag-amber" : "tag-rose"), webRes.ok ? "Protected & Active" : (inMaint ? "Maintenance Mode" : "Origin Down"));
-
-      // Transition logic for Automatic Downtime Counter
-      if (!isUp) {
+      if (!res.ok) {
         if (state.currentStatus !== "DOWN") {
           state.downSinceMs = now;
           state.activeSinceMs = null;
         }
+        if (phase === "ACTIVE") {
+          state.hadDownDuringMaintenance = true;
+        }
         state.currentStatus = "DOWN";
-        els.heroCard.className = `card status-hero ${inMaint ? "maint" : "down"}`;
-        els.heroTitle.textContent = inMaint
-          ? "Maintenance in Progress — Server Temporarily Down"
-          : "System Temporarily Down — Outage Detected";
-        els.heroSubtitle.textContent = inMaint
-          ? "Scheduled infrastructure maintenance is underway. Downtime counter is active and will stop automatically once pro.eebii.com recovers."
-          : "pro.eebii.com is currently unreachable. Downtime counter is running automatically and will stop once service returns active.";
+        els.heroCard.className = `card status-hero ${phase === "ACTIVE" ? "maint" : "down"}`;
+        els.heroTitle.textContent = phase === "ACTIVE"
+          ? "Under Scheduled Maintenance"
+          : "Eebii Invoice Pro is Temporarily Down";
+        els.heroSubtitle.textContent = phase === "ACTIVE"
+          ? "Scheduled maintenance is in progress. Live downtime timer is counting and will stop automatically once active."
+          : "pro.eebii.com is currently unreachable. Live downtime counter is running and will stop automatically once back online.";
       } else {
         if (state.currentStatus === "DOWN" && state.downSinceMs) {
-          // Automatically stop downtime counter and record outage!
           const durationMs = Math.max(1000, now - state.downSinceMs);
           state.incidents.unshift({
             startedAt: state.downSinceMs,
             endedAt: now,
             durationMs,
-            note: inMaint ? "Scheduled Maintenance Completed" : "Auto-Recovered"
+            note: phase === "ACTIVE" || state.hadDownDuringMaintenance
+              ? "Maintenance Completed"
+              : "Service Restored"
           });
           state.incidents = state.incidents.slice(0, 20);
           state.lastRecoveredDurationMs = durationMs;
@@ -988,14 +884,20 @@
           state.activeSinceMs = now;
         }
         state.currentStatus = "UP";
-        els.heroCard.className = "card status-hero up";
-        els.heroTitle.textContent = "All Systems Active & Operational";
-        els.heroSubtitle.textContent = state.lastRecoveredDurationMs
-          ? `pro.eebii.com is back ACTIVE! Downtime timer stopped cleanly after ${formatHumanDuration(state.lastRecoveredDurationMs)}.`
-          : "Eebii Invoice Pro (pro.eebii.com) is online, responding normally, and serving traffic securely.";
+        if (phase === "ACTIVE") {
+          els.heroCard.className = "card status-hero maint";
+          els.heroTitle.textContent = "Active — Maintenance Window Open";
+          els.heroSubtitle.textContent = "pro.eebii.com is currently responding. Brief interruptions may still occur until the scheduled window ends.";
+        } else {
+          els.heroCard.className = "card status-hero up";
+          els.heroTitle.textContent = "All Systems Active & Operational";
+          els.heroSubtitle.textContent = state.lastRecoveredDurationMs
+            ? `pro.eebii.com is back ACTIVE! Downtime timer stopped after ${formatHumanDuration(state.lastRecoveredDurationMs)}.`
+            : "pro.eebii.com is online and responding normally.";
+        }
       }
 
-      state.checks.push({ ts: now, ok: isUp, latency: webRes.latency || 0 });
+      state.checks.push({ ts: now, ok: res.ok, latency: res.latency || 0 });
       state.checks = state.checks.slice(-30);
       saveState();
 
@@ -1018,12 +920,12 @@
       state.checks = [];
       state.lastRecoveredDurationMs = null;
       state.lastRecoveredAtMs = null;
+      state.hadDownDuringMaintenance = false;
       saveState();
       renderHistory();
       updateLiveClockDisplay();
     });
 
-    // 1-second tick for live downtime / active stopwatch & auto-poll countdown
     setInterval(() => {
       updateLiveClockDisplay();
       if (!isProbing) {
@@ -1036,11 +938,9 @@
       }
     }, 1000);
 
-    // Initial render & immediate live check
-    renderMaintenanceBanner();
+    updateMaintenanceCard();
     renderHistory();
     runProbe();
   </script>
 </body>
 </html>
-
