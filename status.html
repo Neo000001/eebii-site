@@ -684,13 +684,18 @@
           signal: controller.signal
         });
         clearTimeout(timer);
-        if (!res.ok) return { ok: false, latency: null };
+        if (!res.ok) return { ok: false, latency: null, startedAtMs: null };
         const data = await res.json().catch(() => null);
         const healthy = Boolean(data && String(data.status).toLowerCase() === "healthy");
-        return { ok: healthy, latency: Math.round(performance.now() - started) };
+        const parsedStarted = data && data.startedAt ? Date.parse(data.startedAt) : NaN;
+        return {
+          ok: healthy,
+          latency: Math.round(performance.now() - started),
+          startedAtMs: Number.isNaN(parsedStarted) ? null : parsedStarted
+        };
       } catch (_) {
         clearTimeout(timer);
-        return { ok: false, latency: null };
+        return { ok: false, latency: null, startedAtMs: null };
       }
     }
 
@@ -704,9 +709,8 @@
           remoteFeed = data;
           els.monitorModeLabel.textContent = "24/7 Cloud Monitor + 10s Live";
           els.historyLabel.textContent = "24/7 Uptime History (Last 30 Checks)";
-          if (data.currentStatus === "DOWN" && data.downSinceMs && state.currentStatus !== "UP") {
-            state.downSinceMs = data.downSinceMs;
-            state.currentStatus = "DOWN";
+          if (data.currentStatus === "DOWN" && data.downSinceMs) {
+            state.downSinceMs = Number(data.downSinceMs);
           }
         }
       } catch (_) {}
@@ -804,19 +808,25 @@
 
       if (state.currentStatus === "DOWN" && state.downSinceMs) {
         const elapsed = now - state.downSinceMs;
-        els.timerLabel.textContent = "Downtime Timer (Running)";
+        els.timerLabel.textContent = "Universal Downtime (Running)";
         els.timerValue.textContent = formatDurationHMS(elapsed);
         els.timerMeta.textContent = `Down since ${formatLocalTime(state.downSinceMs)}`;
         const liveRow = document.getElementById("live-row-duration");
         if (liveRow) liveRow.textContent = formatDurationHMS(elapsed);
       } else if (state.currentStatus === "UP") {
-        const activeElapsed = state.activeSinceMs ? (now - state.activeSinceMs) : 0;
-        els.timerLabel.textContent = "Active (Downtime Stopped)";
-        els.timerValue.textContent = formatDurationHMS(activeElapsed);
-        if (state.lastRecoveredDurationMs && state.lastRecoveredAtMs) {
-          els.timerMeta.textContent = `Stopped after ${formatHumanDuration(state.lastRecoveredDurationMs)} downtime`;
+        if (state.activeSinceMs) {
+          const activeElapsed = now - state.activeSinceMs;
+          els.timerLabel.textContent = "Universal Active Uptime";
+          els.timerValue.textContent = formatDurationHMS(activeElapsed);
+          if (state.lastRecoveredDurationMs && state.lastRecoveredAtMs) {
+            els.timerMeta.textContent = `Stopped after ${formatHumanDuration(state.lastRecoveredDurationMs)} downtime`;
+          } else {
+            els.timerMeta.textContent = `Active since ${formatLocalTime(state.activeSinceMs)}`;
+          }
         } else {
-          els.timerMeta.textContent = `Active since ${formatLocalTime(state.activeSinceMs)}`;
+          els.timerLabel.textContent = "Service Status";
+          els.timerValue.textContent = "ACTIVE";
+          els.timerMeta.textContent = "Synced live with server";
         }
       }
     }
@@ -840,10 +850,12 @@
       setTag(els.svcStatus, res.ok ? "tag-emerald" : (phase === "ACTIVE" ? "tag-amber" : "tag-rose"), res.ok ? "Active" : (phase === "ACTIVE" ? "Maintenance" : "Down"));
 
       if (!res.ok) {
-        if (state.currentStatus !== "DOWN") {
+        if (remoteFeed && remoteFeed.currentStatus === "DOWN" && remoteFeed.downSinceMs) {
+          state.downSinceMs = Number(remoteFeed.downSinceMs);
+        } else if (state.currentStatus !== "DOWN") {
           state.downSinceMs = now;
-          state.activeSinceMs = null;
         }
+        state.activeSinceMs = null;
         if (phase === "ACTIVE") {
           state.hadDownDuringMaintenance = true;
         }
@@ -871,9 +883,13 @@
           state.lastRecoveredAtMs = now;
           state.downSinceMs = null;
         }
-        if (!state.activeSinceMs) {
-          state.activeSinceMs = now;
-        }
+        // Always derive activeSinceMs from universal server/24x7 feed timestamps — NEVER per-visitor open time
+        const feedActiveSince = (remoteFeed && remoteFeed.currentStatus === "UP" && remoteFeed.activeSinceMs)
+          ? Number(remoteFeed.activeSinceMs)
+          : 0;
+        const serverActiveSince = res.startedAtMs ? Number(res.startedAtMs) : 0;
+        const universalActiveSince = Math.max(feedActiveSince, serverActiveSince);
+        state.activeSinceMs = universalActiveSince > 0 ? universalActiveSince : null;
         state.currentStatus = "UP";
         if (phase === "ACTIVE") {
           els.heroCard.className = "card status-hero maint";
