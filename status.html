@@ -510,7 +510,7 @@
      */
     const CONFIG = {
       appUrl: "https://pro.eebii.com",
-      probeAssetUrl: "https://pro.eebii.com/logo.png",
+      probeUrl: "https://pro.eebii.com/api/health",
       // Optional: if hosted on GitHub Pages with the 24/7 GitHub Actions monitor,
       // place ./status-history.json alongside this HTML file and it loads automatically.
       feedUrl: "./status-history.json",
@@ -672,35 +672,26 @@
       }
     }
 
-    function probeAppOnline(url, timeoutMs) {
-      return new Promise((resolve) => {
-        const started = performance.now();
-        const img = new Image();
-        let done = false;
-
-        const timer = setTimeout(() => {
-          if (done) return;
-          done = true;
-          img.src = "";
-          resolve({ ok: false, latency: null });
-        }, timeoutMs);
-
-        img.onload = () => {
-          if (done) return;
-          done = true;
-          clearTimeout(timer);
-          resolve({ ok: true, latency: Math.round(performance.now() - started) });
-        };
-
-        img.onerror = () => {
-          if (done) return;
-          done = true;
-          clearTimeout(timer);
-          resolve({ ok: false, latency: null });
-        };
-
-        img.src = `${url}?t=${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
-      });
+    async function probeAppOnline(url, timeoutMs) {
+      const started = performance.now();
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const res = await fetch(`${url}?t=${Date.now()}`, {
+          method: "GET",
+          mode: "cors",
+          cache: "no-store",
+          signal: controller.signal
+        });
+        clearTimeout(timer);
+        if (!res.ok) return { ok: false, latency: null };
+        const data = await res.json().catch(() => null);
+        const healthy = Boolean(data && String(data.status).toLowerCase() === "healthy");
+        return { ok: healthy, latency: Math.round(performance.now() - started) };
+      } catch (_) {
+        clearTimeout(timer);
+        return { ok: false, latency: null };
+      }
     }
 
     async function loadOptional247Feed() {
@@ -838,7 +829,7 @@
 
       const now = Date.now();
       await loadOptional247Feed();
-      const res = await probeAppOnline(CONFIG.probeAssetUrl, CONFIG.probeTimeoutMs);
+      const res = await probeAppOnline(CONFIG.probeUrl, CONFIG.probeTimeoutMs);
       const phase = getMaintenancePhase();
 
       els.lastChecked.textContent = `Last checked: ${formatLocalTime(now)}`;
