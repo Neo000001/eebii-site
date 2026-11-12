@@ -23,6 +23,7 @@ jobs:
           p = Path("status-history.json")
           data = json.loads(p.read_text()) if p.exists() else {
               "currentStatus": "UP",
+              "activeSinceMs": None,
               "downSinceMs": None,
               "checks": [],
               "incidents": []
@@ -33,7 +34,7 @@ jobs:
           t0 = time.time()
           try:
               req = urllib.request.Request(
-                  f"https://pro.eebii.com/logo.png?t={ts}",
+                  f"https://pro.eebii.com/api/health?t={ts}",
                   headers={"User-Agent": "Eebii-Status-Monitor/1.0"}
               )
               with urllib.request.urlopen(req, timeout=8) as r:
@@ -46,6 +47,7 @@ jobs:
               if data.get("currentStatus") != "DOWN":
                   data["downSinceMs"] = ts
               data["currentStatus"] = "DOWN"
+              data["activeSinceMs"] = None
           else:
               if data.get("currentStatus") == "DOWN" and data.get("downSinceMs"):
                   data["incidents"].insert(0, {
@@ -55,6 +57,9 @@ jobs:
                       "note": "Service Restored"
                   })
                   data["incidents"] = data["incidents"][:20]
+                  data["activeSinceMs"] = ts
+              elif not data.get("activeSinceMs"):
+                  data["activeSinceMs"] = ts
               data["currentStatus"] = "UP"
               data["downSinceMs"] = None
 
