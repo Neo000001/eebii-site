@@ -1,0 +1,13 @@
+{
+  "currentStatus": "UP",
+  "activeSinceMs": 1794517029918,
+  "downSinceMs": null,
+  "checks": [
+    {
+      "ts": 1794517029918,
+      "ok": true,
+      "latency": 734
+    }
+  ],
+  "incidents": []
+}
