@@ -1,0 +1,70 @@
+name: 24x7 Status Check
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check pro.eebii.com and update status-history.json
+        run: |
+          python3 - << 'EOF'
+          import json, time, urllib.request
+          from pathlib import Path
+
+          p = Path("status-history.json")
+          data = json.loads(p.read_text()) if p.exists() else {
+              "currentStatus": "UP",
+              "downSinceMs": None,
+              "checks": [],
+              "incidents": []
+          }
+
+          ts = int(time.time() * 1000)
+          ok, latency = False, 0
+          t0 = time.time()
+          try:
+              req = urllib.request.Request(
+                  f"https://pro.eebii.com/logo.png?t={ts}",
+                  headers={"User-Agent": "Eebii-Status-Monitor/1.0"}
+              )
+              with urllib.request.urlopen(req, timeout=8) as r:
+                  ok = (r.status == 200)
+                  latency = int((time.time() - t0) * 1000)
+          except Exception:
+              ok = False
+
+          if not ok:
+              if data.get("currentStatus") != "DOWN":
+                  data["downSinceMs"] = ts
+              data["currentStatus"] = "DOWN"
+          else:
+              if data.get("currentStatus") == "DOWN" and data.get("downSinceMs"):
+                  data["incidents"].insert(0, {
+                      "startedAt": data["downSinceMs"],
+                      "endedAt": ts,
+                      "durationMs": max(1000, ts - data["downSinceMs"]),
+                      "note": "Service Restored"
+                  })
+                  data["incidents"] = data["incidents"][:20]
+              data["currentStatus"] = "UP"
+              data["downSinceMs"] = None
+
+          data["checks"] = (data.get("checks", []) + [{"ts": ts, "ok": ok, "latency": latency}])[-30:]
+          p.write_text(json.dumps(data, indent=2))
+          EOF
+
+      - name: Commit updated status
+        run: |
+          git config user.name "eebii-status-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add status-history.json
+          git diff --cached --quiet || (git commit -m "chore: update status history" && git push)
