@@ -32,6 +32,11 @@
       "ts": 1794623175511,
       "ok": true,
       "latency": 694
+    },
+    {
+      "ts": 1794647542499,
+      "ok": true,
+      "latency": 806
     }
   ],
   "incidents": []
