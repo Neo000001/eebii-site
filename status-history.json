@@ -4,11 +4,6 @@
   "downSinceMs": null,
   "checks": [
     {
-      "ts": 1794700311241,
-      "ok": true,
-      "latency": 617
-    },
-    {
       "ts": 1794712352005,
       "ok": true,
       "latency": 615
@@ -152,6 +147,11 @@
       "ts": 1795398455298,
       "ok": true,
       "latency": 836
+    },
+    {
+      "ts": 1795427463288,
+      "ok": true,
+      "latency": 841
     }
   ],
   "incidents": []
